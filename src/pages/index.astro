@@ -1,3 +1,6 @@
+---
+import FounderForm from '../components/FounderForm.astro';
+---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,7 +34,7 @@ nav.scrolled{background:rgba(10,10,15,.88);backdrop-filter:blur(20px);-webkit-ba
 .nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
 .logo-link{display:flex;align-items:center;text-decoration:none;opacity:.95;transition:opacity .2s}
 .logo-link:hover{opacity:1}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--font);font-weight:600;font-size:.875rem;padding:10px 20px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:var(--font);font-weight:600;font-size:.875rem;padding:10px 20px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--purple-light);transform:translateY(-1px);box-shadow:0 8px 32px var(--purple-glow)}
 
 /* HERO */
@@ -45,7 +48,7 @@ nav.scrolled{background:rgba(10,10,15,.88);backdrop-filter:blur(20px);-webkit-ba
 .hero-sub{font-size:1.1rem;color:var(--text-muted);max-width:480px;margin-bottom:40px;line-height:1.75;font-weight:300}
 .hero-sub strong{color:var(--text);font-weight:500}
 .hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--purple) 0%,var(--purple-light) 100%);color:#fff;font-family:var(--font);font-weight:600;font-size:1rem;padding:15px 28px;border-radius:10px;text-decoration:none;transition:transform .2s,box-shadow .3s}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--purple) 0%,var(--purple-light) 100%);color:#fff;font-family:var(--font);font-weight:600;font-size:1rem;padding:15px 28px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .3s}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(107,33,168,.5)}
 .hero-note{font-size:.8rem;color:var(--text-dim);display:flex;align-items:center;gap:6px}
 
@@ -199,8 +202,9 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
 .footer-brand p{font-size:.82rem;color:var(--text-dim);margin-top:8px;max-width:240px;line-height:1.65}
 .footer-links{display:flex;flex-direction:column;gap:10px}
 .footer-links h4{font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:2px}
-.footer-links a{font-size:.82rem;color:var(--text-dim);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--text)}
+.footer-links a,.ff-footer-link{font-size:.82rem;color:var(--text-dim);text-decoration:none;transition:color .2s}
+.footer-links a:hover,.ff-footer-link:hover{color:var(--text)}
+.ff-footer-link{background:none;border:none;cursor:pointer;padding:0;font-family:var(--font);text-align:left}
 .footer-social{display:flex;gap:10px;margin-top:14px}
 .social-link{width:34px;height:34px;background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);text-decoration:none;transition:background .2s,border-color .2s,color .2s}
 .social-link:hover{background:rgba(107,33,168,.15);border-color:rgba(107,33,168,.3);color:var(--text)}
@@ -279,7 +283,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
         <path fill="#F1F5F9" d="M168.32,99.64H168v30.13c0,1.06-.32,1.31-1.31,1.31h-3c-1,0-1.31-.25-1.31-1.31V92.47c0-1.43.44-1.75,1.87-1.75h3.31a2.74,2.74,0,0,1,2.93,1.75l16.16,29.69H187V92c0-1,.31-1.31,1.31-1.31h3c1,0,1.31.32,1.31,1.31v37.36c0,1.38-.44,1.69-1.87,1.69H187.4a2.78,2.78,0,0,1-2.93-1.69Z"/>
       </svg>
     </a>
-    <a href="https://tally.so/r/aQBQeX" target="_blank" rel="noopener" class="nav-cta">Tester gratuitement →</a>
+    <button class="nav-cta" onclick="window.openFounderForm && window.openFounderForm()">Tester gratuitement →</button>
   </div>
 </nav>
 
@@ -292,10 +296,10 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
         <h1>Obtenez la vérité<br>sur votre startup.<span class="line-accent">Avant les investisseurs.</span></h1>
         <p class="hero-sub">Flaynn soumet votre dossier à un <strong>comité d'investissement virtuel propriétaire</strong>. En 24h, vous savez exactement ce qui convainc, ce qui bloque, et ce qui vous sépare du closing.</p>
         <div class="hero-actions">
-          <a href="https://tally.so/r/aQBQeX" target="_blank" rel="noopener" class="btn-primary">
+          <button class="btn-primary" onclick="window.openFounderForm && window.openFounderForm()">
             Faites partie des 10 premiers
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          </button>
           <span class="hero-note">Gratuit · Sans engagement</span>
         </div>
       </div>
@@ -513,10 +517,10 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
       <h2 class="cta-title">Faites partie des <span style="background:linear-gradient(90deg,var(--purple-light),var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">10 premiers founders</span> à tester Flaynn.</h2>
       <p class="cta-sub">Scoring complet offert. Rapport sur les 5 piliers. Verdict sans concession. Gratuit pour la beta.</p>
       <div class="cta-actions">
-        <a href="https://tally.so/r/aQBQeX" target="_blank" rel="noopener" class="btn-primary btn-large">
+        <button class="btn-primary btn-large" onclick="window.openFounderForm && window.openFounderForm()">
           Soumettre mon dossier gratuitement
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        </button>
         <a href="#investisseurs" class="btn-ghost">Je suis investisseur ↓</a>
       </div>
       <div style="margin-top:28px;font-size:.78rem;color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap">
@@ -567,7 +571,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
         <h4>Produit</h4>
         <a href="#comment-ca-marche">Comment ça marche</a>
         <a href="#investisseurs">Investisseurs</a>
-        <a href="https://tally.so/r/aQBQeX" target="_blank" rel="noopener">Soumettre mon projet</a>
+        <button class="ff-footer-link" onclick="window.openFounderForm && window.openFounderForm()">Soumettre mon projet</button>
       </div>
       <div class="footer-links">
         <h4>Contact</h4>
@@ -704,5 +708,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 </script>
+
+<FounderForm />
 </body>
 </html>
