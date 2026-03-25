@@ -4,259 +4,265 @@ const WEBHOOK_URL = import.meta.env.PUBLIC_N8N_WEBHOOK_URL;
 const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 ---
 
-<!-- Overlay -->
 <div id="ff-overlay" role="dialog" aria-modal="true" aria-label="Formulaire de candidature Flaynn" hidden>
-  <!-- Progress bar -->
-  <div class="ff-progress-wrap" aria-hidden="true">
-    <div id="ff-bar" class="ff-bar"></div>
-    <span id="ff-step-label" class="ff-step-label">Étape 0 / 29</span>
-  </div>
 
-  <!-- Honeypot (hidden) -->
+  <!-- Honeypot -->
   <input type="text" name="website" id="ff-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none!important;position:absolute;left:-9999px">
 
-  <!-- Step container -->
-  <div id="ff-steps" class="ff-steps-wrap">
+  <!-- Header chrome -->
+  <header class="ff-header">
+    <div class="ff-progress-track" aria-hidden="true">
+      <div id="ff-bar" class="ff-bar"></div>
+    </div>
+    <div class="ff-header-meta">
+      <span class="ff-brand">Flaynn</span>
+      <span id="ff-step-label" class="ff-step-label">Accès</span>
+    </div>
+  </header>
 
-    <!-- STEP 0: Beta code -->
+  <!-- Steps -->
+  <main id="ff-steps" class="ff-main">
+
+    <!-- 0 · Code bêta -->
     <div class="ff-step" data-step="0">
       <div class="ff-step-inner">
-        <p class="ff-section-label">Accès restreint</p>
-        <h2 class="ff-question">Code d'accès bêta</h2>
-        <p class="ff-hint">Flaynn est en accès restreint. Entrez votre code pour accéder au formulaire.</p>
-        <input type="text" id="ff-0" class="ff-input" placeholder="Votre code d'accès" autocomplete="off" aria-label="Code d'accès bêta" />
+        <p class="ff-eyebrow">Accès restreint</p>
+        <h2 class="ff-q">Code d'accès bêta</h2>
+        <p class="ff-hint">Flaynn est en accès restreint. Entrez votre code pour continuer.</p>
+        <input type="text" id="ff-0" class="ff-input" placeholder="••••••••••" autocomplete="off" aria-label="Code d'accès bêta" />
         <div class="ff-error" id="ff-err-0" role="alert"></div>
-        <div class="ff-nav">
-          <button class="ff-btn-next" data-step="0">Accéder →</button>
-        </div>
+        <nav class="ff-nav">
+          <div></div>
+          <button class="ff-btn-next ff-btn-primary" data-step="0">Accéder</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 1: Nom fondateur -->
+    <!-- 1 · Nom fondateur -->
     <div class="ff-step" data-step="1" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Informations de contact</p>
-        <label class="ff-question" for="ff-1">Nom complet du fondateur <span class="ff-req">*</span></label>
-        <input type="text" id="ff-1" class="ff-input" autocomplete="name" aria-required="true" />
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-1">Nom complet du fondateur</label>
+        <input type="text" id="ff-1" class="ff-input" autocomplete="name" aria-required="true" placeholder="Prénom Nom" />
         <div class="ff-error" id="ff-err-1" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="1">← Retour</button>
-          <button class="ff-btn-next" data-step="1">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="1">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 2: Email -->
+    <!-- 2 · Email -->
     <div class="ff-step" data-step="2" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Informations de contact</p>
-        <label class="ff-question" for="ff-2">Email professionnel <span class="ff-req">*</span></label>
-        <input type="email" id="ff-2" class="ff-input" autocomplete="email" aria-required="true" />
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-2">Email professionnel</label>
+        <input type="email" id="ff-2" class="ff-input" autocomplete="email" aria-required="true" placeholder="vous@startup.com" />
         <div class="ff-error" id="ff-err-2" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="2">← Retour</button>
-          <button class="ff-btn-next" data-step="2">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="2">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 3: Pays -->
+    <!-- 3 · Pays -->
     <div class="ff-step" data-step="3" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Informations de contact</p>
-        <label class="ff-question" for="ff-3">Pays <span class="ff-req">*</span></label>
-        <input type="text" id="ff-3" class="ff-input" autocomplete="country-name" aria-required="true" />
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-3">Pays</label>
+        <input type="text" id="ff-3" class="ff-input" autocomplete="country-name" aria-required="true" placeholder="France" />
         <div class="ff-error" id="ff-err-3" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="3">← Retour</button>
-          <button class="ff-btn-next" data-step="3">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="3">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 4: Ville -->
+    <!-- 4 · Ville -->
     <div class="ff-step" data-step="4" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Informations de contact</p>
-        <label class="ff-question" for="ff-4">Ville <span class="ff-req">*</span></label>
-        <input type="text" id="ff-4" class="ff-input" autocomplete="address-level2" aria-required="true" />
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-4">Ville</label>
+        <input type="text" id="ff-4" class="ff-input" autocomplete="address-level2" aria-required="true" placeholder="Paris" />
         <div class="ff-error" id="ff-err-4" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="4">← Retour</button>
-          <button class="ff-btn-next" data-step="4">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="4">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 5: Téléphone (optionnel) -->
+    <!-- 5 · Téléphone (optionnel) -->
     <div class="ff-step" data-step="5" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Informations de contact</p>
-        <label class="ff-question" for="ff-5">Numéro de téléphone <span class="ff-opt">(Optionnel)</span></label>
-        <input type="tel" id="ff-5" class="ff-input" autocomplete="tel" />
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-5">Numéro de téléphone <span class="ff-opt">— optionnel</span></label>
+        <input type="tel" id="ff-5" class="ff-input" autocomplete="tel" placeholder="+33 6 00 00 00 00" />
         <div class="ff-error" id="ff-err-5" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="5">← Retour</button>
-          <button class="ff-btn-next" data-step="5">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="5">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 6: Nom startup -->
+    <!-- 6 · Nom startup -->
     <div class="ff-step" data-step="6" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 1 — L'Accroche</p>
-        <label class="ff-question" for="ff-6">Nom de la startup <span class="ff-req">*</span></label>
-        <input type="text" id="ff-6" class="ff-input" aria-required="true" />
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-6">Nom de la startup</label>
+        <input type="text" id="ff-6" class="ff-input" aria-required="true" placeholder="Acme Inc." />
         <div class="ff-error" id="ff-err-6" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="6">← Retour</button>
-          <button class="ff-btn-next" data-step="6">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="6">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 7: Pitch une phrase -->
+    <!-- 7 · Pitch une phrase -->
     <div class="ff-step" data-step="7" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 1 — L'Accroche</p>
-        <label class="ff-question" for="ff-7">En une phrase, que fait votre startup ? <span class="ff-req">*</span></label>
-        <div class="ff-input-wrap">
-          <input type="text" id="ff-7" class="ff-input" maxlength="140" aria-required="true" />
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-7">En une phrase, que fait votre startup ?</label>
+        <div class="ff-field-wrap">
+          <input type="text" id="ff-7" class="ff-input" maxlength="140" aria-required="true" placeholder="Nous aidons [qui] à [quoi] grâce à [comment]." />
           <span class="ff-counter" id="ff-count-7">0 / 140</span>
         </div>
         <div class="ff-error" id="ff-err-7" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="7">← Retour</button>
-          <button class="ff-btn-next" data-step="7">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="7">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 8: Problème -->
+    <!-- 8 · Problème -->
     <div class="ff-step" data-step="8" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 1 — L'Accroche</p>
-        <label class="ff-question" for="ff-8">Le Problème (Point de douleur) <span class="ff-req">*</span></label>
-        <div class="ff-input-wrap">
-          <textarea id="ff-8" class="ff-textarea" maxlength="400" rows="4" aria-required="true"></textarea>
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-8">Le Problème</label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-8" class="ff-textarea" maxlength="400" rows="5" aria-required="true" placeholder="Décrivez le point de douleur de vos clients…"></textarea>
           <span class="ff-counter" id="ff-count-8">0 / 400</span>
         </div>
         <div class="ff-error" id="ff-err-8" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="8">← Retour</button>
-          <button class="ff-btn-next" data-step="8">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="8">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 9: Solution -->
+    <!-- 9 · Solution -->
     <div class="ff-step" data-step="9" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 1 — L'Accroche</p>
-        <label class="ff-question" for="ff-9">Comment résolvez-vous ce problème ? <span class="ff-req">*</span></label>
-        <div class="ff-input-wrap">
-          <textarea id="ff-9" class="ff-textarea" maxlength="400" rows="4" aria-required="true"></textarea>
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-9">Comment résolvez-vous ce problème ?</label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-9" class="ff-textarea" maxlength="400" rows="5" aria-required="true" placeholder="Votre solution en détail…"></textarea>
           <span class="ff-counter" id="ff-count-9">0 / 400</span>
         </div>
         <div class="ff-error" id="ff-err-9" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="9">← Retour</button>
-          <button class="ff-btn-next" data-step="9">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="9">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 10: Secteur -->
+    <!-- 10 · Secteur -->
     <div class="ff-step" data-step="10" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 2 — Le Moteur</p>
-        <label class="ff-question" for="ff-10">Secteur principal <span class="ff-req">*</span></label>
-        <input type="text" id="ff-10" class="ff-input" placeholder="Ex : LegalTech, FinTech B2B, SaaS RH..." aria-required="true" />
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-10">Secteur principal</label>
+        <input type="text" id="ff-10" class="ff-input" placeholder="LegalTech, FinTech B2B, SaaS RH…" aria-required="true" />
         <div class="ff-error" id="ff-err-10" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="10">← Retour</button>
-          <button class="ff-btn-next" data-step="10">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="10">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 11: Type client -->
+    <!-- 11 · Type client -->
     <div class="ff-step" data-step="11" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 2 — Le Moteur</p>
-        <label class="ff-question" for="ff-11">Type de client cible <span class="ff-req">*</span></label>
-        <input type="text" id="ff-11" class="ff-input" placeholder="Ex : PME françaises, DSI grands groupes, indépendants..." aria-required="true" />
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-11">Type de client cible</label>
+        <input type="text" id="ff-11" class="ff-input" placeholder="PME françaises, DSI grands groupes…" aria-required="true" />
         <div class="ff-error" id="ff-err-11" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="11">← Retour</button>
-          <button class="ff-btn-next" data-step="11">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="11">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 12: TAM -->
+    <!-- 12 · TAM -->
     <div class="ff-step" data-step="12" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 2 — Le Moteur</p>
-        <label class="ff-question" for="ff-12">Marché Total Adressable (TAM) en USD <span class="ff-req">*</span></label>
-        <input type="number" id="ff-12" class="ff-input" placeholder="Ex : 2000000000" min="0" aria-required="true" />
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-12">Marché Total Adressable (TAM) en USD</label>
+        <input type="number" id="ff-12" class="ff-input" placeholder="2 000 000 000" min="0" aria-required="true" />
         <div class="ff-error" id="ff-err-12" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="12">← Retour</button>
-          <button class="ff-btn-next" data-step="12">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="12">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 13: Sources TAM -->
+    <!-- 13 · Sources TAM -->
     <div class="ff-step" data-step="13" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 2 — Le Moteur</p>
-        <label class="ff-question" for="ff-13">Comment avez-vous estimé ce chiffre ? (Sources) <span class="ff-req">*</span></label>
-        <textarea id="ff-13" class="ff-textarea" rows="4" aria-required="true"></textarea>
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-13">Comment avez-vous estimé ce chiffre ?</label>
+        <textarea id="ff-13" class="ff-textarea" rows="5" aria-required="true" placeholder="Sources, méthodologie, études de marché…"></textarea>
         <div class="ff-error" id="ff-err-13" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="13">← Retour</button>
-          <button class="ff-btn-next" data-step="13">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="13">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 14: Acquisition clients (optionnel) -->
+    <!-- 14 · Acquisition clients (optionnel) -->
     <div class="ff-step" data-step="14" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 2 — Le Moteur</p>
-        <label class="ff-question" for="ff-14">Comment acquérez-vous vos clients aujourd'hui ? <span class="ff-opt">(Optionnel)</span></label>
-        <textarea id="ff-14" class="ff-textarea" rows="4"></textarea>
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-14">Comment acquérez-vous vos clients ? <span class="ff-opt">— optionnel</span></label>
+        <textarea id="ff-14" class="ff-textarea" rows="5" placeholder="Canaux, stratégie, coût d'acquisition…"></textarea>
         <div class="ff-error" id="ff-err-14" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="14">← Retour</button>
-          <button class="ff-btn-next" data-step="14">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="14">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 15: Concurrents (optionnel) -->
+    <!-- 15 · Concurrents (optionnel) -->
     <div class="ff-step" data-step="15" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 2 — Le Moteur</p>
-        <label class="ff-question" for="ff-15">Qui cherchez-vous à détrôner & pourquoi vous gagnez ? <span class="ff-opt">(Optionnel)</span></label>
-        <textarea id="ff-15" class="ff-textarea" rows="4"></textarea>
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-15">Qui cherchez-vous à détrôner ? <span class="ff-opt">— optionnel</span></label>
+        <textarea id="ff-15" class="ff-textarea" rows="5" placeholder="Concurrents directs et votre avantage différentiel…"></textarea>
         <div class="ff-error" id="ff-err-15" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="15">← Retour</button>
-          <button class="ff-btn-next" data-step="15">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="15">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 16: Stade -->
+    <!-- 16 · Stade -->
     <div class="ff-step" data-step="16" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 3 — Exécution & Équipe</p>
-        <p class="ff-question">À quel stade êtes-vous aujourd'hui ? <span class="ff-req">*</span></p>
-        <div class="ff-choices" id="ff-16" role="group" aria-label="Stade de la startup">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <p class="ff-q">À quel stade êtes-vous aujourd'hui ?</p>
+        <div class="ff-choices" id="ff-16" role="group" aria-label="Stade">
           <button type="button" class="ff-choice" data-value="Idée">Idée</button>
           <button type="button" class="ff-choice" data-value="MVP">MVP</button>
           <button type="button" class="ff-choice" data-value="Pré-revenue">Pré-revenue</button>
@@ -265,811 +271,1002 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
           <button type="button" class="ff-choice" data-value="Série A+">Série A+</button>
         </div>
         <div class="ff-error" id="ff-err-16" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="16">← Retour</button>
-          <button class="ff-btn-next" data-step="16">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="16">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 17: Revenus Oui/Non -->
+    <!-- 17 · Revenus -->
     <div class="ff-step" data-step="17" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 3 — Exécution & Équipe</p>
-        <p class="ff-question">Générez-vous des revenus ? <span class="ff-req">*</span></p>
-        <div class="ff-choices ff-choices--ab" id="ff-17" role="group" aria-label="Revenus">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <p class="ff-q">Générez-vous des revenus ?</p>
+        <div class="ff-choices ff-choices--duo" id="ff-17" role="group" aria-label="Revenus">
           <button type="button" class="ff-choice" data-value="Oui">Oui</button>
           <button type="button" class="ff-choice" data-value="Non">Non</button>
         </div>
         <div class="ff-error" id="ff-err-17" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="17">← Retour</button>
-          <button class="ff-btn-next" data-step="17">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="17">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 18: MRR -->
+    <!-- 18 · MRR -->
     <div class="ff-step" data-step="18" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 3 — Exécution & Équipe</p>
-        <label class="ff-question" for="ff-18">Revenu mensuel - MRR (en $, indiquer 0 si pré-revenu) <span id="ff-18-req-label"></span></label>
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-18">Revenu mensuel — MRR en $ <span id="ff-18-req-label"></span></label>
         <input type="number" id="ff-18" class="ff-input" min="0" placeholder="0" />
         <div class="ff-error" id="ff-err-18" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="18">← Retour</button>
-          <button class="ff-btn-next" data-step="18">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="18">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 19: Clients payants -->
+    <!-- 19 · Clients payants -->
     <div class="ff-step" data-step="19" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 3 — Exécution & Équipe</p>
-        <label class="ff-question" for="ff-19">Nombre de clients payants (indiquer 0 si aucun) <span id="ff-19-req-label"></span></label>
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-19">Nombre de clients payants <span id="ff-19-req-label"></span></label>
         <input type="number" id="ff-19" class="ff-input" min="0" placeholder="0" />
         <div class="ff-error" id="ff-err-19" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="19">← Retour</button>
-          <button class="ff-btn-next" data-step="19">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="19">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 20: Pourquoi vous -->
+    <!-- 20 · Pourquoi vous -->
     <div class="ff-step" data-step="20" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 3 — Exécution & Équipe</p>
-        <label class="ff-question" for="ff-20">Pourquoi VOUS ? Présentez les fondateurs et votre avantage compétitif <span class="ff-req">*</span></label>
-        <div class="ff-input-wrap">
-          <textarea id="ff-20" class="ff-textarea" maxlength="500" rows="5" aria-required="true"></textarea>
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-20">Pourquoi VOUS ?</label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-20" class="ff-textarea" maxlength="500" rows="5" aria-required="true" placeholder="Présentez l'équipe fondatrice et votre avantage compétitif…"></textarea>
           <span class="ff-counter" id="ff-count-20">0 / 500</span>
         </div>
         <div class="ff-error" id="ff-err-20" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="20">← Retour</button>
-          <button class="ff-btn-next" data-step="20">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="20">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 21: Temps plein -->
+    <!-- 21 · Temps plein -->
     <div class="ff-step" data-step="21" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 3 — Exécution & Équipe</p>
-        <p class="ff-question">L'équipe fondatrice est-elle à temps plein ? <span class="ff-req">*</span></p>
-        <div class="ff-choices ff-choices--ab" id="ff-21" role="group" aria-label="Temps plein">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <p class="ff-q">L'équipe est-elle à temps plein ?</p>
+        <div class="ff-choices ff-choices--duo" id="ff-21" role="group" aria-label="Temps plein">
           <button type="button" class="ff-choice" data-value="Oui">Oui</button>
           <button type="button" class="ff-choice" data-value="Non">Non</button>
         </div>
         <div class="ff-error" id="ff-err-21" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="21">← Retour</button>
-          <button class="ff-btn-next" data-step="21">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="21">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 22: Priorité 6 mois -->
+    <!-- 22 · Priorité 6 mois -->
     <div class="ff-step" data-step="22" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 3 — Exécution & Équipe</p>
-        <label class="ff-question" for="ff-22">Priorité principale (6 prochains mois) <span class="ff-req">*</span></label>
-        <textarea id="ff-22" class="ff-textarea" rows="4" aria-required="true"></textarea>
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-22">Priorité des 6 prochains mois</label>
+        <textarea id="ff-22" class="ff-textarea" rows="5" aria-required="true" placeholder="Votre objectif numéro un…"></textarea>
         <div class="ff-error" id="ff-err-22" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="22">← Retour</button>
-          <button class="ff-btn-next" data-step="22">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="22">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 23: Montant levée -->
+    <!-- 23 · Montant levée -->
     <div class="ff-step" data-step="23" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 4 — La Demande & Projections</p>
-        <p class="ff-question">Combien souhaitez-vous lever ? <span class="ff-req">*</span></p>
+        <p class="ff-eyebrow">La Demande</p>
+        <p class="ff-q">Combien souhaitez-vous lever ?</p>
         <div class="ff-choices" id="ff-23" role="group" aria-label="Montant levée">
-          <button type="button" class="ff-choice" data-value="< 100k€">&lt; 100k€</button>
-          <button type="button" class="ff-choice" data-value="100k–500k€">100k–500k€</button>
-          <button type="button" class="ff-choice" data-value="500k–1M€">500k–1M€</button>
-          <button type="button" class="ff-choice" data-value="1M–3M€">1M–3M€</button>
-          <button type="button" class="ff-choice" data-value="> 3M€">&gt; 3M€</button>
+          <button type="button" class="ff-choice" data-value="< 100k€">&lt;&nbsp;100k€</button>
+          <button type="button" class="ff-choice" data-value="100k–500k€">100k – 500k€</button>
+          <button type="button" class="ff-choice" data-value="500k–1M€">500k – 1M€</button>
+          <button type="button" class="ff-choice" data-value="1M–3M€">1M – 3M€</button>
+          <button type="button" class="ff-choice" data-value="> 3M€">&gt;&nbsp;3M€</button>
         </div>
         <div class="ff-error" id="ff-err-23" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="23">← Retour</button>
-          <button class="ff-btn-next" data-step="23">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="23">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 24: Jalons 18 mois -->
+    <!-- 24 · Jalons 18 mois -->
     <div class="ff-step" data-step="24" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 4 — La Demande & Projections</p>
-        <label class="ff-question" for="ff-24">Jalons clés pour les 18 prochains mois <span class="ff-req">*</span></label>
-        <textarea id="ff-24" class="ff-textarea" rows="4" aria-required="true"></textarea>
+        <p class="ff-eyebrow">La Demande</p>
+        <label class="ff-q" for="ff-24">Jalons clés — 18 prochains mois</label>
+        <textarea id="ff-24" class="ff-textarea" rows="5" aria-required="true" placeholder="Milestones produit, revenus, équipe…"></textarea>
         <div class="ff-error" id="ff-err-24" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="24">← Retour</button>
-          <button class="ff-btn-next" data-step="24">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="24">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 25: Utilisation fonds (optionnel) -->
+    <!-- 25 · Utilisation fonds (optionnel) -->
     <div class="ff-step" data-step="25" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 4 — La Demande & Projections</p>
-        <label class="ff-question" for="ff-25">Utilisation prévue des fonds <span class="ff-opt">(Optionnel)</span></label>
-        <textarea id="ff-25" class="ff-textarea" rows="4"></textarea>
+        <p class="ff-eyebrow">La Demande</p>
+        <label class="ff-q" for="ff-25">Utilisation prévue des fonds <span class="ff-opt">— optionnel</span></label>
+        <textarea id="ff-25" class="ff-textarea" rows="5" placeholder="R&D, recrutement, marketing…"></textarea>
         <div class="ff-error" id="ff-err-25" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="25">← Retour</button>
-          <button class="ff-btn-next" data-step="25">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="25">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 26: Vision 5 ans -->
+    <!-- 26 · Vision 5 ans -->
     <div class="ff-step" data-step="26" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 4 — La Demande & Projections</p>
-        <label class="ff-question" for="ff-26">Si vous réussissez, à quoi ressemble votre entreprise dans 5 ans ? <span class="ff-req">*</span></label>
-        <textarea id="ff-26" class="ff-textarea" rows="4" aria-required="true"></textarea>
+        <p class="ff-eyebrow">La Demande</p>
+        <label class="ff-q" for="ff-26">À quoi ressemble votre entreprise dans 5 ans ?</label>
+        <textarea id="ff-26" class="ff-textarea" rows="5" aria-required="true" placeholder="Votre vision long terme…"></textarea>
         <div class="ff-error" id="ff-err-26" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="26">← Retour</button>
-          <button class="ff-btn-next" data-step="26">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="26">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 27: Pitch Deck -->
+    <!-- 27 · Pitch Deck -->
     <div class="ff-step" data-step="27" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 5 — Documents</p>
-        <label class="ff-question" for="ff-27">Pitch Deck (PDF uniquement, max 15 Mo) <span class="ff-req">*</span></label>
-        <div class="ff-file-zone" id="ff-file-zone-27">
+        <p class="ff-eyebrow">Documents</p>
+        <label class="ff-q" for="ff-27">Votre Pitch Deck</label>
+        <p class="ff-hint">PDF uniquement · Max 15 Mo</p>
+        <div class="ff-dropzone" id="ff-file-zone-27">
           <input type="file" id="ff-27" class="ff-file-input" accept=".pdf" aria-required="true" aria-label="Pitch Deck PDF" />
-          <div class="ff-file-placeholder">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <span>Cliquez ou glissez votre PDF ici</span>
-            <span class="ff-file-sub">PDF uniquement · Max 15 Mo</span>
+          <div class="ff-drop-idle" id="ff-drop-idle-27">
+            <div class="ff-drop-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <p class="ff-drop-label">Déposer le fichier ici</p>
+            <p class="ff-drop-sub">ou <span class="ff-drop-link">parcourir</span></p>
           </div>
-          <div class="ff-file-info" id="ff-file-info-27" hidden>
-            <div class="ff-file-name" id="ff-file-name-27"></div>
-            <div class="ff-upload-bar-wrap"><div class="ff-upload-bar" id="ff-upload-bar-27"></div></div>
-            <div class="ff-file-status" id="ff-file-status-27"></div>
+          <div class="ff-drop-active" id="ff-file-info-27" hidden>
+            <div class="ff-file-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span class="ff-file-name" id="ff-file-name-27"></span>
+            </div>
+            <div class="ff-upload-track"><div class="ff-upload-fill" id="ff-upload-bar-27"></div></div>
+            <p class="ff-file-status" id="ff-file-status-27"></p>
           </div>
         </div>
         <div class="ff-error" id="ff-err-27" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="27">← Retour</button>
-          <button class="ff-btn-next" data-step="27">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="27">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 28: Lien démo (optionnel) -->
+    <!-- 28 · Lien démo (optionnel) -->
     <div class="ff-step" data-step="28" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 5 — Documents</p>
-        <label class="ff-question" for="ff-28">Lien vidéo de démo <span class="ff-opt">(Optionnel)</span></label>
-        <input type="url" id="ff-28" class="ff-input" placeholder="https://..." />
+        <p class="ff-eyebrow">Documents</p>
+        <label class="ff-q" for="ff-28">Lien vidéo de démo <span class="ff-opt">— optionnel</span></label>
+        <input type="url" id="ff-28" class="ff-input" placeholder="https://www.loom.com/share/…" />
         <div class="ff-error" id="ff-err-28" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="28">← Retour</button>
-          <button class="ff-btn-next" data-step="28">Continuer →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-primary" data-step="28">Continuer</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 29: Doc supplémentaire (optionnel) -->
+    <!-- 29 · Doc supplémentaire (optionnel) -->
     <div class="ff-step" data-step="29" hidden>
       <div class="ff-step-inner">
-        <p class="ff-section-label">Partie 5 — Documents</p>
-        <label class="ff-question" for="ff-29">Tout autre document pertinent <span class="ff-opt">(Optionnel)</span></label>
-        <div class="ff-file-zone" id="ff-file-zone-29">
+        <p class="ff-eyebrow">Documents</p>
+        <label class="ff-q" for="ff-29">Document complémentaire <span class="ff-opt">— optionnel</span></label>
+        <p class="ff-hint">PDF, Office, JPG, PNG · Max 15 Mo</p>
+        <div class="ff-dropzone" id="ff-file-zone-29">
           <input type="file" id="ff-29" class="ff-file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.png" aria-label="Document supplémentaire" />
-          <div class="ff-file-placeholder">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <span>Cliquez ou glissez votre fichier ici</span>
-            <span class="ff-file-sub">PDF, Office, JPG, PNG · Max 15 Mo</span>
+          <div class="ff-drop-idle" id="ff-drop-idle-29">
+            <div class="ff-drop-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <p class="ff-drop-label">Déposer le fichier ici</p>
+            <p class="ff-drop-sub">ou <span class="ff-drop-link">parcourir</span></p>
           </div>
-          <div class="ff-file-info" id="ff-file-info-29" hidden>
-            <div class="ff-file-name" id="ff-file-name-29"></div>
-            <div class="ff-upload-bar-wrap"><div class="ff-upload-bar" id="ff-upload-bar-29"></div></div>
-            <div class="ff-file-status" id="ff-file-status-29"></div>
+          <div class="ff-drop-active" id="ff-file-info-29" hidden>
+            <div class="ff-file-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span class="ff-file-name" id="ff-file-name-29"></span>
+            </div>
+            <div class="ff-upload-track"><div class="ff-upload-fill" id="ff-upload-bar-29"></div></div>
+            <p class="ff-file-status" id="ff-file-status-29"></p>
           </div>
         </div>
         <div class="ff-error" id="ff-err-29" role="alert"></div>
-        <div class="ff-nav">
+        <nav class="ff-nav">
           <button class="ff-btn-back" data-step="29">← Retour</button>
-          <button class="ff-btn-next ff-btn-submit" data-step="29">Soumettre mon dossier →</button>
-        </div>
+          <button class="ff-btn-next ff-btn-submit ff-btn-primary" data-step="29">Soumettre mon dossier</button>
+        </nav>
       </div>
     </div>
 
-    <!-- STEP 30: Final screen -->
+    <!-- 30 · Écran final -->
     <div class="ff-step ff-step--final" data-step="30" hidden>
-      <div class="ff-step-inner ff-final-inner">
-        <div id="ff-final-spinner" class="ff-spinner-wrap">
+      <div class="ff-step-inner">
+        <div id="ff-final-spinner" class="ff-final-state">
           <div class="ff-spinner"></div>
-          <p class="ff-spinner-text">Envoi en cours…</p>
+          <p class="ff-final-label">Envoi en cours…</p>
         </div>
-        <div id="ff-final-success" hidden>
-          <div class="ff-success-icon">✦</div>
+        <div id="ff-final-success" class="ff-final-state" hidden>
+          <div class="ff-success-glyph">✦</div>
           <h2 class="ff-success-title">Dossier reçu.</h2>
-          <p class="ff-success-sub">Notre comité analyse votre dossier sous 24h.<br>Vous recevrez votre rapport sur <strong id="ff-success-email"></strong>.</p>
+          <p class="ff-success-body">Notre comité analyse votre dossier sous 24h.<br>Vous recevrez votre rapport sur <strong id="ff-success-email"></strong>.</p>
         </div>
-        <div id="ff-final-error" hidden>
-          <div class="ff-error-icon">✕</div>
-          <p class="ff-error-msg">Une erreur est survenue. Réessayez ou contactez <a href="mailto:contact@flaynn.fr">contact@flaynn.fr</a></p>
+        <div id="ff-final-error" class="ff-final-state" hidden>
+          <p class="ff-err-body">Une erreur est survenue. Réessayez ou contactez<br><a href="mailto:contact@flaynn.fr">contact@flaynn.fr</a></p>
           <button class="ff-btn-retry" id="ff-retry">Réessayer</button>
         </div>
       </div>
     </div>
 
-  </div><!-- /ff-steps -->
+  </main>
 
-  <!-- Close button -->
-  <button class="ff-close" id="ff-close" aria-label="Fermer le formulaire">✕</button>
-</div><!-- /ff-overlay -->
+  <!-- Keyboard hint -->
+  <div class="ff-kbd-bar" id="ff-kbd-bar" aria-hidden="true">
+    Appuyer sur <kbd>Entrée ↵</kbd> pour continuer
+  </div>
+
+  <!-- Close -->
+  <button class="ff-close" id="ff-close" aria-label="Fermer">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+
+</div>
 
 <style>
-/* ── Variables locales (étendent celles du site) ──────────── */
-#ff-overlay{
-  --ff-ok:#4ade80;
-  --ff-err:#f87171;
-}
-
-/* ── Reset scoped ─────────────────────────────────────────── */
+/* ─── Scoped reset ────────────────────────────────────────── */
 #ff-overlay *,#ff-overlay *::before,#ff-overlay *::after{box-sizing:border-box;margin:0;padding:0}
-
-/* ── Overlay — même fond que nav.scrolled du site ─────────── */
-#ff-overlay{position:fixed;inset:0;z-index:9000;background:rgba(10,10,15,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow-y:auto;font-family:var(--font);color:var(--text)}
+#ff-overlay{
+  --ok:#4ade80;--err:#f87171;
+  position:fixed;inset:0;z-index:9000;
+  background:var(--bg);
+  font-family:var(--font);
+  color:var(--text);
+  display:flex;flex-direction:column;
+  overflow-y:auto;
+}
 #ff-overlay[hidden]{display:none}
 
-/* ── Barre de progression — dégradé du site ──────────────── */
-.ff-progress-wrap{position:fixed;top:0;left:0;right:0;z-index:9001;height:3px;background:var(--border)}
-.ff-bar{height:100%;background:linear-gradient(90deg,var(--purple-light),var(--pink),var(--orange));width:0%;transition:width .4s cubic-bezier(.16,1,.3,1)}
-.ff-step-label{position:fixed;top:12px;right:16px;font-size:.72rem;font-weight:600;color:var(--purple-light);letter-spacing:.06em;z-index:9002;font-family:var(--font)}
+/* ─── Header ──────────────────────────────────────────────── */
+.ff-header{
+  position:fixed;top:0;left:0;right:0;z-index:9001;
+}
+.ff-progress-track{
+  height:2px;
+  background:rgba(255,255,255,.06);
+}
+.ff-bar{
+  height:100%;
+  background:linear-gradient(90deg,var(--purple),var(--purple-light),var(--pink));
+  width:0%;
+  transition:width .5s cubic-bezier(.16,1,.3,1);
+}
+.ff-header-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 28px;
+}
+.ff-brand{
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--text-dim);
+}
+.ff-step-label{
+  font-size:.72rem;
+  font-weight:500;
+  color:var(--text-dim);
+  letter-spacing:.04em;
+}
 
-/* ── Steps ────────────────────────────────────────────────── */
-.ff-steps-wrap{width:100%;max-width:640px;padding:80px 24px 40px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-.ff-step{width:100%;animation:ff-slide-in .35s cubic-bezier(.16,1,.3,1) both}
-.ff-step[hidden]{display:none}
-@keyframes ff-slide-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes ff-slide-out{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-20px)}}
-.ff-step.leaving{animation:ff-slide-out .25s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+/* ─── Main / Steps ────────────────────────────────────────── */
+.ff-main{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:100px 24px 120px;
+  width:100%;
+}
+.ff-step{
+  width:100%;
+  max-width:580px;
+  margin:0 auto;
+  animation:ff-in .4s cubic-bezier(.16,1,.3,1) both;
+}
+.ff-step[hidden]{display:none!important}
+.ff-step.leaving{
+  animation:ff-out .22s cubic-bezier(.55,0,1,.45) both;
+  pointer-events:none;
+}
+@keyframes ff-in{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes ff-out{
+  from{opacity:1;transform:translateY(0)}
+  to{opacity:0;transform:translateY(-20px)}
+}
 
-/* ── Typographie — reprend .section-label et .section-title ─ */
-.ff-section-label{font-size:.73rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-light);margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.ff-section-label::before{content:'';display:block;width:24px;height:1px;background:var(--purple-light)}
-.ff-question{font-size:clamp(1.3rem,3vw,1.75rem);font-weight:700;line-height:1.3;color:var(--text);margin-bottom:28px;letter-spacing:-.02em}
-.ff-hint{font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.75;font-weight:300}
-.ff-req{color:var(--orange);font-size:.85em}
-.ff-opt{font-size:.75em;color:var(--text-dim);font-weight:400}
+/* ─── Typography ──────────────────────────────────────────── */
+.ff-eyebrow{
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--purple-light);
+  margin-bottom:20px;
+}
+.ff-q{
+  display:block;
+  font-size:clamp(1.75rem,4vw,2.5rem);
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:-.03em;
+  color:var(--text);
+  margin-bottom:36px;
+}
+.ff-hint{
+  font-size:.88rem;
+  color:var(--text-muted);
+  line-height:1.7;
+  font-weight:300;
+  margin-top:-24px;
+  margin-bottom:28px;
+}
+.ff-opt{
+  font-size:.6em;
+  font-weight:400;
+  color:var(--text-dim);
+  letter-spacing:0;
+  text-transform:none;
+}
+.ff-req{color:var(--orange)}
 
-/* ── Inputs — même style que les inputs du site ─────────────
-   Calqués sur .pain-card (glass + glass-border + border-radius 16px) */
-.ff-input,.ff-textarea{width:100%;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;color:var(--text);font-family:var(--font);font-size:1rem;padding:14px 16px;outline:none;transition:border-color .2s,box-shadow .2s;resize:vertical}
-.ff-input:focus,.ff-textarea:focus{border-color:rgba(107,33,168,.5);box-shadow:0 0 0 3px var(--purple-glow)}
-.ff-input::placeholder,.ff-textarea::placeholder{color:var(--text-dim)}
-.ff-input-wrap{position:relative}
-.ff-counter{position:absolute;bottom:10px;right:12px;font-size:.72rem;color:var(--text-dim);pointer-events:none}
-.ff-textarea{padding-bottom:28px}
+/* ─── Inputs ──────────────────────────────────────────────── */
+.ff-input,.ff-textarea{
+  display:block;
+  width:100%;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  color:var(--text);
+  font-family:var(--font);
+  font-size:1.05rem;
+  font-weight:400;
+  padding:18px 20px;
+  outline:none;
+  transition:border-color .2s,background .2s,box-shadow .2s;
+  resize:none;
+  -webkit-appearance:none;
+}
+.ff-input:focus,.ff-textarea:focus{
+  background:rgba(107,33,168,.06);
+  border-color:rgba(107,33,168,.45);
+  box-shadow:0 0 0 4px rgba(107,33,168,.1);
+}
+.ff-input::placeholder,.ff-textarea::placeholder{
+  color:var(--text-dim);
+  font-weight:300;
+}
+/* remove number spinners */
+.ff-input[type=number]::-webkit-inner-spin-button,
+.ff-input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
+.ff-input[type=number]{-moz-appearance:textfield}
 
-/* ── Choices — même style que .pillar-card ─────────────────── */
-.ff-choices{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.ff-choices--ab{gap:16px}
-.ff-choice{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;color:var(--text-muted);font-family:var(--font);font-size:.95rem;font-weight:500;padding:11px 20px;cursor:pointer;transition:background .3s,border-color .3s,color .3s,transform .3s}
-.ff-choice:hover{background:rgba(107,33,168,.12);border-color:rgba(107,33,168,.35);color:var(--text);transform:translateY(-2px)}
-.ff-choice.selected{background:rgba(107,33,168,.18);border-color:var(--purple-light);color:var(--purple-light);font-weight:600}
-.ff-choices--ab .ff-choice{flex:1;text-align:center;font-size:1rem;padding:14px 24px}
+.ff-field-wrap{position:relative}
+.ff-field-wrap .ff-input,.ff-field-wrap .ff-textarea{padding-bottom:36px}
+.ff-counter{
+  position:absolute;
+  bottom:14px;right:16px;
+  font-size:.7rem;
+  color:var(--text-dim);
+  pointer-events:none;
+  font-variant-numeric:tabular-nums;
+}
 
-/* ── Upload — carte glass style .step-card ─────────────────── */
-.ff-file-zone{background:var(--glass);border:1px dashed var(--glass-border);border-radius:16px;padding:32px 24px;text-align:center;cursor:pointer;position:relative;transition:border-color .3s,background .3s,transform .3s;margin-bottom:20px}
-.ff-file-zone:hover{background:rgba(107,33,168,.08);border-color:rgba(107,33,168,.35);transform:translateY(-2px)}
-.ff-file-zone.drag-over{background:rgba(107,33,168,.12);border-color:var(--purple-light)}
-.ff-file-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.ff-file-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted);pointer-events:none}
-.ff-file-placeholder svg{color:var(--text-dim)}
-.ff-file-sub{font-size:.75rem;color:var(--text-dim)}
-.ff-file-info{padding:8px 0}
-.ff-file-name{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:10px;word-break:break-all}
-.ff-upload-bar-wrap{width:100%;height:4px;background:var(--border);border-radius:100px;overflow:hidden;margin-bottom:8px}
-.ff-upload-bar{height:100%;background:linear-gradient(90deg,var(--purple-light),var(--pink));width:0%;border-radius:100px;transition:width .2s}
-.ff-file-status{font-size:.82rem;font-weight:500}
-.ff-file-status.ok{color:var(--ff-ok)}
-.ff-file-status.err{color:var(--ff-err)}
+/* ─── Choices ──────────────────────────────────────────────── */
+.ff-choices{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:8px;
+}
+.ff-choices--duo{gap:12px}
+.ff-choice{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:100px;
+  color:var(--text-muted);
+  font-family:var(--font);
+  font-size:.9rem;
+  font-weight:500;
+  padding:12px 22px;
+  cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s,transform .18s;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.ff-choice:hover{
+  border-color:rgba(107,33,168,.4);
+  color:var(--text);
+  transform:translateY(-1px);
+}
+.ff-choice.selected{
+  background:var(--purple);
+  border-color:var(--purple);
+  color:#fff;
+  font-weight:600;
+}
+.ff-choices--duo .ff-choice{
+  flex:1;
+  text-align:center;
+  font-size:1rem;
+  padding:16px 24px;
+  border-radius:14px;
+}
 
-/* ── Navigation — bouton primaire = même que .btn-primary ─── */
-.ff-nav{display:flex;align-items:center;gap:12px;margin-top:28px}
-.ff-btn-next,.ff-btn-submit{background:linear-gradient(135deg,var(--purple) 0%,var(--purple-light) 100%);color:#fff;font-family:var(--font);font-weight:600;font-size:.95rem;padding:13px 26px;border:none;border-radius:10px;cursor:pointer;transition:transform .2s,box-shadow .3s;margin-left:auto}
-.ff-btn-next:hover,.ff-btn-submit:hover{transform:translateY(-2px);box-shadow:0 16px 48px var(--purple-glow)}
-.ff-btn-back{background:transparent;border:1px solid var(--border);color:var(--text-muted);font-family:var(--font);font-weight:500;font-size:.9rem;padding:11px 20px;border-radius:10px;cursor:pointer;transition:color .2s,border-color .2s}
-.ff-btn-back:hover{border-color:var(--glass-border);color:var(--text)}
+/* ─── Dropzone ────────────────────────────────────────────── */
+.ff-dropzone{
+  position:relative;
+  border:1px dashed rgba(255,255,255,.12);
+  border-radius:16px;
+  background:rgba(255,255,255,.02);
+  transition:border-color .2s,background .2s;
+  margin-bottom:4px;
+  overflow:hidden;
+}
+.ff-dropzone:hover,.ff-dropzone.drag-over{
+  border-color:rgba(107,33,168,.4);
+  background:rgba(107,33,168,.05);
+}
+.ff-file-input{
+  position:absolute;inset:0;
+  opacity:0;cursor:pointer;
+  width:100%;height:100%;
+}
+.ff-drop-idle{
+  display:flex;flex-direction:column;
+  align-items:center;gap:8px;
+  padding:40px 24px;
+  pointer-events:none;
+}
+.ff-drop-icon{
+  width:48px;height:48px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-muted);
+  margin-bottom:4px;
+}
+.ff-drop-label{font-size:.92rem;color:var(--text-muted);font-weight:500}
+.ff-drop-sub{font-size:.8rem;color:var(--text-dim)}
+.ff-drop-link{color:var(--purple-light);text-decoration:underline;text-underline-offset:2px}
+.ff-drop-active{padding:24px 20px}
+.ff-file-row{
+  display:flex;align-items:center;gap:10px;
+  color:var(--text-muted);
+  margin-bottom:14px;
+}
+.ff-file-name{font-size:.85rem;color:var(--text);font-weight:500;word-break:break-all}
+.ff-upload-track{
+  height:3px;
+  background:rgba(255,255,255,.07);
+  border-radius:100px;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+.ff-upload-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--purple-light),var(--pink));
+  width:0%;
+  border-radius:100px;
+  transition:width .2s;
+}
+.ff-file-status{font-size:.8rem;font-weight:500;color:var(--text-dim)}
+.ff-file-status.ok{color:var(--ok)}
+.ff-file-status.err{color:var(--err)}
 
-/* ── Erreur inline ────────────────────────────────────────── */
-.ff-error{font-size:.82rem;color:var(--ff-err);min-height:18px;margin-top:8px}
+/* ─── Error ───────────────────────────────────────────────── */
+.ff-error{
+  min-height:20px;
+  margin-top:10px;
+  font-size:.8rem;
+  color:var(--err);
+  display:flex;align-items:center;gap:6px;
+}
+.ff-error:not(:empty)::before{
+  content:'';
+  display:inline-block;
+  width:5px;height:5px;
+  background:var(--err);
+  border-radius:50%;
+  flex-shrink:0;
+}
 
-/* ── Bouton fermer ────────────────────────────────────────── */
-.ff-close{position:fixed;top:20px;left:20px;background:var(--glass);border:1px solid var(--glass-border);color:var(--text-muted);font-size:1rem;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9003;transition:background .2s,color .2s}
-.ff-close:hover{background:rgba(255,255,255,.1);color:var(--text)}
+/* ─── Navigation ──────────────────────────────────────────── */
+.ff-nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:32px;
+}
+.ff-btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--purple);
+  color:#fff;
+  font-family:var(--font);
+  font-size:.9rem;
+  font-weight:600;
+  padding:14px 28px;
+  border:none;
+  border-radius:100px;
+  cursor:pointer;
+  letter-spacing:.01em;
+  transition:background .2s,transform .2s,box-shadow .2s;
+  white-space:nowrap;
+}
+.ff-btn-primary:hover{
+  background:var(--purple-light);
+  transform:translateY(-1px);
+  box-shadow:0 8px 32px var(--purple-glow);
+}
+.ff-btn-primary:active{transform:translateY(0);box-shadow:none}
+.ff-btn-back{
+  background:none;
+  border:none;
+  color:var(--text-dim);
+  font-family:var(--font);
+  font-size:.88rem;
+  font-weight:400;
+  padding:10px 4px;
+  cursor:pointer;
+  transition:color .2s;
+  letter-spacing:.01em;
+}
+.ff-btn-back:hover{color:var(--text-muted)}
 
-/* ── Écran final ──────────────────────────────────────────── */
+/* ─── Keyboard hint ───────────────────────────────────────── */
+.ff-kbd-bar{
+  position:fixed;
+  bottom:28px;left:50%;
+  transform:translateX(-50%);
+  font-size:.73rem;
+  color:var(--text-dim);
+  display:flex;align-items:center;gap:6px;
+  pointer-events:none;
+  z-index:9002;
+  white-space:nowrap;
+  opacity:0;
+  transition:opacity .3s;
+}
+.ff-kbd-bar.visible{opacity:1}
+kbd{
+  display:inline-flex;align-items:center;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:5px;
+  padding:2px 7px;
+  font-family:var(--font);
+  font-size:.7rem;
+  color:var(--text-muted);
+}
+
+/* ─── Close ───────────────────────────────────────────────── */
+.ff-close{
+  position:fixed;top:18px;right:20px;
+  z-index:9010;
+  width:32px;height:32px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  color:var(--text-dim);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.ff-close:hover{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.18);
+  color:var(--text);
+}
+
+/* ─── Final screen ────────────────────────────────────────── */
 .ff-step--final .ff-step-inner{text-align:center}
-.ff-spinner-wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
-.ff-spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--purple-light);border-radius:50%;animation:ff-spin .7s linear infinite}
-@keyframes ff-spin{to{transform:rotate(360deg)}}
-.ff-spinner-text{color:var(--text-muted);font-size:.9rem;font-weight:300}
-.ff-success-icon{font-size:3rem;color:var(--orange);margin-bottom:20px;display:block}
-.ff-success-title{font-size:2rem;font-weight:700;color:var(--text);margin-bottom:12px;letter-spacing:-.03em}
-.ff-success-sub{color:var(--text-muted);line-height:1.75;font-size:.95rem;font-weight:300}
-.ff-success-sub strong{color:var(--text)}
-.ff-error-icon{font-size:2rem;color:var(--ff-err);margin-bottom:16px;display:block}
-.ff-error-msg{color:var(--text-muted);line-height:1.7}
-.ff-error-msg a{color:var(--purple-light);text-decoration:none}
-.ff-error-msg a:hover{text-decoration:underline}
-.ff-btn-retry{background:var(--glass);border:1px solid var(--glass-border);color:var(--text);font-family:var(--font);font-weight:500;font-size:.9rem;padding:12px 24px;border-radius:10px;cursor:pointer;margin-top:20px;transition:background .2s,border-color .2s}
-.ff-btn-retry:hover{background:rgba(107,33,168,.12);border-color:rgba(107,33,168,.35)}
+.ff-final-state{display:flex;flex-direction:column;align-items:center;gap:16px}
+.ff-spinner{
+  width:36px;height:36px;
+  border:2px solid rgba(255,255,255,.08);
+  border-top-color:var(--purple-light);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ff-final-label{font-size:.88rem;color:var(--text-dim);font-weight:300}
+.ff-success-glyph{
+  font-size:2.5rem;
+  color:var(--orange);
+  margin-bottom:8px;
+}
+.ff-success-title{
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:700;
+  letter-spacing:-.03em;
+  color:var(--text);
+}
+.ff-success-body{
+  font-size:.95rem;
+  color:var(--text-muted);
+  line-height:1.75;
+  font-weight:300;
+  max-width:400px;
+}
+.ff-success-body strong{color:var(--text);font-weight:500}
+.ff-err-body{
+  font-size:.9rem;
+  color:var(--text-muted);
+  line-height:1.75;
+  text-align:center;
+}
+.ff-err-body a{color:var(--purple-light);text-decoration:none}
+.ff-err-body a:hover{text-decoration:underline}
+.ff-btn-retry{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--text);
+  font-family:var(--font);
+  font-weight:500;
+  font-size:.88rem;
+  padding:12px 24px;
+  border-radius:100px;
+  cursor:pointer;
+  transition:background .2s;
+}
+.ff-btn-retry:hover{background:rgba(255,255,255,.1)}
 
-/* ── Responsive ───────────────────────────────────────────── */
+/* ─── Responsive ──────────────────────────────────────────── */
 @media(max-width:600px){
-  .ff-steps-wrap{padding:72px 16px 32px}
-  .ff-question{font-size:1.2rem}
-  .ff-choices--ab .ff-choice{padding:12px 16px}
+  .ff-main{padding:88px 20px 100px}
+  .ff-q{font-size:1.6rem;margin-bottom:28px}
+  .ff-btn-primary{padding:13px 24px;font-size:.88rem}
+  .ff-kbd-bar{display:none}
+  .ff-header-meta{padding:12px 20px}
 }
 </style>
 
 <script define:vars={{ BETA_CODE, WEBHOOK_URL, UPLOAD_URL }}>
 (function(){
-  const TOTAL_STEPS = 29; // steps 1-29 (step 0 = code accès)
-
-  // ── State ──────────────────────────────────────────────────
-  let currentStep = 0;
+  const TOTAL = 29;
+  let current = 0;
   let startTime = null;
-  const csrfToken = crypto.randomUUID();
-  const uploadedFiles = { 27: { url: '', filename: '' }, 29: { url: '', filename: '' } };
-  const SESSION_KEY = 'ff_data';
+  const csrf = crypto.randomUUID();
+  const uploads = { 27:{url:'',filename:''}, 29:{url:'',filename:''} };
+  const SK = 'ff_data';
 
-  // ── Elements ───────────────────────────────────────────────
-  const overlay = document.getElementById('ff-overlay');
+  const overlay  = document.getElementById('ff-overlay');
+  const bar      = document.getElementById('ff-bar');
+  const lbl      = document.getElementById('ff-step-label');
+  const kbdBar   = document.getElementById('ff-kbd-bar');
   const closeBtn = document.getElementById('ff-close');
-  const progressBar = document.getElementById('ff-bar');
-  const stepLabel = document.getElementById('ff-step-label');
 
-  // ── Helpers ────────────────────────────────────────────────
-  function getStep(n){ return document.querySelector(`.ff-step[data-step="${n}"]`); }
-  function getInput(n){ return document.getElementById(`ff-${n}`); }
-  function getError(n){ return document.getElementById(`ff-err-${n}`); }
-  function setError(n, msg){ const e = getError(n); if(e) e.textContent = msg; }
-  function clearError(n){ const e = getError(n); if(e) e.textContent = ''; }
+  // ── Helpers ──────────────────────────────────────────────
+  const step  = n => document.querySelector(`.ff-step[data-step="${n}"]`);
+  const inp   = n => document.getElementById(`ff-${n}`);
+  const err   = n => document.getElementById(`ff-err-${n}`);
+  const setErr= (n,m) => { const e=err(n); if(e) e.textContent=m; };
+  const clrErr= n => { const e=err(n); if(e) e.textContent=''; };
+  const choice= n => { const g=document.getElementById(`ff-${n}`); if(!g) return ''; const s=g.querySelector('.ff-choice.selected'); return s?s.dataset.value:''; };
+
+  function progress(n){
+    const pct = n===0 ? 3 : Math.round((n/TOTAL)*100);
+    bar.style.width = pct+'%';
+    lbl.textContent = n===0 ? 'Accès' : `${n} / ${TOTAL}`;
+  }
+
+  function reqLabels(){
+    const rev = choice(17) === 'Oui';
+    [18,19].forEach(n => {
+      const el = document.getElementById(`ff-${n}-req-label`);
+      if(el) el.innerHTML = rev
+        ? '<span class="ff-req" style="font-size:.55em;color:var(--orange)">*</span>'
+        : '<span class="ff-opt">— optionnel</span>';
+    });
+  }
 
   function saveSession(){
-    const data = {};
-    for(let i = 1; i <= 29; i++){
-      const el = getInput(i);
-      if(!el) continue;
-      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') data[`ff-${i}`] = el.value;
+    const d={};
+    for(let i=1;i<=29;i++){
+      const el=inp(i);
+      if(!el||el.type==='file') continue;
+      d[`f${i}`]=el.value;
     }
-    // choices
-    document.querySelectorAll('.ff-choice.selected').forEach(btn => {
-      const group = btn.closest('.ff-choices');
-      if(group) data[`choice-${group.id}`] = btn.dataset.value;
+    document.querySelectorAll('.ff-choice.selected').forEach(b=>{
+      const g=b.closest('.ff-choices');
+      if(g) d[`c${g.id}`]=b.dataset.value;
     });
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify(data));
+    sessionStorage.setItem(SK,JSON.stringify(d));
   }
 
   function loadSession(){
     try{
-      const raw = sessionStorage.getItem(SESSION_KEY);
+      const raw=sessionStorage.getItem(SK);
       if(!raw) return;
-      const data = JSON.parse(raw);
-      for(const [k, v] of Object.entries(data)){
-        if(k.startsWith('ff-')){
-          const el = document.getElementById(k);
-          if(el && el.tagName !== 'INPUT' || el && el.type !== 'file') el.value = v;
-        } else if(k.startsWith('choice-')){
-          const group = document.getElementById(k.replace('choice-',''));
-          if(group){
-            group.querySelectorAll('.ff-choice').forEach(btn => {
-              if(btn.dataset.value === v) btn.classList.add('selected');
-            });
-          }
+      const d=JSON.parse(raw);
+      for(const [k,v] of Object.entries(d)){
+        if(k.startsWith('f')){
+          const el=document.getElementById(`ff-${k.slice(1)}`);
+          if(el&&el.type!=='file') el.value=v;
+        } else if(k.startsWith('c')){
+          const g=document.getElementById(k.slice(1));
+          if(g) g.querySelectorAll('.ff-choice').forEach(b=>{ if(b.dataset.value===v) b.classList.add('selected'); });
         }
       }
-      updateCounters();
-    } catch(e){}
+      syncCounters();
+    }catch(e){}
   }
 
-  function updateCounters(){
-    [[7,140],[8,400],[9,400],[20,500]].forEach(([n,max]) => {
-      const el = getInput(n);
-      const counter = document.getElementById(`ff-count-${n}`);
-      if(el && counter) counter.textContent = `${el.value.length} / ${max}`;
+  function syncCounters(){
+    [[7,140],[8,400],[9,400],[20,500]].forEach(([n,max])=>{
+      const el=inp(n); const c=document.getElementById(`ff-count-${n}`);
+      if(el&&c) c.textContent=`${el.value.length} / ${max}`;
     });
   }
 
-  function updateProgress(step){
-    const pct = step === 0 ? 0 : Math.round((step / TOTAL_STEPS) * 100);
-    progressBar.style.width = pct + '%';
-    stepLabel.textContent = step === 0 ? 'Code d\'accès' : `Étape ${step} / ${TOTAL_STEPS}`;
+  // ── Keyboard hint visibility ─────────────────────────────
+  function updateKbd(n){
+    const s=step(n);
+    if(!s){kbdBar.classList.remove('visible');return;}
+    const hasText=s.querySelector('.ff-input,.ff-textarea');
+    if(hasText) kbdBar.classList.add('visible');
+    else kbdBar.classList.remove('visible');
   }
 
-  function updateRequiredLabels(){
-    const revenus = getChoiceValue(17);
-    const req = revenus === 'Oui';
-    ['18','19'].forEach(n => {
-      const label = document.getElementById(`ff-${n}-req-label`);
-      if(label) label.innerHTML = req ? '<span class="ff-req">*</span>' : '<span class="ff-opt">(Optionnel)</span>';
-    });
-  }
+  // ── Validation ───────────────────────────────────────────
+  const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const URL_RE=/^https?:\/\/.+\..+/;
 
-  function getChoiceValue(step){
-    const group = document.getElementById(`ff-${step}`);
-    if(!group) return '';
-    const sel = group.querySelector('.ff-choice.selected');
-    return sel ? sel.dataset.value : '';
-  }
-
-  // ── Validation ────────────────────────────────────────────
-  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  const URL_RE = /^https?:\/\/.+\..+/;
-
-  function validate(step){
-    clearError(step);
-    const el = getInput(step);
-
-    switch(step){
-      case 0:{
-        const val = el ? el.value.trim() : '';
-        if(val !== BETA_CODE){ setError(0,'Code invalide. Contactez contact@flaynn.fr'); return false; }
-        return true;
-      }
-      case 1: case 3: case 4: case 6: case 10: case 11: case 13: case 22: case 24: case 26:{
-        if(!el || !el.value.trim()){ setError(step,'Ce champ est requis.'); return false; }
-        return true;
-      }
-      case 2:{
-        if(!el || !el.value.trim()){ setError(2,'Ce champ est requis.'); return false; }
-        if(!EMAIL_RE.test(el.value.trim())){ setError(2,'Adresse email invalide.'); return false; }
-        return true;
-      }
-      case 7:{
-        if(!el || !el.value.trim()){ setError(7,'Ce champ est requis.'); return false; }
-        return true;
-      }
-      case 8: case 9:{
-        if(!el || !el.value.trim()){ setError(step,'Ce champ est requis.'); return false; }
-        return true;
-      }
-      case 12:{
-        if(!el || el.value === ''){ setError(12,'Ce champ est requis.'); return false; }
-        return true;
-      }
-      case 16: case 17: case 21: case 23:{
-        if(!getChoiceValue(step)){ setError(step,'Veuillez sélectionner une option.'); return false; }
-        return true;
-      }
-      case 18: case 19:{
-        const revenus = getChoiceValue(17);
-        if(revenus === 'Oui' && (!el || el.value === '')){ setError(step,'Ce champ est requis.'); return false; }
-        return true;
-      }
-      case 20:{
-        if(!el || !el.value.trim()){ setError(20,'Ce champ est requis.'); return false; }
-        return true;
-      }
-      case 27:{
-        if(!uploadedFiles[27].url){ setError(27,'Veuillez uploader votre pitch deck.'); return false; }
-        return true;
-      }
-      case 28:{
-        const val = el ? el.value.trim() : '';
-        if(val && !URL_RE.test(val)){ setError(28,'URL invalide (commencer par https://).'); return false; }
-        return true;
-      }
-      // optionals: 5, 14, 15, 25, 29
+  function validate(n){
+    clrErr(n);
+    const el=inp(n);
+    const required=()=>{ if(!el||!el.value.trim()){setErr(n,'Ce champ est requis.');return false;} return true; };
+    switch(n){
+      case 0: if(!el||el.value.trim()!==BETA_CODE){setErr(0,'Code invalide. Contactez contact@flaynn.fr.');return false;} return true;
+      case 1:case 3:case 4:case 6:case 10:case 11:case 13:case 22:case 24:case 26: return required();
+      case 2: if(!required()) return false; if(!EMAIL_RE.test(el.value.trim())){setErr(2,'Email invalide.');return false;} return true;
+      case 7:case 8:case 9:case 20: return required();
+      case 12: if(!el||el.value===''){setErr(12,'Ce champ est requis.');return false;} return true;
+      case 16:case 17:case 21:case 23: if(!choice(n)){setErr(n,'Sélectionnez une option.');return false;} return true;
+      case 18:case 19: if(choice(17)==='Oui'&&(!el||el.value==='')){setErr(n,'Ce champ est requis.');return false;} return true;
+      case 27: if(!uploads[27].url){setErr(27,'Uploadez votre pitch deck.');return false;} return true;
+      case 28: { const v=el?el.value.trim():''; if(v&&!URL_RE.test(v)){setErr(28,'URL invalide (commencer par https://).');return false;} return true; }
       default: return true;
     }
   }
 
-  // ── Navigation ────────────────────────────────────────────
-  function showStep(n, direction = 1){
-    const prev = getStep(currentStep);
-    const next = getStep(n);
-    if(!next) return;
-
-    if(prev && !prev.hidden){
+  // ── Navigation ───────────────────────────────────────────
+  function showStep(n, dir=1){
+    const prev=step(current);
+    if(prev&&!prev.hidden){
       prev.classList.add('leaving');
-      setTimeout(() => { prev.hidden = true; prev.classList.remove('leaving'); }, 250);
+      setTimeout(()=>{ prev.hidden=true; prev.classList.remove('leaving'); }, 220);
     }
-
-    setTimeout(() => {
-      next.hidden = false;
-      currentStep = n;
-      updateProgress(n);
-      updateRequiredLabels();
-      window.scrollTo(0,0);
-
-      // focus first input
-      const firstInput = next.querySelector('input:not([type=file]),textarea,.ff-choice');
-      if(firstInput) firstInput.focus();
-
+    setTimeout(()=>{
+      const next=step(n);
+      if(!next) return;
+      next.hidden=false;
+      current=n;
+      progress(n);
+      reqLabels();
+      updateKbd(n);
+      overlay.scrollTo(0,0);
+      const f=next.querySelector('.ff-input:not([type=file]),.ff-textarea');
+      if(f) setTimeout(()=>f.focus(),50);
       saveSession();
-    }, direction === -1 ? 0 : 50);
+    }, dir===-1?0:60);
   }
 
-  function nextStep(step){
-    if(!validate(step)) return;
-    if(step === 29){ submitForm(); return; }
-    showStep(step + 1, 1);
+  function goNext(n){
+    if(!validate(n)) return;
+    if(n===29){submit();return;}
+    showStep(n+1,1);
+  }
+  function goBack(n){
+    showStep(n<=1?0:n-1,-1);
   }
 
-  function prevStep(step){
-    if(step <= 1){ showStep(0, -1); return; }
-    showStep(step - 1, -1);
-  }
-
-  // ── Open / Close ──────────────────────────────────────────
+  // ── Open / Close ─────────────────────────────────────────
   function openForm(){
-    overlay.hidden = false;
-    document.body.style.overflow = 'hidden';
-    startTime = Date.now();
-    currentStep = 0;
-    updateProgress(0);
-    // show step 0
-    document.querySelectorAll('.ff-step').forEach((s,i) => { s.hidden = i !== 0; });
-    const inp = getInput(0);
-    if(inp) inp.focus();
+    overlay.hidden=false;
+    document.body.style.overflow='hidden';
+    startTime=Date.now();
+    current=0;
+    document.querySelectorAll('.ff-step').forEach((s,i)=>{ s.hidden=i!==0; });
+    progress(0);
+    updateKbd(0);
+    const f=inp(0); if(f) setTimeout(()=>f.focus(),80);
     loadSession();
   }
-
   function closeForm(){
-    overlay.hidden = true;
-    document.body.style.overflow = '';
+    overlay.hidden=true;
+    document.body.style.overflow='';
+    kbdBar.classList.remove('visible');
   }
 
-  // expose globally so any CTA on the page can trigger the form
-  window.openFounderForm = openForm;
-  closeBtn.addEventListener('click', closeForm);
-  overlay.addEventListener('click', e => { if(e.target === overlay) closeForm(); });
-
-  document.addEventListener('keydown', e => {
-    if(e.key === 'Escape' && !overlay.hidden) closeForm();
-  });
+  window.openFounderForm=openForm;
+  closeBtn.addEventListener('click',closeForm);
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeForm(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!overlay.hidden) closeForm(); });
 
   // ── Button delegation ─────────────────────────────────────
-  overlay.addEventListener('click', e => {
-    const next = e.target.closest('.ff-btn-next');
-    const back = e.target.closest('.ff-btn-back');
-    if(next){ nextStep(parseInt(next.dataset.step)); return; }
-    if(back){ prevStep(parseInt(back.dataset.step)); return; }
+  overlay.addEventListener('click',e=>{
+    const nb=e.target.closest('.ff-btn-next');
+    const bb=e.target.closest('.ff-btn-back');
+    if(nb){ goNext(parseInt(nb.dataset.step)); return; }
+    if(bb){ goBack(parseInt(bb.dataset.step)); return; }
   });
 
-  // Enter key on inputs
-  overlay.addEventListener('keydown', e => {
-    if(e.key !== 'Enter') return;
-    const el = e.target;
-    if(el.tagName === 'TEXTAREA') return; // allow newlines in textarea
-    const step = getStep(currentStep);
-    if(!step) return;
-    const nextBtn = step.querySelector('.ff-btn-next');
-    if(nextBtn) nextBtn.click();
+  overlay.addEventListener('keydown',e=>{
+    if(e.key!=='Enter') return;
+    if(e.target.tagName==='TEXTAREA') return;
+    if(e.target.closest('.ff-choices')) return;
+    const s=step(current);
+    if(!s) return;
+    const btn=s.querySelector('.ff-btn-next');
+    if(btn) btn.click();
   });
 
-  // ── Choice buttons ────────────────────────────────────────
-  overlay.addEventListener('click', e => {
-    const choice = e.target.closest('.ff-choice');
-    if(!choice) return;
-    const group = choice.closest('.ff-choices');
-    if(!group) return;
-    group.querySelectorAll('.ff-choice').forEach(b => b.classList.remove('selected'));
-    choice.classList.add('selected');
-    choice.setAttribute('aria-pressed','true');
-    clearError(currentStep);
+  // ── Choice selection ──────────────────────────────────────
+  overlay.addEventListener('click',e=>{
+    const c=e.target.closest('.ff-choice');
+    if(!c) return;
+    const g=c.closest('.ff-choices');
+    if(!g) return;
+    g.querySelectorAll('.ff-choice').forEach(b=>b.classList.remove('selected'));
+    c.classList.add('selected');
+    clrErr(current);
     saveSession();
   });
 
   // ── Counters ──────────────────────────────────────────────
-  [[7,140],[8,400],[9,400],[20,500]].forEach(([n,max]) => {
-    const el = getInput(n);
-    const counter = document.getElementById(`ff-count-${n}`);
-    if(el && counter){
-      el.addEventListener('input', () => { counter.textContent = `${el.value.length} / ${max}`; saveSession(); });
-    }
+  [[7,140],[8,400],[9,400],[20,500]].forEach(([n,max])=>{
+    const el=inp(n);
+    const c=document.getElementById(`ff-count-${n}`);
+    if(el&&c) el.addEventListener('input',()=>{ c.textContent=`${el.value.length} / ${max}`; saveSession(); });
   });
-
-  // other inputs save session
-  for(let i = 1; i <= 29; i++){
-    const el = getInput(i);
-    if(el && el.type !== 'file'){
-      el.addEventListener('input', () => saveSession());
-    }
+  for(let i=1;i<=29;i++){
+    const el=inp(i);
+    if(el&&el.type!=='file') el.addEventListener('input',()=>saveSession());
   }
 
   // ── File upload ───────────────────────────────────────────
-  function setupFileUpload(stepNum){
-    const input = getInput(stepNum);
-    const zone = document.getElementById(`ff-file-zone-${stepNum}`);
-    const placeholder = zone ? zone.querySelector('.ff-file-placeholder') : null;
-    const info = document.getElementById(`ff-file-info-${stepNum}`);
-    const nameEl = document.getElementById(`ff-file-name-${stepNum}`);
-    const barEl = document.getElementById(`ff-upload-bar-${stepNum}`);
-    const statusEl = document.getElementById(`ff-file-status-${stepNum}`);
-    const MAX = 15 * 1024 * 1024;
+  function setupUpload(sn){
+    const fileInput=inp(sn);
+    const zone=document.getElementById(`ff-file-zone-${sn}`);
+    const idle=document.getElementById(`ff-drop-idle-${sn}`);
+    const active=document.getElementById(`ff-file-info-${sn}`);
+    const nameEl=document.getElementById(`ff-file-name-${sn}`);
+    const fillEl=document.getElementById(`ff-upload-bar-${sn}`);
+    const statEl=document.getElementById(`ff-file-status-${sn}`);
+    const MAX=15*1024*1024;
+    const TYPES27=['.pdf'];
+    const TYPES29=['.pdf','.doc','.docx','.xls','.xlsx','.ppt','.pptx','.jpg','.png'];
 
-    if(!input || !zone) return;
+    if(!fileInput||!zone) return;
 
-    // drag & drop
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-    zone.addEventListener('drop', e => {
-      e.preventDefault(); zone.classList.remove('drag-over');
-      if(e.dataTransfer.files.length) uploadFile(e.dataTransfer.files[0], stepNum);
-    });
+    zone.addEventListener('dragover',e=>{ e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));
+    zone.addEventListener('drop',e=>{ e.preventDefault(); zone.classList.remove('drag-over'); if(e.dataTransfer.files.length) upload(e.dataTransfer.files[0]); });
+    fileInput.addEventListener('change',()=>{ if(fileInput.files.length) upload(fileInput.files[0]); });
 
-    input.addEventListener('change', () => {
-      if(input.files.length) uploadFile(input.files[0], stepNum);
-    });
+    function upload(file){
+      clrErr(sn);
+      const allowed=sn===27?TYPES27:TYPES29;
+      const ext='.'+file.name.split('.').pop().toLowerCase();
+      if(!allowed.includes(ext)){ setErr(sn,`Format non accepté. Formats : ${allowed.join(', ')}`); return; }
+      if(file.size>MAX){ setErr(sn,'Fichier trop volumineux (max 15 Mo).'); return; }
 
-    function uploadFile(file, sn){
-      clearError(sn);
+      idle.hidden=true; active.hidden=false;
+      nameEl.textContent=`${file.name}  ·  ${(file.size/1024/1024).toFixed(1)} Mo`;
+      fillEl.style.width='0%';
+      statEl.textContent='Upload en cours…'; statEl.className='ff-file-status';
 
-      // type check
-      const allowed27 = ['.pdf'];
-      const allowed29 = ['.pdf','.doc','.docx','.xls','.xlsx','.ppt','.pptx','.jpg','.png'];
-      const allowed = sn === 27 ? allowed27 : allowed29;
-      const ext = '.' + file.name.split('.').pop().toLowerCase();
-      if(!allowed.includes(ext)){
-        setError(sn, `Type non accepté. Formats : ${allowed.join(', ')}`);
-        return;
-      }
-
-      if(file.size > MAX){ setError(sn,'Fichier trop volumineux (max 15 Mo).'); return; }
-
-      // show info panel
-      if(placeholder) placeholder.hidden = true;
-      info.hidden = false;
-      nameEl.textContent = `${file.name} (${(file.size/1024/1024).toFixed(2)} Mo)`;
-      barEl.style.width = '0%';
-      statusEl.textContent = 'Upload en cours…';
-      statusEl.className = 'ff-file-status';
-
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', UPLOAD_URL);
-
-      xhr.upload.addEventListener('progress', e => {
-        if(e.lengthComputable) barEl.style.width = Math.round((e.loaded/e.total)*100) + '%';
-      });
-
-      xhr.addEventListener('load', () => {
-        if(xhr.status >= 200 && xhr.status < 300){
+      const fd=new FormData(); fd.append('file',file);
+      const xhr=new XMLHttpRequest();
+      xhr.open('POST',UPLOAD_URL);
+      xhr.upload.addEventListener('progress',e=>{ if(e.lengthComputable) fillEl.style.width=Math.round(e.loaded/e.total*100)+'%'; });
+      xhr.addEventListener('load',()=>{
+        if(xhr.status>=200&&xhr.status<300){
           try{
-            const res = JSON.parse(xhr.responseText);
-            uploadedFiles[sn] = { url: res.url, filename: file.name };
-            barEl.style.width = '100%';
-            statusEl.textContent = '✓ Fichier prêt';
-            statusEl.className = 'ff-file-status ok';
-            clearError(sn);
-          } catch(e2){
-            statusEl.textContent = 'Erreur de réponse serveur.';
-            statusEl.className = 'ff-file-status err';
-            setError(sn,'Erreur upload. Réessayez.');
-          }
-        } else {
-          statusEl.textContent = `Erreur ${xhr.status}`;
-          statusEl.className = 'ff-file-status err';
-          setError(sn,'Erreur upload. Réessayez.');
-        }
+            const res=JSON.parse(xhr.responseText);
+            uploads[sn]={url:res.url,filename:file.name};
+            fillEl.style.width='100%';
+            statEl.textContent='✓ Fichier prêt'; statEl.className='ff-file-status ok';
+          } catch(e2){ statEl.textContent='Erreur de réponse.'; statEl.className='ff-file-status err'; setErr(sn,'Réessayez.'); }
+        } else { statEl.textContent=`Erreur ${xhr.status}`; statEl.className='ff-file-status err'; setErr(sn,'Erreur upload.'); }
       });
-
-      xhr.addEventListener('error', () => {
-        statusEl.textContent = 'Erreur réseau';
-        statusEl.className = 'ff-file-status err';
-        setError(sn,'Erreur réseau lors de l\'upload.');
-      });
-
-      xhr.send(formData);
+      xhr.addEventListener('error',()=>{ statEl.textContent='Erreur réseau'; statEl.className='ff-file-status err'; setErr(sn,'Erreur réseau.'); });
+      xhr.send(fd);
     }
   }
-
-  setupFileUpload(27);
-  setupFileUpload(29);
+  setupUpload(27); setupUpload(29);
 
   // ── Submit ────────────────────────────────────────────────
-  async function submitForm(){
-    // honeypot check
-    const honeypot = document.getElementById('ff-honeypot');
-    if(honeypot && honeypot.value) return; // silent block
+  async function submit(){
+    const hp=document.getElementById('ff-honeypot');
+    if(hp&&hp.value) return;
+    const dur=Math.round((Date.now()-startTime)/1000);
+    if(dur<10) return;
 
-    // timing check
-    const fillDuration = Math.round((Date.now() - startTime) / 1000);
-    if(fillDuration < 10) return; // silent block (bot)
+    showStep(30,1);
+    const spinner=document.getElementById('ff-final-spinner');
+    const success=document.getElementById('ff-final-success');
+    const errorEl=document.getElementById('ff-final-error');
+    spinner.hidden=false; success.hidden=true; errorEl.hidden=true;
 
-    showStep(30, 1);
-    const spinner = document.getElementById('ff-final-spinner');
-    const success = document.getElementById('ff-final-success');
-    const errorEl = document.getElementById('ff-final-error');
-    spinner.hidden = false; success.hidden = true; errorEl.hidden = true;
-
-    function v(n){ const el = getInput(n); return el ? el.value.trim() : ''; }
-
-    const payload = {
-      code_acces: v(0),
-      nom_fondateur: v(1),
-      email: v(2),
-      pays: v(3),
-      ville: v(4),
-      telephone: v(5),
-      nom_startup: v(6),
-      pitch_une_phrase: v(7),
-      probleme: v(8),
-      solution: v(9),
-      secteur: v(10),
-      type_client: v(11),
-      tam_usd: parseFloat(v(12)) || 0,
-      estimation_tam: v(13),
-      acquisition_clients: v(14),
-      concurrents: v(15),
-      stade: getChoiceValue(16),
-      revenus: getChoiceValue(17),
-      mrr: parseFloat(v(18)) || 0,
-      clients_payants: parseInt(v(19)) || 0,
-      pourquoi_vous: v(20),
-      equipe_temps_plein: getChoiceValue(21),
-      priorite_6_mois: v(22),
-      montant_leve: getChoiceValue(23),
-      jalons_18_mois: v(24),
-      utilisation_fonds: v(25),
-      vision_5_ans: v(26),
-      pitch_deck_url: uploadedFiles[27].url,
-      pitch_deck_filename: uploadedFiles[27].filename,
-      lien_demo: v(28),
-      doc_supplementaire_url: uploadedFiles[29].url,
-      doc_supplementaire_filename: uploadedFiles[29].filename,
-      submitted_at: new Date().toISOString(),
-      csrf_token: csrfToken,
-      fill_duration_seconds: fillDuration,
-      honeypot: honeypot ? honeypot.value : ''
+    const v=n=>{ const el=inp(n); return el?el.value.trim():''; };
+    const payload={
+      code_acces:v(0), nom_fondateur:v(1), email:v(2), pays:v(3), ville:v(4), telephone:v(5),
+      nom_startup:v(6), pitch_une_phrase:v(7), probleme:v(8), solution:v(9),
+      secteur:v(10), type_client:v(11), tam_usd:parseFloat(v(12))||0, estimation_tam:v(13),
+      acquisition_clients:v(14), concurrents:v(15), stade:choice(16), revenus:choice(17),
+      mrr:parseFloat(v(18))||0, clients_payants:parseInt(v(19))||0,
+      pourquoi_vous:v(20), equipe_temps_plein:choice(21), priorite_6_mois:v(22),
+      montant_leve:choice(23), jalons_18_mois:v(24), utilisation_fonds:v(25), vision_5_ans:v(26),
+      pitch_deck_url:uploads[27].url, pitch_deck_filename:uploads[27].filename,
+      lien_demo:v(28),
+      doc_supplementaire_url:uploads[29].url, doc_supplementaire_filename:uploads[29].filename,
+      submitted_at:new Date().toISOString(), csrf_token:csrf,
+      fill_duration_seconds:dur, honeypot:hp?hp.value:''
     };
 
     try{
-      const res = await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      spinner.hidden = true;
+      const res=await fetch(WEBHOOK_URL,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+      spinner.hidden=true;
       if(res.ok){
-        document.getElementById('ff-success-email').textContent = payload.email;
-        success.hidden = false;
-        sessionStorage.removeItem(SESSION_KEY);
-      } else {
-        errorEl.hidden = false;
-      }
-    } catch(e){
-      spinner.hidden = true;
-      errorEl.hidden = false;
-    }
+        document.getElementById('ff-success-email').textContent=payload.email;
+        success.hidden=false;
+        sessionStorage.removeItem(SK);
+      } else { errorEl.hidden=false; }
+    } catch(e){ spinner.hidden=true; errorEl.hidden=false; }
   }
 
-  // retry button
-  document.getElementById('ff-retry').addEventListener('click', () => {
-    showStep(29, -1);
-  });
+  document.getElementById('ff-retry').addEventListener('click',()=>showStep(29,-1));
 
-  // ── Init ──────────────────────────────────────────────────
-  updateProgress(0);
-  updateRequiredLabels();
-
+  // ── Init ─────────────────────────────────────────────────
+  progress(0); reqLabels(); updateKbd(0);
 })();
 </script>
