@@ -70,8 +70,9 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
     <div class="ff-step" data-step="3" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
-        <label class="ff-q" for="ff-3">Pays</label>
-        <input type="text" id="ff-3" class="ff-input" autocomplete="country-name" aria-required="true" placeholder="France" />
+        <p class="ff-q">Pays</p>
+        <input type="hidden" id="ff-3" aria-required="true" />
+        <div class="ff-cs-wrap" id="ff-cs-3" data-cs="country"></div>
         <div class="ff-error" id="ff-err-3" role="alert"></div>
         <nav class="ff-nav">
           <button class="ff-btn-back" data-step="3">← Retour</button>
@@ -84,8 +85,9 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
     <div class="ff-step" data-step="4" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
-        <label class="ff-q" for="ff-4">Ville</label>
-        <input type="text" id="ff-4" class="ff-input" autocomplete="address-level2" aria-required="true" placeholder="Paris" />
+        <p class="ff-q">Ville</p>
+        <input type="hidden" id="ff-4" aria-required="true" />
+        <div class="ff-cs-wrap" id="ff-cs-4" data-cs="city"></div>
         <div class="ff-error" id="ff-err-4" role="alert"></div>
         <nav class="ff-nav">
           <button class="ff-btn-back" data-step="4">← Retour</button>
@@ -177,8 +179,9 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
     <div class="ff-step" data-step="10" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
-        <label class="ff-q" for="ff-10">Secteur principal</label>
-        <input type="text" id="ff-10" class="ff-input" placeholder="LegalTech, FinTech B2B, SaaS RH…" aria-required="true" />
+        <p class="ff-q">Secteur principal</p>
+        <input type="hidden" id="ff-10" aria-required="true" />
+        <div class="ff-cs-wrap" id="ff-cs-10" data-cs="sector"></div>
         <div class="ff-error" id="ff-err-10" role="alert"></div>
         <nav class="ff-nav">
           <button class="ff-btn-back" data-step="10">← Retour</button>
@@ -1046,6 +1049,64 @@ kbd{
 }
 </style>
 
+<style is:global>
+/* ── Combobox ────────────────────────────────────────────────────── */
+.ff-cs-wrap { position:relative; width:100%; margin-top:8px; }
+
+.ff-cs-trigger {
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  width:100%; padding:16px 0; background:transparent; cursor:pointer;
+  border:none; border-bottom:2px solid rgba(255,255,255,.15);
+  transition:border-color .2s;
+}
+.ff-cs-trigger:focus { outline:none; border-bottom-color:var(--purple-light); }
+.ff-cs-trigger[aria-expanded="true"] { border-bottom-color:var(--purple-light); }
+
+.ff-cs-val {
+  flex:1; font-size:1.4rem; color:var(--text); font-family:var(--font);
+  text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ff-cs-ph { color:var(--text-dim); }
+
+.ff-cs-ico {
+  flex-shrink:0; width:20px; height:20px; color:var(--text-muted);
+  transition:transform .2s; pointer-events:none;
+}
+
+.ff-cs-search {
+  width:100%; padding:16px 0; background:transparent;
+  border:none; border-bottom:2px solid var(--purple-light);
+  color:var(--text); font-size:1.4rem; font-family:var(--font); outline:none;
+}
+.ff-cs-search::placeholder { color:var(--text-dim); }
+
+.ff-cs-list {
+  list-style:none; margin:0; padding:6px;
+  background:#1a1a2e;
+  border:1px solid rgba(147,51,234,.3); border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.65), 0 0 0 1px rgba(147,51,234,.1);
+  max-height:280px; overflow-y:auto;
+  scrollbar-width:thin; scrollbar-color:rgba(147,51,234,.4) transparent;
+}
+.ff-cs-list::-webkit-scrollbar { width:4px; }
+.ff-cs-list::-webkit-scrollbar-thumb { background:rgba(147,51,234,.4); border-radius:2px; }
+
+.ff-cs-opt {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:10px; cursor:pointer;
+  color:var(--text); font-size:1rem; font-family:var(--font);
+  transition:background .12s; user-select:none;
+}
+.ff-cs-opt--act, .ff-cs-opt:hover { background:rgba(147,51,234,.18); }
+.ff-cs-opt--sel { color:var(--purple-light); }
+.ff-cs-pfx { font-size:1.25em; line-height:1; flex-shrink:0; }
+.ff-cs-chk { color:var(--purple-light); font-size:.85rem; margin-left:auto; }
+.ff-cs-empty {
+  padding:16px 14px; color:var(--text-dim); font-size:.95rem;
+  font-family:var(--font); text-align:center;
+}
+</style>
+
 <script define:vars={{ BETA_CODE, WEBHOOK_URL, UPLOAD_URL }}>
 (function(){
   const TOTAL = 29;
@@ -1114,6 +1175,13 @@ kbd{
         }
       }
       syncCounters();
+      // Re-hydrate comboboxes after combobox engine initialises
+      const saved3=inp(3)?.value, saved4=inp(4)?.value, saved10=inp(10)?.value;
+      setTimeout(()=>{
+        if(saved3&&window.__ffRestoreCS) window.__ffRestoreCS(3,saved3);
+        if(saved4&&window.__ffRestoreCS) window.__ffRestoreCS(4,saved4);
+        if(saved10&&window.__ffRestoreCS) window.__ffRestoreCS(10,saved10);
+      },50);
     }catch(e){}
   }
 
@@ -1249,6 +1317,8 @@ kbd{
     const el=inp(i);
     if(el&&el.type!=='file') el.addEventListener('input',()=>saveSession());
   }
+  // Combobox hidden inputs fire 'change' instead of 'input'
+  [3,4,10].forEach(n=>{ const el=inp(n); if(el) el.addEventListener('change',()=>saveSession()); });
 
   // ── File upload ───────────────────────────────────────────
   function setupUpload(sn){
@@ -1346,5 +1416,398 @@ kbd{
 
   // ── Init ─────────────────────────────────────────────────
   progress(0); reqLabels(); updateKbd(0);
+})();
+</script>
+
+<script>
+// ── Searchable Combobox Engine ────────────────────────────────────────────────
+(function(){
+
+// ── Country data ──────────────────────────────────────────────────────────────
+function flag(iso){return[...iso.toUpperCase()].map(c=>String.fromCodePoint(0x1F1E6+c.charCodeAt(0)-65)).join('')}
+const COUNTRIES=[
+  ['Afghanistan','AF'],['Afrique du Sud','ZA'],['Albanie','AL'],['Algérie','DZ'],
+  ['Allemagne','DE'],['Andorre','AD'],['Angola','AO'],['Antigua-et-Barbuda','AG'],
+  ['Arabie saoudite','SA'],['Argentine','AR'],['Arménie','AM'],['Australie','AU'],
+  ['Autriche','AT'],['Azerbaïdjan','AZ'],['Bahamas','BS'],['Bahreïn','BH'],
+  ['Bangladesh','BD'],['Barbade','BB'],['Belgique','BE'],['Belize','BZ'],
+  ['Bénin','BJ'],['Bhoutan','BT'],['Biélorussie','BY'],['Birmanie','MM'],
+  ['Bolivie','BO'],['Bosnie-Herzégovine','BA'],['Botswana','BW'],['Brésil','BR'],
+  ['Brunei','BN'],['Bulgarie','BG'],['Burkina Faso','BF'],['Burundi','BI'],
+  ['Cambodge','KH'],['Cameroun','CM'],['Canada','CA'],['Cap-Vert','CV'],
+  ['Chili','CL'],['Chine','CN'],['Chypre','CY'],['Colombie','CO'],
+  ['Comores','KM'],['Congo','CG'],['Corée du Nord','KP'],['Corée du Sud','KR'],
+  ['Costa Rica','CR'],["Côte d'Ivoire",'CI'],['Croatie','HR'],['Cuba','CU'],
+  ['Danemark','DK'],['Djibouti','DJ'],['Dominique','DM'],['Égypte','EG'],
+  ['Émirats arabes unis','AE'],['Équateur','EC'],['Érythrée','ER'],['Espagne','ES'],
+  ['Estonie','EE'],['Eswatini','SZ'],['États-Unis','US'],['Éthiopie','ET'],
+  ['Fidji','FJ'],['Finlande','FI'],['France','FR'],['Gabon','GA'],
+  ['Gambie','GM'],['Géorgie','GE'],['Ghana','GH'],['Grèce','GR'],
+  ['Grenade','GD'],['Guatemala','GT'],['Guinée','GN'],['Guinée-Bissau','GW'],
+  ['Guinée équatoriale','GQ'],['Guyana','GY'],['Haïti','HT'],['Honduras','HN'],
+  ['Hongrie','HU'],['Inde','IN'],['Indonésie','ID'],['Irak','IQ'],
+  ['Iran','IR'],['Irlande','IE'],['Islande','IS'],['Israël','IL'],
+  ['Italie','IT'],['Jamaïque','JM'],['Japon','JP'],['Jordanie','JO'],
+  ['Kazakhstan','KZ'],['Kenya','KE'],['Kirghizistan','KG'],['Kiribati','KI'],
+  ['Kosovo','XK'],['Koweït','KW'],['Laos','LA'],['Lesotho','LS'],
+  ['Lettonie','LV'],['Liban','LB'],['Liberia','LR'],['Libye','LY'],
+  ['Liechtenstein','LI'],['Lituanie','LT'],['Luxembourg','LU'],['Macédoine du Nord','MK'],
+  ['Madagascar','MG'],['Malaisie','MY'],['Malawi','MW'],['Maldives','MV'],
+  ['Mali','ML'],['Malte','MT'],['Maroc','MA'],['Marshall','MH'],
+  ['Maurice','MU'],['Mauritanie','MR'],['Mexique','MX'],['Micronésie','FM'],
+  ['Moldavie','MD'],['Monaco','MC'],['Mongolie','MN'],['Monténégro','ME'],
+  ['Mozambique','MZ'],['Namibie','NA'],['Nauru','NR'],['Népal','NP'],
+  ['Nicaragua','NI'],['Niger','NE'],['Nigéria','NG'],['Norvège','NO'],
+  ['Nouvelle-Zélande','NZ'],['Oman','OM'],['Ouganda','UG'],['Ouzbékistan','UZ'],
+  ['Pakistan','PK'],['Palaos','PW'],['Palestine','PS'],['Panama','PA'],
+  ['Papouasie-Nouvelle-Guinée','PG'],['Paraguay','PY'],['Pays-Bas','NL'],['Pérou','PE'],
+  ['Philippines','PH'],['Pologne','PL'],['Portugal','PT'],['Qatar','QA'],
+  ['République centrafricaine','CF'],['République démocratique du Congo','CD'],
+  ['République dominicaine','DO'],['République tchèque','CZ'],
+  ['Roumanie','RO'],['Royaume-Uni','GB'],['Russie','RU'],['Rwanda','RW'],
+  ['Saint-Kitts-et-Nevis','KN'],['Saint-Vincent-et-les-Grenadines','VC'],
+  ['Sainte-Lucie','LC'],['Salvador','SV'],['Samoa','WS'],
+  ['São Tomé-et-Príncipe','ST'],['Sénégal','SN'],['Serbie','RS'],
+  ['Seychelles','SC'],['Sierra Leone','SL'],['Singapour','SG'],
+  ['Slovaquie','SK'],['Slovénie','SI'],['Somalie','SO'],['Soudan','SD'],
+  ['Soudan du Sud','SS'],['Sri Lanka','LK'],['Suède','SE'],['Suisse','CH'],
+  ['Suriname','SR'],['Syrie','SY'],['Tadjikistan','TJ'],['Tanzanie','TZ'],
+  ['Tchad','TD'],['Thaïlande','TH'],['Timor oriental','TL'],['Togo','TG'],
+  ['Tonga','TO'],['Trinité-et-Tobago','TT'],['Tunisie','TN'],['Turkménistan','TM'],
+  ['Turquie','TR'],['Tuvalu','TV'],['Ukraine','UA'],['Uruguay','UY'],
+  ['Vanuatu','VU'],['Vatican','VA'],['Venezuela','VE'],['Viêt Nam','VN'],
+  ['Yémen','YE'],['Zambie','ZM'],['Zimbabwe','ZW'],
+].map(([n,c])=>({label:n,value:c,prefix:flag(c)}));
+
+// ── City data ─────────────────────────────────────────────────────────────────
+const CITIES_MAP={
+  FR:['Paris','Lyon','Marseille','Toulouse','Nice','Nantes','Strasbourg','Montpellier','Bordeaux','Lille','Rennes','Grenoble','Rouen','Toulon','Aix-en-Provence'],
+  US:['New York','Los Angeles','Chicago','Houston','Phoenix','Philadelphia','San Antonio','San Diego','Dallas','San José','Austin','San Francisco','Seattle','Boston','Denver','Miami','Atlanta'],
+  GB:['London','Birmingham','Leeds','Glasgow','Sheffield','Edinburgh','Liverpool','Manchester','Bristol','Cardiff','Belfast','Leicester','Nottingham','Cambridge','Oxford'],
+  DE:['Berlin','Hamburg','Munich','Cologne','Frankfurt','Stuttgart','Düsseldorf','Leipzig','Dortmund','Essen','Bremen','Dresden','Hanover','Nuremberg'],
+  ES:['Madrid','Barcelone','Valencia','Séville','Saragosse','Malaga','Murcie','Palma','Las Palmas','Bilbao','Alicante','Valladolid','Vigo'],
+  IT:['Rome','Milan','Naples','Turin','Palerme','Gênes','Bologne','Florence','Bari','Catane','Venise','Vérone','Padoue'],
+  PT:['Lisbonne','Porto','Braga','Coimbra','Funchal','Setúbal','Aveiro','Faro','Évora'],
+  NL:['Amsterdam','Rotterdam','La Haye','Utrecht','Eindhoven','Tilburg','Groningue','Almere','Breda'],
+  BE:['Bruxelles','Anvers','Gand','Charleroi','Liège','Bruges','Namur','Louvain','Mons'],
+  CH:['Zurich','Genève','Bâle','Lausanne','Berne','Winterthour','Lucerne','Saint-Gall','Lugano'],
+  SE:['Stockholm','Göteborg','Malmö','Uppsala','Västerås','Örebro','Linköping','Helsingborg'],
+  NO:['Oslo','Bergen','Trondheim','Stavanger','Drammen','Kristiansand'],
+  DK:['Copenhague','Aarhus','Odense','Aalborg','Frederiksberg','Esbjerg'],
+  FI:['Helsinki','Espoo','Tampere','Vantaa','Oulu','Turku','Jyväskylä','Lahti'],
+  PL:['Varsovie','Cracovie','Łódź','Wrocław','Poznań','Gdańsk','Szczecin'],
+  CZ:['Prague','Brno','Ostrava','Plzeň','Liberec','Olomouc'],
+  AT:['Vienne','Graz','Linz','Salzbourg','Innsbruck','Klagenfurt'],
+  CA:['Toronto','Montréal','Vancouver','Calgary','Edmonton','Ottawa','Winnipeg','Québec','Halifax'],
+  AU:['Sydney','Melbourne','Brisbane','Perth','Adelaide','Gold Coast','Canberra','Darwin'],
+  NZ:['Auckland','Wellington','Christchurch','Hamilton','Tauranga','Dunedin'],
+  JP:['Tokyo','Osaka','Yokohama','Nagoya','Sapporo','Kobe','Kyoto','Fukuoka','Hiroshima'],
+  CN:['Pékin','Shanghai','Guangzhou','Shenzhen','Chengdu','Chongqing','Tianjin','Wuhan','Xi\'an','Hangzhou'],
+  KR:['Séoul','Busan','Incheon','Daegu','Daejeon','Gwangju','Suwon'],
+  IN:['Mumbai','Delhi','Bangalore','Hyderabad','Chennai','Kolkata','Pune','Ahmedabad','Jaipur'],
+  SG:['Singapour'],
+  AE:['Dubaï','Abu Dhabi','Sharjah','Al Ain','Ajman'],
+  IL:['Tel Aviv','Jérusalem','Haïfa','Rishon LeZion','Petah Tikva','Netanya','Beer-Sheva'],
+  NG:['Lagos','Abuja','Kano','Ibadan','Port Harcourt','Benin City'],
+  ZA:['Johannesburg','Cape Town','Durban','Pretoria','Port Elizabeth','Bloemfontein'],
+  EG:['Le Caire','Alexandrie','Gizeh','Suez','Louxor','Port-Saïd'],
+  MA:['Casablanca','Rabat','Fès','Marrakech','Agadir','Tanger','Meknès'],
+  TN:['Tunis','Sfax','Sousse','Kairouan','Bizerte','Gabès','Ariana'],
+  DZ:['Alger','Oran','Constantine','Annaba','Blida','Batna','Sétif'],
+  SN:['Dakar','Thiès','Touba','Kaolack','Saint-Louis','Ziguinchor'],
+  CI:['Abidjan','Bouaké','Daloa','Yamoussoukro','Korhogo','San-Pédro'],
+  CM:['Douala','Yaoundé','Garoua','Bamenda','Bafoussam','Maroua'],
+  BR:['São Paulo','Rio de Janeiro','Brasília','Salvador','Fortaleza','Belo Horizonte','Manaus','Curitiba','Recife','Porto Alegre'],
+  MX:['Mexico','Guadalajara','Monterrey','Puebla','Tijuana','León','Mérida','Cancún'],
+  AR:['Buenos Aires','Córdoba','Rosario','Mendoza','Tucumán','Mar del Plata'],
+  CO:['Bogotá','Medellín','Cali','Barranquilla','Cartagena','Cúcuta'],
+  CL:['Santiago','Valparaíso','Concepción','Antofagasta','Viña del Mar','Temuco'],
+  RU:['Moscou','Saint-Pétersbourg','Novossibirsk','Ekaterinbourg','Kazan','Samara'],
+  UA:['Kiev','Kharkiv','Odessa','Dnipro','Lviv'],
+  TR:['Istanbul','Ankara','Izmir','Bursa','Antalya','Adana','Konya','Gaziantep'],
+  SA:['Riyad','Djeddah','La Mecque','Médine','Dammam','Taïf'],
+  PK:['Karachi','Lahore','Faisalabad','Rawalpindi','Islamabad','Multan'],
+  BD:['Dacca','Chittagong','Sylhet','Khulna','Rajshahi'],
+  ID:['Jakarta','Surabaya','Bandung','Bekasi','Medan','Semarang','Makassar'],
+  MY:['Kuala Lumpur','Penang','Johor Bahru','Ipoh','Kota Kinabalu','Malacca'],
+  TH:['Bangkok','Nonthaburi','Hat Yai','Chiang Mai','Udon Thani','Pattaya'],
+  VN:['Hô Chi Minh-Ville','Hanoï','Haiphong','Can Tho','Da Nang'],
+  PH:['Manille','Quezon City','Caloocan','Davao','Cebu','Zamboanga'],
+};
+const cityCache={};
+
+// ── Sector data ───────────────────────────────────────────────────────────────
+const SECTORS=[
+  {value:'fintech',label:'Fintech & Paiements',prefix:'💳'},
+  {value:'insurtech',label:'Insurtech',prefix:'🛡️'},
+  {value:'regtech',label:'Regtech & Conformité',prefix:'⚖️'},
+  {value:'wealthtech',label:'Wealthtech & Investissement',prefix:'📈'},
+  {value:'healthtech',label:'Healthtech & MedTech',prefix:'🏥'},
+  {value:'biotech',label:'Biotech & Sciences de la vie',prefix:'🧬'},
+  {value:'mentalhealth',label:'Santé mentale & Bien-être',prefix:'🧠'},
+  {value:'edtech',label:'Edtech & Formation',prefix:'🎓'},
+  {value:'elearning',label:'E-learning & Upskilling',prefix:'📚'},
+  {value:'hrtech',label:'HRtech & Recrutement',prefix:'👥'},
+  {value:'futureofwork',label:'Future of Work',prefix:'🏠'},
+  {value:'legaltech',label:'Legaltech',prefix:'📋'},
+  {value:'proptech',label:'Proptech & Immobilier',prefix:'🏢'},
+  {value:'contech',label:'Contech & Construction',prefix:'🏗️'},
+  {value:'climatetech',label:'Climatetech & GreenTech',prefix:'🌱'},
+  {value:'agritech',label:'Agritech & Foodtech',prefix:'🌾'},
+  {value:'energy',label:'Énergie & Utilities',prefix:'⚡'},
+  {value:'mobility',label:'Mobilité & Transport',prefix:'🚗'},
+  {value:'logistics',label:'Logistique & Supply Chain',prefix:'📦'},
+  {value:'ecommerce',label:'E-commerce & Retail',prefix:'🛍️'},
+  {value:'marketplace',label:'Marketplace & Plateforme',prefix:'🔗'},
+  {value:'saas',label:'SaaS B2B',prefix:'☁️'},
+  {value:'devtools',label:'Outils développeurs & DevTools',prefix:'🛠️'},
+  {value:'cybersecurity',label:'Cybersécurité',prefix:'🔐'},
+  {value:'ai',label:'IA & Machine Learning',prefix:'🤖'},
+  {value:'data',label:'Data & Analytics',prefix:'📊'},
+  {value:'blockchain',label:'Blockchain & Web3',prefix:'⛓️'},
+  {value:'iot',label:'IoT & Hardware',prefix:'📡'},
+  {value:'ar-vr',label:'AR / VR & Spatial computing',prefix:'🥽'},
+  {value:'gaming',label:'Gaming & Esports',prefix:'🎮'},
+  {value:'mediatech',label:'Mediatech & Streaming',prefix:'🎬'},
+  {value:'adtech',label:'Adtech & Marketing',prefix:'📣'},
+  {value:'socialnetwork',label:'Réseau social & Communauté',prefix:'💬'},
+  {value:'creator',label:'Creator Economy',prefix:'✨'},
+  {value:'traveltech',label:'Traveltech & Hospitality',prefix:'✈️'},
+  {value:'sportstech',label:'Sportstech & Fitness',prefix:'⚽'},
+  {value:'fashiontech',label:'Fashiontech & Luxe',prefix:'👗'},
+  {value:'beautytech',label:'Beautytech & Cosmétique',prefix:'💄'},
+  {value:'govtech',label:'Govtech & Civic tech',prefix:'🏛️'},
+  {value:'socialimpact',label:'Impact social & ESS',prefix:'🤝'},
+  {value:'spacetech',label:'Spacetech & Défense',prefix:'🚀'},
+  {value:'robotics',label:'Robotique & Automatisation',prefix:'🦾'},
+  {value:'deeptech',label:'Deeptech & Quantique',prefix:'⚗️'},
+  {value:'manufacturing',label:'Industrie & Fabrication',prefix:'🏭'},
+  {value:'pettech',label:'Pettech & Animaux',prefix:'🐾'},
+  {value:'other',label:'Autre',prefix:'🌐'},
+];
+
+// ── Combobox factory ──────────────────────────────────────────────────────────
+function createCombobox(wrap, hiddenId, opts, placeholder){
+  let options=opts.slice();
+  let selected=null;
+  let activeIdx=-1;
+  let isOpen=false;
+
+  const hidden=document.getElementById(hiddenId);
+
+  const trigger=document.createElement('button');
+  trigger.type='button';
+  trigger.className='ff-cs-trigger';
+  trigger.setAttribute('aria-haspopup','listbox');
+  trigger.setAttribute('aria-expanded','false');
+  trigger.innerHTML=`<span class="ff-cs-val ff-cs-ph">${placeholder}</span><svg class="ff-cs-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+  const search=document.createElement('input');
+  search.type='text';
+  search.className='ff-cs-search';
+  search.placeholder='Rechercher…';
+  search.setAttribute('aria-autocomplete','list');
+  search.autocomplete='off';
+  search.hidden=true;
+
+  const list=document.createElement('ul');
+  list.className='ff-cs-list';
+  list.setAttribute('role','listbox');
+  list.hidden=true;
+
+  wrap.appendChild(trigger);
+  wrap.appendChild(search);
+  document.body.appendChild(list); // fixed position, outside overlay
+
+  const valEl=trigger.querySelector('.ff-cs-val');
+  const icoEl=trigger.querySelector('.ff-cs-ico');
+
+  function getFiltered(){
+    const q=search.value.toLowerCase().trim();
+    if(!q) return options;
+    return options.filter(o=>o.label.toLowerCase().includes(q)||(o.value&&o.value.toLowerCase().includes(q)));
+  }
+
+  function renderList(){
+    const filtered=getFiltered();
+    list.innerHTML='';
+    if(!filtered.length){
+      list.innerHTML='<li class="ff-cs-empty">Aucun résultat</li>';
+      return;
+    }
+    filtered.forEach((opt,i)=>{
+      const li=document.createElement('li');
+      li.className='ff-cs-opt'+(selected&&selected.value===opt.value?' ff-cs-opt--sel':'')+(i===activeIdx?' ff-cs-opt--act':'');
+      li.setAttribute('role','option');
+      li.setAttribute('aria-selected',String(!!(selected&&selected.value===opt.value)));
+      li.dataset.idx=String(i);
+      li.innerHTML=`${opt.prefix?`<span class="ff-cs-pfx">${opt.prefix}</span>`:''}${opt.label}${selected&&selected.value===opt.value?'<span class="ff-cs-chk">✓</span>':''}`;
+      li.addEventListener('mousedown',e=>{e.preventDefault();pick(opt);});
+      li.addEventListener('mouseenter',()=>{activeIdx=i;highlight();});
+      list.appendChild(li);
+    });
+  }
+
+  function highlight(){
+    list.querySelectorAll('.ff-cs-opt').forEach((el,i)=>{
+      el.classList.toggle('ff-cs-opt--act',i===activeIdx);
+    });
+    if(activeIdx>=0){
+      const act=list.children[activeIdx];
+      act&&act.scrollIntoView({block:'nearest'});
+    }
+  }
+
+  function positionList(){
+    const r=wrap.getBoundingClientRect();
+    list.style.cssText=`position:fixed;top:${r.bottom+4}px;left:${r.left}px;width:${r.width}px;z-index:99999`;
+  }
+
+  function openDrop(){
+    if(isOpen) return;
+    isOpen=true;
+    trigger.setAttribute('aria-expanded','true');
+    icoEl.style.transform='rotate(180deg)';
+    // swap trigger display to search input
+    valEl.hidden=true;
+    icoEl.style.display='none';
+    search.hidden=false;
+    search.value='';
+    search.focus();
+    positionList();
+    renderList();
+    list.hidden=false;
+  }
+
+  function closeDrop(){
+    if(!isOpen) return;
+    isOpen=false;
+    trigger.setAttribute('aria-expanded','false');
+    icoEl.style.transform='';
+    icoEl.style.display='';
+    search.hidden=true;
+    list.hidden=true;
+    valEl.hidden=false;
+    activeIdx=-1;
+  }
+
+  function pick(opt){
+    selected=opt;
+    if(hidden) hidden.value=opt.value;
+    valEl.textContent=(opt.prefix?opt.prefix+' ':'')+opt.label;
+    valEl.classList.remove('ff-cs-ph');
+    closeDrop();
+    // notify form session save
+    hidden&&hidden.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+
+  trigger.addEventListener('click',()=>{ isOpen?closeDrop():openDrop(); });
+
+  search.addEventListener('input',()=>{ activeIdx=-1; renderList(); });
+
+  search.addEventListener('keydown',e=>{
+    const filtered=getFiltered();
+    if(e.key==='ArrowDown'){ e.preventDefault(); activeIdx=Math.min(activeIdx+1,filtered.length-1); highlight(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); activeIdx=Math.max(activeIdx-1,0); highlight(); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(activeIdx>=0&&filtered[activeIdx]) pick(filtered[activeIdx]); }
+    else if(e.key==='Escape'||e.key==='Tab'){ closeDrop(); }
+  });
+
+  document.addEventListener('mousedown',e=>{
+    if(!wrap.contains(e.target)&&!list.contains(e.target)) closeDrop();
+  });
+
+  window.addEventListener('scroll',()=>{ if(isOpen) positionList(); },true);
+  window.addEventListener('resize',()=>{ if(isOpen) positionList(); });
+
+  // Public: set value programmatically (session restore)
+  return {
+    setValue(val){
+      const found=options.find(o=>o.value===val||o.label===val);
+      if(found){selected=found;valEl.textContent=(found.prefix?found.prefix+' ':'')+found.label;valEl.classList.remove('ff-cs-ph');}
+    },
+    setOptions(opts){
+      options=opts;
+      if(isOpen) renderList();
+    },
+    reset(){
+      selected=null;
+      if(hidden) hidden.value='';
+      valEl.textContent=placeholder;
+      valEl.classList.add('ff-cs-ph');
+      closeDrop();
+    },
+  };
+}
+
+// ── City loader ───────────────────────────────────────────────────────────────
+async function loadCities(iso){
+  if(cityCache[iso]) return cityCache[iso];
+  if(CITIES_MAP[iso]){
+    cityCache[iso]=CITIES_MAP[iso].map(c=>({value:c,label:c,prefix:''}));
+    return cityCache[iso];
+  }
+  // API fallback
+  try{
+    const r=await fetch('https://countriesnow.space/api/v0.1/countries/cities',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({country:iso}),
+    });
+    const j=await r.json();
+    if(!j.error&&Array.isArray(j.data)){
+      const sorted=j.data.sort((a,b)=>a.localeCompare(b)).slice(0,200);
+      cityCache[iso]=sorted.map(c=>({value:c,label:c,prefix:''}));
+      return cityCache[iso];
+    }
+  }catch(e){}
+  return [];
+}
+
+// ── Init all comboboxes ───────────────────────────────────────────────────────
+const csCountry=document.getElementById('ff-cs-3');
+const csCity=document.getElementById('ff-cs-4');
+const csSector=document.getElementById('ff-cs-10');
+
+let cbCountry=null, cbCity=null, cbSector=null;
+
+if(csCountry) cbCountry=createCombobox(csCountry,'ff-3',COUNTRIES,"Sélectionner un pays…");
+if(csSector) cbSector=createCombobox(csSector,'ff-10',SECTORS,"Rechercher un secteur…");
+
+if(csCity){
+  cbCity=createCombobox(csCity,'ff-4',[],"Sélectionnez d'abord un pays");
+}
+
+// Country → City dependency
+if(cbCountry){
+  const origPick=cbCountry;
+  const hidden3=document.getElementById('ff-3');
+  if(hidden3){
+    hidden3.addEventListener('change',async()=>{
+      const iso=hidden3.value;
+      if(!iso||!cbCity) return;
+      cbCity.reset();
+      cbCity.setOptions([{value:'__loading__',label:'Chargement…',prefix:''}]);
+      const cities=await loadCities(iso);
+      cbCity.setOptions(cities.length?cities:[]);
+      const cs4=document.getElementById('ff-cs-4');
+      if(cs4){
+        const trigger=cs4.querySelector('.ff-cs-trigger');
+        if(trigger){
+          const ph=trigger.querySelector('.ff-cs-val');
+          if(ph){ph.textContent=cities.length?'Rechercher une ville…':"Aucune ville disponible";ph.classList.add('ff-cs-ph');}
+        }
+      }
+    });
+  }
+}
+
+// Session restore (called by main script's loadSession via the hidden input change event)
+// Also expose globally for manual restore
+window.__ffRestoreCS=function(step,val){
+  if(step===3&&cbCountry){ cbCountry.setValue(val); }
+  if(step===4&&cbCity){ cbCity.setValue(val); }
+  if(step===10&&cbSector){ cbSector.setValue(val); }
+};
+
 })();
 </script>
