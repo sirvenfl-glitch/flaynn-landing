@@ -545,12 +545,17 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 </div>
 
 <style>
-/* ─── Scoped reset ────────────────────────────────────────── */
+/* ─── Reset + variables locales ──────────────────────────── */
 #ff-overlay *,#ff-overlay *::before,#ff-overlay *::after{box-sizing:border-box;margin:0;padding:0}
 #ff-overlay{
-  --ok:#4ade80;--err:#f87171;
+  --ok:#4ade80;
+  --err:#f87171;
+  --gold:#C9A84C;
   position:fixed;inset:0;z-index:9000;
-  background:var(--bg);
+  /* fond avec halo purple — style Blast Club */
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(107,33,168,.12), transparent 60%),
+    var(--bg);
   font-family:var(--font);
   color:var(--text);
   display:flex;flex-direction:column;
@@ -562,34 +567,38 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 .ff-header{
   position:fixed;top:0;left:0;right:0;z-index:9001;
 }
+/* 3px progress bar gradient purple → pink */
 .ff-progress-track{
-  height:2px;
-  background:rgba(255,255,255,.06);
+  height:3px;
+  background:rgba(255,255,255,.05);
+  position:relative;
 }
 .ff-bar{
   height:100%;
-  background:linear-gradient(90deg,var(--purple),var(--purple-light),var(--pink));
+  background:linear-gradient(90deg,var(--purple-light),var(--pink));
   width:0%;
-  transition:width .5s cubic-bezier(.16,1,.3,1);
+  transition:width .3s ease-out;
 }
 .ff-header-meta{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 28px;
+  padding:16px 32px;
 }
 .ff-brand{
-  font-size:.72rem;
+  font-size:.65rem;
   font-weight:700;
-  letter-spacing:.14em;
+  letter-spacing:.2em;
   text-transform:uppercase;
   color:var(--text-dim);
 }
+/* label affiché en or (#C9A84C) à droite de la barre */
 .ff-step-label{
-  font-size:.72rem;
-  font-weight:500;
-  color:var(--text-dim);
-  letter-spacing:.04em;
+  font-size:.68rem;
+  font-weight:600;
+  color:var(--gold);
+  letter-spacing:.08em;
+  font-variant-numeric:tabular-nums;
 }
 
 /* ─── Main / Steps ────────────────────────────────────────── */
@@ -598,145 +607,185 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:100px 24px 120px;
+  /* espace généreux autour du contenu */
+  padding:110px 48px 100px;
   width:100%;
 }
+
+/* conteneur relatif pour le grand numéro en arrière-plan */
 .ff-step{
+  position:relative;
   width:100%;
-  max-width:580px;
+  max-width:560px;
   margin:0 auto;
-  animation:ff-in .4s cubic-bezier(.16,1,.3,1) both;
+  animation:ff-in .3s ease-out both;
 }
 .ff-step[hidden]{display:none!important}
 .ff-step.leaving{
-  animation:ff-out .22s cubic-bezier(.55,0,1,.45) both;
+  animation:ff-out .22s ease-in both;
   pointer-events:none;
 }
+
+/* Grand numéro d'étape en arrière-plan — style Typeform */
+.ff-step::before{
+  content:attr(data-step);
+  position:absolute;
+  top:-60px;
+  left:-16px;
+  font-size:10rem;
+  font-weight:700;
+  line-height:1;
+  color:var(--purple-light);
+  opacity:.13;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.05em;
+}
+
+/* le contenu passe au-dessus du numéro */
+.ff-step-inner{
+  position:relative;
+  z-index:1;
+}
+
+/* transitions : translateY(40px) → 0 + fade, 300ms ease-out */
 @keyframes ff-in{
-  from{opacity:0;transform:translateY(28px)}
+  from{opacity:0;transform:translateY(40px)}
   to{opacity:1;transform:translateY(0)}
 }
 @keyframes ff-out{
   from{opacity:1;transform:translateY(0)}
-  to{opacity:0;transform:translateY(-20px)}
+  to{opacity:0;transform:translateY(-24px)}
 }
 
-/* ─── Typography ──────────────────────────────────────────── */
+/* ─── Typographie ─────────────────────────────────────────── */
+/* Eyebrow : 0.7rem, letter-spacing 0.2em, uppercase */
 .ff-eyebrow{
-  font-size:.68rem;
+  font-size:.7rem;
   font-weight:600;
-  letter-spacing:.16em;
+  letter-spacing:.2em;
   text-transform:uppercase;
   color:var(--purple-light);
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
+/* Question dominante : Typeform-level */
 .ff-q{
   display:block;
-  font-size:clamp(1.75rem,4vw,2.5rem);
+  font-size:clamp(2.8rem,5vw,4.2rem);
   font-weight:700;
-  line-height:1.2;
-  letter-spacing:-.03em;
+  line-height:1.1;
+  letter-spacing:-.04em;
   color:var(--text);
-  margin-bottom:36px;
+  margin-bottom:52px;
 }
 .ff-hint{
-  font-size:.88rem;
+  font-size:.85rem;
   color:var(--text-muted);
   line-height:1.7;
   font-weight:300;
-  margin-top:-24px;
-  margin-bottom:28px;
+  margin-top:-38px;
+  margin-bottom:32px;
 }
 .ff-opt{
-  font-size:.6em;
+  font-size:.45em;
   font-weight:400;
   color:var(--text-dim);
-  letter-spacing:0;
-  text-transform:none;
+  letter-spacing:.04em;
+  text-transform:uppercase;
 }
-.ff-req{color:var(--orange)}
+.ff-req{color:var(--orange);font-size:.8em}
 
-/* ─── Inputs ──────────────────────────────────────────────── */
+/* ─── Inputs — underline only, style Typeform ─────────────── */
 .ff-input,.ff-textarea{
   display:block;
   width:100%;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;
+  /* ZÉRO border-box */
+  background:transparent;
+  border:none;
+  border-bottom:2px solid rgba(255,255,255,.15);
+  border-radius:0;
+  /* typographie large */
   color:var(--text);
   font-family:var(--font);
-  font-size:1.05rem;
+  font-size:1.4rem;
   font-weight:400;
-  padding:18px 20px;
+  /* padding uniquement vertical */
+  padding:16px 0;
   outline:none;
-  transition:border-color .2s,background .2s,box-shadow .2s;
+  transition:border-bottom-color .2s;
   resize:none;
   -webkit-appearance:none;
+  width:100%;
 }
+/* focus : uniquement changer la couleur du border-bottom */
 .ff-input:focus,.ff-textarea:focus{
-  background:rgba(107,33,168,.06);
-  border-color:rgba(107,33,168,.45);
-  box-shadow:0 0 0 4px rgba(107,33,168,.1);
+  border-bottom-color:var(--purple-light);
+  background:transparent;
+  box-shadow:none;
 }
 .ff-input::placeholder,.ff-textarea::placeholder{
   color:var(--text-dim);
   font-weight:300;
 }
-/* remove number spinners */
+/* Supprimer les spinners number */
 .ff-input[type=number]::-webkit-inner-spin-button,
 .ff-input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
 .ff-input[type=number]{-moz-appearance:textfield}
 
-.ff-field-wrap{position:relative}
-.ff-field-wrap .ff-input,.ff-field-wrap .ff-textarea{padding-bottom:36px}
+/* wrapper relatif pour le compteur de caractères */
+.ff-field-wrap{position:relative;padding-bottom:28px}
 .ff-counter{
   position:absolute;
-  bottom:14px;right:16px;
-  font-size:.7rem;
+  bottom:4px;right:0;
+  font-size:.68rem;
   color:var(--text-dim);
   pointer-events:none;
   font-variant-numeric:tabular-nums;
+  letter-spacing:.04em;
 }
 
-/* ─── Choices ──────────────────────────────────────────────── */
+/* ─── Choices — cards sobres, style Blast Club ────────────── */
 .ff-choices{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
   margin-bottom:8px;
 }
-.ff-choices--duo{gap:12px}
+.ff-choices--duo{gap:16px}
 .ff-choice{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:100px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
   color:var(--text-muted);
   font-family:var(--font);
-  font-size:.9rem;
+  font-size:1rem;
   font-weight:500;
-  padding:12px 22px;
+  /* padding 18px 28px spec exacte */
+  padding:18px 28px;
   cursor:pointer;
-  transition:background .18s,border-color .18s,color .18s,transform .18s;
+  transition:border-color .2s,background .2s,color .2s;
   white-space:nowrap;
   -webkit-tap-highlight-color:transparent;
+  letter-spacing:.01em;
 }
 .ff-choice:hover{
-  border-color:rgba(107,33,168,.4);
+  border-color:rgba(147,51,234,.4);
   color:var(--text);
-  transform:translateY(-1px);
 }
+/* selected : border purple-light + bg rgba(147,51,234,0.15) */
 .ff-choice.selected{
-  background:var(--purple);
-  border-color:var(--purple);
-  color:#fff;
+  border-color:var(--purple-light);
+  background:rgba(147,51,234,.15);
+  color:var(--text);
   font-weight:600;
 }
 .ff-choices--duo .ff-choice{
   flex:1;
   text-align:center;
-  font-size:1rem;
-  padding:16px 24px;
-  border-radius:14px;
+  font-size:1.05rem;
+  padding:20px 28px;
 }
 
 /* ─── Dropzone ────────────────────────────────────────────── */
@@ -744,14 +793,14 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   position:relative;
   border:1px dashed rgba(255,255,255,.12);
   border-radius:16px;
-  background:rgba(255,255,255,.02);
+  background:transparent;
   transition:border-color .2s,background .2s;
   margin-bottom:4px;
   overflow:hidden;
 }
 .ff-dropzone:hover,.ff-dropzone.drag-over{
-  border-color:rgba(107,33,168,.4);
-  background:rgba(107,33,168,.05);
+  border-color:rgba(147,51,234,.4);
+  background:rgba(147,51,234,.05);
 }
 .ff-file-input{
   position:absolute;inset:0;
@@ -760,35 +809,35 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 }
 .ff-drop-idle{
   display:flex;flex-direction:column;
-  align-items:center;gap:8px;
-  padding:40px 24px;
+  align-items:center;gap:10px;
+  padding:44px 24px;
   pointer-events:none;
 }
 .ff-drop-icon{
-  width:48px;height:48px;
+  width:52px;height:52px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:12px;
+  border-radius:14px;
   display:flex;align-items:center;justify-content:center;
   color:var(--text-muted);
-  margin-bottom:4px;
+  margin-bottom:6px;
 }
-.ff-drop-label{font-size:.92rem;color:var(--text-muted);font-weight:500}
+.ff-drop-label{font-size:.95rem;color:var(--text-muted);font-weight:500}
 .ff-drop-sub{font-size:.8rem;color:var(--text-dim)}
-.ff-drop-link{color:var(--purple-light);text-decoration:underline;text-underline-offset:2px}
-.ff-drop-active{padding:24px 20px}
+.ff-drop-link{color:var(--purple-light);text-decoration:underline;text-underline-offset:3px}
+.ff-drop-active{padding:28px 24px}
 .ff-file-row{
   display:flex;align-items:center;gap:10px;
   color:var(--text-muted);
-  margin-bottom:14px;
+  margin-bottom:16px;
 }
-.ff-file-name{font-size:.85rem;color:var(--text);font-weight:500;word-break:break-all}
+.ff-file-name{font-size:.88rem;color:var(--text);font-weight:500;word-break:break-all}
 .ff-upload-track{
   height:3px;
-  background:rgba(255,255,255,.07);
+  background:rgba(255,255,255,.06);
   border-radius:100px;
   overflow:hidden;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 .ff-upload-fill{
   height:100%;
@@ -797,22 +846,23 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   border-radius:100px;
   transition:width .2s;
 }
-.ff-file-status{font-size:.8rem;font-weight:500;color:var(--text-dim)}
+.ff-file-status{font-size:.78rem;font-weight:500;color:var(--text-dim)}
 .ff-file-status.ok{color:var(--ok)}
 .ff-file-status.err{color:var(--err)}
 
-/* ─── Error ───────────────────────────────────────────────── */
+/* ─── Erreur inline ───────────────────────────────────────── */
 .ff-error{
-  min-height:20px;
-  margin-top:10px;
-  font-size:.8rem;
+  min-height:22px;
+  margin-top:14px;
+  font-size:.78rem;
   color:var(--err);
-  display:flex;align-items:center;gap:6px;
+  display:flex;align-items:center;gap:8px;
+  letter-spacing:.02em;
 }
 .ff-error:not(:empty)::before{
   content:'';
   display:inline-block;
-  width:5px;height:5px;
+  width:4px;height:4px;
   background:var(--err);
   border-radius:50%;
   flex-shrink:0;
@@ -823,148 +873,176 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-top:32px;
+  margin-top:48px;
 }
+/* bouton Continuer : pill gradient purple → pink, positionné à droite */
 .ff-btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--purple);
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
   color:#fff;
   font-family:var(--font);
-  font-size:.9rem;
+  font-size:.88rem;
   font-weight:600;
-  padding:14px 28px;
+  /* padding 14px 36px spec exacte */
+  padding:14px 36px;
   border:none;
   border-radius:100px;
   cursor:pointer;
-  letter-spacing:.01em;
-  transition:background .2s,transform .2s,box-shadow .2s;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  transition:opacity .2s,transform .2s,box-shadow .2s;
   white-space:nowrap;
+  margin-left:auto;
 }
 .ff-btn-primary:hover{
-  background:var(--purple-light);
+  opacity:.88;
   transform:translateY(-1px);
-  box-shadow:0 8px 32px var(--purple-glow);
+  box-shadow:0 12px 36px rgba(107,33,168,.4);
 }
-.ff-btn-primary:active{transform:translateY(0);box-shadow:none}
+.ff-btn-primary:active{transform:translateY(0);box-shadow:none;opacity:1}
+/* bouton Retour : texte pur, minimaliste */
 .ff-btn-back{
   background:none;
   border:none;
   color:var(--text-dim);
   font-family:var(--font);
-  font-size:.88rem;
+  font-size:.82rem;
   font-weight:400;
-  padding:10px 4px;
+  padding:8px 0;
   cursor:pointer;
   transition:color .2s;
-  letter-spacing:.01em;
+  letter-spacing:.06em;
+  text-transform:uppercase;
 }
 .ff-btn-back:hover{color:var(--text-muted)}
 
 /* ─── Keyboard hint ───────────────────────────────────────── */
 .ff-kbd-bar{
   position:fixed;
-  bottom:28px;left:50%;
+  bottom:32px;left:50%;
   transform:translateX(-50%);
-  font-size:.73rem;
+  font-size:.65rem;
   color:var(--text-dim);
-  display:flex;align-items:center;gap:6px;
+  display:flex;align-items:center;gap:8px;
   pointer-events:none;
   z-index:9002;
   white-space:nowrap;
   opacity:0;
   transition:opacity .3s;
+  letter-spacing:.08em;
+  text-transform:uppercase;
 }
 .ff-kbd-bar.visible{opacity:1}
 kbd{
   display:inline-flex;align-items:center;
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.1);
   border-radius:5px;
-  padding:2px 7px;
+  padding:3px 8px;
   font-family:var(--font);
-  font-size:.7rem;
+  font-size:.68rem;
   color:var(--text-muted);
+  letter-spacing:0;
+  text-transform:none;
 }
 
-/* ─── Close ───────────────────────────────────────────────── */
+/* ─── Bouton fermer ───────────────────────────────────────── */
 .ff-close{
-  position:fixed;top:18px;right:20px;
+  position:fixed;top:20px;right:24px;
   z-index:9010;
   width:32px;height:32px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
+  background:transparent;
+  border:1px solid rgba(255,255,255,.1);
   border-radius:50%;
   color:var(--text-dim);
   display:flex;align-items:center;justify-content:center;
   cursor:pointer;
-  transition:background .2s,color .2s,border-color .2s;
+  transition:border-color .2s,color .2s;
 }
 .ff-close:hover{
-  background:rgba(255,255,255,.1);
-  border-color:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.25);
   color:var(--text);
 }
 
-/* ─── Final screen ────────────────────────────────────────── */
+/* ─── Écran final ─────────────────────────────────────────── */
 .ff-step--final .ff-step-inner{text-align:center}
-.ff-final-state{display:flex;flex-direction:column;align-items:center;gap:16px}
+/* supprime le grand numéro "30" en fond sur le dernier écran */
+.ff-step--final::before{display:none}
+.ff-final-state{display:flex;flex-direction:column;align-items:center;gap:20px}
 .ff-spinner{
   width:36px;height:36px;
-  border:2px solid rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.08);
   border-top-color:var(--purple-light);
   border-radius:50%;
-  animation:spin .7s linear infinite;
+  animation:spin .8s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-.ff-final-label{font-size:.88rem;color:var(--text-dim);font-weight:300}
+.ff-final-label{
+  font-size:.75rem;
+  color:var(--text-dim);
+  font-weight:400;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+/* ✦ icône succès */
 .ff-success-glyph{
-  font-size:2.5rem;
-  color:var(--orange);
-  margin-bottom:8px;
+  font-size:2.8rem;
+  background:linear-gradient(135deg,var(--purple-light),var(--pink));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  line-height:1;
+  margin-bottom:4px;
 }
 .ff-success-title{
-  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-size:clamp(2.8rem,5vw,4rem);
   font-weight:700;
-  letter-spacing:-.03em;
+  letter-spacing:-.04em;
   color:var(--text);
+  line-height:1.1;
 }
 .ff-success-body{
   font-size:.95rem;
   color:var(--text-muted);
-  line-height:1.75;
+  line-height:1.8;
   font-weight:300;
-  max-width:400px;
+  max-width:420px;
 }
 .ff-success-body strong{color:var(--text);font-weight:500}
 .ff-err-body{
   font-size:.9rem;
   color:var(--text-muted);
-  line-height:1.75;
+  line-height:1.8;
   text-align:center;
 }
 .ff-err-body a{color:var(--purple-light);text-decoration:none}
 .ff-err-body a:hover{text-decoration:underline}
 .ff-btn-retry{
-  background:rgba(255,255,255,.05);
+  background:transparent;
   border:1px solid rgba(255,255,255,.1);
-  color:var(--text);
+  color:var(--text-muted);
   font-family:var(--font);
   font-weight:500;
-  font-size:.88rem;
-  padding:12px 24px;
+  font-size:.78rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:12px 28px;
   border-radius:100px;
   cursor:pointer;
-  transition:background .2s;
+  transition:border-color .2s,color .2s;
 }
-.ff-btn-retry:hover{background:rgba(255,255,255,.1)}
+.ff-btn-retry:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
 
 /* ─── Responsive ──────────────────────────────────────────── */
-@media(max-width:600px){
-  .ff-main{padding:88px 20px 100px}
-  .ff-q{font-size:1.6rem;margin-bottom:28px}
-  .ff-btn-primary{padding:13px 24px;font-size:.88rem}
+@media(max-width:640px){
+  .ff-main{padding:96px 28px 96px}
+  .ff-q{font-size:2.2rem;margin-bottom:36px;letter-spacing:-.03em}
+  .ff-input,.ff-textarea{font-size:1.15rem}
+  .ff-choice{padding:14px 20px;font-size:.92rem}
+  .ff-btn-primary{padding:14px 28px}
   .ff-kbd-bar{display:none}
-  .ff-header-meta{padding:12px 20px}
+  .ff-header-meta{padding:14px 20px}
+  .ff-step::before{font-size:7rem;top:-48px;left:-8px}
 }
 </style>
 
