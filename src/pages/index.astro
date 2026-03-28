@@ -6,9 +6,9 @@ import FounderForm from '../components/FounderForm.astro';
 <head>
  <link rel="icon" href="/aile-favicon.png" />
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Flaynn — L'Ère du Capital Sélectif</title>
-<meta name="description" content="Flaynn soumet votre dossier à un comité d'investissement virtuel propriétaire. Moins de 15% des startups sont acceptées. Votre levée commence par une vérité." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<title>Flaynn · Votre scoring investisseur en 24h</title>
+<meta name="description" content="Flaynn analyse votre dossier startup sur 5 piliers et vous livre un scoring complet en 24h. Moins de 15% des projets sont acceptés pour mise en relation investisseur." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
@@ -21,7 +21,7 @@ import FounderForm from '../components/FounderForm.astro';
   --border:rgba(255,255,255,0.07);--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08);
   --font:'IBM Plex Sans',sans-serif;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #canvas-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55}
 body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.45}
@@ -234,15 +234,58 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
   .proof-inner{grid-template-columns:1fr}
   .investors-inner{grid-template-columns:1fr}
   .footer-inner{flex-direction:column}
+  .hero h1{font-size:2.2rem}
+  .hero-sub{font-size:1rem}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn-primary{justify-content:center;text-align:center}
+  .hero-actions .hero-note{justify-content:center}
+  .solution-statement{font-size:1.15rem}
+  .proof-quote{font-size:1.2rem}
+  .cta-title{font-size:1.9rem}
 }
 @media(max-width:600px){
+  .container{padding:0 16px}
+  .hero{min-height:auto;padding:100px 0 60px}
+  .hero h1{font-size:1.8rem;letter-spacing:-.02em}
+  .hero-sub{font-size:.92rem;margin-bottom:28px}
+  .hero-badge{font-size:.7rem;padding:5px 12px}
+  .section-title{font-size:1.5rem}
+  .pain-stat{font-size:2.2rem}
+  .pain-card{padding:24px 20px}
+  .big-score{font-size:3.8rem}
+  .big-score-label{font-size:.75rem}
+  .score-breakdown{grid-template-columns:1fr}
+  .score-item{padding:10px 12px}
+  .proof-quote{font-size:1.05rem}
+  .proof-body{font-size:.88rem}
+  .beta-badge{flex-direction:column;align-items:flex-start;gap:8px;padding:14px 16px}
+  .investors-inner{gap:40px}
+  .investor-form-area{padding:24px 20px}
+  .form-title{font-size:1.05rem}
+  .cta-title{font-size:1.6rem}
+  .cta-sub{font-size:.88rem}
+  .btn-large{padding:15px 24px;font-size:.92rem;justify-content:center}
+  .btn-ghost{padding:14px 20px;font-size:.85rem}
+  .compare-table{border-radius:14px}
+  .mockup-card{padding:20px;border-radius:14px}
+  .mockup-verdict{font-size:.72rem;padding:10px 12px}
+  .footer-inner{gap:24px}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+  .footer-legal{flex-wrap:wrap;gap:12px}
   .pillars-grid{grid-template-columns:1fr 1fr}
   .pillar-card:last-child{grid-column:1/-1}
   .compare-row{grid-template-columns:1.5fr 1fr 1fr}
   .compare-cell,.compare-header-cell{padding:12px 10px;font-size:.78rem}
-  .score-breakdown{grid-template-columns:1fr 1fr}
   .cta-actions{flex-direction:column;align-items:stretch}
-  .btn-large{justify-content:center}
+}
+@media(max-width:380px){
+  .hero h1{font-size:1.55rem}
+  .section-title{font-size:1.3rem}
+  .pain-stat{font-size:1.9rem}
+  .btn-primary{padding:13px 20px;font-size:.88rem}
+  .big-score{font-size:3rem}
+  .cta-title{font-size:1.35rem}
+  .nav-cta{font-size:.78rem;padding:8px 14px}
 }
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -294,7 +337,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
       <div>
         <div class="hero-badge">Beta ouverte · 10 places disponibles</div>
         <h1>Obtenez la vérité<br>sur votre startup.<span class="line-accent">Avant les investisseurs.</span></h1>
-        <p class="hero-sub">Flaynn soumet votre dossier à un <strong>comité d'investissement virtuel propriétaire</strong>. En 24h, vous savez exactement ce qui convainc, ce qui bloque, et ce qui vous sépare du closing.</p>
+        <p class="hero-sub">Flaynn soumet votre dossier à un <strong>comité d'analyse propriétaire</strong>. En 24h, vous savez exactement ce qui convainc, ce qui bloque, et ce qu'il faut corriger pour closer.</p>
         <div class="hero-actions">
           <button class="btn-primary" onclick="window.openFounderForm && window.openFounderForm()">
             Faites partie des 10 premiers
@@ -343,12 +386,12 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
     <div class="fade-up">
       <div class="section-label">Le problème</div>
       <h2 class="section-title">Vous levez dans le noir.<br><span class="highlight">Ils ont la lumière.</span></h2>
-      <p class="section-sub">Les investisseurs passent 3 minutes sur votre deck. Vous, des mois de travail. L'information est asymétrique. Flaynn rééquilibre ça.</p>
+      <p class="section-sub">Les investisseurs passent 3 minutes sur votre deck. Vous, des mois de travail. Vous méritez de savoir avant eux. Flaynn vous donne cette avance.</p>
     </div>
     <div class="pain-grid">
-      <div class="pain-card fade-up fade-up-delay-1"><div class="pain-stat">80%</div><div class="pain-title">des decks rejetés en moins de 5 minutes</div><div class="pain-desc">Sans feedback, sans explication. Juste un silence qui vous coûte des mois d'énergie et retarde votre levée.</div></div>
+      <div class="pain-card fade-up fade-up-delay-1"><div class="pain-stat">80%</div><div class="pain-title">des decks rejetés en moins de 5 minutes</div><div class="pain-desc">Sans feedback, sans explication. Juste un silence qui vous coûte des mois.</div></div>
       <div class="pain-card fade-up fade-up-delay-2"><div class="pain-stat">6–18</div><div class="pain-title">mois perdus sur une levée bancale</div><div class="pain-desc">La plupart des fondateurs ne savent pas ce que les VCs vont vraiment challenger. Ils découvrent les failles pendant les meetings.</div></div>
-      <div class="pain-card fade-up fade-up-delay-3"><div class="pain-stat">0</div><div class="pain-title">vraie connexion avec le smart money</div><div class="pain-desc">Les plateformes généralistes envoient du volume. Les bons investisseurs cherchent de la qualité. Le matching ne se fait pas.</div></div>
+      <div class="pain-card fade-up fade-up-delay-3"><div class="pain-stat">0</div><div class="pain-title">vraie connexion avec le smart money</div><div class="pain-desc">Les bons investisseurs veulent du signal, pas du bruit. Aujourd'hui, personne ne filtre pour eux.</div></div>
     </div>
   </div>
 </section>
@@ -362,10 +405,10 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
       <div class="fade-up">
         <div class="section-label">La solution</div>
         <h2 class="section-title">Votre dossier,<br><span class="highlight">challengé comme<br>chez un top VC.</span></h2>
-        <p class="section-sub">Notre comité d'investissement virtuel propriétaire analyse chaque startup sur 5 piliers clés, avec vérification de marché en temps réel et stress-test de vos hypothèses.</p>
+        <p class="section-sub">Notre comité d'analyse propriétaire passe votre dossier au crible : 5 piliers, vérification marché en temps réel, stress-test de chaque hypothèse.</p>
       </div>
       <div class="fade-up fade-up-delay-1">
-        <div class="solution-statement">Moins de <em>15% des startups</em> soumises passent notre Double Due Diligence (IA + Humaine). Pour les investisseurs, c'est une garantie. Pour vous, c'est une raison de postuler.</div>
+        <div class="solution-statement">Moins de <em>15% des startups</em> soumises passent notre double analyse. Ce filtre protège les investisseurs. Et il protège votre crédibilité.</div>
         <div style="margin-top:28px;display:flex;gap:28px;flex-wrap:wrap">
           <div style="text-align:center"><div style="font-size:1.9rem;font-weight:700;color:var(--purple-light);letter-spacing:-.04em">24h</div><div style="font-size:.75rem;color:var(--text-dim);margin-top:2px">Délai d'analyse</div></div>
           <div style="text-align:center"><div style="font-size:1.9rem;font-weight:700;color:var(--orange);letter-spacing:-.04em">5</div><div style="font-size:.75rem;color:var(--text-dim);margin-top:2px">Piliers scorés</div></div>
@@ -390,12 +433,12 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
   <div class="container">
     <div class="fade-up" style="text-align:center;max-width:580px;margin:0 auto 56px">
       <div class="section-label" style="justify-content:center">Comment ça marche</div>
-      <h2 class="section-title">Trois étapes.<br><span class="highlight">Un rapport qui change tout.</span></h2>
+      <h2 class="section-title">Trois étapes.<br><span class="highlight">Un rapport qui dit vrai.</span></h2>
     </div>
     <div class="steps-row">
       <div class="step-card fade-up fade-up-delay-1"><div class="step-num">1</div><div class="step-title">Soumettez votre dossier</div><div class="step-desc">Remplissez le formulaire et joignez votre deck. 10 minutes suffisent. On collecte ce dont on a besoin pour une analyse rigoureuse.</div><span class="step-tag">10 min · Sans frais</span></div>
-      <div class="step-card fade-up fade-up-delay-2"><div class="step-num">2</div><div class="step-title">Comité virtuel en 24h</div><div class="step-desc">Notre Double Due Diligence — IA + Humaine — challenge votre dossier sur les 5 piliers. Vérification marché en temps réel. Zéro complaisance.</div><span class="step-tag">Analyse approfondie</span></div>
-      <div class="step-card fade-up fade-up-delay-3"><div class="step-num">3</div><div class="step-title">Rapport + matching investisseurs</div><div class="step-desc">Scoring complet, verdict argumenté et, pour les dossiers acceptés, mise en relation directe avec des investisseurs qualifiés.</div><span class="step-tag">Matching sélectif</span></div>
+      <div class="step-card fade-up fade-up-delay-2"><div class="step-num">2</div><div class="step-title">Comité virtuel en 24h</div><div class="step-desc">Votre dossier est analysé sur les 5 piliers. Vérification marché en temps réel. Pas de complaisance.</div><span class="step-tag">Analyse approfondie</span></div>
+      <div class="step-card fade-up fade-up-delay-3"><div class="step-num">3</div><div class="step-title">Rapport + matching investisseurs</div><div class="step-desc">Scoring détaillé, verdict argumenté. Si vous passez le filtre : mise en relation directe avec des investisseurs qualifiés.</div><span class="step-tag">Matching sélectif</span></div>
     </div>
   </div>
 </section>
@@ -408,7 +451,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
     <div class="fade-up" style="max-width:540px">
       <div class="section-label">Différenciation</div>
       <h2 class="section-title">Pas une plateforme<br><span class="highlight">de plus.</span></h2>
-      <p class="section-sub">Le marché regorge d'outils qui promettent de l'accès. Flaynn promet de la pertinence. Ce n'est pas le même produit.</p>
+      <p class="section-sub">Les plateformes promettent de l'accès. Flaynn promet de la pertinence.</p>
     </div>
     <div class="compare-table fade-up fade-up-delay-1">
       <div class="compare-row header-row">
@@ -445,8 +488,8 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
       </div>
       <div class="fade-up fade-up-delay-1">
         <div class="section-label">Preuve de crédibilité</div>
-        <div class="proof-quote">Notre outil nous score <em>36/100</em>.<br>On ne triche pas avec l'honnêteté.</div>
-        <div class="proof-body">On a soumis Flaynn à notre propre comité. Notre traction est insuffisante pour le stade déclaré. Notre marché est fort. Notre équipe est complète. Mais les chiffres ne mentent pas — c'est exactement pour ça qu'on construit ce produit.<br><br><strong>Un outil qui flatte ne vous aide pas. Un outil qui dit la vérité, si.</strong></div>
+        <div class="proof-quote">Notre outil nous score <em>36/100</em>.<br>C'est ça, un outil honnête.</div>
+        <div class="proof-body">On a soumis Flaynn à notre propre outil. Traction insuffisante. Marché solide. Équipe en place. Les chiffres sont là, et c'est pour ça qu'on construit ce produit.<br><br><strong>Un outil qui vous flatte ne vous prépare pas. Un outil qui vous challenge, oui.</strong></div>
         <div class="beta-badge">
           <div style="font-size:1.3rem">⚡</div>
           <div class="beta-text"><strong>10 places beta gratuites</strong><span>Scoring complet offert pour les 10 premiers fondateurs</span></div>
@@ -471,7 +514,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
       <div class="fade-up">
         <div class="section-label">Pour les investisseurs</div>
         <h2 class="section-title">Accédez au<br><span class="highlight">deal flow premium.</span></h2>
-        <p class="section-sub">Moins de 15% des startups soumises sont acceptées. Ce que vous recevez a déjà été challengé, scoré, et validé par notre Double Due Diligence.</p>
+        <p class="section-sub">Moins de 15% des startups soumises sont acceptées. Chaque dossier que vous recevez a déjà été analysé, scoré et validé.</p>
         <div class="investor-benefits">
           <div class="benefit-row"><div class="benefit-icon" style="background:rgba(107,33,168,.15)">🔍</div><div class="benefit-text"><strong>Dossiers pré-scorés sur 5 piliers</strong><span>Chaque startup livrée avec son rapport complet. Vous voyez tout avant le premier call.</span></div></div>
           <div class="benefit-row"><div class="benefit-icon" style="background:rgba(249,115,22,.12)">⚡</div><div class="benefit-text"><strong>Moins de temps en diligence initiale</strong><span>Focalisez sur les deals qui méritent votre attention. On filtre le bruit pour vous.</span></div></div>
@@ -515,7 +558,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
     <div class="fade-up">
       <div class="section-label" style="justify-content:center">Commencer maintenant</div>
       <h2 class="cta-title">Faites partie des <span style="background:linear-gradient(90deg,var(--purple-light),var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">10 premiers founders</span> à tester Flaynn.</h2>
-      <p class="cta-sub">Scoring complet offert. Rapport sur les 5 piliers. Verdict sans concession. Gratuit pour la beta.</p>
+      <p class="cta-sub">Scoring complet offert pour la beta. Rapport détaillé sur les 5 piliers.</p>
       <div class="cta-actions">
         <button class="btn-primary btn-large" onclick="window.openFounderForm && window.openFounderForm()">
           Soumettre mon dossier gratuitement
@@ -561,7 +604,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
             <path fill="#94a3b8" d="M168.32,99.64H168v30.13c0,1.06-.32,1.31-1.31,1.31h-3c-1,0-1.31-.25-1.31-1.31V92.47c0-1.43.44-1.75,1.87-1.75h3.31a2.74,2.74,0,0,1,2.93,1.75l16.16,29.69H187V92c0-1,.31-1.31,1.31-1.31h3c1,0,1.31.32,1.31,1.31v37.36c0,1.38-.44,1.69-1.87,1.69H187.4a2.78,2.78,0,0,1-2.93-1.69Z"/>
           </svg>
         </a>
-        <p style="margin-top:10px">La plateforme de matching sélectif entre startups validées et investisseurs qualifiés. L'Ère du Capital Sélectif.</p>
+        <p style="margin-top:10px">Scoring et matching sélectif entre startups validées et investisseurs qualifiés.</p>
         <div class="footer-social">
           <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-link" title="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
           <a href="https://twitter.com" target="_blank" rel="noopener" class="social-link" title="X"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -580,7 +623,7 @@ footer{border-top:1px solid var(--border);padding:48px 0 32px;position:relative;
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Flaynn Technologies. Tous droits réservés.</span>
+      <span>© 2026 Flaynn Technologies. Tous droits réservés.</span>
       <div class="footer-legal">
         <a href="#">Mentions légales</a>
         <a href="#">Politique de confidentialité</a>
