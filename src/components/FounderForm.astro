@@ -6,10 +6,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 
 <div id="ff-overlay" role="dialog" aria-modal="true" aria-label="Formulaire de candidature Flaynn" hidden>
 
-  <!-- Honeypot -->
   <input type="text" name="website" id="ff-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none!important;position:absolute;left:-9999px">
 
-  <!-- Header chrome -->
   <header class="ff-header">
     <div class="ff-progress-track" aria-hidden="true">
       <div id="ff-bar" class="ff-bar"></div>
@@ -20,10 +18,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
     </div>
   </header>
 
-  <!-- Steps -->
   <main id="ff-steps" class="ff-main">
 
-    <!-- 0 · Code bêta -->
     <div class="ff-step" data-step="0">
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Accès restreint</p>
@@ -38,7 +34,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 1 · Re-soumission -->
     <div class="ff-step" data-step="1" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Avant de commencer</p>
@@ -56,7 +51,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 2 · Nom fondateur -->
     <div class="ff-step" data-step="2" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -70,7 +64,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 3 · Email -->
     <div class="ff-step" data-step="3" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -84,7 +77,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 4 · Pays -->
     <div class="ff-step" data-step="4" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -99,7 +91,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 4 · Ville -->
     <div class="ff-step" data-step="5" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -114,7 +105,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 5 · Téléphone (optionnel) -->
     <div class="ff-step" data-step="6" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -128,7 +118,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 6 · Nom startup -->
     <div class="ff-step" data-step="7" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -142,7 +131,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 7 · Pitch une phrase -->
     <div class="ff-step" data-step="8" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -159,7 +147,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 8 · Problème -->
     <div class="ff-step" data-step="9" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -176,7 +163,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 9 · Solution -->
     <div class="ff-step" data-step="10" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -193,7 +179,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 10 · Secteur -->
     <div class="ff-step" data-step="11" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -208,7 +193,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 11 · Type client -->
     <div class="ff-step" data-step="12" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -222,7 +206,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 12 · TAM -->
     <div class="ff-step" data-step="13" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -236,7 +219,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 13 · Sources TAM -->
     <div class="ff-step" data-step="14" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -250,7 +232,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 14 · Acquisition clients (optionnel) -->
     <div class="ff-step" data-step="15" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -264,7 +245,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 15 · Concurrents (optionnel) -->
     <div class="ff-step" data-step="16" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -278,7 +258,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 16 · Stade -->
     <div class="ff-step" data-step="17" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -299,7 +278,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 17 · Revenus -->
     <div class="ff-step" data-step="18" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -316,7 +294,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 18 · MRR -->
     <div class="ff-step" data-step="19" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -330,7 +307,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 19 · Clients payants -->
     <div class="ff-step" data-step="20" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -344,7 +320,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 20 · Pourquoi vous -->
     <div class="ff-step" data-step="21" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -361,7 +336,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 21 · Temps plein -->
     <div class="ff-step" data-step="22" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -378,7 +352,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 22 · Priorité 6 mois -->
     <div class="ff-step" data-step="23" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -392,7 +365,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 23 · Montant levée -->
     <div class="ff-step" data-step="24" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
@@ -412,7 +384,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 24 · Jalons 18 mois -->
     <div class="ff-step" data-step="25" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
@@ -426,7 +397,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 25 · Utilisation fonds (optionnel) -->
     <div class="ff-step" data-step="26" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
@@ -440,7 +410,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 26 · Vision 5 ans -->
     <div class="ff-step" data-step="27" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
@@ -454,7 +423,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 28 · Pitch Deck -->
     <div class="ff-step" data-step="28" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Documents</p>
@@ -486,7 +454,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 29 · Lien démo (optionnel) -->
     <div class="ff-step" data-step="29" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Documents</p>
@@ -500,7 +467,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 30 · Doc supplémentaire (optionnel) -->
     <div class="ff-step" data-step="30" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Documents</p>
@@ -532,7 +498,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
       </div>
     </div>
 
-    <!-- 31 · Écran final -->
     <div class="ff-step ff-step--final" data-step="31" hidden>
       <div class="ff-step-inner">
         <div id="ff-final-spinner" class="ff-final-state">
@@ -553,12 +518,10 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 
   </main>
 
-  <!-- Keyboard hint -->
   <div class="ff-kbd-bar" id="ff-kbd-bar" aria-hidden="true">
     Appuyer sur <kbd>Entrée ↵</kbd> pour continuer
   </div>
 
-  <!-- Close -->
   <button class="ff-close" id="ff-close" aria-label="Fermer">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
   </button>
@@ -742,7 +705,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   font-family:var(--font);
   font-size:1.4rem;
   font-weight:400;
-  /* padding uniquement vertical */
+  /* padding corrigé */
   padding:16px 0 10px 0;
   outline:none;
   transition:border-bottom-color .2s;
@@ -793,7 +756,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   font-family:var(--font);
   font-size:1rem;
   font-weight:500;
-  /* padding 18px 28px spec exacte */
   padding:18px 28px;
   cursor:pointer;
   transition:border-color .2s,background .2s,color .2s;
@@ -899,14 +861,14 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   flex-shrink:0;
 }
 
-/* ─── Navigation ──────────────────────────────────────────── */
+/* ─── Navigation corrigée (Flexbox + Bouton Premium) ─────── */
 .ff-nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
   margin-top:48px;
 }
-/* bouton Continuer : pill gradient purple → pink, positionné à droite */
+/* bouton Continuer : pill gradient purple → pink */
 .ff-btn-primary{
   display:inline-flex;align-items:center;gap:10px;
   background:linear-gradient(135deg,var(--purple),var(--pink));
@@ -930,6 +892,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   box-shadow:0 12px 36px rgba(107,33,168,.4);
 }
 .ff-btn-primary:active{transform:translateY(0);box-shadow:none;opacity:1}
+
 /* bouton Retour : texte pur, minimaliste */
 .ff-btn-back{
   background:none;
@@ -946,7 +909,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 }
 .ff-btn-back:hover{color:var(--text-muted)}
 
-/* ─── Keyboard hint ───────────────────────────────────────── */
+/* ─── Keyboard hint (déplacé dans la nav) ─────────────────── */
 .ff-kbd-bar{
   margin-top:14px;
   font-size:.72rem;
@@ -993,7 +956,6 @@ kbd{
 
 /* ─── Écran final ─────────────────────────────────────────── */
 .ff-step--final .ff-step-inner{text-align:center}
-/* supprime le grand numéro "30" en fond sur le dernier écran */
 .ff-step--final::before{display:none}
 .ff-final-state{display:flex;flex-direction:column;align-items:center;gap:20px}
 .ff-spinner{
@@ -1011,7 +973,6 @@ kbd{
   letter-spacing:.12em;
   text-transform:uppercase;
 }
-/* ✦ icône succès */
 .ff-success-glyph{
   font-size:2.8rem;
   background:linear-gradient(135deg,var(--purple-light),var(--pink));
@@ -1253,13 +1214,17 @@ kbd{
     }
   }
 
-  // ── Navigation ───────────────────────────────────────────
+  // ── Navigation (Correction Ghosting) ─────────────────────
   function showStep(n, dir=1){
     const prev=step(current);
+    let delay = 0;
+    
     if(prev&&!prev.hidden){
       prev.classList.add('leaving');
       setTimeout(()=>{ prev.hidden=true; prev.classList.remove('leaving'); }, 220);
+      delay = 280; 
     }
+
     setTimeout(()=>{
       const next=step(n);
       if(!next) return;
@@ -1272,7 +1237,7 @@ kbd{
       const f=next.querySelector('.ff-input:not([type=file]),.ff-textarea');
       if(f) setTimeout(()=>f.focus(),50);
       saveSession();
-    }, dir===-1?0:280);
+    }, dir===-1?0:delay);
   }
 
   function goNext(n){
