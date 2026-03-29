@@ -635,7 +635,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:32px 48px; /* MARGES CORRIGÉES ICI */
+  padding:20px 60px;
   min-height:48px;
 }
 .ff-brand{
@@ -920,12 +920,12 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 
 .ff-btn-primary{
   display:inline-flex;align-items:center;gap:10px;
-  background:linear-gradient(135deg,var(--purple),var(--pink));
+  background:linear-gradient(135deg,var(--purple),var(--pink)) !important;
   color:#fff;
   font-family:var(--font);
   font-size:1.05rem;
   font-weight:600;
-  padding:18px 52px;
+  padding:18px 52px !important;
   line-height:1.2;
   border:none;
   border-radius:100px;
@@ -989,8 +989,8 @@ kbd{
 /* ─── Bouton fermer ───────────────────────────────────────── */
 .ff-close{
   position:fixed;
-  top:32px; /* MARGE CORRIGÉE */
-  right:48px; /* MARGE CORRIGÉE */
+  top:16px;
+  right:20px;
   z-index:9010;
   width:32px;height:32px;
   background:transparent;
@@ -1079,9 +1079,9 @@ kbd{
   .ff-q{font-size:2.2rem;margin-bottom:36px;letter-spacing:-.03em}
   .ff-input,.ff-textarea{font-size:1.15rem}
   .ff-choice{padding:14px 20px;font-size:.92rem}
-  .ff-btn-primary{padding:16px 36px;font-size:.95rem}
-  .ff-header-meta{padding:24px 20px}
-  .ff-close{top:20px;right:20px}
+  .ff-btn-primary{padding:16px 36px !important;font-size:.95rem}
+  .ff-header-meta{padding:16px 20px}
+  .ff-close{top:12px;right:12px}
   .ff-kbd-bar{display:none!important}
   .ff-step::before{font-size:7rem;top:-48px;left:-8px}
 }
