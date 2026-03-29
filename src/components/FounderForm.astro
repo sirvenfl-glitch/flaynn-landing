@@ -28,7 +28,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-0" class="ff-input" placeholder="••••••••••" autocomplete="off" aria-label="Code d'accès bêta" />
         <div class="ff-error" id="ff-err-0" role="alert"></div>
         <nav class="ff-nav">
-          <div></div>
+          <div class="ff-nav-left"></div>
           <div class="ff-nav-right">
             <button class="ff-btn-next ff-btn-primary" data-step="0">Accéder</button>
           </div>
@@ -39,7 +39,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
     <div class="ff-step" data-step="1" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Avant de commencer</p>
-        <p class="ff-q">Est-ce une re-soumission ?</p>
+        <p class="ff-q">Est-ce une re-soumission&nbsp;?</p>
         <p class="ff-hint">Si vous avez déjà soumis ce dossier et souhaitez le faire re-scorer.</p>
         <div class="ff-choices ff-choices--duo" id="ff-1" role="group" aria-label="Re-soumission">
           <button type="button" class="ff-choice" data-value="Oui">Oui</button>
@@ -47,10 +47,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-1" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="1">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="1">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="1">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="1">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -62,10 +60,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-2" class="ff-input" autocomplete="name" aria-required="true" placeholder="Prénom Nom" />
         <div class="ff-error" id="ff-err-2" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="2">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="2">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="2">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="2">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -77,10 +73,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="email" id="ff-3" class="ff-input" autocomplete="email" aria-required="true" placeholder="vous@startup.com" />
         <div class="ff-error" id="ff-err-3" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="3">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="3">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="3">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="3">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -92,10 +86,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-4" class="ff-input" aria-required="true" placeholder="Ex: France" />
         <div class="ff-error" id="ff-err-4" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="4">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="4">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="4">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="4">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -107,10 +99,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-5" class="ff-input" aria-required="true" placeholder="Ex: Paris" />
         <div class="ff-error" id="ff-err-5" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="5">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="5">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="5">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="5">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -122,10 +112,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="tel" id="ff-6" class="ff-input" autocomplete="tel" placeholder="+33 6 00 00 00 00" />
         <div class="ff-error" id="ff-err-6" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="6">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="6">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="6">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="6">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -137,10 +125,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-7" class="ff-input" aria-required="true" placeholder="Acme Inc." />
         <div class="ff-error" id="ff-err-7" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="7">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="7">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="7">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="7">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -155,10 +141,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-8" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="8">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="8">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="8">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="8">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -173,10 +157,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-9" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="9">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="9">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="9">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="9">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -191,10 +173,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-10" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="10">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="10">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="10">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="10">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -207,10 +187,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <div class="ff-cs-wrap" id="ff-cs-11" data-cs="sector"></div>
         <div class="ff-error" id="ff-err-11" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="11">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="11">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="11">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="11">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -222,10 +200,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-12" class="ff-input" placeholder="PME françaises, DSI grands groupes…" aria-required="true" />
         <div class="ff-error" id="ff-err-12" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="12">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="12">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="12">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="12">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -237,10 +213,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="number" id="ff-13" class="ff-input" placeholder="2 000 000 000" min="0" aria-required="true" />
         <div class="ff-error" id="ff-err-13" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="13">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="13">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="13">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="13">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -252,10 +226,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-14" class="ff-textarea" rows="5" aria-required="true" placeholder="Sources, méthodologie, études de marché…"></textarea>
         <div class="ff-error" id="ff-err-14" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="14">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="14">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="14">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="14">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -267,10 +239,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-15" class="ff-textarea" rows="5" placeholder="Canaux, stratégie, coût d'acquisition…"></textarea>
         <div class="ff-error" id="ff-err-15" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="15">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="15">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="15">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="15">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -282,10 +252,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-16" class="ff-textarea" rows="5" placeholder="Concurrents directs et votre avantage différentiel…"></textarea>
         <div class="ff-error" id="ff-err-16" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="16">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="16">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="16">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="16">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -304,10 +272,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-17" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="17">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="17">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="17">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="17">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -322,10 +288,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-18" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="18">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="18">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="18">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="18">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -337,10 +301,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="number" id="ff-19" class="ff-input" min="0" placeholder="0" />
         <div class="ff-error" id="ff-err-19" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="19">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="19">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="19">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="19">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -352,10 +314,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="number" id="ff-20" class="ff-input" min="0" placeholder="0" />
         <div class="ff-error" id="ff-err-20" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="20">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="20">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="20">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="20">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -370,10 +330,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-21" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="21">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="21">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="21">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="21">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -388,10 +346,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-22" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="22">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="22">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="22">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="22">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -403,10 +359,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-23" class="ff-textarea" rows="5" aria-required="true" placeholder="Votre objectif numéro un…"></textarea>
         <div class="ff-error" id="ff-err-23" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="23">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="23">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="23">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="23">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -424,10 +378,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-24" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="24">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="24">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="24">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="24">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -439,10 +391,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-25" class="ff-textarea" rows="5" aria-required="true" placeholder="Milestones produit, revenus, équipe…"></textarea>
         <div class="ff-error" id="ff-err-25" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="25">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="25">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="25">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="25">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -454,10 +404,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-26" class="ff-textarea" rows="5" placeholder="R&D, recrutement, marketing…"></textarea>
         <div class="ff-error" id="ff-err-26" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="26">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="26">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="26">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="26">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -469,10 +417,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-27" class="ff-textarea" rows="5" aria-required="true" placeholder="Votre vision long terme…"></textarea>
         <div class="ff-error" id="ff-err-27" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="27">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="27">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="27">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="27">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -502,10 +448,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-28" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="28">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="28">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="28">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="28">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -517,10 +461,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="url" id="ff-29" class="ff-input" placeholder="https://www.loom.com/share/…" />
         <div class="ff-error" id="ff-err-29" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="29">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-primary" data-step="29">Continuer</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="29">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="29">Continuer</button></div>
         </nav>
       </div>
     </div>
@@ -550,10 +492,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-30" role="alert"></div>
         <nav class="ff-nav">
-          <button class="ff-btn-back" data-step="30">← Retour</button>
-          <div class="ff-nav-right">
-            <button class="ff-btn-next ff-btn-submit ff-btn-primary" data-step="30">Soumettre mon dossier</button>
-          </div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="30">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-submit ff-btn-primary" data-step="30">Soumettre mon dossier</button></div>
         </nav>
       </div>
     </div>
@@ -589,8 +529,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 </div>
 
 <style>
-/* ─── Reset + variables locales ──────────────────────────── */
 #ff-overlay *,#ff-overlay *::before,#ff-overlay *::after{box-sizing:border-box;margin:0;padding:0}
+
 #ff-overlay{
   --ok:#4ade80;
   --err:#f87171;
@@ -604,135 +544,132 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   --text-dim:#475569;
   --bg:#0A0A0F;
   --font:'IBM Plex Sans',sans-serif;
-  position:fixed;inset:0;z-index:9000;
-  width:100%;height:100%;box-sizing:border-box;
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  width:100%;
+  height:100%;
   background:
-    radial-gradient(ellipse at 30% 40%, rgba(107,33,168,.12), transparent 60%),
+    radial-gradient(ellipse at 32% 35%, rgba(107,33,168,.14), transparent 58%),
     var(--bg);
   font-family:var(--font);
   color:var(--text);
-  display:flex;flex-direction:column;
+  display:flex;
+  flex-direction:column;
   overflow-y:auto;
 }
+
 #ff-overlay[hidden]{display:none}
 
-/* ─── Header ──────────────────────────────────────────────── */
+/* ───────── Header ───────── */
 .ff-header{
-  position:fixed;top:0;left:0;right:0;z-index:9001;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:9001;
 }
+
 .ff-progress-track{
-  height:3px;
-  background:rgba(255,255,255,.05);
+  height:2px;
+  background:rgba(255,255,255,.06);
   position:relative;
 }
+
 .ff-bar{
   height:100%;
   background:linear-gradient(90deg,var(--purple-light),var(--pink));
   width:0%;
   transition:width .3s ease-out;
 }
-.ff-header-meta{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 60px;
-  min-height:48px;
-}
-.ff-brand{
-  font-size:.7rem;
-  font-weight:700;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--text-dim);
-}
-.ff-step-label{
-  font-size:.68rem;
-  font-weight:600;
-  color:var(--gold);
-  letter-spacing:.08em;
-  font-variant-numeric:tabular-nums;
+
+/* on garde ces éléments dans le DOM pour ne pas casser le JS,
+   mais on les masque visuellement */
+.ff-header-meta,
+.ff-close{
+  display:none !important;
 }
 
-/* ─── Main / Steps ────────────────────────────────────────── */
+/* ───────── Main / Steps ───────── */
 .ff-main{
   flex:1;
+  min-height:100dvh;
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
-  padding:120px 48px 100px;
+  padding:88px 32px 56px;
   width:100%;
 }
 
 .ff-step{
   position:relative;
   width:100%;
-  max-width:560px;
+  max-width:720px;
   margin:0 auto;
   animation:ff-in .3s ease-out both;
 }
+
 .ff-step[hidden]{display:none!important}
+
 .ff-step.leaving{
   animation:ff-out .22s ease-in both;
   pointer-events:none;
 }
 
+/* supprime le gros numéro décoratif */
 .ff-step::before{
-  content:attr(data-step);
-  position:absolute;
-  top:-60px;
-  left:-16px;
-  font-size:10rem;
-  font-weight:700;
-  line-height:1;
-  color:var(--purple-light);
-  opacity:.13;
-  pointer-events:none;
-  user-select:none;
-  z-index:0;
-  font-variant-numeric:tabular-nums;
-  letter-spacing:-.05em;
+  display:none;
 }
 
 .ff-step-inner{
   position:relative;
   z-index:1;
+  width:min(100%,680px);
+  margin:0 auto;
+  padding-top:12px;
 }
 
 @keyframes ff-in{
-  from{opacity:0;transform:translateY(40px)}
+  from{opacity:0;transform:translateY(32px)}
   to{opacity:1;transform:translateY(0)}
 }
 @keyframes ff-out{
   from{opacity:1;transform:translateY(0)}
-  to{opacity:0;transform:translateY(-24px)}
+  to{opacity:0;transform:translateY(-18px)}
 }
 
-/* ─── Typographie ─────────────────────────────────────────── */
+/* ───────── Typo ───────── */
 .ff-eyebrow{
-  font-size:.7rem;
+  font-size:.72rem;
   font-weight:600;
-  letter-spacing:.2em;
+  letter-spacing:.18em;
   text-transform:uppercase;
-  color:var(--purple-light);
-  margin-bottom:24px;
+  color:rgba(147,51,234,.95);
+  margin-bottom:14px;
 }
+
 .ff-q{
   display:block;
-  font-size:clamp(2.8rem,5vw,4.2rem);
+  max-width:18ch;
+  font-size:clamp(2.6rem,5.2vw,4.4rem);
   font-weight:700;
-  line-height:1.1;
-  letter-spacing:-.04em;
+  line-height:1.02;
+  letter-spacing:-.05em;
   color:var(--text);
-  margin-bottom:52px;
+  margin-bottom:14px;
+  text-wrap:balance;
+  hyphens:none;
 }
+
 .ff-hint{
-  font-size:.85rem;
-  color:var(--text-muted);
-  line-height:1.7;
-  font-weight:300;
-  margin-top:-38px;
-  margin-bottom:32px;
+  max-width:58ch;
+  font-size:1rem;
+  color:rgba(241,245,249,.68);
+  line-height:1.6;
+  font-weight:400;
+  margin:0 0 28px;
 }
+
 .ff-opt{
   font-size:.45em;
   font-weight:400;
@@ -740,43 +677,68 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   letter-spacing:.04em;
   text-transform:uppercase;
 }
-.ff-req{color:var(--orange);font-size:.8em}
 
-/* ─── Inputs ─────────────────────────────────────────────── */
-.ff-input,.ff-textarea{
+.ff-req{
+  color:var(--orange);
+  font-size:.8em;
+}
+
+/* ───────── Inputs ───────── */
+.ff-input,
+.ff-textarea{
   display:block;
   width:100%;
+  min-height:60px;
   background:transparent;
   border:none;
-  border-bottom:2px solid rgba(255,255,255,.15);
+  border-bottom:1px solid rgba(255,255,255,.16);
   border-radius:0;
   color:var(--text);
   font-family:var(--font);
-  font-size:1.4rem;
+  font-size:1.2rem;
   font-weight:400;
-  padding:16px 0 10px 0;
+  padding:18px 0 14px;
   outline:none;
   transition:border-bottom-color .2s;
   resize:none;
   -webkit-appearance:none;
 }
-.ff-input:focus,.ff-textarea:focus{
+
+.ff-input:focus,
+.ff-textarea:focus{
   border-bottom-color:var(--purple-light);
   background:transparent;
   box-shadow:none;
 }
-.ff-input::placeholder,.ff-textarea::placeholder{
+
+.ff-input::placeholder,
+.ff-textarea::placeholder{
   color:var(--text-dim);
   font-weight:300;
 }
-.ff-input[type=number]::-webkit-inner-spin-button,
-.ff-input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
-.ff-input[type=number]{-moz-appearance:textfield}
 
-.ff-field-wrap{position:relative;padding-bottom:28px}
+.ff-input[type=number]::-webkit-inner-spin-button,
+.ff-input[type=number]::-webkit-outer-spin-button{
+  -webkit-appearance:none;
+}
+
+.ff-input[type=number]{
+  -moz-appearance:textfield;
+}
+
+.ff-textarea{
+  min-height:140px;
+}
+
+.ff-field-wrap{
+  position:relative;
+  padding-bottom:28px;
+}
+
 .ff-counter{
   position:absolute;
-  bottom:4px;right:0;
+  bottom:4px;
+  right:0;
   font-size:.68rem;
   color:var(--text-dim);
   pointer-events:none;
@@ -784,90 +746,163 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   letter-spacing:.04em;
 }
 
-/* ─── Choices ────────────────────────────────────────────── */
+/* ───────── Choices ───────── */
 .ff-choices{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
-  margin-bottom:8px;
+  gap:10px;
+  margin-bottom:6px;
 }
-.ff-choices--duo{gap:16px}
+
 .ff-choice{
   background:transparent;
   border:1px solid rgba(255,255,255,.1);
-  border-radius:12px;
+  border-radius:14px;
   color:var(--text-muted);
   font-family:var(--font);
   font-size:1rem;
   font-weight:500;
-  padding:18px 28px;
+  padding:16px 22px;
   cursor:pointer;
-  transition:border-color .2s,background .2s,color .2s;
-  white-space:nowrap;
+  transition:border-color .2s,background .2s,color .2s,transform .2s;
+  white-space:normal;
+  line-height:1.35;
+  text-align:center;
   -webkit-tap-highlight-color:transparent;
   letter-spacing:.01em;
 }
+
 .ff-choice:hover{
-  border-color:rgba(147,51,234,.4);
+  border-color:rgba(147,51,234,.42);
   color:var(--text);
+  transform:translateY(-1px);
 }
+
 .ff-choice.selected{
   border-color:var(--purple-light);
-  background:rgba(147,51,234,.15);
+  background:rgba(147,51,234,.14);
   color:var(--text);
   font-weight:600;
 }
-.ff-choices--duo .ff-choice{
-  flex:1;
-  text-align:center;
-  font-size:1.05rem;
-  padding:20px 28px;
+
+.ff-choices--duo{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  padding:6px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  background:rgba(255,255,255,.02);
 }
 
-/* ─── Dropzone ────────────────────────────────────────────── */
+.ff-choices--duo .ff-choice{
+  min-height:56px;
+  padding:16px 20px;
+  border:0;
+  border-radius:14px;
+  background:transparent;
+  color:var(--text-muted);
+  text-align:center;
+  font-size:1rem;
+}
+
+.ff-choices--duo .ff-choice:hover{
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  border-color:transparent;
+}
+
+.ff-choices--duo .ff-choice.selected{
+  background:rgba(147,51,234,.16);
+  color:var(--text);
+  box-shadow:inset 0 0 0 1px rgba(147,51,234,.55);
+  font-weight:600;
+}
+
+/* ───────── Dropzone ───────── */
 .ff-dropzone{
   position:relative;
   border:1px dashed rgba(255,255,255,.12);
-  border-radius:16px;
+  border-radius:18px;
   background:transparent;
   transition:border-color .2s,background .2s;
   margin-bottom:4px;
   overflow:hidden;
 }
-.ff-dropzone:hover,.ff-dropzone.drag-over{
+
+.ff-dropzone:hover,
+.ff-dropzone.drag-over{
   border-color:rgba(147,51,234,.4);
   background:rgba(147,51,234,.05);
 }
+
 .ff-file-input{
-  position:absolute;inset:0;
-  opacity:0;cursor:pointer;
-  width:100%;height:100%;
+  position:absolute;
+  inset:0;
+  opacity:0;
+  cursor:pointer;
+  width:100%;
+  height:100%;
 }
+
 .ff-drop-idle{
-  display:flex;flex-direction:column;
-  align-items:center;gap:10px;
-  padding:44px 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  padding:36px 24px;
   pointer-events:none;
 }
+
 .ff-drop-icon{
-  width:52px;height:52px;
+  width:52px;
+  height:52px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
   border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   color:var(--text-muted);
   margin-bottom:6px;
 }
-.ff-drop-label{font-size:.95rem;color:var(--text-muted);font-weight:500}
-.ff-drop-sub{font-size:.8rem;color:var(--text-dim)}
-.ff-drop-link{color:var(--purple-light);text-decoration:underline;text-underline-offset:3px}
-.ff-drop-active{padding:28px 24px}
+
+.ff-drop-label{
+  font-size:.95rem;
+  color:var(--text-muted);
+  font-weight:500;
+}
+
+.ff-drop-sub{
+  font-size:.8rem;
+  color:var(--text-dim);
+}
+
+.ff-drop-link{
+  color:var(--purple-light);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.ff-drop-active{
+  padding:28px 24px;
+}
+
 .ff-file-row{
-  display:flex;align-items:center;gap:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
   color:var(--text-muted);
   margin-bottom:16px;
 }
-.ff-file-name{font-size:.88rem;color:var(--text);font-weight:500;word-break:break-all}
+
+.ff-file-name{
+  font-size:.88rem;
+  color:var(--text);
+  font-weight:500;
+  word-break:break-all;
+}
+
 .ff-upload-track{
   height:3px;
   background:rgba(255,255,255,.06);
@@ -875,6 +910,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   overflow:hidden;
   margin-bottom:12px;
 }
+
 .ff-upload-fill{
   height:100%;
   background:linear-gradient(90deg,var(--purple-light),var(--pink));
@@ -882,99 +918,132 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   border-radius:100px;
   transition:width .2s;
 }
-.ff-file-status{font-size:.78rem;font-weight:500;color:var(--text-dim)}
+
+.ff-file-status{
+  font-size:.78rem;
+  font-weight:500;
+  color:var(--text-dim);
+}
+
 .ff-file-status.ok{color:var(--ok)}
 .ff-file-status.err{color:var(--err)}
 
-/* ─── Erreur inline ───────────────────────────────────────── */
+/* ───────── Erreurs ───────── */
 .ff-error{
-  min-height:22px;
-  margin-top:14px;
+  min-height:20px;
+  margin-top:12px;
   font-size:.78rem;
   color:var(--err);
-  display:flex;align-items:center;gap:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
   letter-spacing:.02em;
 }
+
 .ff-error:not(:empty)::before{
   content:'';
   display:inline-block;
-  width:4px;height:4px;
+  width:4px;
+  height:4px;
   background:var(--err);
   border-radius:50%;
   flex-shrink:0;
 }
 
-/* ─── Navigation ──────────────────────────────────────────── */
+/* ───────── Navigation ───────── */
 .ff-nav{
   display:flex;
-  align-items:center;
-  justify-content:flex-start; /* Aligné à gauche par défaut */
-  margin-top:64px; /* Plus d'espace avec les boutons Oui/Non */
-}
-/* Flex-box pour grouper le texte clavier et le bouton à droite */
-.ff-nav-right {
-  display:flex;
-  align-items:center;
-  margin-left:auto; /* Pousse ce bloc tout à droite */
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-top:40px;
 }
 
+.ff-nav-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+  margin-left:auto;
+}
+.ff-nav-left{
+  display:flex;
+  align-items:flex-start;
+}
 .ff-btn-primary{
-  display:inline-flex;align-items:center;gap:10px;
-  background:linear-gradient(135deg,var(--purple),var(--pink)) !important;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
   color:#fff;
   font-family:var(--font);
-  font-size:1.05rem;
+  font-size:.92rem;
   font-weight:600;
-  padding:18px 52px !important;
+  min-height:52px;
+  padding:15px 30px;
   line-height:1.2;
   border:none;
-  border-radius:100px;
+  border-radius:999px;
   cursor:pointer;
-  letter-spacing:.06em;
+  letter-spacing:.08em;
   text-transform:uppercase;
   transition:opacity .2s,transform .2s,box-shadow .2s;
   white-space:nowrap;
+  box-shadow:0 10px 28px rgba(107,33,168,.22);
 }
+
 .ff-btn-primary:hover{
-  opacity:.88;
+  opacity:.95;
   transform:translateY(-1px);
-  box-shadow:0 12px 36px rgba(107,33,168,.4);
+  box-shadow:0 16px 36px rgba(107,33,168,.32);
 }
-.ff-btn-primary:active{transform:translateY(0);box-shadow:none;opacity:1}
+
+.ff-btn-primary:active{
+  transform:translateY(0);
+  box-shadow:none;
+  opacity:1;
+}
 
 .ff-btn-back{
   background:none;
   border:none;
-  color:var(--text-dim);
+  color:rgba(148,163,184,.72);
   font-family:var(--font);
-  font-size:.82rem;
-  font-weight:400;
+  font-size:.78rem;
+  font-weight:500;
   padding:8px 0;
+  margin-top:10px;
   cursor:pointer;
   transition:color .2s;
-  letter-spacing:.06em;
+  letter-spacing:.08em;
   text-transform:uppercase;
 }
-.ff-btn-back:hover{color:var(--text-muted)}
 
-/* ─── Keyboard hint ───────────────────────────────────────── */
+.ff-btn-back:hover{
+  color:var(--text-muted);
+}
+
+/* ───────── Keyboard hint ───────── */
 .ff-kbd-bar{
-  font-size:.72rem;
+  font-size:.68rem;
   color:var(--text-dim);
-  display:none; /* Affiché via JS */
+  display:none;
   align-items:center;
-  gap:8px;
+  justify-content:flex-end;
+  gap:6px;
   pointer-events:none;
   white-space:nowrap;
   opacity:0;
   transition:opacity .3s;
   letter-spacing:.08em;
   text-transform:uppercase;
-  margin-right:20px; /* Espace propre avant le bouton */
 }
+
 .ff-kbd-bar.visible{opacity:1}
+
 kbd{
-  display:inline-flex;align-items:center;
+  display:inline-flex;
+  align-items:center;
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.1);
   border-radius:5px;
@@ -986,38 +1055,35 @@ kbd{
   text-transform:none;
 }
 
-/* ─── Bouton fermer ───────────────────────────────────────── */
-.ff-close{
-  position:fixed;
-  top:16px;
-  right:20px;
-  z-index:9010;
-  width:32px;height:32px;
-  background:transparent;
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:50%;
-  color:var(--text-dim);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  transition:border-color .2s,color .2s;
-}
-.ff-close:hover{
-  border-color:rgba(255,255,255,.25);
-  color:var(--text);
+/* ───────── Final ───────── */
+.ff-step--final .ff-step-inner{
+  text-align:center;
 }
 
-/* ─── Écran final ─────────────────────────────────────────── */
-.ff-step--final .ff-step-inner{text-align:center}
-.ff-step--final::before{display:none}
-.ff-final-state{display:flex;flex-direction:column;align-items:center;gap:20px}
+.ff-step--final::before{
+  display:none;
+}
+
+.ff-final-state{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+
 .ff-spinner{
-  width:36px;height:36px;
+  width:36px;
+  height:36px;
   border:1.5px solid rgba(255,255,255,.08);
   border-top-color:var(--purple-light);
   border-radius:50%;
   animation:spin .8s linear infinite;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
 .ff-final-label{
   font-size:.75rem;
   color:var(--text-dim);
@@ -1025,6 +1091,7 @@ kbd{
   letter-spacing:.12em;
   text-transform:uppercase;
 }
+
 .ff-success-glyph{
   font-size:2.8rem;
   background:linear-gradient(135deg,var(--purple-light),var(--pink));
@@ -1034,29 +1101,44 @@ kbd{
   line-height:1;
   margin-bottom:4px;
 }
+
 .ff-success-title{
   font-size:clamp(2.8rem,5vw,4rem);
   font-weight:700;
   letter-spacing:-.04em;
   color:var(--text);
-  line-height:1.1;
+  line-height:1.05;
 }
+
 .ff-success-body{
-  font-size:.95rem;
+  font-size:.98rem;
   color:var(--text-muted);
-  line-height:1.8;
+  line-height:1.75;
   font-weight:300;
-  max-width:420px;
+  max-width:460px;
 }
-.ff-success-body strong{color:var(--text);font-weight:500}
+
+.ff-success-body strong{
+  color:var(--text);
+  font-weight:500;
+}
+
 .ff-err-body{
-  font-size:.9rem;
+  font-size:.92rem;
   color:var(--text-muted);
   line-height:1.8;
   text-align:center;
 }
-.ff-err-body a{color:var(--purple-light);text-decoration:none}
-.ff-err-body a:hover{text-decoration:underline}
+
+.ff-err-body a{
+  color:var(--purple-light);
+  text-decoration:none;
+}
+
+.ff-err-body a:hover{
+  text-decoration:underline;
+}
+
 .ff-btn-retry{
   background:transparent;
   border:1px solid rgba(255,255,255,.1);
@@ -1071,81 +1153,746 @@ kbd{
   cursor:pointer;
   transition:border-color .2s,color .2s;
 }
-.ff-btn-retry:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
 
-/* ─── Responsive ──────────────────────────────────────────── */
+.ff-btn-retry:hover{
+  border-color:rgba(255,255,255,.25);
+  color:var(--text);
+}
+
+/* ───────── Mobile ───────── */
 @media(max-width:640px){
-  .ff-main{padding:96px 28px 96px}
-  .ff-q{font-size:2.2rem;margin-bottom:36px;letter-spacing:-.03em}
-  .ff-input,.ff-textarea{font-size:1.15rem}
-  .ff-choice{padding:14px 20px;font-size:.92rem}
-  .ff-btn-primary{padding:16px 36px !important;font-size:.95rem}
-  .ff-header-meta{padding:16px 20px}
-  .ff-close{top:12px;right:12px}
-  .ff-kbd-bar{display:none!important}
-  .ff-step::before{font-size:7rem;top:-48px;left:-8px}
+  .ff-main{
+    padding:72px 20px 36px;
+  }
+
+  .ff-step{
+    max-width:100%;
+  }
+
+  .ff-step-inner{
+    width:100%;
+  }
+
+  .ff-q{
+    max-width:none;
+    font-size:clamp(2.2rem,10vw,3rem);
+    margin-bottom:12px;
+    letter-spacing:-.04em;
+  }
+
+  .ff-hint{
+    font-size:.95rem;
+    margin-bottom:24px;
+  }
+
+  .ff-input,
+  .ff-textarea{
+    font-size:1.08rem;
+  }
+
+  .ff-choice{
+    padding:14px 18px;
+    font-size:.92rem;
+  }
+
+  .ff-choices--duo{
+    grid-template-columns:1fr;
+  }
+
+  .ff-nav{
+    margin-top:32px;
+    gap:12px;
+  }
+
+  .ff-nav-right{
+    width:100%;
+    align-items:stretch;
+  }
+
+  .ff-btn-primary{
+    width:100%;
+  }
+
+  .ff-kbd-bar{
+    display:none!important;
+  }
 }
 </style>
 
 <style is:global>
-/* ── Combobox (Gardé uniquement pour Secteur) ────────────── */
-.ff-cs-wrap { position:relative; width:100%; margin-top:8px; }
+.ff-cs-wrap{
+  position:relative;
+  width:100%;
+  margin-top:8px;
+}
 
-.ff-cs-trigger {
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  width:100%; padding:16px 0; background:transparent; cursor:pointer;
-  border:none; border-bottom:2px solid rgba(255,255,255,.15);
+.ff-cs-trigger{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  min-height:60px;
+  padding:18px 0 14px;
+  background:transparent;
+  cursor:pointer;
+  border:none;
+  border-bottom:1px solid rgba(255,255,255,.16);
   transition:border-color .2s;
 }
-.ff-cs-trigger:focus { outline:none; border-bottom-color:var(--purple-light); }
-.ff-cs-trigger[aria-expanded="true"] { border-bottom-color:var(--purple-light); }
 
-.ff-cs-val {
-  flex:1; font-size:1.4rem; color:var(--text); font-family:var(--font);
-  text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-}
-.ff-cs-ph { color:var(--text-dim); }
-
-.ff-cs-ico {
-  flex-shrink:0; width:20px; height:20px; color:var(--text-muted);
-  transition:transform .2s; pointer-events:none;
+.ff-cs-trigger:focus{
+  outline:none;
+  border-bottom-color:var(--purple-light);
 }
 
-.ff-cs-search {
-  width:100%; padding:16px 0; background:transparent;
-  border:none; border-bottom:2px solid var(--purple-light);
-  color:var(--text); font-size:1.4rem; font-family:var(--font); outline:none;
+.ff-cs-trigger[aria-expanded="true"]{
+  border-bottom-color:var(--purple-light);
 }
-.ff-cs-search::placeholder { color:var(--text-dim); }
 
-.ff-cs-list {
-  list-style:none; margin:0; padding:6px;
-  background:#1a1a2e;
-  border:1px solid rgba(147,51,234,.3); border-radius:14px;
-  box-shadow:0 20px 60px rgba(0,0,0,.65), 0 0 0 1px rgba(147,51,234,.1);
-  max-height:280px; overflow-y:auto;
-  scrollbar-width:thin; scrollbar-color:rgba(147,51,234,.4) transparent;
+.ff-cs-val{
+  flex:1;
+  font-size:1.2rem;
+  color:var(--text);
+  font-family:var(--font);
+  text-align:left;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-.ff-cs-list::-webkit-scrollbar { width:4px; }
-.ff-cs-list::-webkit-scrollbar-thumb { background:rgba(147,51,234,.4); border-radius:2px; }
 
-.ff-cs-opt {
-  display:flex; align-items:center; gap:10px;
-  padding:10px 14px; border-radius:10px; cursor:pointer;
-  color:var(--text); font-size:1rem; font-family:var(--font);
-  transition:background .12s; user-select:none;
+.ff-cs-ph{
+  color:var(--text-dim);
 }
-.ff-cs-opt--act, .ff-cs-opt:hover { background:rgba(147,51,234,.18); }
-.ff-cs-opt--sel { color:var(--purple-light); }
-.ff-cs-pfx { font-size:1.25em; line-height:1; flex-shrink:0; }
-.ff-cs-chk { color:var(--purple-light); font-size:.85rem; margin-left:auto; }
-.ff-cs-empty {
-  padding:16px 14px; color:var(--text-dim); font-size:.95rem;
-  font-family:var(--font); text-align:center;
+
+.ff-cs-ico{
+  flex-shrink:0;
+  width:20px;
+  height:20px;
+  color:var(--text-muted);
+  transition:transform .2s;
+  pointer-events:none;
+}
+
+.ff-cs-search{
+  width:100%;
+  min-height:60px;
+  padding:18px 0 14px;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--purple-light);
+  color:var(--text);
+  font-size:1.2rem;
+  font-family:var(--font);
+  outline:none;
+}
+
+.ff-cs-search::placeholder{
+  color:var(--text-dim);
+}
+
+.ff-cs-list{
+  list-style:none;
+  margin:0;
+  padding:6px;
+  background:#131320;
+  border:1px solid rgba(147,51,234,.26);
+  border-radius:16px;
+  box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px rgba(147,51,234,.08);
+  max-height:280px;
+  overflow-y:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(147,51,234,.4) transparent;
+}
+
+.ff-cs-list::-webkit-scrollbar{
+  width:4px;
+}
+
+.ff-cs-list::-webkit-scrollbar-thumb{
+  background:rgba(147,51,234,.4);
+  border-radius:2px;
+}
+
+.ff-cs-opt{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  color:var(--text);
+  font-size:.98rem;
+  font-family:var(--font);
+  transition:background .12s,color .12s;
+  user-select:none;
+}
+
+.ff-cs-opt--act,
+.ff-cs-opt:hover{
+  background:rgba(147,51,234,.18);
+}
+
+.ff-cs-opt--sel{
+  color:var(--text);
+}
+
+.ff-cs-pfx{
+  font-size:1.2em;
+  line-height:1;
+  flex-shrink:0;
+}
+
+.ff-cs-chk{
+  color:var(--purple-light);
+  font-size:.85rem;
+  margin-left:auto;
+}
+
+.ff-cs-empty{
+  padding:16px 14px;
+  color:var(--text-dim);
+  font-size:.95rem;
+  font-family:var(--font);
+  text-align:center;
 }
 </style>
 
 <script define:vars={{ BETA_CODE, WEBHOOK_URL, UPLOAD_URL }}>
-window.__FF_CONFIG = { BETA_CODE, WEBHOOK_URL, UPLOAD_URL };
+(function(){
+  const TOTAL = 30;
+  let current = 0;
+  let startTime = null;
+  const csrf = crypto.randomUUID();
+  const uploads = { 28:{url:'',filename:''}, 30:{url:'',filename:''} };
+  const SK = 'ff_data';
+
+  const overlay  = document.getElementById('ff-overlay');
+  const bar      = document.getElementById('ff-bar');
+  const lbl      = document.getElementById('ff-step-label');
+  const kbdBar   = document.getElementById('ff-kbd-bar');
+  const closeBtn = document.getElementById('ff-close');
+
+  // ── Helpers ──────────────────────────────────────────────
+  const step  = n => document.querySelector(`.ff-step[data-step="${n}"]`);
+  const inp   = n => document.getElementById(`ff-${n}`);
+  const err   = n => document.getElementById(`ff-err-${n}`);
+  const setErr= (n,m) => { const e=err(n); if(e) e.textContent=m; };
+  const clrErr= n => { const e=err(n); if(e) e.textContent=''; };
+  const choice= n => { const g=document.getElementById(`ff-${n}`); if(!g) return ''; const s=g.querySelector('.ff-choice.selected'); return s?s.dataset.value:''; };
+
+  function progress(n){
+    const pct = n===0 ? 3 : Math.round((n/TOTAL)*100);
+    bar.style.width = pct+'%';
+    lbl.textContent = n===0 ? 'Accès' : `${n} / ${TOTAL}`;
+  }
+
+  function reqLabels(){
+    const rev = choice(18) === 'Oui';
+    [19,20].forEach(n => {
+      const el = document.getElementById(`ff-${n}-req-label`);
+      if(el) el.innerHTML = rev
+        ? '<span class="ff-req" style="font-size:.55em;color:var(--orange)">*</span>'
+        : '<span class="ff-opt">— optionnel</span>';
+    });
+  }
+
+  function saveSession(){
+    const d={};
+    for(let i=1;i<=30;i++){
+      const el=inp(i);
+      if(!el||el.type==='file') continue;
+      d[`f${i}`]=el.value;
+    }
+    document.querySelectorAll('.ff-choice.selected').forEach(b=>{
+      const g=b.closest('.ff-choices');
+      if(g) d[`c${g.id}`]=b.dataset.value;
+    });
+    sessionStorage.setItem(SK,JSON.stringify(d));
+  }
+
+  function loadSession(){
+    try{
+      const raw=sessionStorage.getItem(SK);
+      if(!raw) return;
+      const d=JSON.parse(raw);
+      for(const [k,v] of Object.entries(d)){
+        if(k.startsWith('f')){
+          const el=document.getElementById(`ff-${k.slice(1)}`);
+          if(el&&el.type!=='file') el.value=v;
+        } else if(k.startsWith('c')){
+          const g=document.getElementById(k.slice(1));
+          if(g) g.querySelectorAll('.ff-choice').forEach(b=>{ if(b.dataset.value===v) b.classList.add('selected'); });
+        }
+      }
+      syncCounters();
+      const saved11=inp(11)?.value;
+      setTimeout(()=>{
+        if(saved11&&window.__ffRestoreCS) window.__ffRestoreCS(11,saved11);
+      },50);
+    }catch(e){}
+  }
+
+  function syncCounters(){
+    [[8,140],[9,400],[10,400],[21,500]].forEach(([n,max])=>{
+      const el=inp(n); const c=document.getElementById(`ff-count-${n}`);
+      if(el&&c) c.textContent=`${el.value.length} / ${max}`;
+    });
+  }
+
+  // ── Keyboard hint injection ─────────────────────────────
+  function updateKbd(n){
+    const s=step(n);
+    if(!s){kbdBar.style.display='none'; kbdBar.classList.remove('visible'); return;}
+    
+    const hasText=s.querySelector('.ff-input:not([type=file]),.ff-textarea');
+    const navRight=s.querySelector('.ff-nav-right');
+    
+    if(hasText && navRight){
+      // Injecte le texte EXACTEMENT en dessous du bouton Continuer
+      navRight.appendChild(kbdBar);
+      kbdBar.style.display='flex';
+      setTimeout(()=>kbdBar.classList.add('visible'), 10);
+    } else {
+      kbdBar.classList.remove('visible');
+      setTimeout(()=> {if(!kbdBar.classList.contains('visible')) kbdBar.style.display='none';}, 300);
+    }
+  }
+
+  // ── Validation ───────────────────────────────────────────
+  const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const URL_RE=/^https?:\/\/.+\..+/;
+
+  function validate(n){
+    clrErr(n);
+    const el=inp(n);
+    const required=()=>{ if(!el||!el.value.trim()){setErr(n,'Ce champ est requis.');return false;} return true; };
+    switch(n){
+      case 0: if(!el||el.value.trim()!==BETA_CODE){setErr(0,'Code invalide. Contactez contact@flaynn.fr.');return false;} return true;
+      case 1: if(!choice(1)){setErr(1,'Sélectionnez une option.');return false;} return true;
+      case 2:case 4:case 5:case 7:case 11:case 12:case 14:case 23:case 25:case 27: return required();
+      case 3: if(!required()) return false; if(!EMAIL_RE.test(el.value.trim())){setErr(3,'Email invalide.');return false;} return true;
+      case 8:case 9:case 10:case 21: return required();
+      case 13: if(!el||el.value===''){setErr(13,'Ce champ est requis.');return false;} return true;
+      case 17:case 18:case 22:case 24: if(!choice(n)){setErr(n,'Sélectionnez une option.');return false;} return true;
+      case 19:case 20: if(choice(18)==='Oui'&&(!el||el.value==='')){setErr(n,'Ce champ est requis.');return false;} return true;
+      case 28: if(!uploads[28].url){setErr(28,'Uploadez votre pitch deck.');return false;} return true;
+      case 29: { const v=el?el.value.trim():''; if(v&&!URL_RE.test(v)){setErr(29,'URL invalide (commencer par https://).');return false;} return true; }
+      default: return true;
+    }
+  }
+
+  // ── Navigation (Ghosting Fixed FOR GOOD!) ─────────────────────
+  function showStep(n, dir=1){
+    const prev=step(current);
+    
+    // Le délai est TOUJOURS de 280ms, même si on va en arrière (dir = -1) !
+    const delay = 280; 
+    
+    if(prev&&!prev.hidden){
+      prev.classList.add('leaving');
+      setTimeout(()=>{ prev.hidden=true; prev.classList.remove('leaving'); }, 220);
+    }
+
+    setTimeout(()=>{
+      const next=step(n);
+      if(!next) return;
+      next.hidden=false;
+      current=n;
+      progress(n);
+      reqLabels();
+      updateKbd(n);
+      overlay.scrollTo(0,0);
+      const f=next.querySelector('.ff-input:not([type=file]),.ff-textarea');
+      if(f) setTimeout(()=>f.focus(),50);
+      saveSession();
+    }, delay); // delay s'applique à la fois pour 'Suivant' et 'Retour'
+  }
+
+  function goNext(n){
+    if(!validate(n)) return;
+    if(n===30){submit();return;}
+    showStep(n+1,1);
+  }
+  function goBack(n){
+    showStep(n<=1?0:n-1,-1);
+  }
+
+  // ── Open / Close ─────────────────────────────────────────
+  function openForm(){
+    overlay.hidden=false;
+    document.body.style.overflow='hidden';
+    startTime=Date.now();
+    current=0;
+    document.querySelectorAll('.ff-step').forEach((s,i)=>{ s.hidden=i!==0; });
+    progress(0);
+    updateKbd(0);
+    const f=inp(0); if(f) setTimeout(()=>f.focus(),80);
+    loadSession();
+  }
+  function closeForm(){
+    overlay.hidden=true;
+    document.body.style.overflow='';
+    kbdBar.classList.remove('visible');
+    setTimeout(()=>kbdBar.style.display='none',300);
+  }
+
+  window.openFounderForm=openForm;
+  closeBtn.addEventListener('click',closeForm);
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeForm(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!overlay.hidden) closeForm(); });
+
+  // ── Button delegation ─────────────────────────────────────
+  overlay.addEventListener('click',e=>{
+    const nb=e.target.closest('.ff-btn-next');
+    const bb=e.target.closest('.ff-btn-back');
+    if(nb){ goNext(parseInt(nb.dataset.step)); return; }
+    if(bb){ goBack(parseInt(bb.dataset.step)); return; }
+  });
+
+  overlay.addEventListener('keydown',e=>{
+    if(e.key!=='Enter') return;
+    if(e.target.tagName==='TEXTAREA') return;
+    if(e.target.closest('.ff-choices')) return;
+    const s=step(current);
+    if(!s) return;
+    const btn=s.querySelector('.ff-btn-next');
+    if(btn) btn.click();
+  });
+
+  // ── Choice selection ──────────────────────────────────────
+  overlay.addEventListener('click',e=>{
+    const c=e.target.closest('.ff-choice');
+    if(!c) return;
+    const g=c.closest('.ff-choices');
+    if(!g) return;
+    g.querySelectorAll('.ff-choice').forEach(b=>b.classList.remove('selected'));
+    c.classList.add('selected');
+    clrErr(current);
+    saveSession();
+  });
+
+  // ── Counters ──────────────────────────────────────────────
+  [[8,140],[9,400],[10,400],[21,500]].forEach(([n,max])=>{
+    const el=inp(n);
+    const c=document.getElementById(`ff-count-${n}`);
+    if(el&&c) el.addEventListener('input',()=>{ c.textContent=`${el.value.length} / ${max}`; saveSession(); });
+  });
+  for(let i=1;i<=30;i++){
+    const el=inp(i);
+    if(el&&el.type!=='file') el.addEventListener('input',()=>saveSession());
+  }
+  [11].forEach(n=>{ const el=inp(n); if(el) el.addEventListener('change',()=>saveSession()); });
+
+  // ── File upload ───────────────────────────────────────────
+  function setupUpload(sn){
+    const fileInput=inp(sn);
+    const zone=document.getElementById(`ff-file-zone-${sn}`);
+    const idle=document.getElementById(`ff-drop-idle-${sn}`);
+    const active=document.getElementById(`ff-file-info-${sn}`);
+    const nameEl=document.getElementById(`ff-file-name-${sn}`);
+    const fillEl=document.getElementById(`ff-upload-bar-${sn}`);
+    const statEl=document.getElementById(`ff-file-status-${sn}`);
+    const MAX=15*1024*1024;
+    const TYPES28=['.pdf'];
+    const TYPES30=['.pdf','.doc','.docx','.xls','.xlsx','.ppt','.pptx','.jpg','.png'];
+
+    if(!fileInput||!zone) return;
+
+    zone.addEventListener('dragover',e=>{ e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));
+    zone.addEventListener('drop',e=>{ e.preventDefault(); zone.classList.remove('drag-over'); if(e.dataTransfer.files.length) upload(e.dataTransfer.files[0]); });
+    fileInput.addEventListener('change',()=>{ if(fileInput.files.length) upload(fileInput.files[0]); });
+
+    function upload(file){
+      clrErr(sn);
+      const allowed=sn===28?TYPES28:TYPES30;
+      const ext='.'+file.name.split('.').pop().toLowerCase();
+      if(!allowed.includes(ext)){ setErr(sn,`Format non accepté. Formats : ${allowed.join(', ')}`); return; }
+      if(file.size>MAX){ setErr(sn,'Fichier trop volumineux (max 15 Mo).'); return; }
+
+      idle.hidden=true; active.hidden=false;
+      nameEl.textContent=`${file.name}  ·  ${(file.size/1024/1024).toFixed(1)} Mo`;
+      fillEl.style.width='0%';
+      statEl.textContent='Upload en cours…'; statEl.className='ff-file-status';
+
+      const fd=new FormData(); fd.append('file',file);
+      const xhr=new XMLHttpRequest();
+      xhr.open('POST',UPLOAD_URL);
+      xhr.upload.addEventListener('progress',e=>{ if(e.lengthComputable) fillEl.style.width=Math.round(e.loaded/e.total*100)+'%'; });
+      xhr.addEventListener('load',()=>{
+        if(xhr.status>=200&&xhr.status<300){
+          try{
+            const res=JSON.parse(xhr.responseText);
+            uploads[sn]={url:res.url,filename:file.name};
+            fillEl.style.width='100%';
+            statEl.textContent='✓ Fichier prêt'; statEl.className='ff-file-status ok';
+          } catch(e2){ statEl.textContent='Erreur de réponse.'; statEl.className='ff-file-status err'; setErr(sn,'Réessayez.'); }
+        } else { statEl.textContent=`Erreur ${xhr.status}`; statEl.className='ff-file-status err'; setErr(sn,'Erreur upload.'); }
+      });
+      xhr.addEventListener('error',()=>{ statEl.textContent='Erreur réseau'; statEl.className='ff-file-status err'; setErr(sn,'Erreur réseau.'); });
+      xhr.send(fd);
+    }
+  }
+  setupUpload(28); setupUpload(30);
+
+  // ── Submit ────────────────────────────────────────────────
+  async function submit(){
+    const hp=document.getElementById('ff-honeypot');
+    if(hp&&hp.value) return;
+    const dur=Math.round((Date.now()-startTime)/1000);
+    if(dur<10) return;
+
+    showStep(31,1);
+    const spinner=document.getElementById('ff-final-spinner');
+    const success=document.getElementById('ff-final-success');
+    const errorEl=document.getElementById('ff-final-error');
+    spinner.hidden=false; success.hidden=true; errorEl.hidden=true;
+
+    const v=n=>{ const el=inp(n); return el?el.value.trim():''; };
+    const payload={
+      code_acces:v(0), re_soumission:choice(1),
+      nom_fondateur:v(2), email:v(3), pays:v(4), ville:v(5), telephone:v(6),
+      nom_startup:v(7), pitch_une_phrase:v(8), probleme:v(9), solution:v(10),
+      secteur:v(11), type_client:v(12), tam_usd:parseFloat(v(13))||0, estimation_tam:v(14),
+      acquisition_clients:v(15), concurrents:v(16), stade:choice(17), revenus:choice(18),
+      mrr:parseFloat(v(19))||0, clients_payants:parseInt(v(20))||0,
+      pourquoi_vous:v(21), equipe_temps_plein:choice(22), priorite_6_mois:v(23),
+      montant_leve:choice(24), jalons_18_mois:v(25), utilisation_fonds:v(26), vision_5_ans:v(27),
+      pitch_deck_url:uploads[28].url, pitch_deck_filename:uploads[28].filename,
+      lien_demo:v(29),
+      doc_supplementaire_url:uploads[30].url, doc_supplementaire_filename:uploads[30].filename,
+      submitted_at:new Date().toISOString(), csrf_token:csrf,
+      fill_duration_seconds:dur, honeypot:hp?hp.value:''
+    };
+
+    try{
+      const res=await fetch(WEBHOOK_URL,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+      spinner.hidden=true;
+      if(res.ok){
+        document.getElementById('ff-success-email').textContent=payload.email;
+        success.hidden=false;
+        sessionStorage.removeItem(SK);
+      } else { errorEl.hidden=false; }
+    } catch(e){ spinner.hidden=true; errorEl.hidden=false; }
+  }
+
+  document.getElementById('ff-retry').addEventListener('click',()=>showStep(30,-1));
+
+  // ── Init ─────────────────────────────────────────────────
+  progress(0); reqLabels(); updateKbd(0);
+})();
 </script>
-<script src="../scripts/founderForm.js"></script>
+
+<script>
+// ── Searchable Combobox Engine (Secteur) ────────────────────
+(function(){
+
+const SECTORS=[
+  {value:'fintech',label:'Fintech & Paiements',prefix:'💳'},
+  {value:'insurtech',label:'Insurtech',prefix:'🛡️'},
+  {value:'regtech',label:'Regtech & Conformité',prefix:'⚖️'},
+  {value:'wealthtech',label:'Wealthtech & Investissement',prefix:'📈'},
+  {value:'healthtech',label:'Healthtech & MedTech',prefix:'🏥'},
+  {value:'biotech',label:'Biotech & Sciences de la vie',prefix:'🧬'},
+  {value:'mentalhealth',label:'Santé mentale & Bien-être',prefix:'🧠'},
+  {value:'edtech',label:'Edtech & Formation',prefix:'🎓'},
+  {value:'elearning',label:'E-learning & Upskilling',prefix:'📚'},
+  {value:'hrtech',label:'HRtech & Recrutement',prefix:'👥'},
+  {value:'futureofwork',label:'Future of Work',prefix:'🏠'},
+  {value:'legaltech',label:'Legaltech',prefix:'📋'},
+  {value:'proptech',label:'Proptech & Immobilier',prefix:'🏢'},
+  {value:'contech',label:'Contech & Construction',prefix:'🏗️'},
+  {value:'climatetech',label:'Climatetech & GreenTech',prefix:'🌱'},
+  {value:'agritech',label:'Agritech & Foodtech',prefix:'🌾'},
+  {value:'energy',label:'Énergie & Utilities',prefix:'⚡'},
+  {value:'mobility',label:'Mobilité & Transport',prefix:'🚗'},
+  {value:'logistics',label:'Logistique & Supply Chain',prefix:'📦'},
+  {value:'ecommerce',label:'E-commerce & Retail',prefix:'🛍️'},
+  {value:'marketplace',label:'Marketplace & Plateforme',prefix:'🔗'},
+  {value:'saas',label:'SaaS B2B',prefix:'☁️'},
+  {value:'devtools',label:'Outils développeurs & DevTools',prefix:'🛠️'},
+  {value:'cybersecurity',label:'Cybersécurité',prefix:'🔐'},
+  {value:'ai',label:'IA & Machine Learning',prefix:'🤖'},
+  {value:'data',label:'Data & Analytics',prefix:'📊'},
+  {value:'blockchain',label:'Blockchain & Web3',prefix:'⛓️'},
+  {value:'iot',label:'IoT & Hardware',prefix:'📡'},
+  {value:'ar-vr',label:'AR / VR & Spatial computing',prefix:'🥽'},
+  {value:'gaming',label:'Gaming & Esports',prefix:'🎮'},
+  {value:'mediatech',label:'Mediatech & Streaming',prefix:'🎬'},
+  {value:'adtech',label:'Adtech & Marketing',prefix:'📣'},
+  {value:'socialnetwork',label:'Réseau social & Communauté',prefix:'💬'},
+  {value:'creator',label:'Creator Economy',prefix:'✨'},
+  {value:'traveltech',label:'Traveltech & Hospitality',prefix:'✈️'},
+  {value:'sportstech',label:'Sportstech & Fitness',prefix:'⚽'},
+  {value:'fashiontech',label:'Fashiontech & Luxe',prefix:'👗'},
+  {value:'beautytech',label:'Beautytech & Cosmétique',prefix:'💄'},
+  {value:'govtech',label:'Govtech & Civic tech',prefix:'🏛️'},
+  {value:'socialimpact',label:'Impact social & ESS',prefix:'🤝'},
+  {value:'spacetech',label:'Spacetech & Défense',prefix:'🚀'},
+  {value:'robotics',label:'Robotique & Automatisation',prefix:'🦾'},
+  {value:'deeptech',label:'Deeptech & Quantique',prefix:'⚗️'},
+  {value:'manufacturing',label:'Industrie & Fabrication',prefix:'🏭'},
+  {value:'pettech',label:'Pettech & Animaux',prefix:'🐾'},
+  {value:'other',label:'Autre',prefix:'🌐'},
+];
+
+function createCombobox(wrap, hiddenId, opts, placeholder){
+  let options=opts.slice();
+  let selected=null;
+  let activeIdx=-1;
+  let isOpen=false;
+
+  const hidden=document.getElementById(hiddenId);
+
+  const trigger=document.createElement('button');
+  trigger.type='button';
+  trigger.className='ff-cs-trigger';
+  trigger.setAttribute('aria-haspopup','listbox');
+  trigger.setAttribute('aria-expanded','false');
+  trigger.innerHTML=`<span class="ff-cs-val ff-cs-ph">${placeholder}</span><svg class="ff-cs-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+  const search=document.createElement('input');
+  search.type='text';
+  search.className='ff-cs-search';
+  search.placeholder='Rechercher…';
+  search.setAttribute('aria-autocomplete','list');
+  search.autocomplete='off';
+  search.hidden=true;
+
+  const list=document.createElement('ul');
+  list.className='ff-cs-list';
+  list.setAttribute('role','listbox');
+  list.hidden=true;
+
+  wrap.appendChild(trigger);
+  wrap.appendChild(search);
+  (document.getElementById('ff-overlay') || document.body).appendChild(list);
+
+  const valEl=trigger.querySelector('.ff-cs-val');
+  const icoEl=trigger.querySelector('.ff-cs-ico');
+
+  function getFiltered(){
+    const q=search.value.toLowerCase().trim();
+    if(!q) return options;
+    return options.filter(o=>o.label.toLowerCase().includes(q)||(o.value&&o.value.toLowerCase().includes(q)));
+  }
+
+  function renderList(){
+    const filtered=getFiltered();
+    list.innerHTML='';
+    if(!filtered.length){
+      list.innerHTML='<li class="ff-cs-empty">Aucun résultat</li>';
+      return;
+    }
+    filtered.forEach((opt,i)=>{
+      const li=document.createElement('li');
+      li.className='ff-cs-opt'+(selected&&selected.value===opt.value?' ff-cs-opt--sel':'')+(i===activeIdx?' ff-cs-opt--act':'');
+      li.setAttribute('role','option');
+      li.setAttribute('aria-selected',String(!!(selected&&selected.value===opt.value)));
+      li.dataset.idx=String(i);
+      li.innerHTML=`${opt.prefix?`<span class="ff-cs-pfx">${opt.prefix}</span>`:''}${opt.label}${selected&&selected.value===opt.value?'<span class="ff-cs-chk">✓</span>':''}`;
+      li.addEventListener('mousedown',e=>{e.preventDefault();pick(opt);});
+      li.addEventListener('mouseenter',()=>{activeIdx=i;highlight();});
+      list.appendChild(li);
+    });
+  }
+
+  function highlight(){
+    list.querySelectorAll('.ff-cs-opt').forEach((el,i)=>{
+      el.classList.toggle('ff-cs-opt--act',i===activeIdx);
+    });
+    if(activeIdx>=0){
+      const act=list.children[activeIdx];
+      act&&act.scrollIntoView({block:'nearest'});
+    }
+  }
+
+  function positionList(){
+    const r=wrap.getBoundingClientRect();
+    list.style.cssText=`position:fixed;top:${r.bottom+4}px;left:${r.left}px;width:${r.width}px;z-index:99999`;
+  }
+
+  function openDrop(){
+    if(isOpen) return;
+    isOpen=true;
+    trigger.setAttribute('aria-expanded','true');
+    icoEl.style.transform='rotate(180deg)';
+    valEl.hidden=true;
+    icoEl.style.display='none';
+    search.hidden=false;
+    search.value='';
+    search.focus();
+    positionList();
+    renderList();
+    list.hidden=false;
+  }
+
+  function closeDrop(){
+    if(!isOpen) return;
+    isOpen=false;
+    trigger.setAttribute('aria-expanded','false');
+    icoEl.style.transform='';
+    icoEl.style.display='';
+    search.hidden=true;
+    list.hidden=true;
+    valEl.hidden=false;
+    activeIdx=-1;
+  }
+
+  function pick(opt){
+    selected=opt;
+    if(hidden) hidden.value=opt.value;
+    valEl.textContent=(opt.prefix?opt.prefix+' ':'')+opt.label;
+    valEl.classList.remove('ff-cs-ph');
+    closeDrop();
+    hidden&&hidden.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+
+  trigger.addEventListener('click',()=>{ isOpen?closeDrop():openDrop(); });
+  search.addEventListener('input',()=>{ activeIdx=-1; renderList(); });
+
+  search.addEventListener('keydown',e=>{
+    const filtered=getFiltered();
+    if(e.key==='ArrowDown'){ e.preventDefault(); activeIdx=Math.min(activeIdx+1,filtered.length-1); highlight(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); activeIdx=Math.max(activeIdx-1,0); highlight(); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(activeIdx>=0&&filtered[activeIdx]) pick(filtered[activeIdx]); }
+    else if(e.key==='Escape'||e.key==='Tab'){ closeDrop(); }
+  });
+
+  document.addEventListener('mousedown',e=>{
+    if(!wrap.contains(e.target)&&!list.contains(e.target)) closeDrop();
+  });
+
+  window.addEventListener('scroll',()=>{ if(isOpen) positionList(); },true);
+  window.addEventListener('resize',()=>{ if(isOpen) positionList(); });
+
+  return {
+    setValue(val){
+      const found=options.find(o=>o.value===val||o.label===val);
+      if(found){selected=found;valEl.textContent=(found.prefix?found.prefix+' ':'')+found.label;valEl.classList.remove('ff-cs-ph');}
+    },
+    setOptions(opts){
+      options=opts;
+      if(isOpen) renderList();
+    },
+    reset(){
+      selected=null;
+      if(hidden) hidden.value='';
+      valEl.textContent=placeholder;
+      valEl.classList.add('ff-cs-ph');
+      closeDrop();
+    },
+  };
+}
+
+const csSector=document.getElementById('ff-cs-11');
+let cbSector=null;
+if(csSector) cbSector=createCombobox(csSector,'ff-11',SECTORS,"Rechercher un secteur…");
+
+window.__ffRestoreCS=function(step,val){
+  if(step===11&&cbSector){ cbSector.setValue(val); }
+};
+
+})();
+</script>
