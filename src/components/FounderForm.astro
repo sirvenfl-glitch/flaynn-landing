@@ -5,21 +5,29 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 ---
 
 <div id="ff-overlay" role="dialog" aria-modal="true" aria-label="Formulaire de candidature Flaynn" hidden>
-
-  <input type="text" name="website" id="ff-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none!important;position:absolute;left:-9999px">
+  <input
+    type="text"
+    name="website"
+    id="ff-honeypot"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+    style="display:none!important;position:absolute;left:-9999px"
+  >
 
   <header class="ff-header">
     <div class="ff-progress-track" aria-hidden="true">
       <div id="ff-bar" class="ff-bar"></div>
     </div>
-    <div class="ff-header-meta">
+
+    <div class="ff-header-meta" aria-hidden="true">
       <span class="ff-brand">Flaynn</span>
       <span id="ff-step-label" class="ff-step-label">Accès</span>
     </div>
   </header>
 
   <main id="ff-steps" class="ff-main">
-
+    <!-- Step 0: Beta code -->
     <div class="ff-step" data-step="0">
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Accès restreint</p>
@@ -30,16 +38,17 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <nav class="ff-nav">
           <div class="ff-nav-left"></div>
           <div class="ff-nav-right">
-            <button type="button" class="ff-btn-next ff-btn-primary" data-step="0">Accéder</button>
+            <button class="ff-btn-next ff-btn-primary" data-step="0">Accéder</button>
           </div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 1: Re-soumission -->
     <div class="ff-step" data-step="1" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Avant de commencer</p>
-        <p class="ff-q">Est-ce une re-soumission&nbsp;?</p>
+        <p class="ff-q">Est-ce une re-soumission ?</p>
         <p class="ff-hint">Si vous avez déjà soumis ce dossier et souhaitez le faire re-scorer.</p>
         <div class="ff-choices ff-choices--duo" id="ff-1" role="group" aria-label="Re-soumission">
           <button type="button" class="ff-choice" data-value="Oui">Oui</button>
@@ -47,12 +56,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-1" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="1">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="1">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="1">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="1">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 2: Nom -->
     <div class="ff-step" data-step="2" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -60,12 +70,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-2" class="ff-input" autocomplete="name" aria-required="true" placeholder="Prénom Nom" />
         <div class="ff-error" id="ff-err-2" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="2">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="2">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="2">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="2">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 3: Email -->
     <div class="ff-step" data-step="3" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -73,12 +84,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="email" id="ff-3" class="ff-input" autocomplete="email" aria-required="true" placeholder="vous@startup.com" />
         <div class="ff-error" id="ff-err-3" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="3">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="3">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="3">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="3">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 4: Pays -->
     <div class="ff-step" data-step="4" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -86,12 +98,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-4" class="ff-input" aria-required="true" placeholder="Ex: France" />
         <div class="ff-error" id="ff-err-4" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="4">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="4">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="4">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="4">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 5: Ville -->
     <div class="ff-step" data-step="5" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
@@ -99,25 +112,28 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-5" class="ff-input" aria-required="true" placeholder="Ex: Paris" />
         <div class="ff-error" id="ff-err-5" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="5">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="5">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="5">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="5">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 6: Téléphone -->
     <div class="ff-step" data-step="6" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Informations de contact</p>
-        <label class="ff-q" for="ff-6">Numéro de téléphone <span class="ff-opt">Optionnel</span></label>
+        <label class="ff-q" for="ff-6">Numéro de téléphone</label>
+        <p class="ff-hint-opt">Optionnel</p>
         <input type="tel" id="ff-6" class="ff-input" autocomplete="tel" placeholder="+33 6 00 00 00 00" />
         <div class="ff-error" id="ff-err-6" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="6">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="6">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="6">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="6">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 7: Nom startup -->
     <div class="ff-step" data-step="7" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -125,12 +141,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-7" class="ff-input" aria-required="true" placeholder="Acme Inc." />
         <div class="ff-error" id="ff-err-7" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="7">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="7">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="7">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="7">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 8: Pitch phrase -->
     <div class="ff-step" data-step="8" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -141,12 +158,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-8" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="8">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="8">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="8">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="8">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 9: Problème -->
     <div class="ff-step" data-step="9" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -157,12 +175,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-9" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="9">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="9">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="9">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="9">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 10: Solution -->
     <div class="ff-step" data-step="10" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">L'Accroche</p>
@@ -173,12 +192,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-10" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="10">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="10">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="10">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="10">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 11: Secteur -->
     <div class="ff-step" data-step="11" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -187,12 +207,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <div class="ff-cs-wrap" id="ff-cs-11" data-cs="sector"></div>
         <div class="ff-error" id="ff-err-11" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="11">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="11">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="11">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="11">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 12: Client cible -->
     <div class="ff-step" data-step="12" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -200,25 +221,27 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <input type="text" id="ff-12" class="ff-input" placeholder="PME françaises, DSI grands groupes…" aria-required="true" />
         <div class="ff-error" id="ff-err-12" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="12">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="12">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="12">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="12">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 13: TAM -->
     <div class="ff-step" data-step="13" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
         <label class="ff-q" for="ff-13">Marché Total Adressable (TAM) en USD</label>
-        <input type="number" id="ff-13" class="ff-input" placeholder="Ex: 2000000000" min="0" aria-required="true" />
+        <input type="number" id="ff-13" class="ff-input" placeholder="2 000 000 000" min="0" aria-required="true" />
         <div class="ff-error" id="ff-err-13" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="13">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="13">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="13">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="13">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 14: Estimation TAM -->
     <div class="ff-step" data-step="14" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
@@ -226,38 +249,43 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-14" class="ff-textarea" rows="5" aria-required="true" placeholder="Sources, méthodologie, études de marché…"></textarea>
         <div class="ff-error" id="ff-err-14" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="14">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="14">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="14">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="14">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 15: Acquisition -->
     <div class="ff-step" data-step="15" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
-        <label class="ff-q" for="ff-15">Comment acquérez-vous vos clients ? <span class="ff-opt">Optionnel</span></label>
+        <label class="ff-q" for="ff-15">Comment acquérez-vous vos clients ?</label>
+        <p class="ff-hint-opt">Optionnel</p>
         <textarea id="ff-15" class="ff-textarea" rows="5" placeholder="Canaux, stratégie, coût d'acquisition…"></textarea>
         <div class="ff-error" id="ff-err-15" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="15">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="15">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="15">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="15">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 16: Concurrents -->
     <div class="ff-step" data-step="16" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Le Moteur</p>
-        <label class="ff-q" for="ff-16">Qui cherchez-vous à détrôner ? <span class="ff-opt">Optionnel</span></label>
+        <label class="ff-q" for="ff-16">Qui cherchez-vous à détrôner ?</label>
+        <p class="ff-hint-opt">Optionnel</p>
         <textarea id="ff-16" class="ff-textarea" rows="5" placeholder="Concurrents directs et votre avantage différentiel…"></textarea>
         <div class="ff-error" id="ff-err-16" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="16">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="16">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="16">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="16">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 17: Stade -->
     <div class="ff-step" data-step="17" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -272,12 +300,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-17" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="17">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="17">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="17">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="17">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 18: Revenus -->
     <div class="ff-step" data-step="18" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -288,38 +317,41 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-18" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="18">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="18">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="18">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="18">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 19: MRR (conditionnel) -->
     <div class="ff-step" data-step="19" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
-        <label class="ff-q" for="ff-19">Revenu mensuel — MRR en $</label>
-        <input type="number" id="ff-19" class="ff-input" min="0" placeholder="Ex: 5000" />
+        <label class="ff-q" for="ff-19">Revenu mensuel (MRR) en $</label>
+        <input type="number" id="ff-19" class="ff-input" min="0" placeholder="0" aria-required="true" />
         <div class="ff-error" id="ff-err-19" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="19">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="19">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="19">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="19">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 20: Clients payants (conditionnel) -->
     <div class="ff-step" data-step="20" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
         <label class="ff-q" for="ff-20">Nombre de clients payants</label>
-        <input type="number" id="ff-20" class="ff-input" min="0" placeholder="Ex: 12" />
+        <input type="number" id="ff-20" class="ff-input" min="0" placeholder="0" aria-required="true" />
         <div class="ff-error" id="ff-err-20" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="20">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="20">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="20">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="20">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 21: Pourquoi vous -->
     <div class="ff-step" data-step="21" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -330,12 +362,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-21" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="21">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="21">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="21">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="21">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 22: Temps plein -->
     <div class="ff-step" data-step="22" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -346,12 +379,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-22" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="22">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="22">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="22">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="22">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 23: Priorité 6 mois -->
     <div class="ff-step" data-step="23" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Exécution &amp; Équipe</p>
@@ -359,12 +393,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-23" class="ff-textarea" rows="5" aria-required="true" placeholder="Votre objectif numéro un…"></textarea>
         <div class="ff-error" id="ff-err-23" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="23">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="23">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="23">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="23">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 24: Montant levée -->
     <div class="ff-step" data-step="24" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
@@ -378,12 +413,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-24" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="24">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="24">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="24">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="24">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 25: Jalons -->
     <div class="ff-step" data-step="25" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
@@ -391,25 +427,28 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-25" class="ff-textarea" rows="5" aria-required="true" placeholder="Milestones produit, revenus, équipe…"></textarea>
         <div class="ff-error" id="ff-err-25" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="25">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="25">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="25">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="25">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 26: Utilisation fonds -->
     <div class="ff-step" data-step="26" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
-        <label class="ff-q" for="ff-26">Utilisation prévue des fonds <span class="ff-opt">Optionnel</span></label>
+        <label class="ff-q" for="ff-26">Utilisation prévue des fonds</label>
+        <p class="ff-hint-opt">Optionnel</p>
         <textarea id="ff-26" class="ff-textarea" rows="5" placeholder="R&D, recrutement, marketing…"></textarea>
         <div class="ff-error" id="ff-err-26" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="26">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="26">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="26">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="26">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 27: Vision 5 ans -->
     <div class="ff-step" data-step="27" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">La Demande</p>
@@ -417,12 +456,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         <textarea id="ff-27" class="ff-textarea" rows="5" aria-required="true" placeholder="Votre vision long terme…"></textarea>
         <div class="ff-error" id="ff-err-27" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="27">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="27">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="27">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="27">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 28: Pitch Deck -->
     <div class="ff-step" data-step="28" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Documents</p>
@@ -448,29 +488,33 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-28" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="28">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="28">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="28">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="28">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 29: Lien démo -->
     <div class="ff-step" data-step="29" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Documents</p>
-        <label class="ff-q" for="ff-29">Lien vidéo de démo <span class="ff-opt">Optionnel</span></label>
+        <label class="ff-q" for="ff-29">Lien vidéo de démo</label>
+        <p class="ff-hint-opt">Optionnel</p>
         <input type="url" id="ff-29" class="ff-input" placeholder="https://www.loom.com/share/…" />
         <div class="ff-error" id="ff-err-29" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="29">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="29">Continuer</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="29">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="29">Continuer</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 30: Doc complémentaire -->
     <div class="ff-step" data-step="30" hidden>
       <div class="ff-step-inner">
         <p class="ff-eyebrow">Documents</p>
-        <label class="ff-q" for="ff-30">Document complémentaire <span class="ff-opt">Optionnel</span></label>
+        <label class="ff-q" for="ff-30">Document complémentaire</label>
+        <p class="ff-hint-opt">Optionnel</p>
         <p class="ff-hint">PDF, Office, JPG, PNG · Max 15 Mo</p>
         <div class="ff-dropzone" id="ff-file-zone-30">
           <input type="file" id="ff-30" class="ff-file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.png" aria-label="Document supplémentaire" />
@@ -483,7 +527,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
           </div>
           <div class="ff-drop-active" id="ff-file-info-30" hidden>
             <div class="ff-file-row">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               <span class="ff-file-name" id="ff-file-name-30"></span>
             </div>
             <div class="ff-upload-track"><div class="ff-upload-fill" id="ff-upload-bar-30"></div></div>
@@ -492,12 +536,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
         </div>
         <div class="ff-error" id="ff-err-30" role="alert"></div>
         <nav class="ff-nav">
-          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="30">← Retour</button></div>
-          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="30">Soumettre mon dossier</button></div>
+          <div class="ff-nav-left"><button class="ff-btn-back" data-step="30">← Retour</button></div>
+          <div class="ff-nav-right"><button class="ff-btn-next ff-btn-submit ff-btn-primary" data-step="30">Soumettre mon dossier</button></div>
         </nav>
       </div>
     </div>
 
+    <!-- Step 31: Final -->
     <div class="ff-step ff-step--final" data-step="31" hidden>
       <div class="ff-step-inner">
         <div id="ff-final-spinner" class="ff-final-state">
@@ -513,17 +558,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 
         <div id="ff-final-error" class="ff-final-state" hidden>
           <p class="ff-err-body">Une erreur est survenue. Réessayez ou contactez<br><a href="mailto:contact@flaynn.fr">contact@flaynn.fr</a></p>
-          <button type="button" class="ff-btn-retry" id="ff-retry">Réessayer</button>
+          <button class="ff-btn-retry" id="ff-retry">Réessayer</button>
         </div>
       </div>
     </div>
   </main>
 
-  <div class="ff-kbd-bar" id="ff-kbd-bar" style="display:none;">
-    Appuyer sur <kbd>Entrée ↵</kbd> pour continuer
-  </div>
-
-  <button type="button" class="ff-close" id="ff-close" aria-label="Fermer">
+  <button class="ff-close" id="ff-close" aria-label="Fermer">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
   </button>
 </div>
@@ -636,14 +677,14 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   align-items:center;
   justify-content:center;
   width:100%;
-  padding:72px 24px 60px;
+  padding:80px 24px 56px;
 }
 
 .ff-step{
   position:relative;
   width:100%;
-  max-width:800px;
-  margin:auto; /* Ensures perfect centering even when zoomed out */
+  max-width:760px;
+  margin:0 auto;
   animation:ff-in .28s ease-out both;
 }
 
@@ -679,17 +720,17 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--purple-light);
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 
 .ff-q{
   display:block;
-  font-size:clamp(2.2rem, 4vw, 3.6rem); /* Lighter and cleaner */
+  font-size:clamp(2rem,4.2vw,3.6rem);
   font-weight:700;
-  line-height:1.1;
+  line-height:1.08;
   letter-spacing:-.04em;
   color:var(--text);
-  margin-bottom:32px; /* Bigger margin under the question */
+  margin-bottom:18px;
   text-wrap:balance;
 }
 
@@ -699,18 +740,26 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   color:var(--text-muted);
   line-height:1.7;
   font-weight:300;
-  margin:-12px 0 28px;
+  margin:0 0 32px;
 }
 
-.ff-opt{
-  font-size:1rem; /* Fixed the huge text issue */
+/* FIX: "optionnel" en label séparé, taille fixe, jamais géant */
+.ff-hint-opt{
+  font-size:.82rem;
   font-weight:400;
   color:var(--text-dim);
   letter-spacing:.04em;
   text-transform:uppercase;
-  vertical-align:middle;
-  margin-left:12px;
-  display:inline-block;
+  margin:-10px 0 28px;
+}
+
+/* ancien .ff-opt inline supprimé — on garde juste au cas où pour compat */
+.ff-opt{
+  font-size:.82rem;
+  font-weight:400;
+  color:var(--text-dim);
+  letter-spacing:.04em;
+  text-transform:uppercase;
 }
 
 .ff-req{
@@ -723,19 +772,21 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 .ff-textarea{
   display:block;
   width:100%;
+  min-height:58px;
   background:transparent;
   border:none;
   border-bottom:1px solid var(--glass-border);
   border-radius:0;
   color:var(--text);
   font-family:var(--font);
-  font-size:1.5rem; /* Larger input text */
+  font-size:1.16rem;
   font-weight:400;
-  padding:24px 0 16px; /* Massive breathing room */
+  padding:16px 0 14px;
   outline:none;
   transition:border-color .2s;
   resize:none;
   -webkit-appearance:none;
+  margin-top:4px;
 }
 
 .ff-input:focus,
@@ -773,11 +824,12 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   letter-spacing:.04em;
 }
 
-/* choices */
+/* choices — FIX: bigger buttons, more padding, proper spacing */
 .ff-choices{
   display:flex;
   flex-wrap:wrap;
-  gap:16px; /* Aired out the boxes */
+  gap:12px;
+  margin-top:8px;
   margin-bottom:12px;
 }
 
@@ -787,9 +839,9 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   border-radius:14px;
   color:var(--text-muted);
   font-family:var(--font);
-  font-size:.96rem;
+  font-size:1rem;
   font-weight:500;
-  padding:20px 24px; /* Much bigger targets */
+  padding:18px 26px;
   cursor:pointer;
   transition:border-color .2s,background .2s,color .2s,transform .2s,box-shadow .2s;
   white-space:normal;
@@ -799,6 +851,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   letter-spacing:.01em;
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
+  min-height:56px;
 }
 
 .ff-choice:hover{
@@ -818,7 +871,12 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 .ff-choices--duo{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:16px;
+  gap:12px;
+}
+
+.ff-choices--duo .ff-choice{
+  min-height:62px;
+  font-size:1.05rem;
 }
 
 /* dropzone */
@@ -933,7 +991,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 /* errors */
 .ff-error{
   min-height:20px;
-  margin-top:12px;
+  margin-top:14px;
   font-size:.78rem;
   color:var(--err);
   display:flex;
@@ -952,19 +1010,19 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   flex-shrink:0;
 }
 
-/* nav */
+/* nav — FIX: more top margin */
 .ff-nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:14px;
-  margin-top:56px; /* Enormous breathing room pushed away from choices */
+  margin-top:44px;
 }
 
 .ff-nav-left{
   display:flex;
   align-items:center;
-  min-height:60px;
+  min-height:56px;
 }
 
 .ff-nav-right{
@@ -975,6 +1033,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   margin-left:auto;
 }
 
+/* FIX: bigger CTA button */
 .ff-btn-primary{
   display:inline-flex;
   align-items:center;
@@ -983,13 +1042,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   background:linear-gradient(135deg,var(--purple) 0%,var(--purple-light) 100%);
   color:#fff;
   font-family:var(--font);
-  font-size:1.15rem; /* Larger text */
+  font-size:1.05rem;
   font-weight:600;
-  min-height:60px;
-  padding:18px 48px; /* Correct giant padding */
+  min-height:56px;
+  padding:16px 34px;
   line-height:1.2;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   cursor:pointer;
   letter-spacing:0;
   text-transform:none;
@@ -1015,10 +1074,10 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   background:transparent;
   color:var(--text-muted);
   font-family:var(--font);
-  font-size:1rem;
+  font-size:.95rem;
   font-weight:500;
-  min-height:48px;
-  padding:0 16px;
+  min-height:52px;
+  padding:0 20px;
   border:1px solid var(--border);
   border-radius:10px;
   cursor:pointer;
@@ -1032,25 +1091,6 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   border-color:var(--glass-border);
   background:rgba(255,255,255,.03);
   transform:translateY(-1px);
-}
-
-/* keyboard hint */
-.ff-kbd-bar{
-  display:none!important;
-}
-
-kbd{
-  display:inline-flex;
-  align-items:center;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:5px;
-  padding:3px 8px;
-  font-family:var(--font);
-  font-size:.68rem;
-  color:var(--text-muted);
-  letter-spacing:0;
-  text-transform:none;
 }
 
 /* final */
@@ -1164,9 +1204,8 @@ kbd{
   }
 
   .ff-q{
-    max-width:none;
-    font-size:clamp(2rem,10vw,3rem);
-    margin-bottom:12px;
+    font-size:clamp(1.8rem,8vw,2.6rem);
+    margin-bottom:14px;
   }
 
   .ff-hint{
@@ -1188,7 +1227,7 @@ kbd{
   .ff-nav{
     flex-direction:column-reverse;
     align-items:stretch;
-    margin-top:28px;
+    margin-top:32px;
   }
 
   .ff-nav-left,
@@ -1210,6 +1249,13 @@ kbd{
     right:14px;
   }
 }
+
+/* FIX responsive: empêcher les problèmes de zoom out */
+@media(min-width:1400px){
+  .ff-step-inner{
+    max-width:760px;
+  }
+}
 </style>
 
 <style is:global>
@@ -1226,7 +1272,7 @@ kbd{
   gap:12px;
   width:100%;
   min-height:58px;
-  padding:24px 0 16px;
+  padding:16px 0 14px;
   background:transparent;
   cursor:pointer;
   border:none;
@@ -1245,7 +1291,7 @@ kbd{
 
 .ff-cs-val{
   flex:1;
-  font-size:1.5rem;
+  font-size:1.16rem;
   color:#F1F5F9;
   font-family:'IBM Plex Sans',sans-serif;
   text-align:left;
@@ -1270,12 +1316,12 @@ kbd{
 .ff-cs-search{
   width:100%;
   min-height:58px;
-  padding:24px 0 16px;
+  padding:16px 0 14px;
   background:transparent;
   border:none;
   border-bottom:1px solid #9333ea;
   color:#F1F5F9;
-  font-size:1.5rem;
+  font-size:1.16rem;
   font-family:'IBM Plex Sans',sans-serif;
   outline:none;
 }
@@ -1308,11 +1354,11 @@ kbd{
   display:flex;
   align-items:center;
   gap:10px;
-  padding:14px 18px;
+  padding:11px 14px;
   border-radius:12px;
   cursor:pointer;
   color:#F1F5F9;
-  font-size:1.1rem;
+  font-size:.96rem;
   font-family:'IBM Plex Sans',sans-serif;
   transition:background .12s,color .12s;
   user-select:none;
@@ -1360,7 +1406,6 @@ kbd{
   const overlay  = document.getElementById('ff-overlay');
   const bar      = document.getElementById('ff-bar');
   const lbl      = document.getElementById('ff-step-label');
-  const kbdBar   = document.getElementById('ff-kbd-bar');
   const closeBtn = document.getElementById('ff-close');
 
   const step  = n => document.querySelector(`.ff-step[data-step="${n}"]`);
@@ -1374,6 +1419,30 @@ kbd{
     const s=g.querySelector('.ff-choice.selected');
     return s?s.dataset.value:'';
   };
+
+  /* ===== FIX: Steps conditionnels ===== */
+  /* Si revenus = Non, on skip les steps 19 et 20 */
+  const SKIP_CONDITIONS = {
+    19: () => choice(18) !== 'Oui',
+    20: () => choice(18) !== 'Oui',
+  };
+
+  function shouldSkip(n) {
+    return SKIP_CONDITIONS[n] ? SKIP_CONDITIONS[n]() : false;
+  }
+
+  function nextVisibleStep(from) {
+    let n = from + 1;
+    while (n <= 30 && shouldSkip(n)) n++;
+    return n;
+  }
+
+  function prevVisibleStep(from) {
+    let n = from - 1;
+    while (n >= 0 && shouldSkip(n)) n--;
+    return Math.max(0, n);
+  }
+  /* ===== end conditional logic ===== */
 
   function progress(n){
     const pct = n===0 ? 3 : Math.round((n/TOTAL)*100);
@@ -1431,22 +1500,66 @@ kbd{
     });
   }
 
-  function updateKbd(){
-    if(kbdBar){
-      kbdBar.style.display='none';
-      kbdBar.classList.remove('visible');
-    }
-  }
-
   const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   const URL_RE=/^https?:\/\/.+\..+/;
+
+  /* ===== FIX: validation renforcée ===== */
+  /* min lengths pour les champs texte importants */
+  const MIN_LENGTHS = {
+    2: 3,    /* nom: au moins 3 chars */
+    7: 2,    /* nom startup: au moins 2 chars */
+    8: 15,   /* pitch phrase: au moins 15 chars */
+    9: 30,   /* problème: au moins 30 chars */
+    10: 30,  /* solution: au moins 30 chars */
+    12: 5,   /* client cible: au moins 5 chars */
+    14: 15,  /* estimation TAM: au moins 15 chars */
+    21: 30,  /* pourquoi vous: au moins 30 chars */
+    23: 15,  /* priorité 6 mois: au moins 15 chars */
+    25: 15,  /* jalons: au moins 15 chars */
+    27: 20,  /* vision 5 ans: au moins 20 chars */
+  };
+
+  /* Labels des questions pour détecter les réponses bidon */
+  const FIELD_LABELS = [
+    'secteur principal','le problème','la solution','comment résolvez',
+    'pitch deck','nom de la startup','email professionnel','pourquoi vous',
+    'type de client','marché total','comment avez-vous estimé',
+    'comment acquérez','qui cherchez','quel stade','générez-vous',
+    'équipe','priorité','combien souhaitez','jalons clés',
+    'utilisation prévue','à quoi ressemble','revenu mensuel',
+    'nombre de clients','nom complet','code d\'accès','re-soumission',
+    'en une phrase','numéro de téléphone','lien vidéo','document complémentaire',
+    'pays','ville'
+  ];
+
+  function isGarbageAnswer(val) {
+    const low = val.toLowerCase().trim();
+    if (low.length < 3) return false; /* too short to check */
+    return FIELD_LABELS.some(label => {
+      /* Si la réponse est juste le label de la question ou très proche */
+      return low === label || label.includes(low) || low.includes(label);
+    });
+  }
 
   function validate(n){
     clrErr(n);
     const el=inp(n);
-    const required=()=>{
-      if(!el||!el.value.trim()){
+    const val = el ? el.value.trim() : '';
+
+    const required = () => {
+      if(!val){
         setErr(n,'Ce champ est requis.');
+        return false;
+      }
+      /* Check min length */
+      const minLen = MIN_LENGTHS[n];
+      if(minLen && val.length < minLen){
+        setErr(n,`Réponse trop courte (min. ${minLen} caractères).`);
+        return false;
+      }
+      /* Check garbage answer */
+      if(isGarbageAnswer(val)){
+        setErr(n,'Merci de fournir une vraie réponse.');
         return false;
       }
       return true;
@@ -1454,7 +1567,7 @@ kbd{
 
     switch(n){
       case 0:
-        if(!el||el.value.trim()!==BETA_CODE){
+        if(!el||val!==BETA_CODE){
           setErr(0,'Code invalide. Contactez contact@flaynn.fr.');
           return false;
         }
@@ -1466,7 +1579,6 @@ kbd{
       case 4:
       case 5:
       case 7:
-      case 11:
       case 12:
       case 14:
       case 23:
@@ -1475,7 +1587,7 @@ kbd{
         return required();
       case 3:
         if(!required()) return false;
-        if(!EMAIL_RE.test(el.value.trim())){
+        if(!EMAIL_RE.test(val)){
           setErr(3,'Email invalide.');
           return false;
         }
@@ -1483,13 +1595,21 @@ kbd{
       case 8:
       case 9:
       case 10:
-      case 19:
-      case 20:
       case 21:
         return required();
+      case 11:
+        if(!val){
+          setErr(11,'Sélectionnez un secteur.');
+          return false;
+        }
+        return true;
       case 13:
-        if(!el||el.value===''){
+        if(!el||val===''){
           setErr(13,'Ce champ est requis.');
+          return false;
+        }
+        if(parseFloat(val) <= 0) {
+          setErr(13,'Le TAM doit être supérieur à 0.');
           return false;
         }
         return true;
@@ -1502,6 +1622,19 @@ kbd{
           return false;
         }
         return true;
+      case 19:
+        /* Conditionnel: requis seulement si revenus = Oui */
+        if(choice(18)==='Oui' && (!el || val === '')){
+          setErr(n,'Ce champ est requis.');
+          return false;
+        }
+        return true;
+      case 20:
+        if(choice(18)==='Oui' && (!el || val === '')){
+          setErr(n,'Ce champ est requis.');
+          return false;
+        }
+        return true;
       case 28:
         if(!uploads[28].url){
           setErr(28,'Uploadez votre pitch deck.');
@@ -1509,8 +1642,7 @@ kbd{
         }
         return true;
       case 29: {
-        const v=el?el.value.trim():'';
-        if(v&&!URL_RE.test(v)){
+        if(val&&!URL_RE.test(val)){
           setErr(29,'URL invalide (commencer par https://).');
           return false;
         }
@@ -1523,7 +1655,7 @@ kbd{
 
   function showStep(n){
     const prev=step(current);
-    const delay=260; // Assure que la question part bien avant que la nouvelle arrive (GHOSTING RÉGLÉ)
+    const delay=260;
 
     if(prev&&!prev.hidden){
       prev.classList.add('leaving');
@@ -1539,7 +1671,6 @@ kbd{
       next.hidden=false;
       current=n;
       progress(n);
-      updateKbd();
       overlay.scrollTo(0,0);
 
       const f=next.querySelector('.ff-input:not([type=file]),.ff-textarea');
@@ -1549,27 +1680,17 @@ kbd{
     },delay);
   }
 
+  /* FIX: goNext et goBack utilisent la logique conditionnelle */
   function goNext(n){
     if(!validate(n)) return;
     if(n===30){submit();return;}
-    
-    let nextStep = n + 1;
-    // FORMULAIRE INTELLIGENT : On saute les questions MRR & Clients si pas de revenus
-    if (n === 18 && choice(18) === 'Non') {
-      nextStep = 21;
-    }
-    
-    showStep(nextStep);
+    const nxt = nextVisibleStep(n);
+    showStep(nxt);
   }
 
   function goBack(n){
-    let prevStep = n <= 1 ? 0 : n - 1;
-    // FORMULAIRE INTELLIGENT : Si on revient de l'étape 21 et qu'on avait mis "Non" aux revenus, on repasse à l'étape 18.
-    if (n === 21 && choice(18) === 'Non') {
-      prevStep = 18;
-    }
-    
-    showStep(prevStep);
+    const prv = prevVisibleStep(n);
+    showStep(prv);
   }
 
   function openForm(){
@@ -1579,7 +1700,6 @@ kbd{
     current=0;
     document.querySelectorAll('.ff-step').forEach((s,i)=>{ s.hidden=i!==0; });
     progress(0);
-    updateKbd();
     const f=inp(0);
     if(f) setTimeout(()=>f.focus(),80);
     loadSession();
@@ -1588,12 +1708,12 @@ kbd{
   function closeForm(){
     overlay.hidden=true;
     document.body.style.overflow='';
-    updateKbd();
   }
 
   window.openFounderForm=openForm;
   if(closeBtn) closeBtn.addEventListener('click',closeForm);
 
+  /* FIX: click sur overlay ferme — mais on stoppe la propagation des clics internes */
   overlay.addEventListener('click',e=>{
     if(e.target===overlay) closeForm();
   });
@@ -1836,7 +1956,6 @@ kbd{
   document.getElementById('ff-retry').addEventListener('click',()=>showStep(30));
 
   progress(0);
-  updateKbd();
 })();
 </script>
 
@@ -1921,7 +2040,9 @@ kbd{
 
     wrap.appendChild(trigger);
     wrap.appendChild(search);
-    (document.getElementById('ff-overlay') || document.body).appendChild(list);
+
+    /* FIX: Append list inside the wrap (not overlay) to contain events */
+    wrap.appendChild(list);
 
     const valEl=trigger.querySelector('.ff-cs-val');
     const icoEl=trigger.querySelector('.ff-cs-ico');
@@ -1948,8 +2069,11 @@ kbd{
         li.setAttribute('aria-selected',String(!!(selected&&selected.value===opt.value)));
         li.dataset.idx=String(i);
         li.innerHTML=`${opt.prefix?`<span class="ff-cs-pfx">${opt.prefix}</span>`:''}${opt.label}${selected&&selected.value===opt.value?'<span class="ff-cs-chk">✓</span>':''}`;
-        li.addEventListener('mousedown',e=>{
+
+        /* FIX: use click + stopPropagation pour éviter la fermeture de l'overlay */
+        li.addEventListener('click',e=>{
           e.preventDefault();
+          e.stopPropagation();
           pick(opt);
         });
         li.addEventListener('mouseenter',()=>{
@@ -2012,7 +2136,12 @@ kbd{
       hidden&&hidden.dispatchEvent(new Event('change',{bubbles:true}));
     }
 
-    trigger.addEventListener('click',()=>{ isOpen?closeDrop():openDrop(); });
+    trigger.addEventListener('click',e=>{
+      e.stopPropagation();
+      isOpen?closeDrop():openDrop();
+    });
+
+    search.addEventListener('click', e => e.stopPropagation());
     search.addEventListener('input',()=>{ activeIdx=-1; renderList(); });
 
     search.addEventListener('keydown',e=>{
@@ -2027,12 +2156,14 @@ kbd{
         highlight();
       }else if(e.key==='Enter'){
         e.preventDefault();
-        e.stopPropagation(); /* <---- C'EST CECI QUI EMPÊCHAIT LE BUG DU RETOUR A L'ACCUEIL ! */
         if(activeIdx>=0&&filtered[activeIdx]) pick(filtered[activeIdx]);
       }else if(e.key==='Escape'||e.key==='Tab'){
         closeDrop();
       }
     });
+
+    /* FIX: stopPropagation on list to prevent overlay close */
+    list.addEventListener('click', e => e.stopPropagation());
 
     document.addEventListener('mousedown',e=>{
       if(!wrap.contains(e.target)&&!list.contains(e.target)) closeDrop();
