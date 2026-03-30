@@ -1194,7 +1194,8 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 @media(max-width:640px){
   .ff-main{
     align-items:flex-start;
-    padding:72px 18px 34px;
+    padding:100px 20px 40px;
+    min-height:100dvh;
   }
 
   .ff-step,
@@ -1204,30 +1205,52 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   }
 
   .ff-q{
-    font-size:clamp(1.8rem,8vw,2.6rem);
+    font-size:clamp(1.6rem,7vw,2.2rem);
     margin-bottom:14px;
   }
 
   .ff-hint{
-    font-size:.94rem;
-    margin-bottom:24px;
+    font-size:.9rem;
+    margin-bottom:20px;
+  }
+
+  .ff-hint-opt{
+    font-size:.75rem;
+    margin:-6px 0 20px;
   }
 
   .ff-input,
   .ff-textarea,
   .ff-cs-trigger,
   .ff-cs-search{
-    font-size:1.05rem;
+    font-size:1rem;
+    min-height:50px;
+  }
+
+  .ff-choices{
+    gap:10px;
+  }
+
+  .ff-choice{
+    padding:14px 18px;
+    font-size:.92rem;
+    min-height:50px;
   }
 
   .ff-choices--duo{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .ff-choices--duo .ff-choice{
+    min-height:54px;
+    font-size:.95rem;
   }
 
   .ff-nav{
     flex-direction:column-reverse;
     align-items:stretch;
-    margin-top:32px;
+    gap:10px;
+    margin-top:28px;
   }
 
   .ff-nav-left,
@@ -1235,21 +1258,36 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
     width:100%;
   }
 
-  .ff-nav-right{
-    justify-content:stretch;
+  .ff-btn-primary{
+    width:100%;
+    min-height:52px;
+    font-size:.95rem;
+    padding:14px 20px;
+    border-radius:10px;
   }
 
-  .ff-btn-primary,
   .ff-btn-back{
     width:100%;
+    min-height:46px;
+    font-size:.88rem;
   }
 
   .ff-close{
     top:14px;
     right:14px;
+    width:36px;
+    height:36px;
+  }
+
+  .ff-eyebrow{
+    font-size:.68rem;
+    margin-bottom:12px;
+  }
+
+  .ff-dropzone .ff-drop-idle{
+    padding:24px 16px;
   }
 }
-
 /* FIX responsive: empêcher les problèmes de zoom out */
 @media(min-width:1400px){
   .ff-step-inner{
