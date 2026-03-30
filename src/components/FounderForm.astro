@@ -1544,7 +1544,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   function validate(n){
     clrErr(n);
     const el=inp(n);
-    const val = el ? el.value.trim() : '';
+    const val = el && el.value != null ? el.value.trim() : '';
 
     const required = () => {
       if(!val){
