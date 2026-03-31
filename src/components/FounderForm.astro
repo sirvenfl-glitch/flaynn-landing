@@ -607,10 +607,10 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   z-index: 9000;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 18% 18%, rgba(107,33,168,.15), transparent 40%),
-    radial-gradient(circle at 82% 78%, rgba(236,72,153,.05), transparent 40%),
-    var(--bg);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(107,33,168,.22), transparent 32%),
+    radial-gradient(circle at 82% 78%, rgba(236,72,153,.08), transparent 28%),
+    #0A0A0F;
   font-family: var(--font);
   color: var(--text);
   display: flex;
@@ -728,7 +728,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--purple-light);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .ff-q {
@@ -738,7 +738,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--text);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .ff-hint {
@@ -845,37 +845,34 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   border-radius: 50%;
 }
 
-/* ─── SWITCH DEVISE € / $ (Style iOS flottant) ──────────────────────────── */
+/* ─── SWITCH DEVISE € / $ (Style iOS segmented control) ──────────────────────────── */
 .ff-currency-toggle {
-  position: absolute;
-  right: 0;
-  bottom: 38px; /* Aligné juste au-dessus de la ligne du input */
   display: flex;
-  gap: 4px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 100px;
   padding: 4px;
-  z-index: 10;
+  gap: 4px;
+  width: fit-content;
+  margin-bottom: 16px;
 }
 
 .ff-cur {
-  background: transparent;
   border: none;
-  color: var(--text-dim);
-  font-family: var(--font);
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 6px;
+  border-radius: 100px;
+  padding: 6px 20px;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s, color 0.2s;
+  background: transparent;
+  color: #888;
+  font-family: var(--font);
   -webkit-appearance: none !important;
 }
 
-.ff-cur.selected {
-  background: var(--purple-light);
+.ff-cur.selected,
+.ff-cur.active {
+  background: linear-gradient(135deg, #6B21A8, #EC4899);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
 }
 
 /* ─── BOUTONS CHOIX MULTIPLES (Grilles aérées) ──────────────────────────── */
@@ -922,8 +919,15 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 
 .ff-choices--grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 belles colonnes bien larges */
-  gap: 24px; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Choice grid alias for steps 17 and 24 */
+.ff-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 /* ─── NAVIGATION & BOUTON CTA LP STYLE ──────────────────────────── */
@@ -950,10 +954,10 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   font-weight: 600 !important;
   padding: 18px 48px !important;
   border: none !important;
-  border-radius: 100px !important; /* FORME PILULE */
+  border-radius: 100px !important;
   cursor: pointer !important;
   transition: transform .2s, box-shadow .3s !important;
-  box-shadow: 0 12px 32px rgba(147, 51, 234, 0.3) !important;
+  box-shadow: 0 0 24px rgba(107,33,168,0.5) !important;
   -webkit-appearance: none !important;
 }
 
@@ -963,13 +967,13 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 }
 
 .ff-btn-back {
-  background: transparent !important;
+  background: none !important;
   border: none !important;
-  color: var(--text-dim) !important;
+  color: var(--text-dim, #888) !important;
   font-family: var(--font) !important;
-  font-size: 1rem !important;
-  font-weight: 500 !important;
-  padding: 12px 0 !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  padding: 0 !important;
   cursor: pointer !important;
   transition: color .2s !important;
   -webkit-appearance: none !important;
@@ -987,6 +991,7 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   background: var(--glass);
   transition: all .2s;
   overflow: hidden;
+  padding: 48px;
 }
 .ff-dropzone:hover {
   border-color: var(--purple-light);
@@ -1043,16 +1048,18 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
   .ff-input, .ff-textarea { font-size: 1.2rem; }
   .ff-opt { font-size: 0.75rem; margin-left: 8px; margin-bottom: 12px; display: block; width: fit-content;}
   .ff-choices--grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ff-choice-grid { grid-template-columns: repeat(2, 1fr); }
   .ff-choices--duo { grid-template-columns: 1fr; }
-  .ff-nav { flex-direction: column-reverse; gap: 16px; margin-top: 32px; }
-  .ff-nav-left, .ff-nav-right { width: 100%; justify-content: center; }
-  .ff-btn-primary { width: 100% !important; }
+  .ff-nav { flex-direction: row; justify-content: space-between; gap: 16px; margin-top: 32px; }
+  .ff-nav-left { flex: 0 0 auto; }
+  .ff-nav-right { flex: 0 0 auto; justify-content: flex-end; }
+  .ff-btn-primary { width: auto !important; }
 }
 </style>
 
 <style is:global>
 /* ─── COMBOBOX SECTEUR (Design aligné aux inputs) ──────────────────────────── */
-.ff-cs-wrap { position: relative; width: 100%; }
+.ff-cs-wrap { position: relative !important; width: 100%; }
 
 .ff-cs-trigger {
   display: flex;
