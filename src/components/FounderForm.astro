@@ -5,270 +5,1771 @@ const UPLOAD_URL = import.meta.env.PUBLIC_UPLOAD_URL;
 ---
 
 <div id="ff-overlay" role="dialog" aria-modal="true" aria-label="Formulaire de candidature Flaynn" hidden>
+
   <input type="text" name="website" id="ff-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none!important;position:absolute;left:-9999px">
-  <header class="ff-header"><div class="ff-progress-track" aria-hidden="true"><div id="ff-bar" class="ff-bar"></div></div><div class="ff-header-meta" aria-hidden="true"><span class="ff-brand">Flaynn</span><span id="ff-step-label" class="ff-step-label">Accès</span></div></header>
+
+  <header class="ff-header">
+    <div class="ff-progress-track" aria-hidden="true">
+      <div id="ff-bar" class="ff-bar"></div>
+    </div>
+    <div class="ff-header-meta">
+      <span class="ff-brand">Flaynn</span>
+      <span id="ff-step-label" class="ff-step-label">Accès</span>
+    </div>
+  </header>
 
   <main id="ff-steps" class="ff-main">
-    <div class="ff-step" data-step="0"><div class="ff-step-inner"><p class="ff-eyebrow">Accès restreint</p><h2 class="ff-q">Code d'accès bêta</h2><p class="ff-hint">Flaynn est en accès restreint. Entrez votre code pour continuer.</p><input type="text" id="ff-0" class="ff-input" placeholder="••••••••••" autocomplete="off" aria-label="Code d'accès bêta" /><div class="ff-error" id="ff-err-0" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="0">Accéder</button></div></nav></div></div>
 
-    <div class="ff-step" data-step="1" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Avant de commencer</p><p class="ff-q">Est-ce une re-soumission ?</p><p class="ff-hint">Si vous avez déjà soumis ce dossier et souhaitez le faire re-scorer.</p><div class="ff-choices ff-choices--duo" id="ff-1" role="group" aria-label="Re-soumission"><button type="button" class="ff-choice" data-value="Oui">Oui</button><button type="button" class="ff-choice" data-value="Non">Non</button></div><div class="ff-error" id="ff-err-1" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="1">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="1">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="0">
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Accès restreint</p>
+        <h2 class="ff-q">Code d'accès bêta</h2>
+        <p class="ff-hint">Flaynn est en accès restreint. Entrez votre code pour continuer.</p>
+        <input type="text" id="ff-0" class="ff-input" placeholder="••••••••••" autocomplete="off" aria-label="Code d'accès bêta" />
+        <div class="ff-error" id="ff-err-0" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"></div>
+          <div class="ff-nav-right">
+            <button type="button" class="ff-btn-next ff-btn-primary" data-step="0">Accéder</button>
+          </div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="2" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Informations de contact</p><label class="ff-q" for="ff-2">Nom complet du fondateur</label><input type="text" id="ff-2" class="ff-input" autocomplete="name" aria-required="true" placeholder="Prénom Nom" /><div class="ff-error" id="ff-err-2" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="2">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="2">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="1" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Avant de commencer</p>
+        <p class="ff-q">Est-ce une re-soumission&nbsp;?</p>
+        <p class="ff-hint">Si vous avez déjà soumis ce dossier et souhaitez le faire re-scorer.</p>
+        <div class="ff-choices ff-choices--duo" id="ff-1" role="group" aria-label="Re-soumission">
+          <button type="button" class="ff-choice" data-value="Oui">Oui</button>
+          <button type="button" class="ff-choice" data-value="Non">Non</button>
+        </div>
+        <div class="ff-error" id="ff-err-1" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="1">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="1">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="3" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Informations de contact</p><label class="ff-q" for="ff-3">Email professionnel</label><input type="email" id="ff-3" class="ff-input" autocomplete="email" aria-required="true" placeholder="vous@startup.com" /><div class="ff-error" id="ff-err-3" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="3">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="3">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="2" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-2">Nom complet du fondateur</label>
+        <input type="text" id="ff-2" class="ff-input" autocomplete="name" aria-required="true" placeholder="Prénom Nom" />
+        <div class="ff-error" id="ff-err-2" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="2">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="2">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="4" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Informations de contact</p><label class="ff-q" for="ff-4">Pays</label><input type="text" id="ff-4" class="ff-input" aria-required="true" placeholder="Ex: France" /><div class="ff-error" id="ff-err-4" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="4">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="4">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="3" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-3">Email professionnel</label>
+        <input type="email" id="ff-3" class="ff-input" autocomplete="email" aria-required="true" placeholder="vous@startup.com" />
+        <div class="ff-error" id="ff-err-3" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="3">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="3">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="5" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Informations de contact</p><label class="ff-q" for="ff-5">Ville</label><input type="text" id="ff-5" class="ff-input" aria-required="true" placeholder="Ex: Paris" /><div class="ff-error" id="ff-err-5" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="5">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="5">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="4" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-4">Pays</label>
+        <input type="text" id="ff-4" class="ff-input" aria-required="true" placeholder="Ex: France" />
+        <div class="ff-error" id="ff-err-4" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="4">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="4">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="6" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Informations de contact</p><label class="ff-q" for="ff-6">Numéro de téléphone</label><p class="ff-hint-opt">Optionnel</p><input type="tel" id="ff-6" class="ff-input" autocomplete="tel" placeholder="+33 6 00 00 00 00" /><div class="ff-error" id="ff-err-6" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="6">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="6">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="5" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-5">Ville</label>
+        <input type="text" id="ff-5" class="ff-input" aria-required="true" placeholder="Ex: Paris" />
+        <div class="ff-error" id="ff-err-5" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="5">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="5">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="7" hidden><div class="ff-step-inner"><p class="ff-eyebrow">L'Accroche</p><label class="ff-q" for="ff-7">Nom de la startup</label><input type="text" id="ff-7" class="ff-input" aria-required="true" placeholder="Acme Inc." /><div class="ff-error" id="ff-err-7" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="7">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="7">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="6" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Informations de contact</p>
+        <label class="ff-q" for="ff-6">Numéro de téléphone <span class="ff-opt">Optionnel</span></label>
+        <input type="tel" id="ff-6" class="ff-input" autocomplete="tel" placeholder="+33 6 00 00 00 00" />
+        <div class="ff-error" id="ff-err-6" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="6">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="6">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="8" hidden><div class="ff-step-inner"><p class="ff-eyebrow">L'Accroche</p><label class="ff-q" for="ff-8">En une phrase, que fait votre startup ?</label><div class="ff-field-wrap"><input type="text" id="ff-8" class="ff-input" maxlength="140" aria-required="true" placeholder="Nous aidons [qui] à [quoi] grâce à [comment]." /><span class="ff-counter" id="ff-count-8">0 / 140</span></div><div class="ff-error" id="ff-err-8" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="8">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="8">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="7" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-7">Nom de la startup</label>
+        <input type="text" id="ff-7" class="ff-input" aria-required="true" placeholder="Acme Inc." />
+        <div class="ff-error" id="ff-err-7" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="7">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="7">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="9" hidden><div class="ff-step-inner"><p class="ff-eyebrow">L'Accroche</p><label class="ff-q" for="ff-9">Le Problème</label><p class="ff-hint">Décrivez le point de douleur de vos clients.</p><div class="ff-field-wrap"><textarea id="ff-9" class="ff-textarea" maxlength="400" rows="4" aria-required="true" placeholder="Quel problème résolvez-vous et pour qui ?"></textarea><span class="ff-counter" id="ff-count-9">0 / 400</span></div><div class="ff-error" id="ff-err-9" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="9">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="9">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="8" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-8">En une phrase, que fait votre startup ?</label>
+        <div class="ff-field-wrap">
+          <input type="text" id="ff-8" class="ff-input" maxlength="140" aria-required="true" placeholder="Nous aidons [qui] à [quoi] grâce à [comment]." />
+          <span class="ff-counter" id="ff-count-8">0 / 140</span>
+        </div>
+        <div class="ff-error" id="ff-err-8" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="8">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="8">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="10" hidden><div class="ff-step-inner"><p class="ff-eyebrow">L'Accroche</p><label class="ff-q" for="ff-10">Votre Solution</label><p class="ff-hint">Comment résolvez-vous ce problème ?</p><div class="ff-field-wrap"><textarea id="ff-10" class="ff-textarea" maxlength="400" rows="4" aria-required="true" placeholder="Votre solution en détail…"></textarea><span class="ff-counter" id="ff-count-10">0 / 400</span></div><div class="ff-error" id="ff-err-10" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="10">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="10">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="9" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-9">Le Problème</label>
+        <p class="ff-hint">Décrivez le point de douleur profond de vos clients.</p>
+        <div class="ff-field-wrap">
+          <textarea id="ff-9" class="ff-textarea" maxlength="400" rows="4" aria-required="true" placeholder="Quel problème résolvez-vous et pour qui ?"></textarea>
+          <span class="ff-counter" id="ff-count-9">0 / 400</span>
+        </div>
+        <div class="ff-error" id="ff-err-9" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="9">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="9">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="11" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Le Moteur</p><p class="ff-q">Secteur principal</p><p class="ff-hint">Sélectionnez le secteur qui correspond le mieux.</p><input type="hidden" id="ff-11" aria-required="true" /><div class="ff-cs-wrap" id="ff-cs-11" data-cs="sector"></div><div class="ff-error" id="ff-err-11" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="11">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="11">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="10" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">L'Accroche</p>
+        <label class="ff-q" for="ff-10">Votre Solution</label>
+        <p class="ff-hint">Comment résolvez-vous ce problème ?</p>
+        <div class="ff-field-wrap">
+          <textarea id="ff-10" class="ff-textarea" maxlength="400" rows="4" aria-required="true" placeholder="Votre solution en détail…"></textarea>
+          <span class="ff-counter" id="ff-count-10">0 / 400</span>
+        </div>
+        <div class="ff-error" id="ff-err-10" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="10">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="10">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="12" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Le Moteur</p><label class="ff-q" for="ff-12">Type de client cible</label><input type="text" id="ff-12" class="ff-input" placeholder="PME françaises, DSI grands groupes…" aria-required="true" /><div class="ff-error" id="ff-err-12" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="12">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="12">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="11" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q">Secteur principal</label>
+        <p class="ff-hint">Sélectionnez le secteur qui correspond le mieux.</p>
+        <input type="hidden" id="ff-11" aria-required="true" />
+        <div class="ff-cs-wrap" id="ff-cs-11" data-cs="sector"></div>
+        <div class="ff-error" id="ff-err-11" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="11">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="11">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="13" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Le Moteur</p><label class="ff-q" for="ff-13">Marché Total Adressable (TAM)</label><div class="ff-currency-toggle" id="ff-cur-tam"><button type="button" class="ff-cur selected" data-cur="€">€ EUR</button><button type="button" class="ff-cur" data-cur="$">$ USD</button></div><input type="number" id="ff-13" class="ff-input" placeholder="2 000 000 000" min="0" aria-required="true" /><div class="ff-error" id="ff-err-13" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="13">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="13">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="12" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-12">Type de client cible</label>
+        <input type="text" id="ff-12" class="ff-input" placeholder="PME françaises, DSI grands groupes…" aria-required="true" />
+        <div class="ff-error" id="ff-err-12" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="12">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="12">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="14" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Le Moteur</p><label class="ff-q" for="ff-14">Comment avez-vous estimé ce chiffre ?</label><textarea id="ff-14" class="ff-textarea" rows="4" aria-required="true" placeholder="Sources, méthodologie, études de marché…"></textarea><div class="ff-error" id="ff-err-14" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="14">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="14">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="13" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-13">Marché Total Adressable (TAM)</label>
+        
+        <div class="ff-field-wrap">
+          <div class="ff-currency-toggle" id="ff-cur-tam">
+            <button type="button" class="ff-cur selected" data-cur="€">€</button>
+            <button type="button" class="ff-cur" data-cur="$">$</button>
+          </div>
+          <input type="number" id="ff-13" class="ff-input ff-input-with-cur" placeholder="Ex: 2 000 000 000" min="0" aria-required="true" />
+        </div>
 
-    <div class="ff-step" data-step="15" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Le Moteur</p><label class="ff-q" for="ff-15">Comment acquérez-vous vos clients ?</label><p class="ff-hint-opt">Optionnel</p><textarea id="ff-15" class="ff-textarea" rows="4" placeholder="Canaux, stratégie, coût d'acquisition…"></textarea><div class="ff-error" id="ff-err-15" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="15">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="15">Continuer</button></div></nav></div></div>
+        <div class="ff-error" id="ff-err-13" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="13">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="13">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="16" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Le Moteur</p><label class="ff-q" for="ff-16">Qui cherchez-vous à détrôner ?</label><p class="ff-hint-opt">Optionnel</p><textarea id="ff-16" class="ff-textarea" rows="4" placeholder="Concurrents directs et votre avantage différentiel…"></textarea><div class="ff-error" id="ff-err-16" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="16">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="16">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="14" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-14">Comment avez-vous estimé ce chiffre ?</label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-14" class="ff-textarea" rows="4" aria-required="true" placeholder="Sources, méthodologie, études de marché…"></textarea>
+        </div>
+        <div class="ff-error" id="ff-err-14" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="14">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="14">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="17" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Exécution &amp; Équipe</p><p class="ff-q">À quel stade en êtes-vous ?</p><div class="ff-choices ff-choices--grid" id="ff-17" role="group" aria-label="Stade"><button type="button" class="ff-choice" data-value="Idée">Idée</button><button type="button" class="ff-choice" data-value="MVP">MVP</button><button type="button" class="ff-choice" data-value="Pré-revenue">Pré-revenue</button><button type="button" class="ff-choice" data-value="Pré-seed">Pré-seed</button><button type="button" class="ff-choice" data-value="Seed">Seed</button><button type="button" class="ff-choice" data-value="Série A+">Série A+</button></div><div class="ff-error" id="ff-err-17" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="17">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="17">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="15" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-15">Acquisition clients <span class="ff-opt">Optionnel</span></label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-15" class="ff-textarea" rows="4" placeholder="Canaux, stratégie, coût d'acquisition…"></textarea>
+        </div>
+        <div class="ff-error" id="ff-err-15" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="15">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="15">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="18" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Exécution &amp; Équipe</p><p class="ff-q">Générez-vous des revenus ?</p><div class="ff-choices ff-choices--duo" id="ff-18" role="group" aria-label="Revenus"><button type="button" class="ff-choice" data-value="Oui">Oui</button><button type="button" class="ff-choice" data-value="Non">Non</button></div><div class="ff-error" id="ff-err-18" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="18">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="18">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="16" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Le Moteur</p>
+        <label class="ff-q" for="ff-16">Qui cherchez-vous à détrôner ? <span class="ff-opt">Optionnel</span></label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-16" class="ff-textarea" rows="4" placeholder="Concurrents directs et votre avantage différentiel…"></textarea>
+        </div>
+        <div class="ff-error" id="ff-err-16" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="16">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="16">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="19" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Exécution &amp; Équipe</p><label class="ff-q" for="ff-19">Revenu mensuel (MRR)</label><div class="ff-currency-toggle" id="ff-cur-mrr"><button type="button" class="ff-cur selected" data-cur="€">€ EUR</button><button type="button" class="ff-cur" data-cur="$">$ USD</button></div><input type="number" id="ff-19" class="ff-input" min="0" placeholder="0" aria-required="true" /><div class="ff-error" id="ff-err-19" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="19">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="19">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="17" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <p class="ff-q">À quel stade en êtes-vous ?</p>
+        <div class="ff-choices ff-choices--grid" id="ff-17" role="group" aria-label="Stade">
+          <button type="button" class="ff-choice" data-value="Idée">Idée</button>
+          <button type="button" class="ff-choice" data-value="MVP">MVP</button>
+          <button type="button" class="ff-choice" data-value="Pré-revenue">Pré-revenue</button>
+          <button type="button" class="ff-choice" data-value="Pré-seed">Pré-seed</button>
+          <button type="button" class="ff-choice" data-value="Seed">Seed</button>
+          <button type="button" class="ff-choice" data-value="Série A+">Série A+</button>
+        </div>
+        <div class="ff-error" id="ff-err-17" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="17">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="17">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="20" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Exécution &amp; Équipe</p><label class="ff-q" for="ff-20">Nombre de clients payants</label><input type="number" id="ff-20" class="ff-input" min="0" placeholder="0" aria-required="true" /><div class="ff-error" id="ff-err-20" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="20">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="20">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="18" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <p class="ff-q">Générez-vous des revenus ?</p>
+        <div class="ff-choices ff-choices--duo" id="ff-18" role="group" aria-label="Revenus">
+          <button type="button" class="ff-choice" data-value="Oui">Oui</button>
+          <button type="button" class="ff-choice" data-value="Non">Non</button>
+        </div>
+        <div class="ff-error" id="ff-err-18" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="18">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="18">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="21" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Exécution &amp; Équipe</p><label class="ff-q" for="ff-21">Pourquoi VOUS ?</label><p class="ff-hint">Présentez l'équipe fondatrice et votre avantage compétitif.</p><div class="ff-field-wrap"><textarea id="ff-21" class="ff-textarea" maxlength="500" rows="4" aria-required="true" placeholder="Parcours, complémentarité, expertise unique…"></textarea><span class="ff-counter" id="ff-count-21">0 / 500</span></div><div class="ff-error" id="ff-err-21" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="21">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="21">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="19" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-19">Revenu mensuel (MRR)</label>
+        
+        <div class="ff-field-wrap">
+          <div class="ff-currency-toggle" id="ff-cur-mrr">
+            <button type="button" class="ff-cur selected" data-cur="€">€</button>
+            <button type="button" class="ff-cur" data-cur="$">$</button>
+          </div>
+          <input type="number" id="ff-19" class="ff-input ff-input-with-cur" min="0" placeholder="Ex: 5000" aria-required="true" />
+        </div>
 
-    <div class="ff-step" data-step="22" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Exécution &amp; Équipe</p><p class="ff-q">L'équipe est-elle à temps plein ?</p><div class="ff-choices ff-choices--duo" id="ff-22" role="group" aria-label="Temps plein"><button type="button" class="ff-choice" data-value="Oui">Oui</button><button type="button" class="ff-choice" data-value="Non">Non</button></div><div class="ff-error" id="ff-err-22" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="22">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="22">Continuer</button></div></nav></div></div>
+        <div class="ff-error" id="ff-err-19" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="19">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="19">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="23" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Exécution &amp; Équipe</p><label class="ff-q" for="ff-23">Priorité des 6 prochains mois</label><textarea id="ff-23" class="ff-textarea" rows="4" aria-required="true" placeholder="Votre objectif numéro un…"></textarea><div class="ff-error" id="ff-err-23" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="23">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="23">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="20" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-20">Nombre de clients payants</label>
+        <input type="number" id="ff-20" class="ff-input" min="0" placeholder="Ex: 12" aria-required="true" />
+        <div class="ff-error" id="ff-err-20" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="20">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="20">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="24" hidden><div class="ff-step-inner"><p class="ff-eyebrow">La Demande</p><p class="ff-q">Combien souhaitez-vous lever ?</p><div class="ff-choices ff-choices--grid" id="ff-24" role="group" aria-label="Montant levée"><button type="button" class="ff-choice" data-value="< 100k€">&lt; 100k€</button><button type="button" class="ff-choice" data-value="100k–500k€">100k – 500k€</button><button type="button" class="ff-choice" data-value="500k–1M€">500k – 1M€</button><button type="button" class="ff-choice" data-value="1M–3M€">1M – 3M€</button><button type="button" class="ff-choice" data-value="> 3M€">&gt; 3M€</button></div><div class="ff-error" id="ff-err-24" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="24">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="24">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="21" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-21">Pourquoi VOUS ?</label>
+        <p class="ff-hint">Présentez l'équipe fondatrice et votre avantage compétitif.</p>
+        <div class="ff-field-wrap">
+          <textarea id="ff-21" class="ff-textarea" maxlength="500" rows="4" aria-required="true" placeholder="Parcours, complémentarité, expertise unique…"></textarea>
+          <span class="ff-counter" id="ff-count-21">0 / 500</span>
+        </div>
+        <div class="ff-error" id="ff-err-21" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="21">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="21">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="25" hidden><div class="ff-step-inner"><p class="ff-eyebrow">La Demande</p><label class="ff-q" for="ff-25">Jalons clés, 18 prochains mois</label><textarea id="ff-25" class="ff-textarea" rows="4" aria-required="true" placeholder="Milestones produit, revenus, équipe…"></textarea><div class="ff-error" id="ff-err-25" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="25">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="25">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="22" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <p class="ff-q">L'équipe est-elle à temps plein ?</p>
+        <div class="ff-choices ff-choices--duo" id="ff-22" role="group" aria-label="Temps plein">
+          <button type="button" class="ff-choice" data-value="Oui">Oui</button>
+          <button type="button" class="ff-choice" data-value="Non">Non</button>
+        </div>
+        <div class="ff-error" id="ff-err-22" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="22">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="22">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="26" hidden><div class="ff-step-inner"><p class="ff-eyebrow">La Demande</p><label class="ff-q" for="ff-26">Utilisation prévue des fonds</label><p class="ff-hint-opt">Optionnel</p><textarea id="ff-26" class="ff-textarea" rows="4" placeholder="R&D, recrutement, marketing…"></textarea><div class="ff-error" id="ff-err-26" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="26">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="26">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="23" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Exécution &amp; Équipe</p>
+        <label class="ff-q" for="ff-23">Priorité des 6 prochains mois</label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-23" class="ff-textarea" rows="4" aria-required="true" placeholder="Votre objectif numéro un…"></textarea>
+        </div>
+        <div class="ff-error" id="ff-err-23" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="23">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="23">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="27" hidden><div class="ff-step-inner"><p class="ff-eyebrow">La Demande</p><label class="ff-q" for="ff-27">Votre entreprise dans 5 ans</label><p class="ff-hint">À quoi ressemble votre vision long terme ?</p><textarea id="ff-27" class="ff-textarea" rows="4" aria-required="true" placeholder="Votre ambition, votre impact…"></textarea><div class="ff-error" id="ff-err-27" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="27">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="27">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="24" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">La Demande</p>
+        <p class="ff-q">Combien souhaitez-vous lever ?</p>
+        <div class="ff-choices ff-choices--grid" id="ff-24" role="group" aria-label="Montant levée">
+          <button type="button" class="ff-choice" data-value="< 100k€">&lt; 100k€</button>
+          <button type="button" class="ff-choice" data-value="100k–500k€">100k – 500k€</button>
+          <button type="button" class="ff-choice" data-value="500k–1M€">500k – 1M€</button>
+          <button type="button" class="ff-choice" data-value="1M–3M€">1M – 3M€</button>
+          <button type="button" class="ff-choice" data-value="> 3M€">&gt; 3M€</button>
+        </div>
+        <div class="ff-error" id="ff-err-24" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="24">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="24">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="28" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Documents</p><label class="ff-q" for="ff-28">Votre Pitch Deck</label><p class="ff-hint">PDF uniquement · Max 15 Mo</p><div class="ff-dropzone" id="ff-file-zone-28"><input type="file" id="ff-28" class="ff-file-input" accept=".pdf" aria-required="true" aria-label="Pitch Deck PDF" /><div class="ff-drop-idle" id="ff-drop-idle-28"><div class="ff-drop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div><p class="ff-drop-label">Déposer le fichier ici</p><p class="ff-drop-sub">ou <span class="ff-drop-link">parcourir</span></p></div><div class="ff-drop-active" id="ff-file-info-28" hidden><div class="ff-file-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="ff-file-name" id="ff-file-name-28"></span></div><div class="ff-upload-track"><div class="ff-upload-fill" id="ff-upload-bar-28"></div></div><p class="ff-file-status" id="ff-file-status-28"></p></div></div><div class="ff-error" id="ff-err-28" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="28">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="28">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="25" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">La Demande</p>
+        <label class="ff-q" for="ff-25">Jalons clés, 18 prochains mois</label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-25" class="ff-textarea" rows="4" aria-required="true" placeholder="Milestones produit, revenus, équipe…"></textarea>
+        </div>
+        <div class="ff-error" id="ff-err-25" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="25">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="25">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="29" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Documents</p><label class="ff-q" for="ff-29">Lien vidéo de démo</label><p class="ff-hint-opt">Optionnel</p><input type="url" id="ff-29" class="ff-input" placeholder="https://www.loom.com/share/…" /><div class="ff-error" id="ff-err-29" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="29">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-primary" data-step="29">Continuer</button></div></nav></div></div>
+    <div class="ff-step" data-step="26" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">La Demande</p>
+        <label class="ff-q" for="ff-26">Utilisation des fonds <span class="ff-opt">Optionnel</span></label>
+        <div class="ff-field-wrap">
+          <textarea id="ff-26" class="ff-textarea" rows="4" placeholder="R&D, recrutement, marketing…"></textarea>
+        </div>
+        <div class="ff-error" id="ff-err-26" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="26">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="26">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step" data-step="30" hidden><div class="ff-step-inner"><p class="ff-eyebrow">Documents</p><label class="ff-q" for="ff-30">Document complémentaire</label><p class="ff-hint-opt">Optionnel</p><p class="ff-hint">PDF, Office, JPG, PNG · Max 15 Mo</p><div class="ff-dropzone" id="ff-file-zone-30"><input type="file" id="ff-30" class="ff-file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.png" aria-label="Document supplémentaire" /><div class="ff-drop-idle" id="ff-drop-idle-30"><div class="ff-drop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div><p class="ff-drop-label">Déposer le fichier ici</p><p class="ff-drop-sub">ou <span class="ff-drop-link">parcourir</span></p></div><div class="ff-drop-active" id="ff-file-info-30" hidden><div class="ff-file-row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="ff-file-name" id="ff-file-name-30"></span></div><div class="ff-upload-track"><div class="ff-upload-fill" id="ff-upload-bar-30"></div></div><p class="ff-file-status" id="ff-file-status-30"></p></div></div><div class="ff-error" id="ff-err-30" role="alert"></div><nav class="ff-nav"><div class="ff-nav-left"><button class="ff-btn-back" data-step="30">← Retour</button></div><div class="ff-nav-right"><button class="ff-btn-next ff-btn-submit ff-btn-primary" data-step="30">Soumettre mon dossier</button></div></nav></div></div>
+    <div class="ff-step" data-step="27" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">La Demande</p>
+        <label class="ff-q" for="ff-27">Votre entreprise dans 5 ans</label>
+        <p class="ff-hint">À quoi ressemble votre vision long terme ?</p>
+        <div class="ff-field-wrap">
+          <textarea id="ff-27" class="ff-textarea" rows="4" aria-required="true" placeholder="Votre ambition, votre impact…"></textarea>
+        </div>
+        <div class="ff-error" id="ff-err-27" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="27">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="27">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
 
-    <div class="ff-step ff-step--final" data-step="31" hidden><div class="ff-step-inner"><div id="ff-final-spinner" class="ff-final-state"><div class="ff-spinner"></div><p class="ff-final-label">Envoi en cours…</p></div><div id="ff-final-success" class="ff-final-state" hidden><div class="ff-success-glyph">✦</div><h2 class="ff-success-title">Dossier reçu.</h2><p class="ff-success-body">Notre comité analyse votre dossier sous 24h.<br>Vous recevrez votre rapport sur <strong id="ff-success-email"></strong>.</p></div><div id="ff-final-error" class="ff-final-state" hidden><p class="ff-err-body">Une erreur est survenue. Réessayez ou contactez<br><a href="mailto:contact@flaynn.fr">contact@flaynn.fr</a></p><button class="ff-btn-retry" id="ff-retry">Réessayer</button></div></div></div>
+    <div class="ff-step" data-step="28" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Documents</p>
+        <label class="ff-q" for="ff-28">Votre Pitch Deck</label>
+        <p class="ff-hint">PDF uniquement · Max 15 Mo</p>
+        <div class="ff-dropzone" id="ff-file-zone-28">
+          <input type="file" id="ff-28" class="ff-file-input" accept=".pdf" aria-required="true" aria-label="Pitch Deck PDF" />
+          <div class="ff-drop-idle" id="ff-drop-idle-28">
+            <div class="ff-drop-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <p class="ff-drop-label">Déposer le fichier ici</p>
+            <p class="ff-drop-sub">ou <span class="ff-drop-link">parcourir</span></p>
+          </div>
+          <div class="ff-drop-active" id="ff-file-info-28" hidden>
+            <div class="ff-file-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span class="ff-file-name" id="ff-file-name-28"></span>
+            </div>
+            <div class="ff-upload-track"><div class="ff-upload-fill" id="ff-upload-bar-28"></div></div>
+            <p class="ff-file-status" id="ff-file-status-28"></p>
+          </div>
+        </div>
+        <div class="ff-error" id="ff-err-28" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="28">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="28">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="ff-step" data-step="29" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Documents</p>
+        <label class="ff-q" for="ff-29">Lien vidéo de démo <span class="ff-opt">Optionnel</span></label>
+        <input type="url" id="ff-29" class="ff-input" placeholder="https://www.loom.com/share/…" />
+        <div class="ff-error" id="ff-err-29" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="29">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-primary" data-step="29">Continuer</button></div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="ff-step" data-step="30" hidden>
+      <div class="ff-step-inner">
+        <p class="ff-eyebrow">Documents</p>
+        <label class="ff-q" for="ff-30">Document complémentaire <span class="ff-opt">Optionnel</span></label>
+        <p class="ff-hint">PDF, Office, JPG, PNG · Max 15 Mo</p>
+        <div class="ff-dropzone" id="ff-file-zone-30">
+          <input type="file" id="ff-30" class="ff-file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.png" aria-label="Document supplémentaire" />
+          <div class="ff-drop-idle" id="ff-drop-idle-30">
+            <div class="ff-drop-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <p class="ff-drop-label">Déposer le fichier ici</p>
+            <p class="ff-drop-sub">ou <span class="ff-drop-link">parcourir</span></p>
+          </div>
+          <div class="ff-drop-active" id="ff-file-info-30" hidden>
+            <div class="ff-file-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span class="ff-file-name" id="ff-file-name-30"></span>
+            </div>
+            <div class="ff-upload-track"><div class="ff-upload-fill" id="ff-upload-bar-30"></div></div>
+            <p class="ff-file-status" id="ff-file-status-30"></p>
+          </div>
+        </div>
+        <div class="ff-error" id="ff-err-30" role="alert"></div>
+        <nav class="ff-nav">
+          <div class="ff-nav-left"><button type="button" class="ff-btn-back" data-step="30">← Retour</button></div>
+          <div class="ff-nav-right"><button type="button" class="ff-btn-next ff-btn-submit ff-btn-primary" data-step="30">Soumettre mon dossier</button></div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="ff-step ff-step--final" data-step="31" hidden>
+      <div class="ff-step-inner">
+        <div id="ff-final-spinner" class="ff-final-state">
+          <div class="ff-spinner"></div>
+          <p class="ff-final-label">Envoi en cours…</p>
+        </div>
+        <div id="ff-final-success" class="ff-final-state" hidden>
+          <div class="ff-success-glyph">✦</div>
+          <h2 class="ff-success-title">Dossier reçu.</h2>
+          <p class="ff-success-body">Notre comité analyse votre dossier sous 24h.<br>Vous recevrez votre rapport sur <strong id="ff-success-email"></strong>.</p>
+        </div>
+        <div id="ff-final-error" class="ff-final-state" hidden>
+          <p class="ff-err-body">Une erreur est survenue. Réessayez ou contactez<br><a href="mailto:contact@flaynn.fr">contact@flaynn.fr</a></p>
+          <button type="button" class="ff-btn-retry" id="ff-retry">Réessayer</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
-  <button class="ff-close" id="ff-close" aria-label="Fermer"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+  <button type="button" class="ff-close" id="ff-close" aria-label="Fermer">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+
 </div>
 
 <style>
-#ff-overlay *,#ff-overlay *::before,#ff-overlay *::after{box-sizing:border-box;margin:0;padding:0}
-#ff-overlay{--ok:#4ade80;--err:#f87171;--purple:#6B21A8;--purple-light:#9333ea;--purple-glow:rgba(107,33,168,.35);--orange:#F97316;--yellow:#FACC15;--pink:#EC4899;--text:#F1F5F9;--text-muted:#94a3b8;--text-dim:#475569;--border:rgba(255,255,255,0.07);--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08);--bg:#0A0A0F;--font:'IBM Plex Sans',sans-serif;position:fixed;inset:0;z-index:9000;width:100%;height:100%;background:radial-gradient(circle at 18% 18%,rgba(107,33,168,.22),transparent 32%),radial-gradient(circle at 82% 78%,rgba(236,72,153,.08),transparent 28%),var(--bg);font-family:var(--font);color:var(--text);display:flex;flex-direction:column;overflow-y:auto;-webkit-font-smoothing:antialiased}
-#ff-overlay[hidden]{display:none}
-.ff-header{position:fixed;top:0;left:0;right:0;z-index:9001;pointer-events:none}
-.ff-progress-track{height:2px;background:rgba(255,255,255,.05)}
-.ff-bar{height:100%;background:linear-gradient(90deg,var(--purple-light),var(--pink),var(--orange));width:0%;transition:width .3s ease-out}
-.ff-header-meta{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.ff-close{position:fixed;top:18px;right:18px;z-index:9010;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;color:var(--text-muted);cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.ff-close:hover{background:rgba(107,33,168,.12);border-color:rgba(107,33,168,.35);color:var(--text);transform:translateY(-1px)}
-.ff-main{flex:1;min-height:100dvh;display:flex;align-items:center;justify-content:center;width:100%;padding:80px 24px 56px}
-.ff-step{position:relative;width:100%;max-width:760px;margin:0 auto;animation:ff-in .28s ease-out both}
-.ff-step[hidden]{display:none!important}
-.ff-step.leaving{animation:ff-out .22s ease-in both;pointer-events:none}
-.ff-step::before{display:none}
-.ff-step-inner{position:relative;z-index:1;width:min(100%,760px);margin:0 auto}
-@keyframes ff-in{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes ff-out{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-18px)}}
-.ff-eyebrow{font-size:.73rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-light);margin-bottom:20px}
-.ff-q{display:block;font-size:clamp(2rem,4.2vw,3.4rem);font-weight:700;line-height:1.1;letter-spacing:-.04em;color:var(--text);margin-bottom:24px;text-wrap:balance}
-.ff-hint{max-width:56ch;font-size:1rem;color:var(--text-muted);line-height:1.7;font-weight:300;margin:0 0 36px}
-.ff-hint-opt{font-size:.82rem;font-weight:400;color:var(--text-dim);letter-spacing:.04em;text-transform:uppercase;margin:-14px 0 32px}
-.ff-input,.ff-textarea{display:block;width:100%;min-height:58px;background:transparent;border:none;border-bottom:1px solid var(--glass-border);border-radius:0;color:var(--text);font-family:var(--font);font-size:1.16rem;font-weight:400;padding:16px 0 14px;outline:none;transition:border-color .2s;resize:none;-webkit-appearance:none;margin-top:6px}
-.ff-input:focus,.ff-textarea:focus{border-bottom-color:var(--purple-light);box-shadow:none;background:transparent}
-.ff-input::placeholder,.ff-textarea::placeholder{color:var(--text-dim);font-weight:300}
-.ff-input[type=number]::-webkit-inner-spin-button,.ff-input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
-.ff-input[type=number]{-moz-appearance:textfield}
-.ff-textarea{min-height:120px}
-.ff-field-wrap{position:relative;padding-bottom:28px}
-.ff-counter{position:absolute;bottom:4px;right:0;font-size:.68rem;color:var(--text-dim);pointer-events:none;font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.ff-currency-toggle{display:flex;gap:8px;margin-bottom:12px}
-.ff-cur{background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;color:var(--text-muted);font-family:var(--font);font-size:.88rem;font-weight:500;padding:10px 18px;cursor:pointer;transition:border-color .2s,background .2s,color .2s;-webkit-tap-highlight-color:transparent}
-.ff-cur:hover{border-color:rgba(107,33,168,.3);color:var(--text)}
-.ff-cur.selected{border-color:rgba(147,51,234,.5);background:rgba(107,33,168,.15);color:var(--text)}
-.ff-choices{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;margin-bottom:16px}
-.ff-choice{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;color:var(--text-muted);font-family:var(--font);font-size:1rem;font-weight:500;padding:20px 28px;cursor:pointer;transition:border-color .2s,background .2s,color .2s,transform .2s,box-shadow .2s;white-space:normal;line-height:1.35;text-align:center;-webkit-tap-highlight-color:transparent;letter-spacing:.01em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-height:60px;display:flex;align-items:center;justify-content:center}
-.ff-choice:hover{border-color:rgba(107,33,168,.35);background:rgba(107,33,168,.09);color:var(--text);transform:translateY(-2px)}
-.ff-choice.selected{border-color:rgba(147,51,234,.55);background:rgba(107,33,168,.18);color:var(--text);box-shadow:0 12px 30px rgba(107,33,168,.2)}
-.ff-choices--duo{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.ff-choices--duo .ff-choice{min-height:66px;font-size:1.08rem}
-.ff-choices--grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.ff-choices--grid .ff-choice{min-height:60px;font-size:.96rem;padding:16px 12px}
-.ff-dropzone{position:relative;border:1px dashed rgba(255,255,255,.14);border-radius:16px;background:var(--glass);transition:border-color .2s,background .2s;margin-bottom:8px;overflow:hidden;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.ff-dropzone:hover,.ff-dropzone.drag-over{border-color:rgba(107,33,168,.35);background:rgba(107,33,168,.08)}
-.ff-file-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.ff-drop-idle{display:flex;flex-direction:column;align-items:center;gap:12px;padding:40px 24px;pointer-events:none}
-.ff-drop-icon{width:52px;height:52px;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);margin-bottom:6px}
-.ff-drop-label{font-size:.95rem;color:var(--text);font-weight:500}
-.ff-drop-sub{font-size:.8rem;color:var(--text-dim)}
-.ff-drop-link{color:var(--purple-light);text-decoration:underline;text-underline-offset:3px}
-.ff-drop-active{padding:24px}
-.ff-file-row{display:flex;align-items:center;gap:10px;color:var(--text-muted);margin-bottom:14px}
-.ff-file-name{font-size:.88rem;color:var(--text);font-weight:500;word-break:break-all}
-.ff-upload-track{height:3px;background:rgba(255,255,255,.06);border-radius:100px;overflow:hidden;margin-bottom:12px}
-.ff-upload-fill{height:100%;background:linear-gradient(90deg,var(--purple-light),var(--pink),var(--orange));width:0%;border-radius:100px;transition:width .2s}
-.ff-file-status{font-size:.78rem;font-weight:500;color:var(--text-dim)}
-.ff-file-status.ok{color:var(--ok)}.ff-file-status.err{color:var(--err)}
-.ff-error{min-height:20px;margin-top:16px;font-size:.78rem;color:var(--err);display:flex;align-items:center;gap:8px;letter-spacing:.02em}
-.ff-error:not(:empty)::before{content:'';display:inline-block;width:4px;height:4px;background:var(--err);border-radius:50%;flex-shrink:0}
-.ff-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:52px}
-.ff-nav-left{display:flex;align-items:center;min-height:58px}
-.ff-nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-left:auto}
-.ff-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--purple) 0%,var(--purple-light) 100%);color:#fff;font-family:var(--font);font-size:1.08rem;font-weight:600;min-height:58px;padding:17px 38px;line-height:1.2;border:none;border-radius:12px;cursor:pointer;letter-spacing:0;text-transform:none;transition:transform .2s,box-shadow .3s,background .2s;white-space:nowrap;box-shadow:0 20px 50px rgba(107,33,168,.35)}
-.ff-btn-primary:hover{transform:translateY(-3px);box-shadow:0 24px 56px rgba(107,33,168,.55)}
-.ff-btn-primary:active{transform:translateY(0);box-shadow:0 8px 24px rgba(107,33,168,.25)}
-.ff-btn-back{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--text-muted);font-family:var(--font);font-size:.95rem;font-weight:500;min-height:52px;padding:0 22px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:color .2s,border-color .2s,background .2s,transform .2s;letter-spacing:0;text-transform:none}
-.ff-btn-back:hover{color:var(--text);border-color:var(--glass-border);background:rgba(255,255,255,.03);transform:translateY(-1px)}
-.ff-step--final .ff-step-inner{text-align:center}
-.ff-final-state{display:flex;flex-direction:column;align-items:center;gap:18px}
-.ff-spinner{width:36px;height:36px;border:1.5px solid rgba(255,255,255,.08);border-top-color:var(--purple-light);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.ff-final-label{font-size:.75rem;color:var(--text-dim);font-weight:500;letter-spacing:.1em;text-transform:uppercase}
-.ff-success-glyph{font-size:2.8rem;background:linear-gradient(135deg,var(--purple-light),var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:4px}
-.ff-success-title{font-size:clamp(2.2rem,4.6vw,3.5rem);font-weight:700;letter-spacing:-.04em;color:var(--text);line-height:1.05}
-.ff-success-body{font-size:.98rem;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:460px}
-.ff-success-body strong{color:var(--text);font-weight:500}
-.ff-err-body{font-size:.92rem;color:var(--text-muted);line-height:1.8;text-align:center}
-.ff-err-body a{color:var(--purple-light);text-decoration:none}
-.ff-err-body a:hover{text-decoration:underline}
-.ff-btn-retry{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-family:var(--font);font-weight:500;font-size:.92rem;border-radius:10px;cursor:pointer;transition:color .2s,border-color .2s,background .2s,transform .2s}
-.ff-btn-retry:hover{border-color:var(--glass-border);color:var(--text);background:rgba(255,255,255,.03);transform:translateY(-1px)}
-@media(max-width:640px){
-.ff-main{align-items:center;padding:80px 20px 40px;min-height:100dvh}
-.ff-step,.ff-step-inner{max-width:100%;width:100%}
-.ff-q{font-size:clamp(1.6rem,7vw,2.2rem);margin-bottom:16px}
-.ff-hint{font-size:.9rem;margin-bottom:24px}
-.ff-hint-opt{font-size:.75rem;margin:-8px 0 22px}
-.ff-eyebrow{font-size:.68rem;margin-bottom:14px}
-.ff-input,.ff-textarea,.ff-cs-trigger,.ff-cs-search{font-size:1rem;min-height:50px}
-.ff-textarea{min-height:100px}
-.ff-choices{gap:10px}
-.ff-choice{padding:14px 16px;font-size:.92rem;min-height:52px}
-.ff-choices--duo{grid-template-columns:1fr 1fr;gap:10px}
-.ff-choices--duo .ff-choice{min-height:56px;font-size:.95rem}
-.ff-choices--grid{grid-template-columns:repeat(2,1fr);gap:10px}
-.ff-choices--grid .ff-choice{min-height:52px;font-size:.88rem;padding:12px 10px}
-.ff-nav{flex-direction:column-reverse;align-items:stretch;gap:10px;margin-top:32px}
-.ff-nav-left,.ff-nav-right{width:100%}
-.ff-btn-primary{width:100%;min-height:54px;font-size:.95rem;padding:15px 20px;border-radius:10px}
-.ff-btn-back{width:100%;min-height:46px;font-size:.88rem}
-.ff-close{top:14px;right:14px;width:36px;height:36px}
-.ff-dropzone .ff-drop-idle{padding:28px 16px}
-.ff-currency-toggle{margin-bottom:8px}
-.ff-cur{padding:8px 14px;font-size:.82rem}
+/* ─── RESET & FONDS ──────────────────────────── */
+#ff-overlay *,
+#ff-overlay *::before,
+#ff-overlay *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-@media(min-width:1400px){.ff-step-inner{max-width:760px}}
+
+#ff-overlay {
+  --ok: #4ade80;
+  --err: #f87171;
+  --purple: #6B21A8;
+  --purple-light: #9333ea;
+  --pink: #EC4899;
+  --orange: #F97316;
+  --text: #F1F5F9;
+  --text-muted: #94a3b8;
+  --text-dim: #475569;
+  --border: rgba(255,255,255,0.07);
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --bg: #0A0A0F;
+  --font: 'IBM Plex Sans', sans-serif;
+  
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 18% 18%, rgba(107,33,168,.15), transparent 40%),
+    radial-gradient(circle at 82% 78%, rgba(236,72,153,.05), transparent 40%),
+    var(--bg);
+  font-family: var(--font);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+#ff-overlay[hidden] {
+  display: none;
+}
+
+/* ─── HEADER ──────────────────────────── */
+.ff-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9001;
+  pointer-events: none;
+}
+
+.ff-progress-track {
+  height: 2px;
+  background: rgba(255,255,255,.05);
+}
+
+.ff-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple-light), var(--pink), var(--orange));
+  width: 0%;
+  transition: width .3s ease-out;
+}
+
+.ff-header-meta {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.ff-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9010;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all .2s ease;
+  backdrop-filter: blur(12px);
+}
+
+.ff-close:hover {
+  background: rgba(107,33,168,.12);
+  border-color: rgba(107,33,168,.35);
+  color: var(--text);
+}
+
+/* ─── LAYOUT & CENTRAGE (Correction du Zoom) ──────────────────────────── */
+.ff-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centrage horizontal absolu */
+  justify-content: center; /* Centrage vertical absolu */
+  width: 100%;
+  min-height: 100dvh;
+  padding: 40px 24px;
+}
+
+.ff-step {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto; /* Empêche le décalage sur grand écran */
+  animation: ff-in .3s ease-out both;
+}
+
+.ff-step[hidden] {
+  display: none !important;
+}
+
+.ff-step.leaving {
+  animation: ff-out .2s ease-in both;
+  pointer-events: none;
+}
+
+.ff-step-inner {
+  width: 100%;
+}
+
+@keyframes ff-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ff-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-15px); }
+}
+
+/* ─── TYPOGRAPHIE ──────────────────────────── */
+.ff-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-bottom: 16px;
+}
+
+.ff-q {
+  display: block;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.ff-hint {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+/* Le fameux badge Optionnel, petit et chic */
+.ff-opt {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 4px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 14px;
+  position: relative;
+  top: -4px;
+  display: inline-block;
+}
+
+/* ─── CHAMPS TEXTE ──────────────────────────── */
+.ff-input,
+.ff-textarea {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.15); /* Plus épais pour un meilleur rendu */
+  border-radius: 0;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.6rem; /* Beaucoup plus grand */
+  font-weight: 400;
+  padding: 16px 0;
+  outline: none;
+  transition: border-color .2s;
+  resize: none;
+  -webkit-appearance: none;
+}
+
+.ff-textarea {
+  font-size: 1.3rem; /* Légèrement plus petit pour les paragraphes */
+  min-height: 140px;
+}
+
+.ff-input:focus,
+.ff-textarea:focus {
+  border-bottom-color: var(--purple-light);
+}
+
+.ff-input::placeholder,
+.ff-textarea::placeholder {
+  color: rgba(255,255,255,0.2);
+  font-weight: 300;
+}
+
+.ff-input[type=number]::-webkit-inner-spin-button,
+.ff-input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+.ff-input[type=number] { -moz-appearance: textfield; }
+
+/* Pour éviter que le texte ne passe sous le switch €/$ */
+.ff-input-with-cur {
+  padding-right: 90px; 
+}
+
+.ff-field-wrap {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.ff-counter {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+.ff-error {
+  min-height: 24px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--err);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ff-error:not(:empty)::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: var(--err);
+  border-radius: 50%;
+}
+
+/* ─── SWITCH DEVISE € / $ (Style iOS flottant) ──────────────────────────── */
+.ff-currency-toggle {
+  position: absolute;
+  right: 0;
+  bottom: 38px; /* Aligné juste au-dessus de la ligne du input */
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 4px;
+  z-index: 10;
+}
+
+.ff-cur {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-appearance: none !important;
+}
+
+.ff-cur.selected {
+  background: var(--purple-light);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+}
+
+/* ─── BOUTONS CHOIX MULTIPLES (Grilles aérées) ──────────────────────────── */
+.ff-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+  margin-bottom: 16px;
+}
+
+.ff-choice {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 24px 32px; 
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  -webkit-appearance: none !important;
+}
+
+.ff-choice:hover {
+  border-color: rgba(147,51,234,.4);
+  background: rgba(147,51,234,.1);
+  color: var(--text);
+}
+
+.ff-choice.selected {
+  border-color: var(--purple-light);
+  background: rgba(147,51,234,.2);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(147,51,234,.2);
+}
+
+.ff-choices--duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px; 
+}
+
+.ff-choices--grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 belles colonnes bien larges */
+  gap: 24px; 
+}
+
+/* ─── NAVIGATION & BOUTON CTA LP STYLE ──────────────────────────── */
+.ff-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 48px;
+  width: 100%;
+}
+
+.ff-nav-left { flex: 1; }
+.ff-nav-right { flex: 1; display: flex; justify-content: flex-end; }
+
+/* LE BOUTON PREMIUM PILULE LP */
+.ff-btn-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #6B21A8, #EC4899) !important;
+  color: #fff !important;
+  font-family: var(--font) !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  padding: 18px 48px !important;
+  border: none !important;
+  border-radius: 100px !important; /* FORME PILULE */
+  cursor: pointer !important;
+  transition: transform .2s, box-shadow .3s !important;
+  box-shadow: 0 12px 32px rgba(147, 51, 234, 0.3) !important;
+  -webkit-appearance: none !important;
+}
+
+.ff-btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 16px 40px rgba(147, 51, 234, 0.5) !important;
+}
+
+.ff-btn-back {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-dim) !important;
+  font-family: var(--font) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  padding: 12px 0 !important;
+  cursor: pointer !important;
+  transition: color .2s !important;
+  -webkit-appearance: none !important;
+}
+
+.ff-btn-back:hover {
+  color: var(--text) !important;
+}
+
+/* ─── DROPZONE UPLOAD ──────────────────────────── */
+.ff-dropzone {
+  position: relative;
+  border: 1px dashed rgba(255,255,255,.2);
+  border-radius: 16px;
+  background: var(--glass);
+  transition: all .2s;
+  overflow: hidden;
+}
+.ff-dropzone:hover {
+  border-color: var(--purple-light);
+  background: rgba(147,51,234,.05);
+}
+.ff-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.ff-drop-idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px;
+  pointer-events: none;
+}
+.ff-drop-icon {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.ff-drop-label { font-size: 1rem; color: var(--text); font-weight: 500; }
+.ff-drop-sub { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px;}
+.ff-drop-link { color: var(--purple-light); text-decoration: underline; }
+.ff-drop-active { padding: 32px 24px; }
+.ff-file-row { display: flex; align-items: center; gap: 12px; color: var(--text); margin-bottom: 16px; font-weight: 500;}
+.ff-upload-track { height: 4px; background: rgba(255,255,255,.1); border-radius: 100px; overflow: hidden; margin-bottom: 8px;}
+.ff-upload-fill { height: 100%; background: linear-gradient(90deg, var(--purple-light), var(--pink)); width: 0%; transition: width .2s;}
+.ff-file-status { font-size: 0.85rem; color: var(--text-dim); }
+
+/* ─── ETAT FINAL ──────────────────────────── */
+.ff-step--final .ff-step-inner { text-align: center; }
+.ff-final-state { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.ff-spinner { width: 40px; height: 40px; border: 2px solid rgba(255,255,255,.1); border-top-color: var(--purple-light); border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ff-success-glyph { font-size: 3.5rem; background: linear-gradient(135deg, var(--purple-light), var(--pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+.ff-success-title { font-size: 3rem; font-weight: 700; letter-spacing: -0.04em; color: var(--text); }
+.ff-success-body { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+/* ─── RESPONSIVE MOBILE ──────────────────────────── */
+@media(max-width:640px) {
+  .ff-main { padding: 80px 20px 40px; }
+  .ff-q { font-size: 2rem; margin-bottom: 20px; }
+  .ff-input, .ff-textarea { font-size: 1.2rem; }
+  .ff-opt { font-size: 0.75rem; margin-left: 8px; margin-bottom: 12px; display: block; width: fit-content;}
+  .ff-choices--grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ff-choices--duo { grid-template-columns: 1fr; }
+  .ff-nav { flex-direction: column-reverse; gap: 16px; margin-top: 32px; }
+  .ff-nav-left, .ff-nav-right { width: 100%; justify-content: center; }
+  .ff-btn-primary { width: 100% !important; }
+}
 </style>
 
 <style is:global>
-.ff-cs-wrap{position:relative;width:100%;margin-top:8px}
-.ff-cs-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:58px;padding:16px 0 14px;background:transparent;cursor:pointer;border:none;border-bottom:1px solid rgba(255,255,255,.08);transition:border-color .2s}
-.ff-cs-trigger:focus{outline:none;border-bottom-color:#9333ea}
-.ff-cs-trigger[aria-expanded="true"]{border-bottom-color:#9333ea}
-.ff-cs-val{flex:1;font-size:1.16rem;color:#F1F5F9;font-family:'IBM Plex Sans',sans-serif;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ff-cs-ph{color:#475569}
-.ff-cs-ico{flex-shrink:0;width:20px;height:20px;color:#94a3b8;transition:transform .2s;pointer-events:none}
-.ff-cs-search{width:100%;min-height:58px;padding:16px 0 14px;background:transparent;border:none;border-bottom:1px solid #9333ea;color:#F1F5F9;font-size:1.16rem;font-family:'IBM Plex Sans',sans-serif;outline:none}
-.ff-cs-search::placeholder{color:#475569}
-.ff-cs-list{list-style:none;margin:0;padding:6px;background:#11111a;border:1px solid rgba(255,255,255,.08);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.02);max-height:260px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(147,51,234,.4) transparent}
-.ff-cs-list::-webkit-scrollbar{width:4px}
-.ff-cs-list::-webkit-scrollbar-thumb{background:rgba(147,51,234,.4);border-radius:2px}
-.ff-cs-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;cursor:pointer;color:#F1F5F9;font-size:.96rem;font-family:'IBM Plex Sans',sans-serif;transition:background .12s,color .12s;user-select:none}
-.ff-cs-opt--act,.ff-cs-opt:hover{background:rgba(107,33,168,.18)}
-.ff-cs-opt--sel{color:#F1F5F9}
-.ff-cs-pfx{font-size:1.2em;line-height:1;flex-shrink:0}
-.ff-cs-chk{color:#9333ea;font-size:.85rem;margin-left:auto}
-.ff-cs-empty{padding:16px 14px;color:#475569;font-size:.95rem;font-family:'IBM Plex Sans',sans-serif;text-align:center}
+/* ─── COMBOBOX SECTEUR (Design aligné aux inputs) ──────────────────────────── */
+.ff-cs-wrap { position: relative; width: 100%; }
+
+.ff-cs-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.15); /* Exactement comme .ff-input */
+  padding: 16px 0;
+  transition: border-color 0.2s;
+  -webkit-appearance: none !important;
+}
+
+.ff-cs-trigger:focus, .ff-cs-trigger[aria-expanded="true"] {
+  outline: none;
+  border-bottom-color: #9333ea;
+}
+
+.ff-cs-val {
+  font-size: 1.6rem; /* Identique à .ff-input */
+  color: #fff;
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ff-cs-ph { color: rgba(255,255,255,0.2); font-weight: 300; }
+
+.ff-cs-ico {
+  width: 24px;
+  height: 24px;
+  color: rgba(255,255,255,0.4);
+  pointer-events: none;
+}
+
+.ff-cs-search {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #9333ea;
+  color: #fff;
+  font-size: 1.6rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  padding: 16px 0;
+  outline: none;
+}
+.ff-cs-search::placeholder { color: rgba(255,255,255,0.2); font-weight: 300; }
+
+/* FIX ABSOLU DU SECTEUR : positionné de manière absolue par rapport à l'input, z-index infini, et collé à l'overlay principal */
+.ff-cs-list {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 99999 !important;
+  margin-top: 8px !important;
+  list-style: none;
+  padding: 8px;
+  background: #11111a;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.8);
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(147,51,234,.5) transparent;
+}
+
+.ff-cs-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.05rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.ff-cs-opt--act, .ff-cs-opt:hover { background: rgba(147,51,234,.2); }
+.ff-cs-pfx { font-size: 1.3em; line-height: 1; }
+.ff-cs-chk { color: #9333ea; margin-left: auto; }
+.ff-cs-empty { padding: 20px; color: #94a3b8; text-align: center; }
 </style>
 
 <script define:vars={{ BETA_CODE, WEBHOOK_URL, UPLOAD_URL }}>
 (function(){
-const TOTAL=30;let current=0;let startTime=null;const csrf=crypto.randomUUID();
-const uploads={28:{url:'',filename:''},30:{url:'',filename:''}};const currencies={tam:'€',mrr:'€'};const SK='ff_data';
-const overlay=document.getElementById('ff-overlay');const bar=document.getElementById('ff-bar');const lbl=document.getElementById('ff-step-label');const closeBtn=document.getElementById('ff-close');
-const step=n=>document.querySelector(`.ff-step[data-step="${n}"]`);const inp=n=>document.getElementById(`ff-${n}`);const err=n=>document.getElementById(`ff-err-${n}`);
-const setErr=(n,m)=>{const e=err(n);if(e) e.textContent=m;};const clrErr=n=>{const e=err(n);if(e) e.textContent='';};
-const choice=n=>{const g=document.getElementById(`ff-${n}`);if(!g) return '';const s=g.querySelector('.ff-choice.selected');return s?s.dataset.value:'';};
-document.querySelectorAll('.ff-currency-toggle').forEach(toggle=>{toggle.addEventListener('click',e=>{const btn=e.target.closest('.ff-cur');if(!btn) return;toggle.querySelectorAll('.ff-cur').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');const key=toggle.id==='ff-cur-tam'?'tam':'mrr';currencies[key]=btn.dataset.cur;});});
-const SKIP_CONDITIONS={19:()=>choice(18)!=='Oui',20:()=>choice(18)!=='Oui'};
-function shouldSkip(n){return SKIP_CONDITIONS[n]?SKIP_CONDITIONS[n]():false;}
-function nextVisibleStep(from){let n=from+1;while(n<=30&&shouldSkip(n))n++;return n;}
-function prevVisibleStep(from){let n=from-1;while(n>=0&&shouldSkip(n))n--;return Math.max(0,n);}
-function progress(n){const pct=n===0?3:Math.round((n/TOTAL)*100);bar.style.width=pct+'%';if(lbl) lbl.textContent=n===0?'Accès':`${n} / ${TOTAL}`;}
-function saveSession(){const d={};for(let i=1;i<=30;i++){const el=inp(i);if(!el||el.type==='file') continue;d[`f${i}`]=el.value;}document.querySelectorAll('.ff-choice.selected').forEach(b=>{const g=b.closest('.ff-choices');if(g) d[`c${g.id}`]=b.dataset.value;});sessionStorage.setItem(SK,JSON.stringify(d));}
-function loadSession(){try{const raw=sessionStorage.getItem(SK);if(!raw) return;const d=JSON.parse(raw);for(const[k,v]of Object.entries(d)){if(k.startsWith('f')){const el=document.getElementById(`ff-${k.slice(1)}`);if(el&&el.type!=='file') el.value=v;}else if(k.startsWith('c')){const g=document.getElementById(k.slice(1));if(g) g.querySelectorAll('.ff-choice').forEach(b=>{if(b.dataset.value===v) b.classList.add('selected');});}}syncCounters();const saved11=inp(11)?.value;setTimeout(()=>{if(saved11&&window.__ffRestoreCS) window.__ffRestoreCS(11,saved11);},50);}catch(e){}}
-function syncCounters(){[[8,140],[9,400],[10,400],[21,500]].forEach(([n,max])=>{const el=inp(n);const c=document.getElementById(`ff-count-${n}`);if(el&&c) c.textContent=`${el.value.length} / ${max}`;});}
-const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;const URL_RE=/^https?:\/\/.+\..+/;
-const MIN_LENGTHS={2:3,7:2,8:15,9:30,10:30,12:5,14:15,21:30,23:15,25:15,27:20};
-const FIELD_LABELS=['secteur principal','le problème','la solution','comment résolvez','pitch deck','nom de la startup','email professionnel','pourquoi vous','type de client','marché total','comment avez-vous estimé','comment acquérez','qui cherchez','quel stade','générez-vous','équipe','priorité','combien souhaitez','jalons clés','utilisation prévue','à quoi ressemble','revenu mensuel','nombre de clients','nom complet','re-soumission','en une phrase','numéro de téléphone','lien vidéo','document complémentaire','pays','ville'];
-function isGarbageAnswer(val){const low=val.toLowerCase().trim();if(low.length<3) return false;return FIELD_LABELS.some(label=>low===label||label.includes(low)||low.includes(label));}
-function validate(n){clrErr(n);const el=inp(n);const val=el&&el.value!=null?el.value.trim():'';const required=()=>{if(!val){setErr(n,'Ce champ est requis.');return false;}const minLen=MIN_LENGTHS[n];if(minLen&&val.length<minLen){setErr(n,`Réponse trop courte (min. ${minLen} caractères).`);return false;}if(isGarbageAnswer(val)){setErr(n,'Merci de fournir une vraie réponse.');return false;}return true;};
-switch(n){case 0:if(!el||val!==BETA_CODE){setErr(0,'Code invalide. Contactez contact@flaynn.fr.');return false;}return true;case 1:if(!choice(1)){setErr(1,'Sélectionnez une option.');return false;}return true;case 2:case 4:case 5:case 7:case 12:case 14:case 23:case 25:case 27:return required();case 3:if(!required()) return false;if(!EMAIL_RE.test(val)){setErr(3,'Email invalide.');return false;}return true;case 8:case 9:case 10:case 21:return required();case 11:if(!val){setErr(11,'Sélectionnez un secteur.');return false;}return true;case 13:if(!el||val===''){setErr(13,'Ce champ est requis.');return false;}if(parseFloat(val)<=0){setErr(13,'Le TAM doit être supérieur à 0.');return false;}return true;case 17:case 18:case 22:case 24:if(!choice(n)){setErr(n,'Sélectionnez une option.');return false;}return true;case 19:if(choice(18)==='Oui'&&(!el||val==='')){setErr(n,'Ce champ est requis.');return false;}return true;case 20:if(choice(18)==='Oui'&&(!el||val==='')){setErr(n,'Ce champ est requis.');return false;}return true;case 28:if(!uploads[28].url){setErr(28,'Uploadez votre pitch deck.');return false;}return true;case 29:if(val&&!URL_RE.test(val)){setErr(29,'URL invalide (commencer par https://).');return false;}return true;default:return true;}}
-function showStep(n){const prev=step(current);const delay=260;if(prev&&!prev.hidden){prev.classList.add('leaving');setTimeout(()=>{prev.hidden=true;prev.classList.remove('leaving');},200);}setTimeout(()=>{const next=step(n);if(!next) return;next.hidden=false;current=n;progress(n);overlay.scrollTo(0,0);const f=next.querySelector('.ff-input:not([type=file]),.ff-textarea');if(f) setTimeout(()=>f.focus(),50);saveSession();},delay);}
-function goNext(n){if(!validate(n)) return;if(n===30){submit();return;}showStep(nextVisibleStep(n));}
-function goBack(n){showStep(prevVisibleStep(n));}
-function openForm(){overlay.hidden=false;document.body.style.overflow='hidden';startTime=Date.now();current=0;document.querySelectorAll('.ff-step').forEach((s,i)=>{s.hidden=i!==0;});progress(0);const f=inp(0);if(f) setTimeout(()=>f.focus(),80);loadSession();}
-function closeForm(){overlay.hidden=true;document.body.style.overflow='';}
-window.openFounderForm=openForm;if(closeBtn) closeBtn.addEventListener('click',closeForm);
-overlay.addEventListener('click',e=>{if(e.target===overlay) closeForm();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden) closeForm();});
-overlay.addEventListener('click',e=>{const nb=e.target.closest('.ff-btn-next');const bb=e.target.closest('.ff-btn-back');if(nb){goNext(parseInt(nb.dataset.step,10));return;}if(bb){goBack(parseInt(bb.dataset.step,10));return;}});
-overlay.addEventListener('keydown',e=>{if(e.key!=='Enter') return;if(e.target.tagName==='TEXTAREA') return;if(e.target.closest('.ff-choices')) return;const s=step(current);if(!s) return;const btn=s.querySelector('.ff-btn-next');if(btn) btn.click();});
-overlay.addEventListener('click',e=>{const c=e.target.closest('.ff-choice');if(!c) return;const g=c.closest('.ff-choices');if(!g) return;g.querySelectorAll('.ff-choice').forEach(b=>b.classList.remove('selected'));c.classList.add('selected');clrErr(current);saveSession();});
-[[8,140],[9,400],[10,400],[21,500]].forEach(([n,max])=>{const el=inp(n);const c=document.getElementById(`ff-count-${n}`);if(el&&c) el.addEventListener('input',()=>{c.textContent=`${el.value.length} / ${max}`;saveSession();});});
-for(let i=1;i<=30;i++){const el=inp(i);if(el&&el.type!=='file') el.addEventListener('input',()=>saveSession());}
-[11].forEach(n=>{const el=inp(n);if(el) el.addEventListener('change',()=>saveSession());});
-function setupUpload(sn){const fileInput=inp(sn);const zone=document.getElementById(`ff-file-zone-${sn}`);const idle=document.getElementById(`ff-drop-idle-${sn}`);const active=document.getElementById(`ff-file-info-${sn}`);const nameEl=document.getElementById(`ff-file-name-${sn}`);const fillEl=document.getElementById(`ff-upload-bar-${sn}`);const statEl=document.getElementById(`ff-file-status-${sn}`);const MAX=15*1024*1024;const TYPES28=['.pdf'];const TYPES30=['.pdf','.doc','.docx','.xls','.xlsx','.ppt','.pptx','.jpg','.png'];if(!fileInput||!zone) return;zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag-over');});zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag-over');if(e.dataTransfer.files.length) upload(e.dataTransfer.files[0]);});fileInput.addEventListener('change',()=>{if(fileInput.files.length) upload(fileInput.files[0]);});
-function upload(file){clrErr(sn);const allowed=sn===28?TYPES28:TYPES30;const ext='.'+file.name.split('.').pop().toLowerCase();if(!allowed.includes(ext)){setErr(sn,`Format non accepté. Formats : ${allowed.join(', ')}`);return;}if(file.size>MAX){setErr(sn,'Fichier trop volumineux (max 15 Mo).');return;}idle.hidden=true;active.hidden=false;nameEl.textContent=`${file.name} · ${(file.size/1024/1024).toFixed(1)} Mo`;fillEl.style.width='0%';statEl.textContent='Upload en cours…';statEl.className='ff-file-status';const fd=new FormData();fd.append('file',file);const xhr=new XMLHttpRequest();xhr.open('POST',UPLOAD_URL);xhr.upload.addEventListener('progress',e=>{if(e.lengthComputable) fillEl.style.width=Math.round(e.loaded/e.total*100)+'%';});xhr.addEventListener('load',()=>{if(xhr.status>=200&&xhr.status<300){try{const res=JSON.parse(xhr.responseText);uploads[sn]={url:res.url,filename:file.name};fillEl.style.width='100%';statEl.textContent='✓ Fichier prêt';statEl.className='ff-file-status ok';}catch(e2){statEl.textContent='Erreur de réponse.';statEl.className='ff-file-status err';setErr(sn,'Réessayez.');}}else{statEl.textContent=`Erreur ${xhr.status}`;statEl.className='ff-file-status err';setErr(sn,'Erreur upload.');}});xhr.addEventListener('error',()=>{statEl.textContent='Erreur réseau';statEl.className='ff-file-status err';setErr(sn,'Erreur réseau.');});xhr.send(fd);}}
-setupUpload(28);setupUpload(30);
-async function submit(){const hp=document.getElementById('ff-honeypot');if(hp&&hp.value) return;const dur=Math.round((Date.now()-startTime)/1000);if(dur<10) return;showStep(31);const spinner=document.getElementById('ff-final-spinner');const success=document.getElementById('ff-final-success');const errorEl=document.getElementById('ff-final-error');spinner.hidden=false;success.hidden=true;errorEl.hidden=true;const v=n=>{const el=inp(n);return el?el.value.trim():'';};
-const payload={code_acces:v(0),re_soumission:choice(1),nom_fondateur:v(2),email:v(3),pays:v(4),ville:v(5),telephone:v(6),nom_startup:v(7),pitch_une_phrase:v(8),probleme:v(9),solution:v(10),secteur:v(11),type_client:v(12),tam:parseFloat(v(13))||0,tam_devise:currencies.tam,estimation_tam:v(14),acquisition_clients:v(15),concurrents:v(16),stade:choice(17),revenus:choice(18),mrr:parseFloat(v(19))||0,mrr_devise:currencies.mrr,clients_payants:parseInt(v(20),10)||0,pourquoi_vous:v(21),equipe_temps_plein:choice(22),priorite_6_mois:v(23),montant_leve:choice(24),jalons_18_mois:v(25),utilisation_fonds:v(26),vision_5_ans:v(27),pitch_deck_url:uploads[28].url,pitch_deck_filename:uploads[28].filename,lien_demo:v(29),doc_supplementaire_url:uploads[30].url,doc_supplementaire_filename:uploads[30].filename,submitted_at:new Date().toISOString(),csrf_token:csrf,fill_duration_seconds:dur,honeypot:hp?hp.value:''};
-try{const res=await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});spinner.hidden=true;if(res.ok){document.getElementById('ff-success-email').textContent=payload.email;success.hidden=false;sessionStorage.removeItem(SK);}else{errorEl.hidden=false;}}catch(e){spinner.hidden=true;errorEl.hidden=false;}}
-document.getElementById('ff-retry').addEventListener('click',()=>showStep(30));progress(0);
+  const TOTAL = 30;
+  let current = 0;
+  let startTime = null;
+  const csrf = crypto.randomUUID();
+  const uploads = { 28:{url:'',filename:''}, 30:{url:'',filename:''} };
+  const currencies = { tam: '€', mrr: '€' };
+  const SK = 'ff_data';
+
+  const overlay  = document.getElementById('ff-overlay');
+  const bar      = document.getElementById('ff-bar');
+  const closeBtn = document.getElementById('ff-close');
+
+  const step   = n => document.querySelector(`.ff-step[data-step="${n}"]`);
+  const inp    = n => document.getElementById(`ff-${n}`);
+  const err    = n => document.getElementById(`ff-err-${n}`);
+  const setErr = (n,m) => { const e=err(n); if(e) e.textContent=m; };
+  const clrErr = n => { const e=err(n); if(e) e.textContent=''; };
+  const choice = n => {
+    const g = document.getElementById(`ff-${n}`);
+    if(!g) return '';
+    const s = g.querySelector('.ff-choice.selected');
+    return s ? s.dataset.value : '';
+  };
+
+  document.querySelectorAll('.ff-currency-toggle').forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      const btn = e.target.closest('.ff-cur');
+      if(!btn) return;
+      toggle.querySelectorAll('.ff-cur').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const key = toggle.id === 'ff-cur-tam' ? 'tam' : 'mrr';
+      currencies[key] = btn.dataset.cur;
+    });
+  });
+
+  const SKIP_CONDITIONS = {
+    19: () => choice(18) !== 'Oui', 
+    20: () => choice(18) !== 'Oui', 
+  };
+
+  function shouldSkip(n) {
+    return SKIP_CONDITIONS[n] ? SKIP_CONDITIONS[n]() : false;
+  }
+
+  function nextVisibleStep(from) {
+    let n = from + 1;
+    while (n <= 30 && shouldSkip(n)) n++;
+    return n;
+  }
+
+  function prevVisibleStep(from) {
+    let n = from - 1;
+    while (n >= 0 && shouldSkip(n)) n--;
+    return Math.max(0, n);
+  }
+
+  function progress(n) {
+    const pct = n === 0 ? 3 : Math.round((n / TOTAL) * 100);
+    bar.style.width = pct + '%';
+  }
+
+  function saveSession() {
+    const d = {};
+    for (let i = 1; i <= 30; i++) {
+      const el = inp(i);
+      if (!el || el.type === 'file') continue;
+      d[`f${i}`] = el.value;
+    }
+    document.querySelectorAll('.ff-choice.selected').forEach(b => {
+      const g = b.closest('.ff-choices');
+      if (g) d[`c${g.id}`] = b.dataset.value;
+    });
+    sessionStorage.setItem(SK, JSON.stringify(d));
+  }
+
+  function loadSession() {
+    try {
+      const raw = sessionStorage.getItem(SK);
+      if (!raw) return;
+      const d = JSON.parse(raw);
+
+      for (const [k, v] of Object.entries(d)) {
+        if (k.startsWith('f')) {
+          const el = document.getElementById(`ff-${k.slice(1)}`);
+          if (el && el.type !== 'file') el.value = v;
+        } else if (k.startsWith('c')) {
+          const g = document.getElementById(k.slice(1));
+          if (g) {
+            g.querySelectorAll('.ff-choice').forEach(b => {
+              if (b.dataset.value === v) b.classList.add('selected');
+            });
+          }
+        }
+      }
+      syncCounters();
+      const saved11 = inp(11)?.value;
+      setTimeout(() => { if (saved11 && window.__ffRestoreCS) window.__ffRestoreCS(11, saved11); }, 50);
+    } catch (e) {}
+  }
+
+  function syncCounters() {
+    [[8, 140], [9, 400], [10, 400], [21, 500]].forEach(([n, max]) => {
+      const el = inp(n);
+      const c = document.getElementById(`ff-count-${n}`);
+      if (el && c) c.textContent = `${el.value.length} / ${max}`;
+    });
+  }
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const URL_RE = /^https?:\/\/.+\..+/;
+
+  const MIN_LENGTHS = {
+    2: 3,  // Nom
+    7: 2,  // Startup
+    8: 15, // Pitch
+    9: 20, // Problème
+    10: 20,// Solution
+    12: 5, // Cible
+    14: 10,// TAM source
+    21: 20,// Pourquoi vous
+    23: 10,// Priorité
+    25: 10,// Jalons
+    27: 15 // Vision
+  };
+
+  const FIELD_LABELS = [
+    "secteur", "problème", "solution", "résolvez", 
+    "pitch deck", "startup", "email", "pourquoi vous", 
+    "type de client", "marché total", "estimé", 
+    "acquérez", "détrôner", "stade", "revenus", 
+    "équipe", "priorité", "combien", "jalons", 
+    "utilisation", "à quoi ressemble", "mensuel", 
+    "clients payants", "nom", "soumission", "phrase", 
+    "téléphone", "vidéo", "document", "pays", "ville"
+  ];
+
+  function isGarbageAnswer(val) {
+    const low = val.toLowerCase().trim();
+    if (low.length < 3 && isNaN(low)) return true;
+    if (/^([a-z])\1+$/.test(low)) return true;
+    if (/^(qwerty|azerty|test|asdf)/.test(low)) return true; 
+    const isCopyingQuestion = FIELD_LABELS.some(label => low === label || (low.includes(label) && low.length < label.length + 5));
+    if (isCopyingQuestion) return true;
+    return false;
+  }
+
+  function validate(n) {
+    clrErr(n);
+    const el = inp(n);
+    const val = el && el.value != null ? el.value.trim() : '';
+
+    const required = () => {
+      if (!val) { setErr(n, 'Ce champ est requis.'); return false; }
+      const minLen = MIN_LENGTHS[n];
+      if (minLen && val.length < minLen) { setErr(n, `Soyez plus descriptif (min. ${minLen} caractères).`); return false; }
+      if (isGarbageAnswer(val)) { setErr(n, 'Merci de fournir une vraie réponse.'); return false; }
+      return true;
+    };
+
+    switch (n) {
+      case 0:
+        if (BETA_CODE && val !== BETA_CODE) { setErr(0, 'Code invalide. Contactez contact@flaynn.fr.'); return false; }
+        if (!BETA_CODE && !val) { setErr(0, 'Code requis.'); return false; }
+        return true;
+      case 1: if (!choice(1)) { setErr(1, 'Sélectionnez une option.'); return false; } return true;
+      case 2: case 4: case 5: case 7: case 12: case 14: case 23: case 25: case 27: return required();
+      case 3: if (!required()) return false; if (!EMAIL_RE.test(val)) { setErr(3, 'Email invalide.'); return false; } return true;
+      case 8: case 9: case 10: case 21: return required();
+      case 11: if (!val) { setErr(11, 'Sélectionnez un secteur.'); return false; } return true;
+      case 13: if (!el || val === '') { setErr(13, 'Ce champ est requis.'); return false; } return true;
+      case 17: case 18: case 22: case 24: if (!choice(n)) { setErr(n, 'Sélectionnez une option.'); return false; } return true;
+      case 19: if (choice(18) === 'Oui' && (!el || val === '')) { setErr(n, 'Ce champ est requis.'); return false; } return true;
+      case 20: if (choice(18) === 'Oui' && (!el || val === '')) { setErr(n, 'Ce champ est requis.'); return false; } return true;
+      case 28: if (!uploads[28].url) { setErr(28, 'Uploadez votre pitch deck.'); return false; } return true;
+      case 29: if (val && !URL_RE.test(val)) { setErr(29, 'URL invalide (https://...).'); return false; } return true;
+      default: return true;
+    }
+  }
+
+  function showStep(n) {
+    const prev = step(current);
+    if (prev && !prev.hidden) {
+      prev.classList.add('leaving');
+      setTimeout(() => { prev.hidden = true; prev.classList.remove('leaving'); }, 200);
+    }
+    setTimeout(() => {
+      const next = step(n);
+      if (!next) return;
+      next.hidden = false;
+      current = n;
+      progress(n);
+      const f = next.querySelector('.ff-input:not([type=file]),.ff-textarea');
+      if (f) setTimeout(() => f.focus(), 50);
+      saveSession();
+    }, 260);
+  }
+
+  function goNext(n) {
+    if (!validate(n)) return;
+    if (n === 30) { submit(); return; }
+    showStep(nextVisibleStep(n));
+  }
+
+  function goBack(n) {
+    showStep(prevVisibleStep(n));
+  }
+
+  function openForm() {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    startTime = Date.now();
+    current = 0;
+    document.querySelectorAll('.ff-step').forEach((s, i) => { s.hidden = i !== 0; });
+    progress(0);
+    const f = inp(0);
+    if (f) setTimeout(() => f.focus(), 80);
+    loadSession();
+  }
+
+  function closeForm() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  window.openFounderForm = openForm;
+  if (closeBtn) closeBtn.addEventListener('click', closeForm);
+  
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeForm();
+    const nb = e.target.closest('.ff-btn-next');
+    const bb = e.target.closest('.ff-btn-back');
+    if (nb) goNext(parseInt(nb.dataset.step, 10));
+    if (bb) goBack(parseInt(bb.dataset.step, 10));
+  });
+
+  overlay.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !overlay.hidden) closeForm();
+    if (e.key !== 'Enter') return;
+    if (e.target.tagName === 'TEXTAREA' || e.target.closest('.ff-choices')) return;
+    const s = step(current);
+    if (!s) return;
+    const btn = s.querySelector('.ff-btn-next');
+    if (btn) btn.click();
+  });
+
+  overlay.addEventListener('click', e => {
+    const c = e.target.closest('.ff-choice');
+    if (!c) return;
+    const g = c.closest('.ff-choices');
+    if (!g) return;
+    g.querySelectorAll('.ff-choice').forEach(b => b.classList.remove('selected'));
+    c.classList.add('selected');
+    clrErr(current);
+    saveSession();
+  });
+
+  [[8, 140], [9, 400], [10, 400], [21, 500]].forEach(([n, max]) => {
+    const el = inp(n);
+    const c = document.getElementById(`ff-count-${n}`);
+    if (el && c) {
+      el.addEventListener('input', () => { c.textContent = `${el.value.length} / ${max}`; saveSession(); });
+    }
+  });
+
+  for (let i = 1; i <= 30; i++) {
+    const el = inp(i);
+    if (el && el.type !== 'file') el.addEventListener('input', () => saveSession());
+  }
+
+  [11].forEach(n => {
+    const el = inp(n);
+    if (el) el.addEventListener('change', () => saveSession());
+  });
+
+  function setupUpload(sn) {
+    const fileInput = inp(sn);
+    const zone = document.getElementById(`ff-file-zone-${sn}`);
+    const idle = document.getElementById(`ff-drop-idle-${sn}`);
+    const active = document.getElementById(`ff-file-info-${sn}`);
+    const nameEl = document.getElementById(`ff-file-name-${sn}`);
+    const fillEl = document.getElementById(`ff-upload-bar-${sn}`);
+    const statEl = document.getElementById(`ff-file-status-${sn}`);
+    const MAX = 15 * 1024 * 1024;
+    const TYPES28 = ['.pdf'];
+    const TYPES30 = ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.jpg', '.png'];
+
+    if (!fileInput || !zone) return;
+
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      if (e.dataTransfer.files.length) upload(e.dataTransfer.files[0]);
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length) upload(fileInput.files[0]);
+    });
+
+    function upload(file) {
+      clrErr(sn);
+      const allowed = sn === 28 ? TYPES28 : TYPES30;
+      const ext = '.' + file.name.split('.').pop().toLowerCase();
+      if (!allowed.includes(ext)) { setErr(sn, `Format non accepté. Formats : ${allowed.join(', ')}`); return; }
+      if (file.size > MAX) { setErr(sn, 'Fichier trop volumineux (max 15 Mo).'); return; }
+
+      idle.hidden = true;
+      active.hidden = false;
+      nameEl.textContent = `${file.name} · ${(file.size / 1024 / 1024).toFixed(1)} Mo`;
+      fillEl.style.width = '0%';
+      statEl.textContent = 'Upload en cours…';
+      statEl.className = 'ff-file-status';
+
+      const fd = new FormData();
+      fd.append('file', file);
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', UPLOAD_URL);
+      xhr.upload.addEventListener('progress', e => {
+        if (e.lengthComputable) fillEl.style.width = Math.round((e.loaded / e.total) * 100) + '%';
+      });
+      xhr.addEventListener('load', () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            const res = JSON.parse(xhr.responseText);
+            uploads[sn] = { url: res.url, filename: file.name };
+            fillEl.style.width = '100%';
+            statEl.textContent = '✓ Fichier prêt';
+            statEl.className = 'ff-file-status ok';
+          } catch (e2) { statEl.textContent = 'Erreur de réponse.'; statEl.className = 'ff-file-status err'; setErr(sn, 'Réessayez.'); }
+        } else { statEl.textContent = `Erreur ${xhr.status}`; statEl.className = 'ff-file-status err'; setErr(sn, 'Erreur upload.'); }
+      });
+      xhr.addEventListener('error', () => { statEl.textContent = 'Erreur réseau'; statEl.className = 'ff-file-status err'; setErr(sn, 'Erreur réseau.'); });
+      xhr.send(fd);
+    }
+  }
+
+  setupUpload(28);
+  setupUpload(30);
+
+  async function submit() {
+    const hp = document.getElementById('ff-honeypot');
+    if (hp && hp.value) return;
+    const dur = Math.round((Date.now() - startTime) / 1000);
+    if (dur < 10) return;
+
+    showStep(31);
+    const spinner = document.getElementById('ff-final-spinner');
+    const success = document.getElementById('ff-final-success');
+    const errorEl = document.getElementById('ff-final-error');
+    spinner.hidden = false; success.hidden = true; errorEl.hidden = true;
+
+    const v = n => { const el = inp(n); return el ? el.value.trim() : ''; };
+    const payload = {
+      code_acces: v(0),
+      re_soumission: choice(1),
+      nom_fondateur: v(2),
+      email: v(3),
+      pays: v(4),
+      ville: v(5),
+      telephone: v(6),
+      nom_startup: v(7),
+      pitch_une_phrase: v(8),
+      probleme: v(9),
+      solution: v(10),
+      secteur: v(11),
+      type_client: v(12),
+      tam: parseFloat(v(13)) || 0,
+      tam_devise: currencies.tam,
+      estimation_tam: v(14),
+      acquisition_clients: v(15),
+      concurrents: v(16),
+      stade: choice(17),
+      revenus: choice(18),
+      mrr: parseFloat(v(19)) || 0,
+      mrr_devise: currencies.mrr,
+      clients_payants: parseInt(v(20), 10) || 0,
+      pourquoi_vous: v(21),
+      equipe_temps_plein: choice(22),
+      priorite_6_mois: v(23),
+      montant_leve: choice(24),
+      jalons_18_mois: v(25),
+      utilisation_fonds: v(26),
+      vision_5_ans: v(27),
+      pitch_deck_url: uploads[28].url,
+      pitch_deck_filename: uploads[28].filename,
+      lien_demo: v(29),
+      doc_supplementaire_url: uploads[30].url,
+      doc_supplementaire_filename: uploads[30].filename,
+      submitted_at: new Date().toISOString(),
+      csrf_token: csrf,
+      fill_duration_seconds: dur,
+      honeypot: hp ? hp.value : ''
+    };
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      spinner.hidden = true;
+      if (res.ok) {
+        document.getElementById('ff-success-email').textContent = payload.email;
+        success.hidden = false;
+        sessionStorage.removeItem(SK);
+      } else { errorEl.hidden = false; }
+    } catch (e) { spinner.hidden = true; errorEl.hidden = false; }
+  }
+
+  document.getElementById('ff-retry').addEventListener('click', () => showStep(30));
+  progress(0);
 })();
 </script>
 
 <script>
 (function(){
-const SECTORS=[{value:'fintech',label:'Fintech & Paiements',prefix:'💳'},{value:'insurtech',label:'Insurtech',prefix:'🛡️'},{value:'regtech',label:'Regtech & Conformité',prefix:'⚖️'},{value:'wealthtech',label:'Wealthtech & Investissement',prefix:'📈'},{value:'healthtech',label:'Healthtech & MedTech',prefix:'🏥'},{value:'biotech',label:'Biotech & Sciences de la vie',prefix:'🧬'},{value:'mentalhealth',label:'Santé mentale & Bien-être',prefix:'🧠'},{value:'edtech',label:'Edtech & Formation',prefix:'🎓'},{value:'elearning',label:'E-learning & Upskilling',prefix:'📚'},{value:'hrtech',label:'HRtech & Recrutement',prefix:'👥'},{value:'futureofwork',label:'Future of Work',prefix:'🏠'},{value:'legaltech',label:'Legaltech',prefix:'📋'},{value:'proptech',label:'Proptech & Immobilier',prefix:'🏢'},{value:'contech',label:'Contech & Construction',prefix:'🏗️'},{value:'climatetech',label:'Climatetech & GreenTech',prefix:'🌱'},{value:'agritech',label:'Agritech & Foodtech',prefix:'🌾'},{value:'energy',label:'Énergie & Utilities',prefix:'⚡'},{value:'mobility',label:'Mobilité & Transport',prefix:'🚗'},{value:'logistics',label:'Logistique & Supply Chain',prefix:'📦'},{value:'ecommerce',label:'E-commerce & Retail',prefix:'🛍️'},{value:'marketplace',label:'Marketplace & Plateforme',prefix:'🔗'},{value:'saas',label:'SaaS B2B',prefix:'☁️'},{value:'devtools',label:'Outils développeurs & DevTools',prefix:'🛠️'},{value:'cybersecurity',label:'Cybersécurité',prefix:'🔐'},{value:'ai',label:'IA & Machine Learning',prefix:'🤖'},{value:'data',label:'Data & Analytics',prefix:'📊'},{value:'blockchain',label:'Blockchain & Web3',prefix:'⛓️'},{value:'iot',label:'IoT & Hardware',prefix:'📡'},{value:'ar-vr',label:'AR / VR & Spatial computing',prefix:'🥽'},{value:'gaming',label:'Gaming & Esports',prefix:'🎮'},{value:'mediatech',label:'Mediatech & Streaming',prefix:'🎬'},{value:'adtech',label:'Adtech & Marketing',prefix:'📣'},{value:'socialnetwork',label:'Réseau social & Communauté',prefix:'💬'},{value:'creator',label:'Creator Economy',prefix:'✨'},{value:'traveltech',label:'Traveltech & Hospitality',prefix:'✈️'},{value:'sportstech',label:'Sportstech & Fitness',prefix:'⚽'},{value:'fashiontech',label:'Fashiontech & Luxe',prefix:'👗'},{value:'beautytech',label:'Beautytech & Cosmétique',prefix:'💄'},{value:'govtech',label:'Govtech & Civic tech',prefix:'🏛️'},{value:'socialimpact',label:'Impact social & ESS',prefix:'🤝'},{value:'spacetech',label:'Spacetech & Défense',prefix:'🚀'},{value:'robotics',label:'Robotique & Automatisation',prefix:'🦾'},{value:'deeptech',label:'Deeptech & Quantique',prefix:'⚗️'},{value:'manufacturing',label:'Industrie & Fabrication',prefix:'🏭'},{value:'pettech',label:'Pettech & Animaux',prefix:'🐾'},{value:'other',label:'Autre',prefix:'🌐'}];
-function createCombobox(wrap,hiddenId,opts,placeholder){let options=opts.slice();let selected=null;let activeIdx=-1;let isOpen=false;const hidden=document.getElementById(hiddenId);const trigger=document.createElement('button');trigger.type='button';trigger.className='ff-cs-trigger';trigger.setAttribute('aria-haspopup','listbox');trigger.setAttribute('aria-expanded','false');trigger.innerHTML=`<span class="ff-cs-val ff-cs-ph">${placeholder}</span><svg class="ff-cs-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>`;const search=document.createElement('input');search.type='text';search.className='ff-cs-search';search.placeholder='Rechercher…';search.setAttribute('aria-autocomplete','list');search.autocomplete='off';search.hidden=true;const list=document.createElement('ul');list.className='ff-cs-list';list.setAttribute('role','listbox');list.hidden=true;wrap.appendChild(trigger);wrap.appendChild(search);wrap.appendChild(list);const valEl=trigger.querySelector('.ff-cs-val');const icoEl=trigger.querySelector('.ff-cs-ico');
-function getFiltered(){const q=search.value.toLowerCase().trim();if(!q) return options;return options.filter(o=>o.label.toLowerCase().includes(q)||(o.value&&o.value.toLowerCase().includes(q)));}
-function renderList(){const filtered=getFiltered();list.innerHTML='';if(!filtered.length){list.innerHTML='<li class="ff-cs-empty">Aucun résultat</li>';return;}filtered.forEach((opt,i)=>{const li=document.createElement('li');li.className='ff-cs-opt'+(selected&&selected.value===opt.value?' ff-cs-opt--sel':'')+(i===activeIdx?' ff-cs-opt--act':'');li.setAttribute('role','option');li.dataset.idx=String(i);li.innerHTML=`${opt.prefix?`<span class="ff-cs-pfx">${opt.prefix}</span>`:''}${opt.label}${selected&&selected.value===opt.value?'<span class="ff-cs-chk">✓</span>':''}`;li.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();pick(opt);});li.addEventListener('mouseenter',()=>{activeIdx=i;highlight();});list.appendChild(li);});}
-function highlight(){list.querySelectorAll('.ff-cs-opt').forEach((el,i)=>{el.classList.toggle('ff-cs-opt--act',i===activeIdx);});if(activeIdx>=0){const act=list.children[activeIdx];act&&act.scrollIntoView({block:'nearest'});}}
-function positionList(){const r=wrap.getBoundingClientRect();list.style.cssText=`position:fixed;top:${r.bottom+4}px;left:${r.left}px;width:${r.width}px;z-index:99999`;}
-function openDrop(){if(isOpen) return;isOpen=true;trigger.setAttribute('aria-expanded','true');icoEl.style.transform='rotate(180deg)';valEl.hidden=true;icoEl.style.display='none';search.hidden=false;search.value='';search.focus();positionList();renderList();list.hidden=false;}
-function closeDrop(){if(!isOpen) return;isOpen=false;trigger.setAttribute('aria-expanded','false');icoEl.style.transform='';icoEl.style.display='';search.hidden=true;list.hidden=true;valEl.hidden=false;activeIdx=-1;}
-function pick(opt){selected=opt;if(hidden) hidden.value=opt.value;valEl.textContent=(opt.prefix?opt.prefix+' ':'')+opt.label;valEl.classList.remove('ff-cs-ph');closeDrop();hidden&&hidden.dispatchEvent(new Event('change',{bubbles:true}));}
-trigger.addEventListener('click',e=>{e.stopPropagation();isOpen?closeDrop():openDrop();});search.addEventListener('click',e=>e.stopPropagation());search.addEventListener('input',()=>{activeIdx=-1;renderList();});
-search.addEventListener('keydown',e=>{const filtered=getFiltered();if(e.key==='ArrowDown'){e.preventDefault();activeIdx=Math.min(activeIdx+1,filtered.length-1);highlight();}else if(e.key==='ArrowUp'){e.preventDefault();activeIdx=Math.max(activeIdx-1,0);highlight();}else if(e.key==='Enter'){e.preventDefault();if(activeIdx>=0&&filtered[activeIdx]) pick(filtered[activeIdx]);}else if(e.key==='Escape'||e.key==='Tab'){closeDrop();}});
-list.addEventListener('click',e=>e.stopPropagation());document.addEventListener('mousedown',e=>{if(!wrap.contains(e.target)&&!list.contains(e.target)) closeDrop();});window.addEventListener('scroll',()=>{if(isOpen) positionList();},true);window.addEventListener('resize',()=>{if(isOpen) positionList();});
-return{setValue(val){const found=options.find(o=>o.value===val||o.label===val);if(found){selected=found;valEl.textContent=(found.prefix?found.prefix+' ':'')+found.label;valEl.classList.remove('ff-cs-ph');}},setOptions(opts){options=opts;if(isOpen) renderList();},reset(){selected=null;if(hidden) hidden.value='';valEl.textContent=placeholder;valEl.classList.add('ff-cs-ph');closeDrop();}};}
-const csSector=document.getElementById('ff-cs-11');let cbSector=null;if(csSector) cbSector=createCombobox(csSector,'ff-11',SECTORS,'Rechercher un secteur…');
-window.__ffRestoreCS=function(step,val){if(step===11&&cbSector) cbSector.setValue(val);};
+  const SECTORS = [
+    {value:'fintech',label:'Fintech & Paiements',prefix:'💳'},
+    {value:'insurtech',label:'Insurtech',prefix:'🛡️'},
+    {value:'regtech',label:'Regtech & Conformité',prefix:'⚖️'},
+    {value:'wealthtech',label:'Wealthtech & Investissement',prefix:'📈'},
+    {value:'healthtech',label:'Healthtech & MedTech',prefix:'🏥'},
+    {value:'biotech',label:'Biotech & Sciences de la vie',prefix:'🧬'},
+    {value:'mentalhealth',label:'Santé mentale & Bien-être',prefix:'🧠'},
+    {value:'edtech',label:'Edtech & Formation',prefix:'🎓'},
+    {value:'elearning',label:'E-learning & Upskilling',prefix:'📚'},
+    {value:'hrtech',label:'HRtech & Recrutement',prefix:'👥'},
+    {value:'futureofwork',label:'Future of Work',prefix:'🏠'},
+    {value:'legaltech',label:'Legaltech',prefix:'📋'},
+    {value:'proptech',label:'Proptech & Immobilier',prefix:'🏢'},
+    {value:'contech',label:'Contech & Construction',prefix:'🏗️'},
+    {value:'climatetech',label:'Climatetech & GreenTech',prefix:'🌱'},
+    {value:'agritech',label:'Agritech & Foodtech',prefix:'🌾'},
+    {value:'energy',label:'Énergie & Utilities',prefix:'⚡'},
+    {value:'mobility',label:'Mobilité & Transport',prefix:'🚗'},
+    {value:'logistics',label:'Logistique & Supply Chain',prefix:'📦'},
+    {value:'ecommerce',label:'E-commerce & Retail',prefix:'🛍️'},
+    {value:'marketplace',label:'Marketplace & Plateforme',prefix:'🔗'},
+    {value:'saas',label:'SaaS B2B',prefix:'☁️'},
+    {value:'devtools',label:'Outils développeurs & DevTools',prefix:'🛠️'},
+    {value:'cybersecurity',label:'Cybersécurité',prefix:'🔐'},
+    {value:'ai',label:'IA & Machine Learning',prefix:'🤖'},
+    {value:'data',label:'Data & Analytics',prefix:'📊'},
+    {value:'blockchain',label:'Blockchain & Web3',prefix:'⛓️'},
+    {value:'iot',label:'IoT & Hardware',prefix:'📡'},
+    {value:'ar-vr',label:'AR / VR & Spatial computing',prefix:'🥽'},
+    {value:'gaming',label:'Gaming & Esports',prefix:'🎮'},
+    {value:'mediatech',label:'Mediatech & Streaming',prefix:'🎬'},
+    {value:'adtech',label:'Adtech & Marketing',prefix:'📣'},
+    {value:'socialnetwork',label:'Réseau social & Communauté',prefix:'💬'},
+    {value:'creator',label:'Creator Economy',prefix:'✨'},
+    {value:'traveltech',label:'Traveltech & Hospitality',prefix:'✈️'},
+    {value:'sportstech',label:'Sportstech & Fitness',prefix:'⚽'},
+    {value:'fashiontech',label:'Fashiontech & Luxe',prefix:'👗'},
+    {value:'beautytech',label:'Beautytech & Cosmétique',prefix:'💄'},
+    {value:'govtech',label:'Govtech & Civic tech',prefix:'🏛️'},
+    {value:'socialimpact',label:'Impact social & ESS',prefix:'🤝'},
+    {value:'spacetech',label:'Spacetech & Défense',prefix:'🚀'},
+    {value:'robotics',label:'Robotique & Automatisation',prefix:'🦾'},
+    {value:'deeptech',label:'Deeptech & Quantique',prefix:'⚗️'},
+    {value:'manufacturing',label:'Industrie & Fabrication',prefix:'🏭'},
+    {value:'pettech',label:'Pettech & Animaux',prefix:'🐾'},
+    {value:'other',label:'Autre',prefix:'🌐'}
+  ];
+
+  function createCombobox(wrap, hiddenId, opts, placeholder) {
+    let options = opts.slice();
+    let selected = null;
+    let activeIdx = -1;
+    let isOpen = false;
+
+    const hidden = document.getElementById(hiddenId);
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'ff-cs-trigger';
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.innerHTML = `<span class="ff-cs-val ff-cs-ph">${placeholder}</span><svg class="ff-cs-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+    const search = document.createElement('input');
+    search.type = 'text';
+    search.className = 'ff-cs-search';
+    search.placeholder = 'Rechercher…';
+    search.setAttribute('aria-autocomplete', 'list');
+    search.autocomplete = 'off';
+    search.hidden = true;
+
+    const list = document.createElement('ul');
+    list.className = 'ff-cs-list';
+    list.setAttribute('role', 'listbox');
+    list.hidden = true;
+
+    wrap.appendChild(trigger);
+    wrap.appendChild(search);
+    
+    // LA CORRECTION DU BUG SECTEUR EST ICI :
+    wrap.appendChild(list);
+
+    const valEl = trigger.querySelector('.ff-cs-val');
+    const icoEl = trigger.querySelector('.ff-cs-ico');
+
+    function getFiltered() {
+      const q = search.value.toLowerCase().trim();
+      if (!q) return options;
+      return options.filter(o => o.label.toLowerCase().includes(q) || (o.value && o.value.toLowerCase().includes(q)));
+    }
+
+    function renderList() {
+      const filtered = getFiltered();
+      list.innerHTML = '';
+      if (!filtered.length) {
+        list.innerHTML = '<li class="ff-cs-empty">Aucun résultat</li>';
+        return;
+      }
+      filtered.forEach((opt, i) => {
+        const li = document.createElement('li');
+        li.className = 'ff-cs-opt' + (selected && selected.value === opt.value ? ' ff-cs-opt--sel' : '') + (i === activeIdx ? ' ff-cs-opt--act' : '');
+        li.setAttribute('role', 'option');
+        li.dataset.idx = String(i);
+        li.innerHTML = `${opt.prefix ? `<span class="ff-cs-pfx">${opt.prefix}</span>` : ''}${opt.label}${selected && selected.value === opt.value ? '<span class="ff-cs-chk">✓</span>' : ''}`;
+        
+        li.addEventListener('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          pick(opt);
+        });
+        li.addEventListener('mouseenter', () => {
+          activeIdx = i;
+          highlight();
+        });
+        list.appendChild(li);
+      });
+    }
+
+    function highlight() {
+      list.querySelectorAll('.ff-cs-opt').forEach((el, i) => {
+        el.classList.toggle('ff-cs-opt--act', i === activeIdx);
+      });
+      if (activeIdx >= 0) {
+        const act = list.children[activeIdx];
+        act && act.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    function openDrop() {
+      if (isOpen) return;
+      isOpen = true;
+      trigger.setAttribute('aria-expanded', 'true');
+      icoEl.style.transform = 'rotate(180deg)';
+      valEl.hidden = true;
+      icoEl.style.display = 'none';
+      search.hidden = false;
+      search.value = '';
+      search.focus();
+      renderList();
+      list.hidden = false;
+    }
+
+    function closeDrop() {
+      if (!isOpen) return;
+      isOpen = false;
+      trigger.setAttribute('aria-expanded', 'false');
+      icoEl.style.transform = '';
+      icoEl.style.display = '';
+      search.hidden = true;
+      list.hidden = true;
+      valEl.hidden = false;
+      activeIdx = -1;
+    }
+
+    function pick(opt) {
+      selected = opt;
+      if (hidden) hidden.value = opt.value;
+      valEl.textContent = (opt.prefix ? opt.prefix + ' ' : '') + opt.label;
+      valEl.classList.remove('ff-cs-ph');
+      closeDrop();
+      hidden && hidden.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      isOpen ? closeDrop() : openDrop();
+    });
+
+    search.addEventListener('click', e => e.stopPropagation());
+    search.addEventListener('input', () => { activeIdx = -1; renderList(); });
+
+    search.addEventListener('keydown', e => {
+      const filtered = getFiltered();
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIdx = Math.min(activeIdx + 1, filtered.length - 1);
+        highlight();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIdx = Math.max(activeIdx - 1, 0);
+        highlight();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        if (activeIdx >= 0 && filtered[activeIdx]) pick(filtered[activeIdx]);
+      } else if (e.key === 'Escape' || e.key === 'Tab') {
+        closeDrop();
+      }
+    });
+
+    list.addEventListener('click', e => e.stopPropagation());
+
+    document.addEventListener('mousedown', e => {
+      if (!wrap.contains(e.target) && !list.contains(e.target)) closeDrop();
+    });
+
+    return {
+      setValue(val) {
+        const found = options.find(o => o.value === val || o.label === val);
+        if (found) {
+          selected = found;
+          valEl.textContent = (found.prefix ? found.prefix + ' ' : '') + found.label;
+          valEl.classList.remove('ff-cs-ph');
+        }
+      },
+      setOptions(opts) {
+        options = opts;
+        if (isOpen) renderList();
+      },
+      reset() {
+        selected = null;
+        if (hidden) hidden.value = '';
+        valEl.textContent = placeholder;
+        valEl.classList.add('ff-cs-ph');
+        closeDrop();
+      }
+    };
+  }
+
+  const csSector = document.getElementById('ff-cs-11');
+  let cbSector = null;
+  if (csSector) cbSector = createCombobox(csSector, 'ff-11', SECTORS, 'Rechercher un secteur…');
+
+  window.__ffRestoreCS = function(step, val) {
+    if (step === 11 && cbSector) cbSector.setValue(val);
+  };
 })();
 </script>
