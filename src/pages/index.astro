@@ -1,136 +1,14 @@
 ---
-// Layout.astro ou index.astro
+// index.astro
 ---
 
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="fr" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flaynn · Votre scoring investisseur en 24h</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="bg-[#030303] text-zinc-200 font-['Inter'] selection:bg-purple-500/30 overflow-x-hidden antialiased">
-  
-  <div class="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
-
-  <div class="fixed inset-0 z-0 flex items-center justify-center opacity-30 pointer-events-none">
-    <div class="absolute w-[800px] h-[800px] bg-purple-900/20 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow"></div>
-    <div class="absolute w-[600px] h-[600px] bg-orange-900/10 blur-[100px] rounded-full mix-blend-screen translate-x-1/2 -translate-y-1/4"></div>
-  </div>
-
-  <nav class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-black/40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="font-bold text-xl tracking-tight text-white">Flaynn<span class="text-purple-500">.</span></div>
-      <a href="#" class="px-4 py-2 text-sm font-medium text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-colors">
-        Tester gratuitement
-      </a>
-    </div>
-  </nav>
-
-  <main class="relative z-10 w-full">
-    
-    <section class="relative min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 items-center w-full">
-        
-        <div class="hero-copy flex flex-col items-start z-10">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-8">
-            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
-            Beta ouverte · 10 places
-          </div>
-          <h1 class="text-5xl md:text-[5.5rem] leading-[0.95] font-bold tracking-tighter text-white mb-6">
-            La vérité sur <br />
-            votre startup.<br />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400">
-              Avant les VCs.
-            </span>
-          </h1>
-          <p class="text-zinc-400 text-lg md:text-xl max-w-md leading-relaxed font-light mb-10">
-            Soumettez votre dossier à notre comité d'analyse propriétaire. En 24h, découvrez vos failles avant votre prochain board.
-          </p>
-          <button class="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden transition-transform hover:scale-[1.02]">
-            <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-orange-400 opacity-0 group-hover:opacity-20 transition-opacity"></div>
-            Rejoindre l'élite
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </button>
-        </div>
-
-        <div class="hero-visual relative perspective-[1200px] w-full max-w-lg mx-auto">
-          <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-pink-500/20 blur-3xl rounded-full"></div>
-          
-          <div class="mockup-tilt relative w-full rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-transform duration-200 ease-out preserve-3d" style="transform: rotateY(-15deg) rotateX(10deg);">
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none"></div>
-            
-            <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
-              <div>
-                <h3 class="text-white font-semibold text-lg">Flaynn Analytics</h3>
-                <p class="text-zinc-500 text-xs mt-1">Audit Pré-seed · Confidentiel</p>
-              </div>
-              <div class="w-16 h-16 rounded-full border border-orange-500/30 flex items-center justify-center relative">
-                <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6"/>
-                  <circle class="score-circle" cx="50" cy="50" r="46" fill="none" stroke="url(#scoreGrad)" stroke-width="6" stroke-dasharray="289" stroke-dashoffset="289" stroke-linecap="round"/>
-                  <defs>
-                    <linearGradient id="scoreGrad"><stop offset="0%" stop-color="#F97316"/><stop offset="100%" stop-color="#EC4899"/></linearGradient>
-                  </defs>
-                </svg>
-                <span class="text-white font-bold text-xl">36</span>
-              </div>
-            </div>
-
-            <div class="space-y-5">
-              {[
-                { label: 'Market', val: '72%', color: 'from-purple-500 to-purple-400' },
-                { label: 'Product', val: '58%', color: 'from-pink-500 to-pink-400' },
-                { label: 'Traction', val: '30%', color: 'from-orange-500 to-orange-400' }
-              ].map(item => (
-                <div class="flex items-center gap-4 text-sm">
-                  <span class="w-16 text-zinc-400">{item.label}</span>
-                  <div class="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <div class={`h-full rounded-full bg-gradient-to-r ${item.color} progress-bar w-0`} data-width={item.val}></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div class="mt-8 p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
-              <p class="text-orange-400 text-xs leading-relaxed">
-                <span class="font-bold">⚡ Verdict :</span> Traction insuffisante pour le stade déclaré. Market fort. Reformuler le deck pour un seed d'ici 18 mois.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-32 px-6 max-w-7xl mx-auto">
-      <div class="mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-          Vous levez dans le noir.<br />
-          <span class="text-zinc-500">Ils ont la lumière.</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bento-card group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden col-span-1 md:col-span-2 min-h-[300px] flex flex-col justify-end">
-          <div class="relative z-10">
-            <div class="text-6xl font-bold text-orange-500 tracking-tighter mb-4">80%</div>
-            <h3 class="text-xl text-white font-semibold mb-2">Des decks rejetés en 5 minutes</h3>
-            <p class="text-zinc-400 text-sm max-w-md">Sans feedback, sans explication. Juste un silence qui vous coûte des mois de runway.</p>
-          </div>
-        </div>
-
-        <div class="bento-card group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden min-h-[300px] flex flex-col justify-end">
-          <div class="relative z-10">
-            <div class="text-6xl font-bold text-pink-500 tracking-tighter mb-4">0</div>
-            <h3 class="text-xl text-white font-semibold mb-2">Vraie connexion</h3>
-            <p class="text-zinc-400 text-sm">Le smart money veut du signal, pas du bruit.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
   <style is:global>
     @import "tailwindcss";
 
@@ -157,7 +35,387 @@
     .animate-pulse-slow {
       animation: pulse-slow 10s ease-in-out infinite;
     }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #030303; }
+    ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
   </style>
+</head>
+<body class="bg-[#030303] text-zinc-200 font-['Inter'] selection:bg-purple-500/30 overflow-x-hidden antialiased">
+  
+  <div class="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+
+  <div class="fixed inset-0 z-0 flex items-center justify-center opacity-30 pointer-events-none">
+    <div class="absolute w-[800px] h-[800px] bg-purple-900/20 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow"></div>
+    <div class="absolute w-[600px] h-[600px] bg-orange-900/10 blur-[100px] rounded-full mix-blend-screen translate-x-1/2 -translate-y-1/4"></div>
+  </div>
+
+  <nav class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-black/40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 6l6 12H6l6-12z"/></svg>
+        Flaynn<span class="text-purple-500">.</span>
+      </div>
+      <button data-tally-open="aQBQeX" data-tally-hide-title="1" data-tally-emoji-text="🚀" data-tally-emoji-animation="tada" data-tally-auto-close="0" class="px-5 py-2 text-sm font-medium text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer">
+        Tester gratuitement →
+      </button>
+    </div>
+  </nav>
+
+  <main class="relative z-10 w-full">
+    
+    <section class="relative min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center w-full">
+        <div class="hero-copy flex flex-col items-start z-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+            Beta ouverte · 10 places
+          </div>
+          <h1 class="text-5xl md:text-[5.5rem] leading-[0.95] font-bold tracking-tighter text-white mb-6">
+            La vérité sur <br />
+            votre startup.<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400">
+              Avant les VCs.
+            </span>
+          </h1>
+          <p class="text-zinc-400 text-lg md:text-xl max-w-md leading-relaxed font-light mb-10">
+            Flaynn soumet votre dossier à un <strong class="text-zinc-200 font-medium">comité d'analyse propriétaire</strong>. En 24h, vous savez exactement ce qui convainc, ce qui bloque, et ce qu'il faut corriger pour closer.
+          </p>
+          <div class="flex items-center gap-6 flex-wrap">
+            <button data-tally-open="aQBQeX" data-tally-hide-title="1" data-tally-emoji-text="🚀" data-tally-emoji-animation="tada" data-tally-auto-close="0" class="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden transition-transform hover:scale-[1.02] cursor-pointer">
+              <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-orange-400 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+              Faites partie des 10 premiers
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+            <span class="text-xs text-zinc-500">Gratuit · Sans engagement</span>
+          </div>
+        </div>
+
+        <div class="hero-visual relative perspective-[1200px] w-full max-w-lg mx-auto">
+          <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-pink-500/20 blur-3xl rounded-full"></div>
+          <div class="mockup-tilt relative w-full rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-transform duration-200 ease-out preserve-3d" style="transform: rotateY(-15deg) rotateX(10deg);">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none"></div>
+            <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
+              <div>
+                <h3 class="text-white font-semibold text-lg">Flaynn Technologies</h3>
+                <p class="text-zinc-500 text-xs mt-1">Rapport de scoring · Pré-seed · Beta</p>
+              </div>
+              <div class="w-16 h-16 rounded-full border border-orange-500/30 flex items-center justify-center relative">
+                <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="6"/><circle class="score-circle" cx="50" cy="50" r="46" fill="none" stroke="url(#scoreGrad)" stroke-width="6" stroke-dasharray="289" stroke-dashoffset="289" stroke-linecap="round"/><defs><linearGradient id="scoreGrad"><stop offset="0%" stop-color="#F97316"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs></svg>
+                <span class="text-white font-bold text-xl">36</span>
+              </div>
+            </div>
+            <div class="space-y-5">
+              {[
+                { label: 'Market', val: '72%', color: 'from-purple-500 to-purple-400', textScore: '7.2' },
+                { label: 'Product', val: '58%', color: 'from-pink-500 to-pink-400', textScore: '5.8' },
+                { label: 'Traction', val: '30%', color: 'from-orange-500 to-orange-400', textScore: '3.0' },
+                { label: 'Team', val: '65%', color: 'from-yellow-500 to-yellow-400', textScore: '6.5' },
+                { label: 'Execution', val: '45%', color: 'from-cyan-500 to-cyan-400', textScore: '4.5' }
+              ].map(item => (
+                <div class="flex items-center gap-4 text-sm">
+                  <span class="w-20 text-zinc-400">{item.label}</span>
+                  <div class="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden"><div class={`h-full rounded-full bg-gradient-to-r ${item.color} progress-bar w-0`} data-width={item.val}></div></div>
+                  <span class="w-6 text-right text-xs font-bold text-white">{item.textScore}</span>
+                </div>
+              ))}
+            </div>
+            <div class="mt-8 p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
+              <p class="text-orange-400 text-xs leading-relaxed"><span class="font-bold">⚡ Verdict ·</span> Traction insuffisante pour le stade déclaré. Market fort. Reformuler l'ask. Potentiel réel : seed 18 mois.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-10"></div>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="gsap-fade-up mb-16 max-w-2xl">
+        <div class="text-purple-400 text-xs font-bold tracking-widest uppercase mb-4 flex items-center gap-4"><span class="w-8 h-px bg-purple-400"></span> Le Problème</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6">Vous levez dans le noir.<br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Ils ont la lumière.</span></h2>
+        <p class="text-zinc-400 text-lg">Les investisseurs passent 3 minutes sur votre deck. Vous, des mois de travail. Vous méritez de savoir avant eux. Flaynn vous donne cette avance.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bento-card group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden min-h-[280px] flex flex-col justify-end gsap-fade-up">
+          <div class="relative z-10">
+            <div class="text-6xl font-bold text-orange-500 tracking-tighter mb-4">80%</div>
+            <h3 class="text-xl text-white font-semibold mb-2">Des decks rejetés en < 5 min</h3>
+            <p class="text-zinc-400 text-sm">Sans feedback, sans explication. Juste un silence qui vous coûte des mois.</p>
+          </div>
+        </div>
+        <div class="bento-card group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden min-h-[280px] flex flex-col justify-end gsap-fade-up" style="transition-delay: 100ms;">
+          <div class="relative z-10">
+            <div class="text-6xl font-bold text-pink-500 tracking-tighter mb-4">6-18</div>
+            <h3 class="text-xl text-white font-semibold mb-2">Mois perdus sur une levée</h3>
+            <p class="text-zinc-400 text-sm">La plupart des fondateurs découvrent les failles pendant les meetings, au lieu de s'y préparer.</p>
+          </div>
+        </div>
+        <div class="bento-card group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden min-h-[280px] flex flex-col justify-end gsap-fade-up" style="transition-delay: 200ms;">
+          <div class="relative z-10">
+            <div class="text-6xl font-bold text-yellow-500 tracking-tighter mb-4">0</div>
+            <h3 class="text-xl text-white font-semibold mb-2">Vraie connexion</h3>
+            <p class="text-zinc-400 text-sm">Les bons investisseurs veulent du signal, pas du bruit. Personne ne filtre pour eux.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 mb-16">
+        <div class="gsap-fade-up">
+          <div class="text-purple-400 text-xs font-bold tracking-widest uppercase mb-4 flex items-center gap-4"><span class="w-8 h-px bg-purple-400"></span> La Solution</div>
+          <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6">Votre dossier,<br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">challengé comme chez un top VC.</span></h2>
+          <p class="text-zinc-400 text-lg">Notre comité d'analyse propriétaire passe votre dossier au crible : 5 piliers, vérification marché en temps réel, stress-test de chaque hypothèse.</p>
+        </div>
+        <div class="gsap-fade-up flex flex-col justify-center">
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 mb-8">
+            <p class="text-xl font-medium text-white leading-relaxed">Moins de <em class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">15% des startups</em> soumises passent notre double analyse. Ce filtre protège les investisseurs. Et il protège votre crédibilité.</p>
+          </div>
+          <div class="flex gap-8 justify-around text-center">
+            <div><div class="text-3xl font-bold text-purple-400">24h</div><div class="text-xs text-zinc-500 mt-1">Délai d'analyse</div></div>
+            <div><div class="text-3xl font-bold text-orange-400">5</div><div class="text-xs text-zinc-500 mt-1">Piliers scorés</div></div>
+            <div><div class="text-3xl font-bold text-pink-400"><15%</div><div class="text-xs text-zinc-500 mt-1">Acceptation</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 gsap-fade-up">
+        {[
+          { icon: '🌍', title: 'Market', desc: 'TAM, SAM, timing et véracité', color: 'bg-purple-500/10' },
+          { icon: '⚙️', title: 'Product', desc: 'Différenciation, moats défensifs', color: 'bg-pink-500/10' },
+          { icon: '📈', title: 'Traction', desc: 'Métriques réelles, cohérence', color: 'bg-orange-500/10' },
+          { icon: '👥', title: 'Team', desc: 'Track record, exécution', color: 'bg-yellow-500/10' },
+          { icon: '🎯', title: 'Execution', desc: 'Ask cohérent, use of funds', color: 'bg-cyan-500/10' }
+        ].map(pillar => (
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 text-center hover:bg-white/[0.04] transition-colors">
+            <div class={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center text-xl mb-4 ${pillar.color}`}>{pillar.icon}</div>
+            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-2">{pillar.title}</h4>
+            <p class="text-xs text-zinc-400">{pillar.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16 gsap-fade-up">
+        <div class="text-purple-400 text-xs font-bold tracking-widest uppercase mb-4 flex items-center justify-center gap-4"><span class="w-8 h-px bg-purple-400"></span> Comment ça marche <span class="w-8 h-px bg-purple-400"></span></div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-white">Trois étapes.<br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">Un rapport qui dit vrai.</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 relative">
+        <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-px bg-gradient-to-r from-purple-500/50 via-pink-500/50 to-orange-500/50 z-0"></div>
+        {[
+          { num: '1', title: 'Soumettez votre dossier', desc: 'Remplissez le formulaire et joignez votre deck. 10 minutes suffisent.', tag: '10 min · Sans frais', color: 'text-purple-400 border-purple-500/30 bg-purple-500/10' },
+          { num: '2', title: 'Comité virtuel en 24h', desc: 'Votre dossier est analysé sur les 5 piliers. Vérification marché en temps réel. Pas de complaisance.', tag: 'Analyse approfondie', color: 'text-pink-400 border-pink-500/30 bg-pink-500/10' },
+          { num: '3', title: 'Rapport + Matching', desc: 'Scoring détaillé, verdict argumenté. Mise en relation directe si vous passez le filtre.', tag: 'Matching sélectif', color: 'text-orange-400 border-orange-500/30 bg-orange-500/10' }
+        ].map((step, i) => (
+          <div class={`bento-card relative z-10 p-8 rounded-3xl bg-black border border-white/10 gsap-fade-up`} style={`transition-delay: ${i * 150}ms;`}>
+            <div class={`w-14 h-14 rounded-full border flex items-center justify-center text-xl font-bold mb-6 ${step.color}`}>{step.num}</div>
+            <h3 class="text-xl font-semibold text-white mb-3">{step.title}</h3>
+            <p class="text-zinc-400 text-sm mb-6 leading-relaxed">{step.desc}</p>
+            <span class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300">{step.tag}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="gsap-fade-up mb-12 max-w-xl">
+        <div class="text-purple-400 text-xs font-bold tracking-widest uppercase mb-4 flex items-center gap-4"><span class="w-8 h-px bg-purple-400"></span> Différenciation</div>
+        <h2 class="text-4xl font-bold tracking-tighter text-white">Pas une plateforme<br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">de plus.</span></h2>
+      </div>
+
+      <div class="overflow-x-auto gsap-fade-up">
+        <div class="min-w-[800px] border border-white/10 rounded-2xl bg-white/[0.01]">
+          <div class="grid grid-cols-4 p-6 border-b border-white/10 bg-white/[0.02]">
+            <div class="text-sm font-semibold text-zinc-500">Fonctionnalité</div>
+            <div class="text-sm font-bold text-purple-400">Flaynn ✦</div>
+            <div class="text-sm font-medium text-zinc-500">Plateformes généralistes</div>
+            <div class="text-sm font-medium text-zinc-500">VCs traditionnels</div>
+          </div>
+          {[
+            { f: 'Scoring objectif avant mise en relation', fl: '✦ Propriétaire', pl: '✗ Non', vc: '~ Post-contact' },
+            { f: 'Sélectivité (deal flow qualifié)', fl: '✦ <15%', pl: '✗ Volume', vc: '✦ Sélectif' },
+            { f: 'Rapport détaillé pour le fondateur', fl: '✦ Systématique', pl: '✗ Rare', vc: '✗ Très rare' },
+            { f: 'Délai de réponse', fl: '✦ 24h', pl: '~ Variable', vc: '✗ 4–12 semaines' },
+            { f: 'Vérification marché en temps réel', fl: '✦ Intégrée', pl: '✗ Non', vc: '~ Manuel' }
+          ].map(row => (
+            <div class="grid grid-cols-4 p-6 border-b border-white/5 hover:bg-white/[0.02] transition-colors text-sm">
+              <div class="text-zinc-300">{row.f}</div>
+              <div class="text-white font-medium">{row.fl}</div>
+              <div class="text-zinc-500">{row.pl}</div>
+              <div class="text-zinc-500">{row.vc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="p-12 rounded-3xl bg-white/[0.02] border border-white/5 text-center relative overflow-hidden gsap-fade-up">
+          <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent pointer-events-none"></div>
+          
+          <div class="text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-pink-500 mb-2">36<span class="text-3xl text-zinc-600">/100</span></div>
+          <p class="text-xs text-zinc-500 uppercase tracking-widest mb-8">Notre propre score Flaynn · Dec 2024</p>
+          
+          <div class="grid grid-cols-2 gap-3 text-left">
+            <div class="p-3 rounded-lg bg-white/5 border border-white/5"><div class="text-[10px] text-zinc-500 uppercase mb-1">Market</div><div class="font-bold text-purple-400">7.2 / 10</div></div>
+            <div class="p-3 rounded-lg bg-white/5 border border-white/5"><div class="text-[10px] text-zinc-500 uppercase mb-1">Product</div><div class="font-bold text-pink-400">5.8 / 10</div></div>
+            <div class="p-3 rounded-lg bg-white/5 border border-white/5"><div class="text-[10px] text-zinc-500 uppercase mb-1">Traction</div><div class="font-bold text-orange-400">3.0 / 10</div></div>
+            <div class="p-3 rounded-lg bg-white/5 border border-white/5"><div class="text-[10px] text-zinc-500 uppercase mb-1">Team</div><div class="font-bold text-yellow-400">6.5 / 10</div></div>
+            <div class="col-span-2 p-3 rounded-lg bg-white/5 border border-white/5"><div class="text-[10px] text-zinc-500 uppercase mb-1">Execution & Ask</div><div class="font-bold text-cyan-400">4.5 / 10</div></div>
+          </div>
+        </div>
+        
+        <div class="gsap-fade-up">
+          <div class="text-purple-400 text-xs font-bold tracking-widest uppercase mb-4 flex items-center gap-4"><span class="w-8 h-px bg-purple-400"></span> Preuve de crédibilité</div>
+          <h2 class="text-3xl font-bold text-white mb-6 leading-snug">Notre outil nous score <em class="not-italic text-orange-400">36/100</em>.<br />C'est ça, un outil honnête.</h2>
+          <p class="text-zinc-400 text-sm mb-8 leading-relaxed">
+            On a soumis Flaynn à notre propre outil. Traction insuffisante. Marché solide. Équipe en place. Les chiffres sont là, et c'est pour ça qu'on construit ce produit.<br/><br/>
+            <strong class="text-white">Un outil qui vous flatte ne vous prépare pas. Un outil qui vous challenge, oui.</strong>
+          </p>
+          <div class="inline-flex items-center gap-4 p-4 rounded-xl border border-yellow-500/20 bg-yellow-500/5">
+            <span class="text-2xl">⚡</span>
+            <div>
+              <div class="text-yellow-400 font-bold text-sm">10 places beta gratuites</div>
+              <div class="text-zinc-400 text-xs">Scoring complet offert pour les premiers fondateurs</div>
+              <div class="flex gap-1 mt-2">
+                <div class="w-4 h-1.5 rounded-full bg-yellow-500"></div>
+                <div class="w-4 h-1.5 rounded-full bg-yellow-500"></div>
+                <div class="w-4 h-1.5 rounded-full bg-yellow-500"></div>
+                <div class="w-4 h-1.5 rounded-full bg-white/10"></div>
+                <div class="w-4 h-1.5 rounded-full bg-white/10"></div>
+                <div class="w-4 h-1.5 rounded-full bg-white/10"></div>
+                <div class="w-4 h-1.5 rounded-full bg-white/10"></div>
+                <div class="w-4 h-1.5 rounded-full bg-white/10"></div>
+                <div class="w-4 h-1.5 rounded-full bg-white/10"></div>
+                <div class="w-4 h-1.5 rounded-full bg-white/10"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-10"></div>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto relative" id="investisseurs">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent pointer-events-none"></div>
+      <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div class="gsap-fade-up">
+          <div class="text-purple-400 text-xs font-bold tracking-widest uppercase mb-4 flex items-center gap-4"><span class="w-8 h-px bg-purple-400"></span> Pour les investisseurs</div>
+          <h2 class="text-4xl font-bold tracking-tighter text-white mb-6">Accédez au<br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">deal flow premium.</span></h2>
+          <p class="text-zinc-400 text-lg mb-8">Moins de 15% des startups soumises sont acceptées. Chaque dossier reçu a déjà été analysé, scoré et validé.</p>
+          
+          <div class="space-y-4">
+            <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-purple-500/30 transition-colors">
+              <div class="w-10 h-10 shrink-0 rounded-lg bg-purple-500/10 flex items-center justify-center text-xl">🔍</div>
+              <div><h4 class="text-white font-semibold text-sm mb-1">Dossiers pré-scorés</h4><p class="text-xs text-zinc-400">Chaque startup livrée avec son rapport complet. Voyez tout avant le 1er call.</p></div>
+            </div>
+            <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-orange-500/30 transition-colors">
+              <div class="w-10 h-10 shrink-0 rounded-lg bg-orange-500/10 flex items-center justify-center text-xl">⚡</div>
+              <div><h4 class="text-white font-semibold text-sm mb-1">Diligence initiale accélérée</h4><p class="text-xs text-zinc-400">Focalisez sur les deals qui méritent votre attention. On filtre le bruit.</p></div>
+            </div>
+            <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-yellow-500/30 transition-colors">
+              <div class="w-10 h-10 shrink-0 rounded-lg bg-yellow-500/10 flex items-center justify-center text-xl">🎯</div>
+              <div><h4 class="text-white font-semibold text-sm mb-1">Matching sur-mesure</h4><p class="text-xs text-zinc-400">Secteur, stade, géographie, ticket. Vous ne voyez que ce qui vous correspond.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-card relative p-8 rounded-3xl bg-white/[0.02] border border-white/10 gsap-fade-up">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/20 blur-3xl rounded-full"></div>
+          <h3 class="text-xl font-bold text-white mb-2">Rejoindre la liste</h3>
+          <p class="text-sm text-zinc-400 mb-8">Accès anticipé au deal flow qualifié. Dédié aux VCs, Business Angels et Family Offices.</p>
+          
+          <div class="space-y-4 relative z-10">
+            <div class="p-4 rounded-xl bg-black/50 border border-white/5 flex items-center justify-between">
+              <div>
+                <div class="text-xs text-zinc-500 mb-1">Email direct</div>
+                <div class="text-sm font-medium text-white">contact@flaynn.fr</div>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+            </div>
+            
+            <a href="mailto:contact@flaynn.fr?subject=Accès%20Deal%20Flow%20Flaynn" class="flex justify-center items-center gap-2 w-full mt-2 py-3.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-lg hover:from-orange-400 hover:to-orange-500 transition-transform hover:scale-[1.02] cursor-pointer shadow-lg shadow-orange-500/20">
+              Ouvrir ma boîte mail →
+            </a>
+            <p class="text-center text-[11px] text-zinc-500 mt-4">Nous garantissons une réponse sous 24h ouvrées.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-32 px-6 text-center relative max-w-3xl mx-auto">
+      <div class="absolute inset-0 bg-radial-gradient from-purple-500/20 to-transparent blur-3xl opacity-50 z-0"></div>
+      <div class="relative z-10 gsap-fade-up">
+        <h2 class="text-5xl md:text-6xl font-bold tracking-tighter text-white mb-6">
+          Faites partie des <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400">10 premiers</span> founders.
+        </h2>
+        <p class="text-lg text-zinc-400 mb-10">Scoring complet offert pour la beta. Rapport détaillé sur les 5 piliers.</p>
+        
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <button data-tally-open="aQBQeX" data-tally-hide-title="1" data-tally-emoji-text="🚀" data-tally-emoji-animation="tada" data-tally-auto-close="0" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.02] transition-transform cursor-pointer">
+            Soumettre mon dossier gratuitement
+          </button>
+          <a href="#investisseurs" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-colors cursor-pointer">
+            Je suis investisseur ↓
+          </a>
+        </div>
+        <div class="flex justify-center flex-wrap gap-6 mt-8 text-xs text-zinc-500 font-medium">
+          <span>✦ Aucune CB requise</span>
+          <span>✦ Réponse sous 24h</span>
+          <span>✦ 7 places restantes</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/5 bg-black/50 py-12 px-6 relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10 mb-10">
+      <div>
+        <div class="font-bold text-xl tracking-tight text-white flex items-center gap-2 mb-4">
+          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 6l6 12H6l6-12z"/></svg>
+          Flaynn<span class="text-purple-500">.</span>
+        </div>
+        <p class="text-sm text-zinc-500 max-w-xs">Scoring et matching sélectif entre startups validées et investisseurs qualifiés.</p>
+      </div>
+      <div class="flex gap-16">
+        <div class="flex flex-col gap-3">
+          <h4 class="text-white text-sm font-semibold mb-1">Produit</h4>
+          <a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors">Comment ça marche</a>
+          <a href="#investisseurs" class="text-sm text-zinc-500 hover:text-white transition-colors">Investisseurs</a>
+          <button data-tally-open="aQBQeX" data-tally-hide-title="1" data-tally-emoji-text="🚀" data-tally-emoji-animation="tada" data-tally-auto-close="0" class="text-left text-sm text-zinc-500 hover:text-white transition-colors cursor-pointer">
+            Soumettre mon projet
+          </button>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h4 class="text-white text-sm font-semibold mb-1">Contact</h4>
+          <a href="mailto:contact@flaynn.fr" class="text-sm text-zinc-500 hover:text-white transition-colors">contact@flaynn.fr</a>
+          <a href="https://flaynn.net" target="_blank" class="text-sm text-zinc-500 hover:text-white transition-colors">flaynn.net</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-600">
+      <p>© 2026 Flaynn Technologies. Tous droits réservés.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-zinc-400 transition-colors">Mentions légales</a>
+        <a href="#" class="hover:text-zinc-400 transition-colors">Politique de confidentialité</a>
+        <a href="#" class="hover:text-zinc-400 transition-colors">CGU</a>
+      </div>
+    </div>
+  </footer>
+
+  <script async src="https://tally.so/widgets/embed.js"></script>
 
   <script>
     import Lenis from 'lenis';
@@ -166,7 +424,7 @@
     
     gsap.registerPlugin(ScrollTrigger);
 
-    // 1. Smooth Scroll setup (Lenis)
+    // 1. Lenis Smooth Scroll
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -175,14 +433,10 @@
       smooth: true,
       mouseMultiplier: 1,
     });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
 
-    // 2. Spotlight Effect sur les Bento Cards
+    // 2. Spotlight Effect
     document.querySelectorAll('.bento-card').forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -193,84 +447,46 @@
       });
     });
 
-    // 3. Tilt 3D Hero Mockup
+    // 3. 3D Tilt Hero
     const tiltCard = document.querySelector('.mockup-tilt');
     const heroVisual = document.querySelector('.hero-visual');
-    
     if (heroVisual && tiltCard) {
       heroVisual.addEventListener('mousemove', (e) => {
         const rect = heroVisual.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const multiplier = 20;
-        const xRotate = multiplier * ((y - rect.height / 2) / rect.height);
-        const yRotate = -multiplier * ((x - rect.width / 2) / rect.width);
-        
-        gsap.to(tiltCard, {
-          rotateX: xRotate,
-          rotateY: yRotate,
-          duration: 0.5,
-          ease: "power2.out"
-        });
+        const xRotate = 20 * (((e.clientY - rect.top) - rect.height / 2) / rect.height);
+        const yRotate = -20 * (((e.clientX - rect.left) - rect.width / 2) / rect.width);
+        gsap.to(tiltCard, { rotateX: xRotate, rotateY: yRotate, duration: 0.5, ease: "power2.out" });
       });
-
       heroVisual.addEventListener('mouseleave', () => {
-        gsap.to(tiltCard, {
-          rotateX: 10,
-          rotateY: -15,
-          duration: 1,
-          ease: "elastic.out(1, 0.3)"
-        });
+        gsap.to(tiltCard, { rotateX: 10, rotateY: -15, duration: 1, ease: "elastic.out(1, 0.3)" });
       });
     }
 
-    // 4. GSAP Animations (Entrée Scroll-driven)
-    // Animation du Hero
-    gsap.from('.hero-copy > *', {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.1,
-      ease: "power4.out",
-      delay: 0.2
-    });
-
+    // 4. GSAP Animations
+    // Entrée Hero
+    gsap.from('.hero-copy > *', { y: 40, opacity: 0, duration: 1, stagger: 0.1, ease: "power4.out", delay: 0.2 });
     gsap.from('.mockup-tilt', {
-      y: 60,
-      opacity: 0,
-      rotationX: 30,
-      duration: 1.5,
-      ease: "expo.out",
-      delay: 0.4,
+      y: 60, opacity: 0, rotationX: 30, duration: 1.5, ease: "expo.out", delay: 0.4,
       onComplete: () => {
-        // Animation des barres de progression au chargement
         document.querySelectorAll('.progress-bar').forEach(bar => {
-          gsap.to(bar, {
-            width: bar.getAttribute('data-width'),
-            duration: 1.5,
-            ease: "power3.out"
-          });
+          gsap.to(bar, { width: bar.getAttribute('data-width'), duration: 1.5, ease: "power3.out" });
         });
-        // Animation du score circulaire
-        gsap.to('.score-circle', {
-          strokeDashoffset: 289 - (289 * 0.36), // 36%
-          duration: 2,
-          ease: "power3.out"
-        });
+        gsap.to('.score-circle', { strokeDashoffset: 289 - (289 * 0.36), duration: 2, ease: "power3.out" });
       }
     });
 
-    // Animation Bento Grid au scroll
-    gsap.from('.bento-card', {
-      scrollTrigger: {
-        trigger: '.bento-card',
-        start: 'top 85%',
-      },
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "spring(1, 80, 10, 0)"
+    // Apparition globale au scroll pour toutes les autres sections
+    gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+      gsap.from(element, {
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 85%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      });
     });
   </script>
 </body>
