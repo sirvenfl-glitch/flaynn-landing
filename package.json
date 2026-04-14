@@ -1,6 +1,6 @@
 {
   "name": "flaynn-landing",
   "scripts": {
-    "build": "echo 'Static site, no build needed'"
+    "build": "mkdir -p dist && cp index.html styles.css starfield.js warp.js quickscore.js favicon.svg robots.txt dist/"
   }
 }
