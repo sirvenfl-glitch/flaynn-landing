@@ -3,426 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flaynn — Scoring IA pour startups pré-seed | Verdict en 24h</title>
-  <meta name="description" content="Votre startup analysée en 24h par un comité IA multi-agents. Score sur 5 piliers, benchmark sectoriel, recommandations actionnables. 29€ unique.">
+  <title>Flaynn — Le scoring qui ne ment pas</title>
+  <meta name="description" content="Le réseau est un accident de naissance. Le scoring, non. Flaynn analyse votre startup en 24h. 29€.">
   <link rel="canonical" href="https://flaynn.fr">
   <meta property="og:title" content="Flaynn — Le scoring qui ne ment pas">
-  <meta property="og:description" content="Scoring IA multi-agents pour startups pré-seed. 5 piliers, 24h, 29€.">
+  <meta property="og:description" content="59% des startups sont déficitaires. Les levées ont été divisées par 4. La carte est entre vos mains.">
   <meta property="og:image" content="https://flaynn.fr/og-image.png">
   <meta property="og:url" content="https://flaynn.fr">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" as="style">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- IBM Plex Sans + Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Plausible -->
   <script defer data-domain="flaynn.fr" src="https://plausible.io/js/script.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
 <body>
 
-<!-- Starfield -->
-<canvas id="starfield"></canvas>
+<!-- Mobile logo -->
+<img src="logo.svg" alt="Flaynn" class="mobile-logo">
 
-<!-- Warp effects -->
-<div class="warp-overlay"></div>
-<div class="glow-pulse"></div>
+<!-- Canvas layers -->
+<canvas id="starfield" aria-hidden="true"></canvas>
+<canvas id="warp-overlay" aria-hidden="true"></canvas>
 
-<!-- ═══ HEADER ═══ -->
-<header class="header">
-  <div class="container">
-    <a href="/" class="header-logo"><img src="logo.svg" alt="Flaynn" class="header-logo-img"></a>
-    <a href="https://flaynn.tech/scoring" class="btn-cta" onclick="if(window.plausible)plausible('CTA_hero_click')">
-      <span class="header-cta-text">Démarrer</span>
-      <span class="header-cta-short">Scoring</span>
-      <span class="btn-arrow">&#8594;</span>
-    </a>
-  </div>
-</header>
+<main class="page">
 
-<!-- ═══ HERO ═══ -->
-<section class="section hero" data-section="0">
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="badge hero-anim hero-badge" data-hero-delay="0">&#9670; Scoring IA multi-agents</div>
-        <h1 class="hero-anim" data-hero-delay="200">Le réseau est un accident de naissance. <span class="text-orange">Le scoring, non.</span></h1>
-        <p class="hero-subtitle hero-anim" data-hero-delay="400">Votre dossier analysé en 24h par un comité IA propriétaire. Score sur 5 piliers, benchmark sectoriel, verdict investisseur.</p>
-        <a href="https://flaynn.tech/scoring" class="btn-cta hero-anim" data-hero-delay="600" onclick="if(window.plausible)plausible('CTA_hero_click')">
-          Démarrer mon scoring <span class="btn-arrow">&#8594;</span>
-        </a>
-      </div>
-      <div class="hero-card hero-anim hero-card-anim" data-hero-delay="800">
-        <div class="hero-card-glow"></div>
-        <div class="card-glass scoring-card">
-          <div class="scoring-card-header">
-            <span class="scoring-label">Score global</span>
-            <div class="scoring-global mono"><span data-count="73" data-suffix="/100" data-duration="1400">0/100</span></div>
-          </div>
-          <div class="pillar-row">
-            <span class="pillar-name">Market</span>
-            <div class="pillar-bar-bg"><div class="pillar-bar-fill" data-bar="72" style="transition-delay:0ms"></div></div>
-            <span class="pillar-score mono">18/25</span>
-          </div>
-          <div class="pillar-row">
-            <span class="pillar-name">Product</span>
-            <div class="pillar-bar-bg"><div class="pillar-bar-fill" data-bar="70" style="transition-delay:100ms"></div></div>
-            <span class="pillar-score mono">14/20</span>
-          </div>
-          <div class="pillar-row">
-            <span class="pillar-name">Traction</span>
-            <div class="pillar-bar-bg"><div class="pillar-bar-fill" data-bar="48" style="transition-delay:200ms"></div></div>
-            <span class="pillar-score mono">12/25</span>
-          </div>
-          <div class="pillar-row">
-            <span class="pillar-name">Team</span>
-            <div class="pillar-bar-bg"><div class="pillar-bar-fill" data-bar="85" style="transition-delay:300ms"></div></div>
-            <span class="pillar-score mono">17/20</span>
-          </div>
-          <div class="pillar-row">
-            <span class="pillar-name">Execution</span>
-            <div class="pillar-bar-bg"><div class="pillar-bar-fill" data-bar="70" style="transition-delay:400ms"></div></div>
-            <span class="pillar-score mono">7/10</span>
-          </div>
-          <div class="scoring-verdict">
-            <span class="verdict-label">Verdict :</span>
-            <span class="verdict-dot"></span>
-            <span class="verdict-value">ALMOST</span>
-          </div>
-          <div class="scoring-footer">Propulsé par Flaynn Intelligence</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- ═══════════════════════════════════════════
+       STATION 1 — Le Signal
+       ═══════════════════════════════════════════ -->
+  <section class="station station-1" id="station-1">
+    <h1 class="hero-title">
+      Le réseau est un accident de naissance.
+      <span class="line-2">Le scoring, non.</span>
+    </h1>
+  </section>
 
-<!-- ═══ PROBLEM ═══ -->
-<section class="section section-problem" data-section="1">
-  <div class="container">
-    <div class="section-label" data-anim="fade-up">LE PROBLÈME</div>
-    <h2 class="section-title" data-anim="fade-up" data-anim-delay="100">Vous levez <span class="text-orange">dans le noir.</span></h2>
+  <!-- Warp zone 1: voyage Station 1 → 2 (violet) -->
+  <div class="warp-zone" id="warp-zone-1" aria-hidden="true"></div>
 
-    <div class="stats-grid">
-      <div class="card-glass stat-card" data-anim="fade-up" data-anim-delay="200">
-        <div class="stat-number">95-99%</div>
-        <div class="stat-desc">des decks rejetés sans feedback exploitable</div>
-        <div class="stat-source">France Angels</div>
-      </div>
-      <div class="card-glass stat-card" data-anim="fade-up" data-anim-delay="350">
-        <div class="stat-number">6-9 mois</div>
-        <div class="stat-desc">durée moyenne d'une levée de fonds en France</div>
-        <div class="stat-source">BPI France</div>
-      </div>
-      <div class="card-glass stat-card" data-anim="fade-up" data-anim-delay="500">
-        <div class="stat-number">&lt;30%</div>
-        <div class="stat-desc">reçoivent un retour structuré sur leur dossier</div>
-        <div class="stat-source">Enquête Flaynn</div>
-      </div>
-      <div class="card-glass stat-card" data-anim="fade-up" data-anim-delay="650">
-        <div class="stat-number">59%</div>
-        <div class="stat-desc">burn-out déclaré chez les fondateurs early-stage</div>
-        <div class="stat-source">Startup Snapshot</div>
-      </div>
+  <!-- ═══════════════════════════════════════════
+       STATION 2 — La Vérité
+       ═══════════════════════════════════════════ -->
+  <section class="station station-2" id="station-2">
+
+    <div class="station-2-intro reveal">
+      <h2>Lever des fonds en France en 2025,<br>c'est ça.</h2>
     </div>
 
-    <p class="punchline" data-anim="fade-up" data-anim-delay="800">Les fondateurs sans réseau n'accèdent pas au capital.<br>Les deux perdent du temps.</p>
-  </div>
-</section>
-
-<!-- ═══ METHOD ═══ -->
-<section class="section" data-section="2">
-  <div class="container">
-    <div class="section-label" data-anim="fade-up">LA MÉTHODE</div>
-    <h2 data-anim="fade-up" data-anim-delay="100" style="margin-bottom:48px">Trois étapes. <span class="text-orange">Un verdict.</span></h2>
-
-    <div class="method-grid">
-      <div class="card-glass method-card" data-anim="fade-right" data-anim-delay="200">
-        <div class="method-number">01</div>
-        <h3>Soumettez votre dossier</h3>
-        <p>Formulaire structuré + pitch deck. 5 minutes, pas plus.</p>
-      </div>
-      <div class="method-arrow" data-anim="fade-up" data-anim-delay="400">&#8594;</div>
-      <div class="card-glass method-card" data-anim="fade-right" data-anim-delay="400">
-        <div class="method-number">02</div>
-        <h3>Analyse Flaynn Intelligence</h3>
-        <p>4 IA spécialisées analysent votre dossier en parallèle. Marché, produit, traction, équipe.</p>
-      </div>
-      <div class="method-arrow" data-anim="fade-up" data-anim-delay="600">&#8594;</div>
-      <div class="card-glass method-card" data-anim="fade-right" data-anim-delay="600">
-        <div class="method-number">03</div>
-        <h3>Verdict + Flaynn Card</h3>
-        <p>Score sur 5 piliers, rapport PDF complet et mise en relation si éligible.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 5 PILLARS ═══ -->
-<section class="section" data-section="3">
-  <div class="container">
-    <div class="section-label" data-anim="fade-up">LE SCORING</div>
-    <h2 data-anim="fade-up" data-anim-delay="100" style="margin-bottom:48px">Cinq piliers. <span class="text-orange">Zéro angle mort.</span></h2>
-
-    <div class="radar-wrapper" data-anim="fade-up" data-anim-delay="200">
-      <!-- SVG Radar Chart -->
-      <svg class="radar-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <style>
-            .radar-grid { stroke: rgba(255,255,255,0.06); stroke-width: 1; fill: none; }
-            .radar-axis { stroke: rgba(255,255,255,0.06); stroke-width: 1; }
-            .radar-fill { fill: rgba(123,45,142,0.15); stroke: #7B2D8E; stroke-width: 2; }
-            .radar-dot  { fill: #7B2D8E; }
-            .radar-label { fill: rgba(255,255,255,0.7); font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; font-weight: 600; text-anchor: middle; }
-            .radar-pts  { fill: rgba(255,255,255,0.4); font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-anchor: middle; }
-          </style>
-        </defs>
-        <!-- Center: 200,200. Radius: 150 -->
-        <!-- Grid pentagons at 20%, 40%, 60%, 80%, 100% -->
-        <!-- Angles: Market=270°, Product=342°, Traction=54°, Team=126°, Execution=198° -->
-        <!-- 100% points: M(200,50) P(342.66,95.08) T(288.17,321.33) E(111.83,321.33) Te(57.34,95.08) -->
-
-        <!-- Grid rings -->
-        <polygon class="radar-grid" points="200,170 228.53,178.02 217.63,207.47 182.37,207.47 171.47,178.02"/>
-        <polygon class="radar-grid" points="200,140 257.06,156.04 235.27,214.93 164.73,214.93 142.94,156.04"/>
-        <polygon class="radar-grid" points="200,110 285.60,134.05 252.90,222.40 147.10,222.40 114.40,134.05"/>
-        <polygon class="radar-grid" points="200,80 314.13,112.07 270.53,229.87 129.47,229.87 85.87,112.07"/>
-        <polygon class="radar-grid" points="200,50 342.66,90.08 288.17,237.33 111.83,237.33 57.34,90.08"/>
-
-        <!-- Axes -->
-        <line class="radar-axis" x1="200" y1="200" x2="200" y2="50"/>
-        <line class="radar-axis" x1="200" y1="200" x2="342.66" y2="90.08"/>
-        <line class="radar-axis" x1="200" y1="200" x2="288.17" y2="237.33"/>
-        <line class="radar-axis" x1="200" y1="200" x2="111.83" y2="237.33"/>
-        <line class="radar-axis" x1="200" y1="200" x2="57.34" y2="90.08"/>
-
-        <!-- Data polygon — animated from center -->
-        <polygon id="radar-polygon" class="radar-fill"
-          points="200,200 200,200 200,200 200,200 200,200"
-          data-center="200,200 200,200 200,200 200,200 200,200"
-          data-target-points="200,92 285.6,118.1 252.9,229.9 147.1,222.4 114.4,134.1"/>
-
-        <!-- Data dots (placed by JS at animation end, or static fallback) -->
-
-        <!-- Labels -->
-        <text class="radar-label" x="200" y="35">Market</text>
-        <text class="radar-pts" x="200" y="45">(25 pts)</text>
-        <text class="radar-label" x="358" y="88">Product</text>
-        <text class="radar-pts" x="358" y="100">(20 pts)</text>
-        <text class="radar-label" x="300" y="258">Traction</text>
-        <text class="radar-pts" x="300" y="270">(25 pts)</text>
-        <text class="radar-label" x="100" y="258">Team</text>
-        <text class="radar-pts" x="100" y="270">(20 pts)</text>
-        <text class="radar-label" x="42" y="88">Execution</text>
-        <text class="radar-pts" x="42" y="100">(10 pts)</text>
-      </svg>
+    <!-- Stat 1: ÷4 -->
+    <div class="stat-block reveal">
+      <div class="stat-number">÷4</div>
+      <p class="stat-text">Le nombre de levées de fonds a été divisé par quatre en deux ans.</p>
+      <p class="stat-source">In Extenso, S1 2025</p>
     </div>
 
-    <div class="pillars-grid">
-      <div class="card-glass pillar-card" data-pillar="market" data-anim="fade-up" data-anim-delay="300">
-        <h3>Market</h3>
-        <p>TAM, timing, marché cible</p>
-      </div>
-      <div class="card-glass pillar-card" data-pillar="product" data-anim="fade-up" data-anim-delay="400">
-        <h3>Product</h3>
-        <p>Clarté, différenciation, fit</p>
-      </div>
-      <div class="card-glass pillar-card" data-pillar="traction" data-anim="fade-up" data-anim-delay="500">
-        <h3>Traction</h3>
-        <p>MRR, growth, signal</p>
-      </div>
-      <div class="card-glass pillar-card" data-pillar="team" data-anim="fade-up" data-anim-delay="600">
-        <h3>Team</h3>
-        <p>Expérience, unfair advantage</p>
-      </div>
-      <div class="card-glass pillar-card" data-pillar="execution" data-anim="fade-up" data-anim-delay="700">
-        <h3>Execution</h3>
-        <p>Milestones, funds usage</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ QUICK SCORE ═══ -->
-<section class="section" data-section="4">
-  <div class="container">
-    <div class="section-label" data-anim="fade-up">ESSAYEZ</div>
-    <h2 data-anim="fade-up" data-anim-delay="100" style="margin-bottom:48px">Votre idée. 10 secondes. <span class="text-orange">Un signal.</span></h2>
-
-    <div class="card-glass quickscore-card" data-anim="fade-scale" data-anim-delay="200">
-      <form id="quickscore-form">
-        <label for="quickscore-input">Décrivez votre startup en une phrase :</label>
-        <div class="qs-input-row">
-          <input type="text" id="quickscore-input" class="qs-input" placeholder="Ex : Une IA qui analyse les dossiers de levée de fonds..." required>
-          <button type="submit" id="quickscore-btn" class="btn-cta">Tester <span class="btn-arrow">&#8594;</span></button>
-        </div>
-      </form>
-      <div id="quickscore-result" class="qs-result">
-        <div id="quickscore-score" class="qs-score-value mono"></div>
-        <div id="quickscore-conseil" class="qs-conseil"></div>
-      </div>
+    <!-- Stat 2: 59% -->
+    <div class="stat-block reveal">
+      <div class="stat-number">59%</div>
+      <p class="stat-text">des startups françaises sont déficitaires. Les startups en perte ont moins d'un an de trésorerie devant elles.</p>
+      <p class="stat-source">Banque de France, 2024</p>
     </div>
 
-    <p class="quickscore-note" data-anim="fade-up" data-anim-delay="400">Pré-score indicatif basé sur votre description. Le scoring complet intègre l'analyse de votre pitch deck, la vérification marché et un comité IA multi-agents.</p>
-
-    <div class="quickscore-cta-wrap" data-anim="fade-up" data-anim-delay="500">
-      <a href="https://flaynn.tech/scoring" id="quickscore-full-cta" class="btn-cta" onclick="if(window.plausible)plausible('quickscore_to_full')">
-        Passer au scoring complet <span class="btn-arrow">&#8594;</span>
-      </a>
+    <!-- Stat 3: -35% -->
+    <div class="stat-block reveal">
+      <div class="stat-number">-35%</div>
+      <p class="stat-text">Les levées de fonds se sont effondrées de 35% au premier semestre 2025. L'amorçage est en péril.</p>
+      <p class="stat-source">In Extenso / 75secondes</p>
     </div>
-  </div>
-</section>
 
-<!-- ═══ PRICING ═══ -->
-<section class="section" data-section="5">
-  <div class="container">
-    <div class="section-label" data-anim="fade-up">TARIF</div>
-    <h2 data-anim="fade-up" data-anim-delay="100" style="margin-bottom:48px">Un scoring. Un prix. <span class="text-orange">Zéro surprise.</span></h2>
-
-    <div class="pricing-grid">
-      <div class="card-glass pricing-main" data-anim="fade-up" data-anim-delay="200">
-        <div class="pricing-amount" data-count="29" data-suffix="€" data-duration="1000">0€</div>
-        <div class="pricing-sub">unique, pas d'abonnement</div>
-        <ul class="pricing-features">
-          <li>
-            <svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Rapport PDF complet
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Score sur 5 piliers
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Benchmark sectoriel
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Recommandations actionnables
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Dashboard interactif
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Résultat en 24h
-          </li>
-        </ul>
-        <a href="https://flaynn.tech/scoring" class="btn-cta" onclick="if(window.plausible)plausible('CTA_pricing_click')">
-          Démarrer mon scoring <span class="btn-arrow">&#8594;</span>
-        </a>
-      </div>
-
-      <div class="card-glass pricing-matching" data-anim="fade-up" data-anim-delay="400">
-        <p class="pricing-matching-quote">"Les 15% qui passent le filtre accèdent au matching investisseur"</p>
-        <div class="pricing-matching-price">150€</div>
-        <p class="pricing-matching-desc">Mise en relation directe avec des Business Angels alignés à votre thèse.</p>
-        <div class="guarantee">
-          <strong>Grand Slam Guarantee :</strong><br>
-          0 meeting obtenu en 6 mois = remboursé intégralement.
-        </div>
-      </div>
+    <!-- Stat 4: 70% -->
+    <div class="stat-block reveal">
+      <div class="stat-number">70%</div>
+      <p class="stat-text">des startups défaillantes sont directement placées en liquidation judiciaire. Pas de seconde chance.</p>
+      <p class="stat-source">Banque de France, 2024</p>
     </div>
-  </div>
-</section>
 
-<!-- ═══ TRUST ═══ -->
-<section class="section" data-section="6">
-  <div class="container">
-    <div class="trust-grid">
-      <div class="trust-item" data-anim="fade-up" data-anim-delay="0">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="8" width="32" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
-          <path d="M4 16h32M14 8v24" stroke="currentColor" stroke-width="2"/>
-          <circle cx="27" cy="24" r="3" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <p>Chiffré de bout en bout</p>
-      </div>
-      <div class="trust-item" data-anim="fade-up" data-anim-delay="150">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4l12 6v10c0 8-5.3 14-12 16C13.3 34 8 28 8 20V10l12-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <p>RGPD natif</p>
-      </div>
-      <div class="trust-item" data-anim="fade-up" data-anim-delay="300">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="16" width="28" height="18" rx="4" stroke="currentColor" stroke-width="2"/>
-          <path d="M12 16v-4a8 8 0 1116 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="20" cy="26" r="2" fill="currentColor"/>
-          <path d="M20 28v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <p>100% confidentiel</p>
-      </div>
+    <!-- Quote -->
+    <div class="quote-block reveal">
+      <p class="quote-text">"Nous pensions avoir touché le fond en 2024. Les indicateurs continuent de chuter."</p>
+      <p class="quote-source">Nicolas Forey, In Extenso</p>
     </div>
-  </div>
-</section>
 
-<!-- ═══ FOOTER CTA ═══ -->
-<section class="section footer-cta" data-section="7">
-  <div class="container">
-    <div class="footer-cta-glow"></div>
-    <h2 data-anim="fade-up">Prêt à connaître <span class="text-orange">la vérité</span> ?</h2>
-    <div data-anim="fade-up" data-anim-delay="200" style="margin-top:32px">
-      <a href="https://flaynn.tech/scoring" class="btn-cta btn-cta-lg" onclick="if(window.plausible)plausible('CTA_footer_click')">
-        Démarrer mon scoring <span class="btn-arrow">&#8594;</span>
-      </a>
+    <!-- Punchline -->
+    <div class="punchline reveal">
+      <p>Tu n'es pas seul à galérer.<br>Tu es dans la norme.</p>
     </div>
-  </div>
-</section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo"><img src="logo.svg" alt="Flaynn" class="footer-logo-img"></span>
-        <span class="footer-tagline">L'Ère du Capital Sélectif.</span>
+  </section>
+
+  <!-- Warp zone 2: voyage Station 2 → 3 (orange) -->
+  <div class="warp-zone" id="warp-zone-2" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       STATION 3 — La Carte entre tes mains
+       ═══════════════════════════════════════════ -->
+  <section class="station station-3" id="station-3">
+
+    <h2 class="station-3-headline reveal">
+      La question n'est pas si ton projet est bon.<br>
+      La question, c'est : <span class="accent">est-ce que tu le sais ?</span>
+    </h2>
+
+    <!-- Scoring card -->
+    <div class="scoring-card reveal">
+      <div class="card-header">
+        <span class="card-label">Score</span>
+        <span class="card-score">73/100</span>
       </div>
-      <a href="#" class="footer-legal" id="legal-open">Mentions légales</a>
+
+      <div class="score-row">
+        <span class="score-row-label">Market</span>
+        <div class="score-bar"><div class="score-bar-fill" data-width="72"></div></div>
+        <span class="score-row-value">18/25</span>
+      </div>
+
+      <div class="score-row">
+        <span class="score-row-label">Product</span>
+        <div class="score-bar"><div class="score-bar-fill" data-width="70"></div></div>
+        <span class="score-row-value">14/20</span>
+      </div>
+
+      <div class="score-row">
+        <span class="score-row-label">Traction</span>
+        <div class="score-bar"><div class="score-bar-fill" data-width="48"></div></div>
+        <span class="score-row-value">12/25</span>
+      </div>
+
+      <div class="score-row">
+        <span class="score-row-label">Team</span>
+        <div class="score-bar"><div class="score-bar-fill" data-width="85"></div></div>
+        <span class="score-row-value">17/20</span>
+      </div>
+
+      <div class="score-row">
+        <span class="score-row-label">Execution</span>
+        <div class="score-bar"><div class="score-bar-fill" data-width="70"></div></div>
+        <span class="score-row-value">7/10</span>
+      </div>
+
+      <div class="card-verdict">
+        <span class="verdict-label">Verdict</span>
+        <span class="verdict-value">ALMOST</span>
+      </div>
+
+      <p class="card-badge">Flaynn Intelligence</p>
     </div>
+
+    <p class="price-line reveal">29€. 24h. La vérité sur ton dossier.</p>
+    <p class="closing-line reveal">Savoir, c'est déjà avancer.</p>
+    <a href="https://flaynn.tech" class="btn-cta reveal" target="_blank" rel="noopener">Découvrir Flaynn →</a>
+
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════
+     Footer
+     ═══════════════════════════════════════════ -->
+<footer class="site-footer" id="footer">
+  <div class="footer-divider"></div>
+  <div class="footer-content">
+    <img src="logo.svg" alt="Flaynn" class="footer-logo">
+    <p class="footer-tagline">L'Ère du Capital Sélectif.</p>
+    <button class="footer-legal" onclick="document.getElementById('legal-modal').classList.add('active')">Mentions légales</button>
   </div>
 </footer>
 
-<!-- ═══ LEGAL MODAL ═══ -->
-<div class="modal-overlay" id="legal-modal">
+<!-- Legal modal -->
+<div class="modal-overlay" id="legal-modal" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal-content">
-    <button class="modal-close" id="legal-close" aria-label="Fermer">&times;</button>
-    <h2>Mentions légales</h2>
-    <p><strong>Éditeur :</strong> Flaynn SAS — en cours d'immatriculation.</p>
-    <p><strong>Siège social :</strong> France.</p>
-    <p><strong>Directeur de la publication :</strong> Le président de Flaynn SAS.</p>
-    <p><strong>Hébergement :</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.</p>
-    <p><strong>Contact :</strong> contact@flaynn.tech</p>
-    <p><strong>Données personnelles :</strong> Ce site utilise Plausible Analytics (cookieless, conforme RGPD). Aucun cookie n'est déposé. Les données soumises via le Quick Score sont traitées pour générer un pré-score et ne sont pas conservées au-delà de la session.</p>
+    <button class="modal-close" onclick="document.getElementById('legal-modal').classList.remove('active')" aria-label="Fermer">×</button>
+    <h3>Mentions légales</h3>
+    <p><strong>Éditeur</strong><br>
+    Flaynn SAS<br>
+    En cours d'immatriculation<br>
+    Contact : hello@flaynn.fr</p>
+    <p><strong>Hébergement</strong><br>
+    Ce site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.</p>
+    <p><strong>Données personnelles</strong><br>
+    Ce site utilise Plausible Analytics, un outil d'analyse respectueux de la vie privée qui ne collecte aucune donnée personnelle et ne dépose aucun cookie.</p>
+    <p><strong>Propriété intellectuelle</strong><br>
+    L'ensemble du contenu de ce site (textes, graphismes, logo, icônes) est la propriété exclusive de Flaynn SAS. Toute reproduction est interdite sans autorisation préalable.</p>
   </div>
-</div>
-
-<!-- ═══ MOBILE STICKY CTA ═══ -->
-<div class="sticky-cta">
-  <a href="https://flaynn.tech/scoring" class="btn-cta">
-    Démarrer <span class="btn-arrow">&#8594;</span>
-  </a>
 </div>
 
 <!-- Scripts -->
 <script src="starfield.js"></script>
 <script src="warp.js"></script>
-<script src="quickscore.js"></script>
-
-<!-- Legal modal toggle -->
-<script>
-(function(){
-  var modal = document.getElementById('legal-modal');
-  var open = document.getElementById('legal-open');
-  var close = document.getElementById('legal-close');
-  if(!modal||!open||!close) return;
-  open.addEventListener('click',function(e){e.preventDefault();modal.classList.add('modal-open');});
-  close.addEventListener('click',function(){modal.classList.remove('modal-open');});
-  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('modal-open');});
-})();
-</script>
 
 </body>
 </html>

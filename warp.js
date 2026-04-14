@@ -1,262 +1,408 @@
 /**
- * Warp transitions + scroll animations — flaynn.fr
- * Handles section entrance animations, warp effect between sections,
- * counter animations, and radar chart deployment.
+ * flaynn.fr v3 — Warp + Fullpage Controller
+ *
+ * Scroll-driven warp visuals + app-style fullpage navigation.
+ * Each wheel/touch/key gesture = one smooth page transition.
+ * Easing: ease-out-expo (iOS-like deceleration).
+ * Warp glow activates when scrolling through warp zones.
  */
-(function () {
-  'use strict';
+;(function () {
+  'use strict'
 
-  var isMobile = window.innerWidth < 768;
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', function (e) {
+    reducedMotion = e.matches
+  })
 
-  // ─── Section entrance animations ───────────────────────────────
+  /* ═══════════════════════════════════════════════
+     1. WARP VISUAL EFFECT (scroll-driven)
+     ═══════════════════════════════════════════════ */
 
-  function animateEntrance(section) {
-    var animItems = section.querySelectorAll('[data-anim]');
-    animItems.forEach(function (el, i) {
-      var delay = parseInt(el.getAttribute('data-anim-delay') || (i * 150), 10);
-      var type = el.getAttribute('data-anim') || 'fade-up';
+  var overlay = document.getElementById('warp-overlay')
+  var ctx = overlay ? overlay.getContext('2d') : null
 
-      setTimeout(function () {
-        el.classList.add('anim-visible');
-        el.classList.add('anim-' + type);
-      }, reducedMotion ? 0 : delay);
-    });
+  function resizeOverlay() {
+    if (!overlay) return
+    overlay.width = window.innerWidth
+    overlay.height = window.innerHeight
+  }
+  resizeOverlay()
+  window.addEventListener('resize', resizeOverlay)
+
+  function ha(a) {
+    var v = Math.round(Math.min(1, Math.max(0, a)) * 255)
+    var h = v.toString(16)
+    return h.length < 2 ? '0' + h : h
   }
 
-  // ─── Warp effect ───────────────────────────────────────────────
+  function makeLines(count) {
+    var lines = []
+    var maxDim = Math.max(window.innerWidth, window.innerHeight)
+    for (var i = 0; i < count; i++) {
+      lines.push({
+        angle: Math.random() * Math.PI * 2,
+        dist: 15 + Math.random() * maxDim * 0.12,
+        len: 80 + Math.random() * maxDim * 0.55,
+        width: 0.3 + Math.random() * 2.8,
+        speed: 0.3 + Math.random() * 2.0,
+        alpha: 0.15 + Math.random() * 0.85
+      })
+    }
+    return lines
+  }
 
-  var warpOverlay = document.querySelector('.warp-overlay');
-  var glowPulse = document.querySelector('.glow-pulse');
-  var lastSection = -1;
-  var warpCooldown = false;
+  var lineCount = window.innerWidth < 640 ? 45 : 90
+  var warpZones = [
+    { el: document.getElementById('warp-zone-1'), color: '#7B2D8E', lines: makeLines(lineCount) },
+    { el: document.getElementById('warp-zone-2'), color: '#E8651A', lines: makeLines(lineCount) }
+  ]
 
-  function triggerWarp() {
-    if (warpCooldown || isMobile || reducedMotion) return;
-    warpCooldown = true;
+  function zoneProgress(el) {
+    if (!el) return -1
+    var rect = el.getBoundingClientRect()
+    var vh = window.innerHeight
+    var p = (vh - rect.top) / (vh + rect.height)
+    return Math.max(0, Math.min(1, p))
+  }
 
-    // Speed up starfield
-    if (window.starfield) window.starfield.setSpeed(8);
+  function bell(t) { return Math.sin(t * Math.PI) }
 
-    // Activate warp lines
-    if (warpOverlay) {
-      warpOverlay.classList.add('active');
-      setTimeout(function () {
-        warpOverlay.classList.remove('active');
-      }, 600);
+  function drawWarp(p, color, lines) {
+    if (p < 0.005 || !ctx) return
+
+    var cx = overlay.width / 2
+    var cy = overlay.height / 2
+    var maxDim = Math.max(overlay.width, overlay.height)
+
+    // Deep glow
+    var bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxDim * 1.3)
+    bg.addColorStop(0, color + ha(0.35 * p))
+    bg.addColorStop(0.35, color + ha(0.14 * p))
+    bg.addColorStop(1, color + '00')
+    ctx.fillStyle = bg
+    ctx.fillRect(0, 0, overlay.width, overlay.height)
+
+    // White-hot core
+    var core = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxDim * 0.3 * p)
+    core.addColorStop(0, '#ffffff' + ha(0.25 * p))
+    core.addColorStop(0.25, color + ha(0.4 * p))
+    core.addColorStop(1, color + '00')
+    ctx.fillStyle = core
+    ctx.fillRect(0, 0, overlay.width, overlay.height)
+
+    // Warp lines
+    for (var i = 0; i < lines.length; i++) {
+      var l = lines[i]
+      var d1 = l.dist + l.len * p * l.speed
+      var d2 = d1 + l.len * p * 1.4
+      var x1 = cx + Math.cos(l.angle) * d1
+      var y1 = cy + Math.sin(l.angle) * d1
+      var x2 = cx + Math.cos(l.angle) * d2
+      var y2 = cy + Math.sin(l.angle) * d2
+
+      var grad = ctx.createLinearGradient(x1, y1, x2, y2)
+      grad.addColorStop(0, color + ha(l.alpha * p * 0.9))
+      grad.addColorStop(0.5, color + ha(l.alpha * p * 0.35))
+      grad.addColorStop(1, color + '00')
+
+      ctx.beginPath()
+      ctx.moveTo(x1, y1)
+      ctx.lineTo(x2, y2)
+      ctx.strokeStyle = grad
+      ctx.lineWidth = l.width * (0.3 + p * 2)
+      ctx.stroke()
     }
 
-    // Glow pulse after warp
-    setTimeout(function () {
-      if (glowPulse) {
-        glowPulse.classList.add('active');
+    // Flash at peak
+    if (p > 0.88) {
+      ctx.fillStyle = 'rgba(255,255,255,' + ((p - 0.88) / 0.12 * 0.15) + ')'
+      ctx.fillRect(0, 0, overlay.width, overlay.height)
+    }
+
+    // Vignette
+    var vig = ctx.createRadialGradient(cx, cy, maxDim * 0.2, cx, cy, maxDim * 0.7)
+    vig.addColorStop(0, 'rgba(0,0,0,0)')
+    vig.addColorStop(1, 'rgba(0,0,0,' + (0.35 * p) + ')')
+    ctx.fillStyle = vig
+    ctx.fillRect(0, 0, overlay.width, overlay.height)
+  }
+
+  function updateWarp() {
+    if (!ctx || reducedMotion) return
+    ctx.clearRect(0, 0, overlay.width, overlay.height)
+
+    var totalWarp = 0
+    for (var i = 0; i < warpZones.length; i++) {
+      var z = warpZones[i]
+      if (!z.el) continue
+      var raw = zoneProgress(z.el)
+      if (raw <= 0 || raw >= 1) continue
+      var intensity = bell(raw)
+      totalWarp += intensity
+      drawWarp(intensity, z.color, z.lines)
+    }
+
+    var speed = 1 + 28 * Math.min(totalWarp, 1)
+    if (window.Starfield) window.Starfield.setSpeed(speed)
+  }
+
+  /* ═══════════════════════════════════════════════
+     2. FULLPAGE CONTROLLER (app-style 120Hz)
+     ═══════════════════════════════════════════════ */
+
+  // Collect snap-worthy pages in DOM order
+  var pageEls = Array.prototype.slice.call(
+    document.querySelectorAll(
+      '#station-1, .station-2-intro, .stat-block, .quote-block, .punchline, #station-3'
+    )
+  )
+
+  var current = 0
+  var locked = false
+  var touchStartY = 0
+  var touchStartTime = 0
+
+  function getScrollTarget(el) {
+    var elTop = el.getBoundingClientRect().top + window.pageYOffset
+    var elH = el.offsetHeight
+    var vh = window.innerHeight
+    // Center element in viewport. If taller than viewport, align top.
+    if (elH >= vh) return elTop
+    return Math.max(0, elTop - (vh - elH) / 2)
+  }
+
+  // Ease-out expo — iOS-like deceleration
+  function easeOutExpo(t) {
+    return t >= 1 ? 1 : 1 - Math.pow(2, -11 * t)
+  }
+
+  function animateScroll(from, to, duration, done) {
+    var startTime = null
+
+    function step(time) {
+      if (!startTime) startTime = time
+      var t = Math.min((time - startTime) / duration, 1)
+      var eased = easeOutExpo(t)
+
+      window.scrollTo(0, from + (to - from) * eased)
+
+      // Update warp every frame during animation
+      updateWarp()
+
+      if (t < 1) {
+        requestAnimationFrame(step)
+      } else {
         setTimeout(function () {
-          glowPulse.classList.remove('active');
-        }, 500);
+          if (done) done()
+        }, 120)
       }
-    }, 500);
-
-    // Slow down starfield
-    setTimeout(function () {
-      if (window.starfield) window.starfield.setSpeed(1);
-    }, 600);
-
-    // Cooldown
-    setTimeout(function () {
-      warpCooldown = false;
-    }, 1200);
-  }
-
-  // ─── IntersectionObserver for sections ─────────────────────────
-
-  var sections = document.querySelectorAll('[data-section]');
-
-  if ('IntersectionObserver' in window) {
-    var sectionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-
-        var idx = parseInt(entry.target.getAttribute('data-section'), 10);
-
-        // Trigger warp if new section
-        if (idx !== lastSection && lastSection !== -1) {
-          triggerWarp();
-        }
-        lastSection = idx;
-
-        // Animate section contents
-        if (!entry.target.classList.contains('section-revealed')) {
-          entry.target.classList.add('section-revealed');
-          animateEntrance(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15
-    });
-
-    sections.forEach(function (s) { sectionObserver.observe(s); });
-  } else {
-    // Fallback: reveal everything
-    sections.forEach(function (s) {
-      s.classList.add('section-revealed');
-      var items = s.querySelectorAll('[data-anim]');
-      items.forEach(function (el) { el.classList.add('anim-visible'); });
-    });
-  }
-
-  // ─── Counter animations ────────────────────────────────────────
-
-  function animateCounter(el) {
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    if (isNaN(target)) return;
-    var suffix = el.getAttribute('data-suffix') || '';
-    var prefix = el.getAttribute('data-prefix') || '';
-    var duration = parseInt(el.getAttribute('data-duration') || '1400', 10);
-    var start = performance.now();
-
-    function tick(now) {
-      var elapsed = now - start;
-      var progress = Math.min(elapsed / duration, 1);
-      // Cubic ease out
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var current = Math.round(eased * target);
-      el.textContent = prefix + current + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
     }
 
-    if (reducedMotion) {
-      el.textContent = prefix + target + suffix;
-    } else {
-      requestAnimationFrame(tick);
+    requestAnimationFrame(step)
+  }
+
+  function goTo(index) {
+    if (locked) return
+
+    // Clamp
+    if (index < 0) index = 0
+    if (index >= pageEls.length) {
+      // Scroll to bottom (footer)
+      var docBottom = document.documentElement.scrollHeight - window.innerHeight
+      var now = window.pageYOffset
+      if (now >= docBottom - 5) return
+      locked = true
+      current = pageEls.length - 1
+      animateScroll(now, docBottom, 1000, function () { locked = false })
+      return
     }
+
+    if (index === current && Math.abs(window.pageYOffset - getScrollTarget(pageEls[index])) < 5) return
+
+    locked = true
+    current = index
+
+    var from = window.pageYOffset
+    var to = getScrollTarget(pageEls[index])
+    var dist = Math.abs(to - from)
+    var vh = window.innerHeight
+
+    // Duration: scales with distance, longer for warp zone crossings
+    var duration = Math.min(2400, Math.max(1100, dist / vh * 1000))
+
+    animateScroll(from, to, duration, function () { locked = false })
   }
 
-  var counters = document.querySelectorAll('[data-count]');
-  if ('IntersectionObserver' in window && counters.length) {
-    var counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-          entry.target.classList.add('counted');
-          animateCounter(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(function (c) { counterObserver.observe(c); });
-  }
-
-  // ─── Pillar bar animations ─────────────────────────────────────
-
-  var bars = document.querySelectorAll('[data-bar]');
-  if ('IntersectionObserver' in window && bars.length) {
-    var barObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !entry.target.classList.contains('bar-animated')) {
-          entry.target.classList.add('bar-animated');
-          var val = entry.target.getAttribute('data-bar');
-          entry.target.style.transform = 'scaleX(' + (parseInt(val, 10) / 100) + ')';
-        }
-      });
-    }, { threshold: 0.3 });
-
-    bars.forEach(function (b) { barObserver.observe(b); });
-  }
-
-  // ─── Radar chart animation ─────────────────────────────────────
-
-  var radarPoly = document.getElementById('radar-polygon');
-  if (radarPoly && 'IntersectionObserver' in window) {
-    var radarTarget = radarPoly.getAttribute('data-target-points');
-    var radarCenter = radarPoly.getAttribute('data-center');
-
-    var radarObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !radarPoly.classList.contains('radar-animated')) {
-          radarPoly.classList.add('radar-animated');
-
-          if (reducedMotion) {
-            radarPoly.setAttribute('points', radarTarget);
-            return;
-          }
-
-          var centerPts = radarCenter.split(' ').map(function (p) {
-            return p.split(',').map(Number);
-          });
-          var targetPts = radarTarget.split(' ').map(function (p) {
-            return p.split(',').map(Number);
-          });
-
-          var duration = 1000;
-          var startTime = performance.now();
-
-          function animRadar(now) {
-            var elapsed = now - startTime;
-            var progress = Math.min(elapsed / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3);
-
-            var current = centerPts.map(function (cp, i) {
-              var tx = targetPts[i][0];
-              var ty = targetPts[i][1];
-              return (cp[0] + (tx - cp[0]) * eased).toFixed(1) + ',' +
-                     (cp[1] + (ty - cp[1]) * eased).toFixed(1);
-            }).join(' ');
-
-            radarPoly.setAttribute('points', current);
-            if (progress < 1) requestAnimationFrame(animRadar);
-          }
-
-          requestAnimationFrame(animRadar);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    radarObserver.observe(radarPoly.closest('svg') || radarPoly);
-  }
-
-  // ─── Hero card 3D tilt ─────────────────────────────────────────
-
-  var heroCard = document.querySelector('.hero-card');
-  if (heroCard && !isMobile && !reducedMotion) {
-    heroCard.style.transform = 'perspective(800px) rotateY(-8deg) rotateX(4deg)';
-
-    heroCard.addEventListener('mousemove', function (e) {
-      var rect = heroCard.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      heroCard.style.transform =
-        'perspective(800px) rotateY(' + (x * 16).toFixed(1) + 'deg) rotateX(' + (-y * 12).toFixed(1) + 'deg)';
-    });
-
-    heroCard.addEventListener('mouseleave', function () {
-      heroCard.style.transform = 'perspective(800px) rotateY(-8deg) rotateX(4deg)';
-    });
-  }
-
-  // ─── Hero staggered entrance ───────────────────────────────────
-
-  var heroItems = document.querySelectorAll('.hero-anim');
-  heroItems.forEach(function (el, i) {
-    var delay = parseInt(el.getAttribute('data-hero-delay') || (i * 200), 10);
-    setTimeout(function () {
-      el.classList.add('hero-visible');
-    }, reducedMotion ? 0 : delay);
-  });
-
-  // ─── Mobile sticky CTA visibility ─────────────────────────────
-
-  if (isMobile) {
-    var stickyCta = document.querySelector('.sticky-cta');
-    var pricingSection = document.querySelector('[data-section="5"]');
-
-    if (stickyCta && pricingSection && 'IntersectionObserver' in window) {
-      var stickyObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          stickyCta.classList.toggle('sticky-hidden', entry.isIntersecting);
-        });
-      }, { threshold: 0.1 });
-
-      stickyObserver.observe(pricingSection);
+  // Find closest page on load (for mid-page reload)
+  function findClosestPage() {
+    var scrollTop = window.pageYOffset
+    var closest = 0
+    var minDist = Infinity
+    for (var i = 0; i < pageEls.length; i++) {
+      var d = Math.abs(getScrollTarget(pageEls[i]) - scrollTop)
+      if (d < minDist) {
+        minDist = d
+        closest = i
+      }
     }
+    current = closest
+  }
+  findClosestPage()
+
+  // ── Wheel ──
+  function isModalOpen() {
+    var modal = document.getElementById('legal-modal')
+    return modal && modal.classList.contains('active')
   }
 
-})();
+  window.addEventListener('wheel', function (e) {
+    if (isModalOpen()) return
+    e.preventDefault()
+    if (locked) return
+
+    var dir = e.deltaY > 0 ? 1 : -1
+    goTo(current + dir)
+  }, { passive: false })
+
+  // ── Touch ──
+  var touchMoved = false
+
+  window.addEventListener('touchstart', function (e) {
+    touchStartY = e.touches[0].clientY
+    touchStartTime = Date.now()
+    touchMoved = false
+  }, { passive: true })
+
+  window.addEventListener('touchmove', function (e) {
+    if (isModalOpen()) return
+    var dy = Math.abs(e.touches[0].clientY - touchStartY)
+    if (dy > 12) {
+      touchMoved = true
+      e.preventDefault()
+    }
+  }, { passive: false })
+
+  window.addEventListener('touchend', function (e) {
+    if (isModalOpen() || locked || !touchMoved) return
+    var delta = touchStartY - e.changedTouches[0].clientY
+    var elapsed = Date.now() - touchStartTime
+    // Threshold: 30px or fast swipe (velocity > 0.3px/ms)
+    var velocity = Math.abs(delta) / Math.max(elapsed, 1)
+    if (Math.abs(delta) > 30 || velocity > 0.3) {
+      goTo(current + (delta > 0 ? 1 : -1))
+    }
+  }, { passive: true })
+
+  // ── Keyboard ──
+  window.addEventListener('keydown', function (e) {
+    if (isModalOpen() || locked) return
+    if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault()
+      goTo(current + 1)
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault()
+      goTo(current - 1)
+    } else if (e.key === 'Home') {
+      e.preventDefault()
+      goTo(0)
+    } else if (e.key === 'End') {
+      e.preventDefault()
+      goTo(pageEls.length - 1)
+    }
+  })
+
+  // ── Resize: re-snap ──
+  var resizeTimer = null
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(function () {
+      window.scrollTo(0, getScrollTarget(pageEls[current]))
+    }, 200)
+  })
+
+  // ── Passive scroll listener for warp update (when not animating) ──
+  window.addEventListener('scroll', function () {
+    if (!locked) updateWarp()
+  }, { passive: true })
+
+  // Initial warp state
+  updateWarp()
+
+  /* ═══════════════════════════════════════════════
+     3. REVEALS, TRACKING, CARD TILT
+     ═══════════════════════════════════════════════ */
+
+  // Scroll-based reveals
+  var reveals = document.querySelectorAll('.reveal')
+  if (reveals.length) {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed')
+          revealObs.unobserve(e.target)
+        }
+      })
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' })
+    reveals.forEach(function (el) { revealObs.observe(el) })
+  }
+
+  // Plausible events
+  function track(name) {
+    if (window.plausible) window.plausible(name)
+  }
+
+  var trackMap = {
+    'station-2': 'scroll_station_2',
+    'station-3': 'scroll_station_3',
+    'footer': 'scroll_complete'
+  }
+  Object.keys(trackMap).forEach(function (id) {
+    var el = document.getElementById(id)
+    if (!el) return
+    var done = false
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !done) {
+        done = true
+        track(trackMap[id])
+      }
+    }, { threshold: 0.05 }).observe(el)
+  })
+
+  // Scoring card 3D tilt
+  var card = document.querySelector('.scoring-card')
+  if (card && !reducedMotion) {
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect()
+      var x = (e.clientX - r.left) / r.width
+      var y = (e.clientY - r.top) / r.height
+      card.style.transform =
+        'perspective(800px) rotateX(' + ((0.5 - y) * 18) +
+        'deg) rotateY(' + ((x - 0.5) * 18) +
+        'deg) scale(1.03)'
+    })
+    card.addEventListener('mouseleave', function () {
+      card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)'
+    })
+  }
+
+  // Score bar fill
+  var bars = document.querySelectorAll('.score-bar-fill')
+  if (bars.length) {
+    var barObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var bar = e.target
+          setTimeout(function () {
+            bar.style.width = bar.getAttribute('data-width') + '%'
+          }, 300)
+          barObs.unobserve(bar)
+        }
+      })
+    }, { threshold: 0.2 })
+    bars.forEach(function (b) { barObs.observe(b) })
+  }
+
+  // CTA tracking
+  var cta = document.querySelector('.btn-cta')
+  if (cta) cta.addEventListener('click', function () { track('cta_click') })
+})()
