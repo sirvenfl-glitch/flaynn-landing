@@ -261,15 +261,12 @@ img, svg { display: block; max-width: 100%; }
   width: 100%;
 }
 .header-logo {
-  font: 700 1.25rem/1 'IBM Plex Sans', sans-serif;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
 }
-.header-logo span {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.header-logo-img {
+  height: 32px;
+  width: auto;
 }
 .header .btn-cta {
   padding: 8px 20px;
@@ -764,14 +761,12 @@ img, svg { display: block; max-width: 100%; }
   gap: 12px;
 }
 .footer-logo {
-  font: 700 1rem/1 'IBM Plex Sans', sans-serif;
-  color: var(--text-primary);
+  display: flex;
+  align-items: center;
 }
-.footer-logo span {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.footer-logo-img {
+  height: 24px;
+  width: auto;
 }
 .footer-tagline {
   font-size: 0.8rem;
@@ -896,7 +891,7 @@ img, svg { display: block; max-width: 100%; }
 
   .radar-svg { max-width: 250px; }
 
-  .header-logo { font-size: 1.1rem; }
+  .header-logo-img { height: 26px; }
   .header-cta-text { display: none; }
   .header-cta-short { display: inline; }
 
