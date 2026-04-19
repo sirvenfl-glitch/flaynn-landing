@@ -1,6 +1,6 @@
 {
   "name": "flaynn-landing",
   "scripts": {
-    "build": "mkdir -p dist && cp index.html styles.css starfield.js warp.js favicon.svg robots.txt og-image.png dist/"
+    "build": "echo redirect only"
   }
 }
