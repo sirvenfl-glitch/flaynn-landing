@@ -1,4 +1,7 @@
 {
+  "buildCommand": "echo redirect only",
+  "outputDirectory": ".",
+  "framework": null,
   "redirects": [
     { "source": "/(.*)", "destination": "https://flaynn.com/$1", "permanent": true }
   ]
